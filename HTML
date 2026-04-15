@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>数学ⅢC 完全攻略テキスト</title>
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],tags:'none'},options:{skipHtmlTags:['script','noscript','style','textarea']}};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* ====== VARIABLES ====== */
+:root{
+  --ink:#0f1e3c; --ink2:#1a3255; --paper:#faf8f4; --warm:#f5f0e8;
+  --rule:#d4cbb8; --accent:#9b1b4b; --blue:#1a4f8a; --green:#145f3a;
+  --gold:#c9870c; --purple:#5c2d8e; --orange:#b94a00;
+  --proof-bg:#edf6fb; --proof-bd:#1e7abf;
+  --form-bg:#fef9e7; --form-bd:#d4890a;
+  --ex-bg:#f0fdf4; --ex-bd:#1a8a4a;
+  --pr-bg:#fdf3ff; --pr-bd:#7e22ce;
+  --tip-bg:#f0f9ff; --tip-bd:#0284c7;
+  --warn-bg:#fff1f2; --warn-bd:#be123c;
+  --exam-bg:#fff8f0; --exam-bd:#b94a00;
+  --serif:'Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic Pro',sans-serif;
+}
+
+/* ====== RESET ====== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:15px;}
+body{font-family:var(–serif);background:var(–paper);color:var(–ink);line-height:1.9;}
+p{margin-bottom:11px;}
+strong{font-weight:700;}
+
+/* ====== PAGE / PRINT ====== */
+@page{size:A4;margin:18mm 16mm 18mm 16mm;}
+@media print{
+html{font-size:11px;}
+body{background:#fff;}
+nav,.no-print,.back-to-top{display:none!important;}
+.main-content{margin-left:0!important;}
+.chapter{page-break-before:always;padding:0 0 24px;}
+.chapter:first-of-type{page-break-before:avoid;}
+.print-cover{display:flex!important;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.toc-section{page-break-after:always;}
+.formula-box,.proof-box,.example-box,.exercise-block,.exam-card,.tip-box,.important-box{page-break-inside:avoid;break-inside:avoid;}
+.section{page-break-inside:auto;}
+h3,h4{page-break-after:avoid;}
+.answer-block{page-break-inside:avoid;break-inside:avoid;}
+table{page-break-inside:avoid;}
+.two-col,.three-col{page-break-inside:avoid;}
+a{color:inherit;text-decoration:none;}
+.chapter-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+@media screen{.print-cover{display:none;}}
+
+/* ====== PRINT COVER ====== */
+.print-cover{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 55%,#1a4f8a 100%);
+color:#fff;min-height:100vh;flex-direction:column;align-items:center;
+justify-content:center;text-align:center;padding:80px 56px;
+}
+.print-cover h1{font-size:3.2rem;font-weight:300;letter-spacing:0.12em;margin-bottom:10px;}
+.print-cover h1 span{font-weight:700;color:#f0c040;}
+.print-cover .cv-sub{font-size:1rem;opacity:.65;letter-spacing:.3em;margin-bottom:44px;font-family:var(–sans);}
+.print-cover .cv-chs{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:44px;}
+.print-cover .cv-ch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 16px;border-radius:20px;font-family:var(–sans);font-size:13px;}
+.print-cover .cv-note{font-size:11.5px;opacity:.45;font-family:var(–sans);border-top:1px solid rgba(255,255,255,.12);padding-top:20px;letter-spacing:.1em;}
+
+/* ====== NAV ====== */
+nav{position:fixed;top:0;left:0;width:230px;height:100vh;background:var(–ink);color:#ccc;overflow-y:auto;padding:16px 0;font-family:var(–sans);font-size:11.5px;z-index:100;box-shadow:3px 0 16px rgba(0,0,0,.3);}
+.nav-title{color:#fff;font-weight:700;font-size:13px;padding:0 16px 12px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:8px;letter-spacing:.06em;}
+nav a{display:block;color:#8ab;text-decoration:none;padding:4px 16px;transition:all .2s;}
+nav a:hover{color:#fff;background:rgba(255,255,255,.07);padding-left:24px;}
+.nav-ch{color:#f0c040;font-weight:600;margin-top:10px;padding:4px 16px 2px;font-size:11px;}
+.nav-sub{padding-left:26px!important;font-size:10.5px;color:#678;}
+
+/* ====== LAYOUT ====== */
+.main-content{margin-left:230px;}
+@media(max-width:900px){nav{display:none;}.main-content{margin-left:0;}}
+
+/* ====== HEADER ====== */
+.header-banner{
+background:linear-gradient(135deg,var(–ink) 0%,var(–ink2) 50%,#16325e 100%);
+color:#fff;padding:52px 52px 42px;position:relative;overflow:hidden;
+}
+.header-banner::before{content:’’;position:absolute;top:-50px;right:-50px;width:280px;height:280px;border:1px solid rgba(255,255,255,.04);border-radius:50%;}
+.header-banner h1{font-size:2.5em;font-weight:300;letter-spacing:.08em;margin-bottom:8px;}
+.header-banner h1 span{font-weight:700;color:#f0c040;}
+.header-banner p{color:rgba(255,255,255,.55);font-size:13px;font-family:var(–sans);}
+.hd-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+.hd-badge{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);padding:3px 11px;border-radius:16px;font-size:12px;font-family:var(–sans);}
+
+/* ====== TOC ====== */
+.toc-section{padding:44px 52px;border-bottom:2px solid var(–rule);}
+.toc-section h2{font-size:1.6em;margin-bottom:24px;border-bottom:2px solid var(–ink);padding-bottom:9px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.toc-card{border:1.5px solid var(–rule);border-radius:8px;padding:16px;text-decoration:none;color:inherit;display:block;transition:all .2s;}
+.toc-card:hover{border-color:var(–blue);transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08);}
+.toc-num{font-size:10.5px;color:var(–accent);font-weight:700;letter-spacing:.1em;font-family:var(–sans);}
+.toc-title{font-size:1.15em;font-weight:700;margin:4px 0 8px;}
+.toc-topics{font-size:11.5px;color:#666;font-family:var(–sans);line-height:1.7;}
+
+/* ====== CHAPTER ====== */
+.chapter{padding:0 52px 40px;border-bottom:2px solid var(–rule);}
+.chapter-header{padding:42px 0 24px;border-bottom:3px solid var(–ink);margin-bottom:28px;}
+.ch-num{font-family:var(–sans);font-size:11px;font-weight:600;color:var(–accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.chapter-header h2{font-size:2em;font-weight:600;letter-spacing:.03em;line-height:1.3;}
+.chapter-header p{margin-top:9px;color:#555;font-size:13.5px;font-family:var(–sans);max-width:640px;}
+
+/* ====== SECTIONS ====== */
+.section{margin-bottom:38px;}
+h3{font-size:1.2em;font-weight:700;color:var(–blue);border-left:4px solid var(–blue);padding-left:12px;margin:30px 0 14px;}
+h4{font-size:1.02em;font-weight:700;color:var(–ink);margin:18px 0 9px;padding-bottom:3px;border-bottom:1px dashed var(–rule);}
+.section-sep{border:none;border-top:1px dashed var(–rule);margin:22px 0;}
+
+/* ====== BOX BASE ====== */
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.exam-card,.important-box{
+border-radius:7px;padding:18px 22px;margin:16px 0;position:relative;
+}
+/* FORMULA */
+.formula-box{background:var(–form-bg);border:1.5px solid var(–form-bd);border-left:5px solid var(–form-bd);}
+.formula-box::before{content:‘公式’;position:absolute;top:-10px;left:14px;background:var(–form-bd);color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.08em;}
+.formula-box.theorem::before{content:‘定理’;background:var(–blue);}
+.formula-box.definition::before{content:‘定義’;background:var(–accent);}
+.formula-box.important::before{content:‘重要’;background:#b91c1c;}
+/* PROOF */
+.proof-box{background:var(–proof-bg);border:1.5px solid var(–proof-bd);border-left:5px solid var(–proof-bd);}
+.proof-box::before{content:‘証明’;position:absolute;top:-10px;left:14px;background:var(–proof-bd);color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+.proof-box .qed{text-align:right;font-size:16px;color:var(–proof-bd);margin-top:6px;}
+/* EXAMPLE */
+.example-box{background:var(–ex-bg);border:1.5px solid var(–ex-bd);border-left:5px solid var(–ex-bd);}
+.example-box::before{content:‘例題’;position:absolute;top:-10px;left:14px;background:var(–ex-bd);color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXERCISE */
+.exercise-block{background:var(–pr-bg);border:1.5px solid var(–pr-bd);border-left:5px solid var(–pr-bd);}
+.exercise-block::before{content:‘練習’;position:absolute;top:-10px;left:14px;background:var(–pr-bd);color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* TIP */
+.tip-box{background:var(–tip-bg);border:1.5px solid var(–tip-bd);border-left:5px solid var(–tip-bd);}
+.tip-box::before{content:‘POINT’;position:absolute;top:-10px;left:14px;background:var(–tip-bd);color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.06em;}
+/* IMPORTANT */
+.important-box{background:var(–warn-bg);border:1.5px solid var(–warn-bd);border-left:5px solid var(–warn-bd);}
+.important-box::before{content:‘注意’;position:absolute;top:-10px;left:14px;background:var(–warn-bd);color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAM CARD */
+.exam-card{border:2px solid var(–ink2);border-radius:8px;overflow:hidden;margin:18px 0;background:#fff;}
+.exam-hd{background:linear-gradient(90deg,var(–ink),var(–ink2));color:#fff;padding:10px 17px;display:flex;justify-content:space-between;align-items:center;font-family:var(–sans);font-size:13px;font-weight:600;}
+.exam-body{padding:18px 20px;}
+.etag{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.tag-lim{background:#f0c040;color:#1a1a2e;}
+.tag-dif{background:#a8e6cf;color:#145f3a;}
+.tag-int{background:#f4a261;color:#fff;}
+.tag-vec{background:#74b9ff;color:#0f1e3c;}
+.tag-cmp{background:#fd79a8;color:#fff;}
+.tag-crv{background:#a29bfe;color:#fff;}
+
+/* ====== ANSWER BLOCK ====== */
+.answer-block{background:#fefefe;border:1px dashed #aaa;border-radius:6px;padding:13px 17px;margin-top:12px;}
+.answer-block::before{content:‘解答’;font-family:var(–sans);font-size:10px;font-weight:700;color:#777;display:block;margin-bottom:5px;letter-spacing:.1em;}
+
+/* ====== TABLE ====== */
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13px;font-family:var(–sans);}
+th{background:var(–ink);color:#fff;padding:8px 12px;text-align:center;font-weight:500;letter-spacing:.04em;}
+td{padding:7px 12px;border:1px solid var(–rule);text-align:center;vertical-align:middle;}
+tr:nth-child(even) td{background:var(–warm);}
+
+/* ====== GRID ====== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;}
+@media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr;}}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0;}
+.sum-card{background:#fff;border:1.5px solid var(–rule);border-radius:8px;padding:14px 16px;}
+.sum-card h4{font-size:13px;margin-bottom:7px;border:none;padding:0;font-family:var(–sans);}
+.sum-card p{font-size:12.5px;color:#444;margin:0;line-height:1.7;}
+
+/* ====== MISC ====== */
+.hl{background:#fef3d0;padding:1px 3px;border-radius:2px;}
+.red{color:#b91c1c;font-weight:700;}
+.blue{color:var(–blue);font-weight:700;}
+.green{color:var(–green);font-weight:700;}
+.note{background:#f8f9fa;border-left:4px solid #adb5bd;padding:10px 15px;margin:12px 0;font-size:13px;color:#555;font-family:var(–sans);border-radius:0 5px 5px 0;}
+.lv{font-size:10px;font-family:var(–sans);font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:9px;margin-left:7px;vertical-align:middle;}
+.lv-b{background:#d1fae5;color:#065f46;}
+.lv-m{background:#fef9c3;color:#713f12;}
+.lv-a{background:#fce7f3;color:#9d174d;}
+.lv-e{background:#ede9fe;color:#4c1d95;}
+ul.bullet,ol.num{padding-left:22px;margin:9px 0;}
+ul.bullet li,ol.num li{margin-bottom:5px;line-height:1.85;}
+ol.steps{padding-left:26px;margin:9px 0;}
+ol.steps li{margin-bottom:6px;line-height:1.85;font-family:var(–sans);font-size:13.5px;}
+.back-to-top{position:fixed;bottom:26px;right:26px;background:var(–ink);color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:transform .2s;z-index:99;}
+.back-to-top:hover{transform:translateY(-3px);}
+</style>
+
+</head>
+<body>
+
+<!-- PRINT COVER -->
+
+<div class="print-cover">
+  <h1>数学 ⅢC <span>完全攻略テキスト</span></h1>
+  <div class="cv-sub">COMPLETE MATHEMATICS III·C STUDY GUIDE</div>
+  <div class="cv-chs">
+    <span class="cv-ch">第1章 極限</span>
+    <span class="cv-ch">第2章 微分法</span>
+    <span class="cv-ch">第3章 積分法</span>
+    <span class="cv-ch">第4章 ベクトル</span>
+    <span class="cv-ch">第5章 複素数平面</span>
+    <span class="cv-ch">第6章 式と曲線</span>
+    <span class="cv-ch">第7章 入試対策</span>
+  </div>
+  <div class="cv-note">公式の証明 · 例題 · 類題 · 入試問題 ― 基礎から難関大学レベルまで完全網羅</div>
+</div>
+
+<!-- NAVIGATION -->
+
+<nav class="no-print" id="top">
+  <div class="nav-title">数学ⅢC 完全攻略</div>
+  <a href="#toc">目次</a>
+  <div class="nav-ch">Ch.1 極限</div>
+  <a class="nav-sub" href="#s1-1">数列の極限・ε-N論法</a>
+  <a class="nav-sub" href="#s1-2">無限等比数列・無限級数</a>
+  <a class="nav-sub" href="#s1-3">重要極限公式の証明</a>
+  <a class="nav-sub" href="#s1-4">関数の連続・中間値定理</a>
+  <a class="nav-sub" href="#s1-5">練習問題</a>
+  <div class="nav-ch">Ch.2 微分法</div>
+  <a class="nav-sub" href="#s2-1">微分の定義・基本公式証明</a>
+  <a class="nav-sub" href="#s2-2">積・商・合成関数の微分</a>
+  <a class="nav-sub" href="#s2-3">逆三角関数・対数微分法</a>
+  <a class="nav-sub" href="#s2-4">高次導関数・ライプニッツ</a>
+  <a class="nav-sub" href="#s2-5">増減・極値・グラフ</a>
+  <a class="nav-sub" href="#s2-6">平均値定理・不等式証明</a>
+  <a class="nav-sub" href="#s2-7">練習問題</a>
+  <div class="nav-ch">Ch.3 積分法</div>
+  <a class="nav-sub" href="#s3-1">不定積分・基本公式</a>
+  <a class="nav-sub" href="#s3-2">置換積分法</a>
+  <a class="nav-sub" href="#s3-3">部分積分法</a>
+  <a class="nav-sub" href="#s3-4">有理関数・三角関数の積分</a>
+  <a class="nav-sub" href="#s3-5">定積分の性質・区分求積</a>
+  <a class="nav-sub" href="#s3-6">面積・体積・弧長</a>
+  <a class="nav-sub" href="#s3-7">練習問題</a>
+  <div class="nav-ch">Ch.4 ベクトル</div>
+  <a class="nav-sub" href="#s4-1">ベクトルの演算・分点</a>
+  <a class="nav-sub" href="#s4-2">内積・正射影</a>
+  <a class="nav-sub" href="#s4-3">空間ベクトル・座標</a>
+  <a class="nav-sub" href="#s4-4">直線・平面の方程式</a>
+  <a class="nav-sub" href="#s4-5">外積・体積</a>
+  <div class="nav-ch">Ch.5 複素数平面</div>
+  <a class="nav-sub" href="#s5-1">複素数の演算</a>
+  <a class="nav-sub" href="#s5-2">極形式・偏角</a>
+  <a class="nav-sub" href="#s5-3">ド・モアブルの定理証明</a>
+  <a class="nav-sub" href="#s5-4">n乗根・1のn乗根</a>
+  <a class="nav-sub" href="#s5-5">図形・変換・軌跡</a>
+  <div class="nav-ch">Ch.6 式と曲線</div>
+  <a class="nav-sub" href="#s6-1">2次曲線の定義・証明</a>
+  <a class="nav-sub" href="#s6-2">2次曲線の接線・統一式</a>
+  <a class="nav-sub" href="#s6-3">媒介変数表示</a>
+  <a class="nav-sub" href="#s6-4">極座標・極方程式</a>
+  <div class="nav-ch">Ch.7 入試対策</div>
+  <a class="nav-sub" href="#s7-1">解法パターン集</a>
+  <a class="nav-sub" href="#s7-2">精選入試問題</a>
+  <a class="nav-sub" href="#s7-3">重要公式まとめ</a>
+</nav>
+
+<div class="main-content">
+
+<!-- HEADER -->
+
+<div class="header-banner no-print">
+  <h1>数学 ⅢC <span>完全攻略テキスト</span></h1>
+  <p>公式の証明 · 例題 · 類題 · 入試問題 ― 基礎から難関大学レベルまで完全網羅</p>
+  <div class="hd-badges">
+    <span class="hd-badge">第1章 極限</span>
+    <span class="hd-badge">第2章 微分法</span>
+    <span class="hd-badge">第3章 積分法</span>
+    <span class="hd-badge">第4章 ベクトル</span>
+    <span class="hd-badge">第5章 複素数平面</span>
+    <span class="hd-badge">第6章 式と曲線</span>
+    <span class="hd-badge">第7章 入試対策</span>
+  </div>
+</div>
+
+<!-- TOC -->
+
+<div class="toc-section no-print" id="toc">
+  <h2>目次</h2>
+  <div class="toc-grid">
+    <a class="toc-card" href="#ch1"><div class="toc-num">CHAPTER 01</div><div class="toc-title">極限</div><div class="toc-topics">ε-N論法の定義・はさみうちの原理（証明）· ネイピア数eの収束証明 · sin x/xの幾何的証明 · 中間値定理 · 無限級数</div></a>
+    <a class="toc-card" href="#ch2"><div class="toc-num">CHAPTER 02</div><div class="toc-title">微分法</div><div class="toc-topics">基本公式の証明（sin・cos・e^x・log） · 積・商・合成（証明）· 対数微分法 · ライプニッツ公式 · 平均値定理 · 不等式証明</div></a>
+    <a class="toc-card" href="#ch3"><div class="toc-num">CHAPTER 03</div><div class="toc-title">積分法</div><div class="toc-topics">置換・部分積分（証明）· 三角置換 · 循環型 · ウォリスの公式（証明）· 区分求積 · バウムクーヘン分割（導出）· 弧長</div></a>
+    <a class="toc-card" href="#ch4"><div class="toc-num">CHAPTER 04</div><div class="toc-title">ベクトル</div><div class="toc-topics">内積の成分表示（証明）· 位置ベクトル・分点 · 空間の直線・平面 · 外積（定義・証明）· 点と平面の距離 · 四面体の体積</div></a>
+    <a class="toc-card" href="#ch5"><div class="toc-num">CHAPTER 05</div><div class="toc-title">複素数平面</div><div class="toc-topics">共役・絶対値の性質（証明）· 積の偏角加法定理（証明）· ド・モアブルの定理（帰納法）· n乗根 · cos(2π/5)の値 · 図形・変換・軌跡</div></a>
+    <a class="toc-card" href="#ch6"><div class="toc-num">CHAPTER 06</div><div class="toc-title">式と曲線</div><div class="toc-topics">楕円・双曲線・放物線の焦点定義（証明）· 接線公式（証明）· 統一極方程式 · 媒介変数微分 · カルジオイド面積</div></a>
+    <a class="toc-card" href="#ch7"><div class="toc-num">CHAPTER 07</div><div class="toc-title">入試対策</div><div class="toc-topics">頻出解法パターン · 東大・京大・阪大・東工大レベル精選8題 · 重要公式総まとめ · 直前チェック</div></a>
+  </div>
+</div>
+
+<!-- ============================================================
+     第１章　極限
+============================================================ -->
+
+<div class="chapter" id="ch1">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 01</div>
+  <h2>極　限</h2>
+  <p>数列・関数の極限をε論法から厳密に定義する。はさみうちの原理，ネイピア数の存在，重要極限公式の証明を体系的に習得し，中間値定理の応用まで扱う。</p>
+</div>
+
+<!-- 1.1 -->
+
+<div class="section" id="s1-1">
+<h3>1.1 数列の極限・ε-N 論法</h3>
+
+<div class="formula-box definition">
+<strong>収束の定義（ε-N 論法）</strong><br>
+数列 $\{a_n\}$ が実数 $\alpha$ に<strong>収束する</strong>とは：
+$$\forall\varepsilon>0,\quad\exists N\in\mathbb{N}\text{ s.t. }n>N\Rightarrow|a_n-\alpha|<\varepsilon$$
+このとき $\displaystyle\lim_{n\to\infty}a_n=\alpha$ と書く。収束しない数列を<strong>発散</strong>という。発散は「$+\infty$ へ発散」「$-\infty$ へ発散」「振動（不定）」の 3 種類。
+</div>
+
+<div class="formula-box theorem">
+<strong>極限の四則演算法則</strong><br>
+$\displaystyle\lim_{n\to\infty}a_n=\alpha$，$\displaystyle\lim_{n\to\infty}b_n=\beta$ のとき：
+$$\lim(a_n\pm b_n)=\alpha\pm\beta,\quad\lim(a_n b_n)=\alpha\beta,\quad\lim\frac{a_n}{b_n}=\frac{\alpha}{\beta}\ (\beta\neq 0)$$
+<strong>注意：</strong>$\infty-\infty$，$\dfrac{\infty}{\infty}$，$0\cdot\infty$，$1^\infty$ は不定形であり，直接適用できない。変形が必要。
+</div>
+
+<div class="formula-box theorem">
+<strong>はさみうちの原理（Squeeze Theorem）</strong><br>
+すべての $n$ で $a_n\leq b_n\leq c_n$ かつ $\displaystyle\lim_{n\to\infty}a_n=\lim_{n\to\infty}c_n=\alpha$ ならば $\displaystyle\lim_{n\to\infty}b_n=\alpha$
+</div>
+
+<div class="proof-box">
+<strong>はさみうちの原理の証明：</strong><br>
+任意の $\varepsilon>0$ をとる。仮定より $\exists N_1$ s.t. $n>N_1\Rightarrow|a_n-\alpha|<\varepsilon$，$\exists N_2$ s.t. $n>N_2\Rightarrow|c_n-\alpha|<\varepsilon$。<br>
+$N=\max(N_1,N_2)$ とすると，$n>N$ のとき：
+$$\alpha-\varepsilon<a_n\leq b_n\leq c_n<\alpha+\varepsilon\quad\therefore|b_n-\alpha|<\varepsilon$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box definition">
+<strong>ネイピア数 $e$ の定義</strong>
+$$e=\lim_{n\to\infty}\!\left(1+\frac{1}{n}\right)^{\!n}\approx 2.71828\ldots$$
+</div>
+
+<div class="proof-box">
+<strong>数列 $a_n=\!\left(1+\frac{1}{n}\right)^n$ が収束することの証明（単調有界性）：</strong><br>
+<strong>① 単調増加：</strong>$n+1$ 個の数 $1+\frac{1}{n}$（$n$ 個）と $1$（1個）の相加・相乗平均不等式：
+$$\left[\!\left(1+\frac{1}{n}\right)^n\cdot 1\right]^{\frac{1}{n+1}}\leq\frac{n\!\left(1+\frac{1}{n}\right)+1}{n+1}=\frac{n+2}{n+1}=1+\frac{1}{n+1}$$
+両辺を $n+1$ 乗して $a_n\leq a_{n+1}$，すなわち単調増加。<br><br>
+<strong>② 上に有界：</strong>二項定理より：
+$$a_n=\sum_{k=0}^n\binom{n}{k}\frac{1}{n^k}<\sum_{k=0}^n\frac{1}{k!}\leq\sum_{k=0}^\infty\frac{1}{k!}=e<3$$
+（$\sum_{k=0}^\infty\frac{1}{k!}=1+1+\frac{1}{2}+\frac{1}{6}+\cdots<1+1+\frac{1}{2}+\frac{1}{4}+\cdots=3$）<br>
+単調有界定理より $a_n$ は収束する。
+<div class="qed">■</div>
+</div>
+
+<h4>不定形の処理テクニック</h4>
+<table>
+  <tr><th>不定形</th><th>有効な手法</th><th>典型例</th></tr>
+  <tr><td>$\infty/\infty$</td><td>最高次の項で割る</td><td>$\dfrac{3n^2-n}{2n^2+1}\to\dfrac{3}{2}$</td></tr>
+  <tr><td>$\infty-\infty$</td><td>有理化・因数分解</td><td>$\sqrt{n^2+n}-n\to\dfrac{1}{2}$</td></tr>
+  <tr><td>$1^\infty$</td><td>$e$ の定義を利用</td><td>$\!\left(1+\frac{2}{n}\right)^n\to e^2$</td></tr>
+  <tr><td>$0\cdot\infty$</td><td>$0/0$ か $\infty/\infty$ 型に変形</td><td>$n\cdot\frac{1}{2^n}\to 0$</td></tr>
+</table>
+
+<div class="example-box">
+<strong>例題 1.1</strong> <span class="lv lv-b">基礎</span>　次の極限を求めよ。<br>
+(1) $\displaystyle\lim_{n\to\infty}\!\left(\sqrt{n^2+3n}-n\right)$ &emsp; (2) $\displaystyle\lim_{n\to\infty}\frac{\sin n}{n}$ &emsp; (3) $\displaystyle\lim_{n\to\infty}\!\left(1+\frac{3}{n}\right)^{\!n}$
+<div class="answer-block">
+(1) 有理化：$\dfrac{(\sqrt{n^2+3n}-n)(\sqrt{n^2+3n}+n)}{\sqrt{n^2+3n}+n}=\dfrac{3n}{\sqrt{n^2+3n}+n}=\dfrac{3}{\sqrt{1+\frac{3}{n}}+1}\to\dfrac{3}{2}$<br><br>
+(2) $-\dfrac{1}{n}\leq\dfrac{\sin n}{n}\leq\dfrac{1}{n}$ ではさみうちより $\boldsymbol{0}$<br><br>
+(3) $\!\left(1+\frac{3}{n}\right)^n=\!\left[\!\left(1+\frac{3}{n}\right)^{n/3}\right]^3\to e^3$（$t=n/3$ と置き換えて $e$ の定義）
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.1</strong>　次の極限を求めよ。<br>
+(1) $\displaystyle\lim_{n\to\infty}\frac{4n^3-n^2+2}{3n^3+5n-1}$ &emsp; (2) $\displaystyle\lim_{n\to\infty}\!\left(\sqrt{n+1}-\sqrt{n-1}\right)$ &emsp; (3) $\displaystyle\lim_{n\to\infty}\frac{(-2)^n}{3^n+(-2)^n}$
+<div class="answer-block">
+(1) 分子分母を $n^3$ で割る：$\dfrac{4}{3}$<br><br>
+(2) 有理化：$\dfrac{2}{\sqrt{n+1}+\sqrt{n-1}}\to 0$<br><br>
+(3) 分子分母を $3^n$ で割る：$\dfrac{(-2/3)^n}{1+(-2/3)^n}$。$|{-2/3}|<1$ より $(-2/3)^n\to 0$，答えは $\dfrac{0}{1+0}=\boldsymbol{0}$
+</div>
+</div>
+</div><!-- /s1-1 -->
+
+<!-- 1.2 -->
+
+<div class="section" id="s1-2">
+<h3>1.2 無限等比数列・無限級数</h3>
+
+<div class="formula-box theorem">
+<strong>無限等比数列 $r^n$ の極限</strong>
+<table>
+  <tr><th>$r>1$</th><th>$r=1$</th><th>$|r|<1$</th><th>$r=-1$</th><th>$r<-1$</th></tr>
+  <tr><td>$+\infty$</td><td>$1$</td><td>$0$</td><td>振動</td><td>振動</td></tr>
+</table>
+</div>
+
+<div class="proof-box">
+<strong>$|r|<1$ のとき $r^n\to 0$ の証明：</strong><br>
+$r=0$ は自明。$0<|r|<1$ として $|r|=\frac{1}{1+h}$（$h>0$）とおく。ベルヌーイの不等式 $(1+h)^n\geq 1+nh$ より：
+$$|r^n|=\frac{1}{(1+h)^n}\leq\frac{1}{1+nh}$$
+任意の $\varepsilon>0$ に対し $n>\frac{1-\varepsilon}{h\varepsilon}$ なら $\frac{1}{1+nh}<\varepsilon$。はさみうちより $r^n\to 0$。
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>無限等比級数</strong>（初項 $a\neq 0$，公比 $r$）
+$$\sum_{n=0}^{\infty}ar^n=\frac{a}{1-r}\quad(|r|<1),\qquad|r|\geq 1\text{ のとき発散}$$
+<strong>収束の必要条件：</strong>$\displaystyle\sum a_n$ 収束 $\Rightarrow\lim_{n\to\infty}a_n=0$（逆は成立しない。調和級数 $\sum\frac{1}{n}=\infty$）
+</div>
+
+<div class="example-box">
+<strong>例題 1.2</strong> <span class="lv lv-m">標準</span>　次の無限級数を求めよ。<br>
+(1) $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n(n+2)}$ &emsp; (2) $x$ が何の範囲のとき $\displaystyle\sum_{n=0}^{\infty}(2x-1)^n$ は収束するか。収束するときの和を求めよ。
+<div class="answer-block">
+(1) 部分分数：$\dfrac{1}{n(n+2)}=\dfrac{1}{2}\!\left(\dfrac{1}{n}-\dfrac{1}{n+2}\right)$<br>
+部分和 $S_N=\dfrac{1}{2}\!\left(1+\dfrac{1}{2}-\dfrac{1}{N+1}-\dfrac{1}{N+2}\right)\to\dfrac{1}{2}\cdot\dfrac{3}{2}=\boldsymbol{\dfrac{3}{4}}$<br><br>
+(2) 収束条件 $|2x-1|<1\Leftrightarrow 0<x<1$。和 $=\dfrac{1}{1-(2x-1)}=\dfrac{1}{2(1-x)}$
+</div>
+</div>
+</div><!-- /s1-2 -->
+
+<!-- 1.3 -->
+
+<div class="section" id="s1-3">
+<h3>1.3 重要極限公式とその証明</h3>
+
+<div class="formula-box important">
+$$\lim_{x\to 0}\frac{\sin x}{x}=1,\qquad\lim_{x\to 0}\frac{\tan x}{x}=1,\qquad\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac{1}{2}$$
+$$\lim_{x\to 0}(1+x)^{1/x}=e,\qquad\lim_{x\to 0}\frac{\log(1+x)}{x}=1,\qquad\lim_{x\to 0}\frac{e^x-1}{x}=1$$
+</div>
+
+<div class="proof-box">
+<strong>$\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$ の証明（幾何的）：</strong><br>
+$0<x<\dfrac{\pi}{2}$ で，単位円上の扇形 OAB（半径 1，中心角 $x$）を考える。<br>
+<div class="note">（△OAB の面積）$\leq$（扇形 OAB の面積）$\leq$（△OAT の面積）</div>
+$$\frac{1}{2}\sin x\leq\frac{x}{2}\leq\frac{1}{2}\tan x$$
+各辺を $\dfrac{\sin x}{2}>0$ で割り，逆数をとる（不等号逆転）：
+$$\cos x\leq\frac{\sin x}{x}\leq 1$$
+$x\to 0^+$ で $\cos x\to 1$，はさみうちより $\dfrac{\sin x}{x}\to 1$。$x<0$ は $\dfrac{\sin x}{x}=\dfrac{\sin(-x)}{-x}$ が偶関数より同様。
+<div class="qed">■</div>
+</div>
+
+<div class="proof-box">
+<strong>$\displaystyle\lim_{x\to 0}\frac{1-\cos x}{x^2}=\frac{1}{2}$ の証明：</strong>
+$$\frac{1-\cos x}{x^2}=\frac{2\sin^2(x/2)}{x^2}=\frac{1}{2}\cdot\left(\frac{\sin(x/2)}{x/2}\right)^2\to\frac{1}{2}\cdot 1^2=\frac{1}{2}$$
+<div class="qed">■</div>
+</div>
+
+<div class="proof-box">
+<strong>$\displaystyle\lim_{x\to 0}\frac{\log(1+x)}{x}=1$ と $\displaystyle\lim_{x\to 0}\frac{e^x-1}{x}=1$ の証明：</strong><br>
+<strong>前者：</strong>$\dfrac{\log(1+x)}{x}=\log(1+x)^{1/x}$，$(1+x)^{1/x}\to e$ より $\log e=1$。<br><br>
+<strong>後者：</strong>$t=e^x-1$ とおくと $x\to 0$ で $t\to 0$，$x=\log(1+t)$：
+$$\frac{e^x-1}{x}=\frac{t}{\log(1+t)}=\frac{1}{\frac{\log(1+t)}{t}}\to\frac{1}{1}=1$$
+<div class="qed">■</div>
+</div>
+
+<div class="proof-box">
+<strong>$x\to\infty$ での比較：$(\log x)^\beta\ll x^\alpha\ll e^{\gamma x}$（$\alpha,\beta,\gamma>0$）の証明：</strong><br>
+<strong>$\lim_{x\to\infty}\dfrac{x^n}{e^x}=0$：</strong>テイラー展開 $e^x>\dfrac{x^{n+1}}{(n+1)!}$ より $0<\dfrac{x^n}{e^x}<\dfrac{(n+1)!}{x}\to 0$。はさみうちより $\dfrac{x^n}{e^x}\to 0$。<br><br>
+<strong>$\lim_{x\to\infty}\dfrac{\log x}{x^\alpha}=0$：</strong>$t=x^\alpha$ 置換：$\dfrac{\log x}{x^\alpha}=\dfrac{\frac{1}{\alpha}\log t}{t}\to 0$（前述より）。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 1.3</strong> <span class="lv lv-m">標準</span>　次の極限を求めよ。<br>
+(1) $\displaystyle\lim_{x\to 0}\frac{\sin 3x}{\tan 5x}$ &emsp; (2) $\displaystyle\lim_{x\to\infty}\!\left(1+\frac{2}{x}\right)^{3x}$ &emsp; (3) $\displaystyle\lim_{x\to 0}\frac{e^{2x}-1}{\log(1+3x)}$
+<div class="answer-block">
+(1) $\dfrac{\sin 3x}{3x}\cdot\dfrac{5x}{\tan 5x}\cdot\dfrac{3}{5}\to 1\cdot 1\cdot\dfrac{3}{5}=\boldsymbol{\dfrac{3}{5}}$<br><br>
+(2) $\!\left[\!\left(1+\frac{2}{x}\right)^{x/2}\right]^6\to e^6$<br><br>
+(3) $\dfrac{e^{2x}-1}{2x}\cdot\dfrac{3x}{\log(1+3x)}\cdot\dfrac{2}{3}\to 1\cdot 1\cdot\dfrac{2}{3}=\boldsymbol{\dfrac{2}{3}}$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.2</strong><br>
+(1) $\displaystyle\lim_{x\to 0}\frac{1-\cos 4x}{x\sin 2x}$ &emsp; (2) $\displaystyle\lim_{x\to\infty}x\log\!\left(1+\frac{5}{x}\right)$ &emsp; (3) $\displaystyle\lim_{x\to 0}\frac{\sin x-\tan x}{x^3}$
+<div class="answer-block">
+(1) $\dfrac{2\sin^2 2x}{x\sin 2x}=\dfrac{2\sin 2x}{x}=\dfrac{2\sin 2x}{2x}\cdot 2\to 2\cdot 2=\boldsymbol{4}$<br><br>
+(2) $t=5/x$ とおくと $\dfrac{5}{t}\cdot\log(1+t)\to 5\cdot 1=\boldsymbol{5}$<br><br>
+(3) $\dfrac{\sin x-\tan x}{x^3}=\dfrac{\sin x(1-\frac{1}{\cos x})}{x^3}=\dfrac{\sin x}{x}\cdot\dfrac{1-\cos x}{x^2}\cdot\dfrac{-1}{\cos x}\to 1\cdot\dfrac{1}{2}\cdot(-1)=\boldsymbol{-\dfrac{1}{2}}$
+</div>
+</div>
+</div><!-- /s1-3 -->
+
+<!-- 1.4 -->
+
+<div class="section" id="s1-4">
+<h3>1.4 関数の連続性・中間値定理</h3>
+
+<div class="formula-box definition">
+<strong>連続性の定義：</strong>$f(x)$ が $x=a$ で<strong>連続</strong> $\overset{\text{def}}{\Leftrightarrow}$ $\displaystyle\lim_{x\to a}f(x)=f(a)$（左右極限が等しく，かつ関数値に一致）
+</div>
+
+<div class="formula-box theorem">
+<strong>中間値の定理（Intermediate Value Theorem）：</strong><br>
+$f$ が閉区間 $[a,b]$ で連続で $f(a)\neq f(b)$ のとき，$f(a)$ と $f(b)$ の中間の任意の値 $k$ に対して $f(\xi)=k$ となる $\xi\in(a,b)$ が存在する。<br>
+<strong>系：</strong>$f(a)f(b)<0$ ならば方程式 $f(x)=0$ は $(a,b)$ に少なくとも1つの解をもつ。
+</div>
+
+<div class="proof-box">
+<strong>中間値定理の直観的証明（概略）：</strong><br>
+$f(a)<k<f(b)$ とし，$S=\{x\in[a,b]\mid f(x)\leq k\}$ の上限を $\xi=\sup S$ とおく。$f$ の連続性から $f(\xi)=k$ を示せる（下限の性質を使う）。完全な証明は実数の完備性に帰着する。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 1.4</strong> <span class="lv lv-m">標準</span>　方程式 $x^3+2x-5=0$ が $(1,2)$ にただ1つの実数解をもつことを示せ。
+<div class="answer-block">
+$f(x)=x^3+2x-5$ とおく。$f(1)=1+2-5=-2<0$，$f(2)=8+4-5=7>0$。<br>
+$f$ は $[1,2]$ で連続だから中間値定理より $f(\xi)=0$ となる $\xi\in(1,2)$ が存在する。<br>
+一意性：$f'(x)=3x^2+2>0$ より $f$ は単調増加。したがって $f(\xi)=0$ の解は1つだけ。
+</div>
+</div>
+</div><!-- /s1-4 -->
+
+<!-- 1.5 練習 -->
+
+<div class="section" id="s1-5">
+<h3>1.5 総合練習問題</h3>
+<div class="exercise-block">
+<strong>総合 1</strong> <span class="lv lv-a">応用</span>　$a_n=\dfrac{1}{\sqrt{n^2+1}}+\dfrac{1}{\sqrt{n^2+2}}+\cdots+\dfrac{1}{\sqrt{n^2+n}}$ の極限を求めよ。
+<div class="answer-block">
+はさみうちの原理を使う。各項について：$\dfrac{1}{\sqrt{n^2+n}}\leq\dfrac{1}{\sqrt{n^2+k}}\leq\dfrac{1}{\sqrt{n^2+1}}$（$1\leq k\leq n$）<br>
+$n$ 個の和をとると：$\dfrac{n}{\sqrt{n^2+n}}\leq a_n\leq\dfrac{n}{\sqrt{n^2+1}}$<br>
+$\dfrac{n}{\sqrt{n^2+n}}=\dfrac{1}{\sqrt{1+\frac{1}{n}}}\to 1$，$\dfrac{n}{\sqrt{n^2+1}}=\dfrac{1}{\sqrt{1+\frac{1}{n^2}}}\to 1$<br>
+はさみうちより $a_n\to\boldsymbol{1}$
+</div>
+</div>
+</div>
+</div><!-- /ch1 -->
+
+<!-- ============================================================
+     第２章　微分法
+============================================================ -->
+
+<div class="chapter" id="ch2">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 02</div>
+  <h2>微　分　法</h2>
+  <p>微分の定義から始まり，基本公式の証明，積・商・合成・逆三角関数・対数微分法，高次導関数，グラフの概形，平均値定理を用いた不等式証明まで体系的に学ぶ。</p>
+</div>
+
+<!-- 2.1 -->
+
+<div class="section" id="s2-1">
+<h3>2.1 微分の定義・基本公式の証明</h3>
+
+<div class="formula-box definition">
+<strong>微分係数と導関数</strong>
+$$f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h},\qquad f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$$
+$f'(x)$ が存在するとき $f$ は $x=a$ で<strong>微分可能</strong>という。微分可能 $\Rightarrow$ 連続（逆は成立しない）。
+</div>
+
+<div class="formula-box important">
+<strong>基本関数の導関数（必須暗記）</strong>
+<table>
+  <tr><th>$f(x)$</th><th>$f'(x)$</th><th>$f(x)$</th><th>$f'(x)$</th></tr>
+  <tr><td>$x^n$</td><td>$nx^{n-1}$</td><td>$e^x$</td><td>$e^x$</td></tr>
+  <tr><td>$\sin x$</td><td>$\cos x$</td><td>$a^x$</td><td>$a^x\log a$</td></tr>
+  <tr><td>$\cos x$</td><td>$-\sin x$</td><td>$\log x$</td><td>$\dfrac{1}{x}$</td></tr>
+  <tr><td>$\tan x$</td><td>$\dfrac{1}{\cos^2 x}$</td><td>$\log|x|$</td><td>$\dfrac{1}{x}$</td></tr>
+  <tr><td>$\arcsin x$</td><td>$\dfrac{1}{\sqrt{1-x^2}}$</td><td>$\arccos x$</td><td>$-\dfrac{1}{\sqrt{1-x^2}}$</td></tr>
+  <tr><td>$\arctan x$</td><td>$\dfrac{1}{1+x^2}$</td><td>$x^r$（$r\in\mathbb{R}$）</td><td>$rx^{r-1}$</td></tr>
+</table>
+</div>
+
+<div class="proof-box">
+<strong>主要公式の証明：</strong><br>
+<strong>① $(\sin x)'=\cos x$：</strong>
+$$(\sin x)'=\lim_{h\to 0}\frac{\sin(x+h)-\sin x}{h}=\lim_{h\to 0}\frac{2\cos\!\left(x+\frac{h}{2}\right)\sin\frac{h}{2}}{h}=\lim_{h\to 0}\cos\!\!\left(x+\frac{h}{2}\right)\cdot\frac{\sin\frac{h}{2}}{\frac{h}{2}}=\cos x\cdot 1=\cos x$$
+<strong>② $(\cos x)'=-\sin x$：</strong>加法定理 $\cos(x+h)=\cos x\cos h-\sin x\sin h$ より同様。<br><br>
+<strong>③ $(e^x)'=e^x$：</strong>
+$$(e^x)'=\lim_{h\to 0}\frac{e^{x+h}-e^x}{h}=e^x\lim_{h\to 0}\frac{e^h-1}{h}=e^x\cdot 1=e^x$$
+<strong>④ $(\log x)'=\dfrac{1}{x}$（$x>0$）：</strong>
+$$(\log x)'=\lim_{h\to 0}\frac{\log(x+h)-\log x}{h}=\lim_{h\to 0}\frac{1}{x}\cdot\frac{\log(1+\frac{h}{x})}{\frac{h}{x}}=\frac{1}{x}\cdot 1=\frac{1}{x}$$
+<strong>⑤ $(x^n)'=nx^{n-1}$（$n\in\mathbb{N}$）：</strong>$x^n-a^n=(x-a)(x^{n-1}+x^{n-2}a+\cdots+a^{n-1})$ より：
+$$\lim_{x\to a}\frac{x^n-a^n}{x-a}=\lim_{x\to a}(x^{n-1}+\cdots+a^{n-1})=na^{n-1}$$
+<div class="qed">■</div>
+</div>
+</div><!-- /s2-1 -->
+
+<!-- 2.2 -->
+
+<div class="section" id="s2-2">
+<h3>2.2 積・商・合成関数の微分</h3>
+
+<div class="formula-box theorem">
+<strong>三大微分法則</strong>
+$$\{f(x)g(x)\}'=f'(x)g(x)+f(x)g'(x)\qquad\text{（積の微分）}$$
+$$\left\{\frac{f(x)}{g(x)}\right\}'=\frac{f'(x)g(x)-f(x)g'(x)}{\{g(x)\}^2}\qquad\text{（商の微分）}$$
+$$\frac{d}{dx}f(g(x))=f'(g(x))\cdot g'(x)\qquad\text{（合成関数・Chain Rule）}$$
+</div>
+
+<div class="proof-box">
+<strong>積の微分の証明：</strong>
+$$\{fg\}'=\lim_{h\to 0}\frac{f(x+h)g(x+h)-f(x)g(x)}{h}$$
+分子に $\pm f(x)g(x+h)$ を加えて整理：
+$$=\lim_{h\to 0}\left[\frac{f(x+h)-f(x)}{h}g(x+h)+f(x)\frac{g(x+h)-g(x)}{h}\right]=f'(x)g(x)+f(x)g'(x)$$
+（$g$ の連続性から $g(x+h)\to g(x)$）
+<div class="qed">■</div>
+</div>
+
+<div class="proof-box">
+<strong>合成関数の微分の証明（概略）：</strong><br>
+$\Delta u=g(x+h)-g(x)\neq 0$ のとき：
+$$\frac{f(g(x+h))-f(g(x))}{h}=\frac{f(g(x)+\Delta u)-f(g(x))}{\Delta u}\cdot\frac{\Delta u}{h}\xrightarrow{h\to 0}f'(g(x))\cdot g'(x)$$
+（$h\to 0$ で $\Delta u\to 0$ を利用。$\Delta u=0$ となる場合は補論が必要だが入試では上記で十分。）
+<div class="qed">■</div>
+</div>
+
+<div class="tip-box">
+<strong>合成関数微分のコツ：</strong>「外側を微分 × 中身はそのまま × 中身を微分」<br>
+例：$(\sin(x^2))'=\cos(x^2)\cdot 2x$。多重合成は内側から一層ずつ剥がす。
+</div>
+
+<div class="example-box">
+<strong>例題 2.1</strong> <span class="lv lv-b">基礎</span>　次の関数を微分せよ。<br>
+(1) $y=x^3\sin x$ &emsp; (2) $y=e^{x^2+1}$ &emsp; (3) $y=\log(\sin x)$ &emsp; (4) $y=\dfrac{e^x}{x^2+1}$ &emsp; (5) $y=\sin^4(3x)$
+<div class="answer-block">
+(1) 積：$3x^2\sin x+x^3\cos x$<br><br>
+(2) 合成：$e^{x^2+1}\cdot 2x=2xe^{x^2+1}$<br><br>
+(3) 合成：$\dfrac{\cos x}{\sin x}=\cot x$<br><br>
+(4) 商：$\dfrac{e^x(x^2+1)-e^x\cdot 2x}{(x^2+1)^2}=\dfrac{e^x(x^2-2x+1)}{(x^2+1)^2}=\dfrac{e^x(x-1)^2}{(x^2+1)^2}$<br><br>
+(5) $y=[\sin(3x)]^4$：$4\sin^3(3x)\cdot\cos(3x)\cdot 3=12\sin^3(3x)\cos(3x)$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 2.1</strong>　次の関数を微分せよ。<br>
+(1) $y=\log(x+\sqrt{x^2+1})$ &emsp; (2) $y=x^2e^{-x}$ &emsp; (3) $y=\sqrt{\dfrac{1-x}{1+x}}$ &emsp; (4) $y=\tan^3 x$
+<div class="answer-block">
+(1) $\dfrac{1}{x+\sqrt{x^2+1}}\cdot\!\left(1+\dfrac{x}{\sqrt{x^2+1}}\right)=\dfrac{\sqrt{x^2+1}+x}{(x+\sqrt{x^2+1})\sqrt{x^2+1}}=\dfrac{1}{\sqrt{x^2+1}}$<br><br>
+(2) $2xe^{-x}-x^2e^{-x}=xe^{-x}(2-x)$<br><br>
+(3) $y=\!\left(\dfrac{1-x}{1+x}\right)^{1/2}$：$\dfrac{1}{2}\!\left(\dfrac{1-x}{1+x}\right)^{-1/2}\cdot\dfrac{-(1+x)-(1-x)}{(1+x)^2}=-\dfrac{1}{(1+x)^2}\sqrt{\dfrac{1+x}{1-x}}=-\dfrac{1}{(1+x)\sqrt{1-x^2}}$<br><br>
+(4) $3\tan^2 x\cdot\dfrac{1}{\cos^2 x}=\dfrac{3\tan^2 x}{\cos^2 x}$
+</div>
+</div>
+</div><!-- /s2-2 -->
+
+<!-- 2.3 -->
+
+<div class="section" id="s2-3">
+<h3>2.3 逆三角関数の微分・対数微分法</h3>
+
+<div class="proof-box">
+<strong>$(\arctan x)'=\dfrac{1}{1+x^2}$ の証明（逆関数の微分）：</strong><br>
+$y=\arctan x$ とおくと $x=\tan y$，$\dfrac{dx}{dy}=\dfrac{1}{\cos^2 y}=1+\tan^2 y=1+x^2$。逆関数の微分定理より：
+$$y'=\frac{dy}{dx}=\frac{1}{dx/dy}=\frac{1}{1+x^2}$$
+<div class="qed">■</div>
+</div>
+
+<div class="proof-box">
+<strong>$(\arcsin x)'=\dfrac{1}{\sqrt{1-x^2}}$ の証明：</strong><br>
+$y=\arcsin x$，$x=\sin y$ より $\dfrac{dx}{dy}=\cos y=\sqrt{1-\sin^2 y}=\sqrt{1-x^2}$（$|y|\leq\frac{\pi}{2}$ で $\cos y\geq 0$）：
+$$y'=\frac{1}{\sqrt{1-x^2}}$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>対数微分法</strong>（複雑な積・冪 $f(x)^{g(x)}$ 型に有効）<br>
+$y=f(x)$ に対し両辺の絶対値の対数を取り，$x$ で微分する：
+$$\log|y|=\log|f(x)|\Rightarrow\frac{y'}{y}=\frac{d}{dx}\log|f(x)|\Rightarrow y'=y\cdot\frac{d}{dx}\log|f(x)|$$
+特に $y=x^x$ のような「底も指数も変数」の形では<strong>必須</strong>。
+</div>
+
+<div class="example-box">
+<strong>例題 2.2</strong> <span class="lv lv-m">標準</span>　次の関数を微分せよ。<br>
+(1) $y=x^{\sin x}$（$x>0$）&emsp; (2) $y=\dfrac{(x+1)^3\sqrt{x+2}}{(x+3)^2}$（$x>-1$）
+<div class="answer-block">
+(1) $\log y=\sin x\log x$。両辺を $x$ で微分：$\dfrac{y'}{y}=\cos x\log x+\dfrac{\sin x}{x}$<br>
+$$y'=x^{\sin x}\!\!\left(\cos x\log x+\frac{\sin x}{x}\right)$$
+(2) $\log y=3\log(x+1)+\dfrac{1}{2}\log(x+2)-2\log(x+3)$<br>
+$$\frac{y'}{y}=\frac{3}{x+1}+\frac{1}{2(x+2)}-\frac{2}{x+3}$$
+$$y'=\frac{(x+1)^3\sqrt{x+2}}{(x+3)^2}\!\left(\frac{3}{x+1}+\frac{1}{2(x+2)}-\frac{2}{x+3}\right)$$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 2.2</strong><br>
+(1) $y=(1+x^2)^{\tan x}$ を対数微分法で求めよ。&emsp; (2) $y=(\sin x)^{\cos x}$（$0<x<\pi$）を微分せよ。
+<div class="answer-block">
+(1) $\log y=\tan x\log(1+x^2)$。$\dfrac{y'}{y}=\dfrac{\log(1+x^2)}{\cos^2 x}+\dfrac{2x\tan x}{1+x^2}$<br>
+$y'=(1+x^2)^{\tan x}\!\!\left(\dfrac{\log(1+x^2)}{\cos^2 x}+\dfrac{2x\tan x}{1+x^2}\right)$<br><br>
+(2) $\log y=\cos x\log\sin x$。$\dfrac{y'}{y}=-\sin x\log\sin x+\dfrac{\cos^2 x}{\sin x}$<br>
+$y'=(\sin x)^{\cos x}\!\!\left(-\sin x\log\sin x+\dfrac{\cos^2 x}{\sin x}\right)$
+</div>
+</div>
+</div><!-- /s2-3 -->
+
+<!-- 2.4 -->
+
+<div class="section" id="s2-4">
+<h3>2.4 高次導関数・ライプニッツの公式</h3>
+
+<div class="formula-box theorem">
+<strong>高次導関数の公式</strong>
+$$(\sin x)^{(n)}=\sin\!\!\left(x+\frac{n\pi}{2}\right),\quad(\cos x)^{(n)}=\cos\!\!\left(x+\frac{n\pi}{2}\right),\quad(e^{ax})^{(n)}=a^n e^{ax}$$
+$$\left(\frac{1}{x}\right)^{(n)}=\frac{(-1)^n n!}{x^{n+1}},\quad(\log x)^{(n)}=\frac{(-1)^{n-1}(n-1)!}{x^n}\ (n\geq 1)$$
+</div>
+
+<div class="proof-box">
+<strong>$(\sin x)^{(n)}=\sin\!\!\left(x+\dfrac{n\pi}{2}\right)$ の証明（数学的帰納法）：</strong><br>
+$n=1$：$(\sin x)'=\cos x=\sin\!\!\left(x+\frac{\pi}{2}\right)$ ✓<br>
+$n=k$ で成立と仮定。$n=k+1$：
+$$\frac{d}{dx}\sin\!\!\left(x+\frac{k\pi}{2}\right)=\cos\!\!\left(x+\frac{k\pi}{2}\right)=\sin\!\!\left(x+\frac{k\pi}{2}+\frac{\pi}{2}\right)=\sin\!\!\left(x+\frac{(k+1)\pi}{2}\right)\ \checkmark$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>ライプニッツの公式</strong>（積の $n$ 次導関数）
+$$\{f(x)g(x)\}^{(n)}=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(x)\,g^{(n-k)}(x)$$
+</div>
+
+<div class="proof-box">
+<strong>ライプニッツの公式の証明（数学的帰納法）：</strong><br>
+$n=1$：積の微分則より $(fg)'=f'g+fg'=\sum_{k=0}^1\binom{1}{k}f^{(k)}g^{(1-k)}$ ✓<br>
+$n=m$ で成立と仮定。$n=m+1$：$(fg)^{(m+1)}=\left[(fg)^{(m)}\right]'=\left[\sum_{k=0}^m\binom{m}{k}f^{(k)}g^{(m-k)}\right]'$<br>
+$=\sum_{k=0}^m\binom{m}{k}\!\left[f^{(k+1)}g^{(m-k)}+f^{(k)}g^{(m-k+1)}\right]$<br>
+添字を整理（$\binom{m}{k-1}+\binom{m}{k}=\binom{m+1}{k}$ を使う）すると $\sum_{k=0}^{m+1}\binom{m+1}{k}f^{(k)}g^{(m+1-k)}$ となる ✓
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 2.3</strong> <span class="lv lv-a">応用</span>　次の $n$ 次導関数を求めよ。<br>
+(1) $(xe^x)^{(n)}$ &emsp; (2) $(e^x\sin x)^{(n)}$
+<div class="answer-block">
+(1) $f=x$，$g=e^x$（$g^{(k)}=e^x$）として：
+$$\binom{n}{0}x e^x+\binom{n}{1}1\cdot e^x=(x+n)e^x$$
+(2) まず $e^x\sin x=\text{Im}(e^{(1+i)x})$ とみるか，繰り返し微分：<br>
+$(e^x\sin x)'=e^x\sin x+e^x\cos x=e^x(\sin x+\cos x)=\sqrt{2}e^x\sin\!\!\left(x+\frac{\pi}{4}\right)$<br>
+帰納的に $(e^x\sin x)^{(n)}=(\sqrt{2})^n e^x\sin\!\!\left(x+\dfrac{n\pi}{4}\right)$
+</div>
+</div>
+</div><!-- /s2-4 -->
+
+<!-- 2.5 -->
+
+<div class="section" id="s2-5">
+<h3>2.5 増減・極値・グラフの概形</h3>
+
+<div class="formula-box theorem">
+<strong>増減・極値・凹凸の判定</strong>
+<table>
+  <tr><th>条件</th><th>意味</th></tr>
+  <tr><td>$f'(x)>0$ の区間</td><td>単調増加</td></tr>
+  <tr><td>$f'(x)<0$ の区間</td><td>単調減少</td></tr>
+  <tr><td>$f'(a)=0$ で前後符号変化あり</td><td>$f(a)$ は極値</td></tr>
+  <tr><td>$f'(a)=0$，$f''(a)>0$</td><td>$f(a)$ は極小</td></tr>
+  <tr><td>$f'(a)=0$，$f''(a)<0$</td><td>$f(a)$ は極大</td></tr>
+  <tr><td>$f''(x)>0$ の区間</td><td>下に凸（凹関数）</td></tr>
+  <tr><td>$f''(x)=0$ で $f''$ の符号変化あり</td><td>変曲点</td></tr>
+</table>
+</div>
+
+<div class="important-box">
+<strong>$f''(a)=0$ は変曲点の必要条件であり十分条件ではない。</strong><br>
+反例：$f(x)=x^4$ では $f''(0)=0$ だが $x=0$ は変曲点ではない（$f''\geq 0$ は符号変化なし）。
+</div>
+
+<div class="example-box">
+<strong>例題 2.4</strong> <span class="lv lv-m">標準</span>　$f(x)=xe^{-x}$ の増減・極値・変曲点・漸近線を調べ，概形を描け。
+<div class="answer-block">
+$f'(x)=e^{-x}-xe^{-x}=e^{-x}(1-x)$，$f''(x)=-e^{-x}(1-x)+e^{-x}(-1)=e^{-x}(x-2)$
+<table>
+  <tr><th>$x$</th><th>$\cdots$</th><th>$1$</th><th>$\cdots$</th><th>$2$</th><th>$\cdots$</th></tr>
+  <tr><td>$f'$</td><td>$+$</td><td>$0$</td><td>$-$</td><td>$-$</td><td>$-$</td></tr>
+  <tr><td>$f''$</td><td>$-$</td><td>$-$</td><td>$-$</td><td>$0$</td><td>$+$</td></tr>
+  <tr><td>$f$</td><td>↗ 上凸</td><td>極大 $e^{-1}$</td><td>↘ 上凸</td><td>変曲点 $2e^{-2}$</td><td>↘ 下凸</td></tr>
+</table>
+$x\to-\infty$：$f\to-\infty$，$x\to+\infty$：$f\to 0$（漸近線：$y=0$）
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 2.5</strong> <span class="lv lv-a">応用</span>　方程式 $e^x=ax$ の実数解の個数を定数 $a$ で分類せよ。
+<div class="answer-block">
+$x\neq 0$ のとき $\dfrac{e^x}{x}=a$ と変形。$g(x)=\dfrac{e^x}{x}$ を調べる。$g'(x)=\dfrac{e^x(x-1)}{x^2}$<br><br>
+<strong>$x>0$ の範囲：</strong>$x=1$ で最小値 $g(1)=e$。$x\to 0^+$：$\to+\infty$，$x\to+\infty$：$\to+\infty$<br>
+<strong>$x<0$ の範囲：</strong>常に $g(x)<0$，単調減少，$x\to 0^-$：$\to-\infty$，$x\to-\infty$：$\to 0^-$<br>
+$x=0$ は $e^0=0$ となり不成立。
+<table>
+  <tr><th>$a$の値</th><th>実数解の個数</th></tr>
+  <tr><td>$a<0$</td><td>1個（$x<0$）</td></tr>
+  <tr><td>$a=0$</td><td>0個</td></tr>
+  <tr><td>$0<a<e$</td><td>1個（$x<0$）</td></tr>
+  <tr><td>$a=e$</td><td>2個</td></tr>
+  <tr><td>$a>e$</td><td>3個</td></tr>
+</table>
+</div>
+</div>
+</div><!-- /s2-5 -->
+
+<!-- 2.6 -->
+
+<div class="section" id="s2-6">
+<h3>2.6 平均値の定理・不等式証明</h3>
+
+<div class="formula-box theorem">
+<strong>ロールの定理・平均値の定理（MVT）</strong><br>
+<strong>ロールの定理：</strong>$f$ が $[a,b]$ で連続，$(a,b)$ で微分可能，$f(a)=f(b)$ ならば $f'(c)=0$ となる $c\in(a,b)$ が存在する。<br><br>
+<strong>平均値の定理：</strong>$f$ が $[a,b]$ で連続，$(a,b)$ で微分可能ならば：
+$$\frac{f(b)-f(a)}{b-a}=f'(c)\text{ となる } c\in(a,b)\text{ が存在する}$$
+</div>
+
+<div class="proof-box">
+<strong>平均値の定理の証明：</strong><br>
+$F(x)=f(x)-f(a)-\dfrac{f(b)-f(a)}{b-a}(x-a)$ とおくと $F$ は $[a,b]$ で連続，$(a,b)$ で微分可能，かつ $F(a)=F(b)=0$。<br>
+ロールの定理より $F'(c)=0$ となる $c\in(a,b)$ が存在する。$F'(x)=f'(x)-\dfrac{f(b)-f(a)}{b-a}$ なので $f'(c)=\dfrac{f(b)-f(a)}{b-a}$。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 2.6</strong> <span class="lv lv-a">応用</span>　次の不等式を証明せよ。<br>
+(1) $x>0$ のとき $e^x>1+x$ &emsp; (2) $x>0$ のとき $\log x\leq x-1$
+<div class="answer-block">
+(1) $h(x)=e^x-1-x$ とおく。$h(0)=0$，$h'(x)=e^x-1>0$（$x>0$）より $h$ は単調増加。<br>
+$\therefore h(x)>h(0)=0$，すなわち $e^x>1+x$。■<br><br>
+(2) $h(x)=(x-1)-\log x$ とおく。$h(1)=0$，$h'(x)=1-\dfrac{1}{x}=\dfrac{x-1}{x}$。<br>
+$0<x<1$ で $h'<0$，$x>1$ で $h'>0$ より $x=1$ で最小値 $h(1)=0$。<br>
+$\therefore h(x)\geq 0$，すなわち $\log x\leq x-1$，等号は $x=1$。■
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>入試問題（京大・改）</span><span class="etag tag-dif">微分</span></div>
+<div class="exam-body">
+<p>正の整数 $n$ に対して $\!\left(1+\dfrac{1}{n}\right)^n<e<\!\left(1+\dfrac{1}{n}\right)^{n+1}$ を証明せよ。</p>
+<div class="answer-block">
+$\log x\leq x-1$（前問，等号は $x=1$ のみ）を用いる。<br><br>
+<strong>左の不等式：</strong>$x=\dfrac{n+1}{n}>1$ を代入：$\log\dfrac{n+1}{n}<\dfrac{n+1}{n}-1=\dfrac{1}{n}$<br>
+両辺 $n$ 倍：$n\log\!\left(1+\dfrac{1}{n}\right)<1=\log e$，したがって $\!\left(1+\dfrac{1}{n}\right)^n<e$<br><br>
+<strong>右の不等式：</strong>$x=\dfrac{n}{n+1}<1$ を代入：$\log\dfrac{n}{n+1}<\dfrac{n}{n+1}-1=-\dfrac{1}{n+1}$<br>
+つまり $-\log\!\left(1+\dfrac{1}{n}\right)<-\dfrac{1}{n+1}$，したがって $\log\!\left(1+\dfrac{1}{n}\right)>\dfrac{1}{n+1}$<br>
+両辺 $n+1$ 倍：$(n+1)\log\!\left(1+\dfrac{1}{n}\right)>1=\log e$，したがって $\!\left(1+\dfrac{1}{n}\right)^{n+1}>e$ ■
+</div>
+</div>
+</div>
+</div><!-- /s2-6 -->
+
+<div class="section" id="s2-7">
+<h3>2.7 総合練習問題</h3>
+<div class="exercise-block">
+<strong>練習 2.3</strong> <span class="lv lv-a">応用</span>　$f(x)=x^2\log x$（$x>0$）の増減・極値・変曲点を調べよ。また $\displaystyle\lim_{x\to+0}f(x)$ を求めよ。
+<div class="answer-block">
+$f'(x)=2x\log x+x=x(2\log x+1)$，$f'=0\Leftrightarrow\log x=-\frac{1}{2}\Leftrightarrow x=e^{-1/2}$<br>
+$0<x<e^{-1/2}$ で $f'<0$，$x>e^{-1/2}$ で $f'>0$。<strong>極小値：</strong>$f(e^{-1/2})=e^{-1}\cdot(-\frac{1}{2})=-\dfrac{1}{2e}$<br><br>
+$f''(x)=2\log x+3$，$f''=0\Leftrightarrow x=e^{-3/2}$，前後で符号変化。<strong>変曲点：</strong>$(e^{-3/2},\,-\frac{3}{2}e^{-3})$<br><br>
+$\displaystyle\lim_{x\to+0}x^2\log x=\lim_{x\to+0}\frac{\log x}{x^{-2}}=\lim_{x\to+0}\frac{\frac{1}{x}}{-2x^{-3}}=-\frac{1}{2}\lim_{x\to+0}x^2=0$
+</div>
+</div>
+</div>
+</div><!-- /ch2 -->
+
+<!-- ============================================================
+     第３章　積分法
+============================================================ -->
+
+<div class="chapter" id="ch3">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 03</div>
+  <h2>積　分　法</h2>
+  <p>置換・部分積分の証明から始まり，三角置換・循環型・ウォリスの公式，区分求積法，面積・体積（バウムクーヘン分割）・弧長まで積分法の全技術を習得する。</p>
+</div>
+
+<!-- 3.1 -->
+
+<div class="section" id="s3-1">
+<h3>3.1 不定積分・基本公式</h3>
+
+<div class="formula-box important">
+<strong>基本の不定積分（全て暗記）</strong>
+<table>
+  <tr><th>$f(x)$</th><th>$\int f\,dx$</th><th>$f(x)$</th><th>$\int f\,dx$</th></tr>
+  <tr><td>$x^n$（$n\neq-1$）</td><td>$\dfrac{x^{n+1}}{n+1}+C$</td><td>$e^{ax}$</td><td>$\dfrac{1}{a}e^{ax}+C$</td></tr>
+  <tr><td>$\dfrac{1}{x}$</td><td>$\log|x|+C$</td><td>$a^x$</td><td>$\dfrac{a^x}{\log a}+C$</td></tr>
+  <tr><td>$\sin x$</td><td>$-\cos x+C$</td><td>$\dfrac{1}{1+x^2}$</td><td>$\arctan x+C$</td></tr>
+  <tr><td>$\cos x$</td><td>$\sin x+C$</td><td>$\dfrac{1}{\sqrt{1-x^2}}$</td><td>$\arcsin x+C$</td></tr>
+  <tr><td>$\dfrac{1}{\cos^2 x}$</td><td>$\tan x+C$</td><td>$\dfrac{f'(x)}{f(x)}$</td><td>$\log|f(x)|+C$</td></tr>
+  <tr><td>$\dfrac{1}{x^2+a^2}$</td><td>$\dfrac{1}{a}\arctan\dfrac{x}{a}+C$</td><td>$\dfrac{1}{\sqrt{a^2-x^2}}$</td><td>$\arcsin\dfrac{x}{a}+C$</td></tr>
+</table>
+</div>
+</div><!-- /s3-1 -->
+
+<!-- 3.2 -->
+
+<div class="section" id="s3-2">
+<h3>3.2 置換積分法</h3>
+
+<div class="formula-box theorem">
+<strong>置換積分公式</strong>
+$$\int f(g(x))g'(x)\,dx=\int f(u)\,du\quad(u=g(x))\qquad\text{（内部置換）}$$
+$$\int f(x)\,dx=\int f(h(t))h'(t)\,dt\quad(x=h(t))\qquad\text{（変数置換）}$$
+定積分の場合：$\displaystyle\int_a^b f(g(x))g'(x)\,dx=\int_{g(a)}^{g(b)}f(u)\,du$（積分範囲も変換）
+</div>
+
+<div class="proof-box">
+<strong>置換積分の証明：</strong><br>
+$F'(u)=f(u)$ とすると，合成関数の微分より：
+$$\frac{d}{dx}F(g(x))=F'(g(x))\cdot g'(x)=f(g(x))\cdot g'(x)$$
+両辺を $x$ で積分すれば $\int f(g(x))g'(x)\,dx=F(g(x))+C=\int f(u)\,du$（$u=g(x)$）。
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box">
+<strong>三角置換の使い分け</strong>
+<table>
+  <tr><th>含まれる形</th><th>置換</th><th>変換後</th></tr>
+  <tr><td>$\sqrt{a^2-x^2}$</td><td>$x=a\sin\theta$</td><td>$a\cos\theta$</td></tr>
+  <tr><td>$\sqrt{a^2+x^2}$</td><td>$x=a\tan\theta$</td><td>$\dfrac{a}{\cos\theta}$</td></tr>
+  <tr><td>$\sqrt{x^2-a^2}$</td><td>$x=\dfrac{a}{\cos\theta}$</td><td>$a\tan\theta$</td></tr>
+</table>
+</div>
+
+<div class="example-box">
+<strong>例題 3.1</strong> <span class="lv lv-m">標準</span>　次の積分を求めよ。<br>
+(1) $\displaystyle\int\frac{x}{(x^2+1)^2}\,dx$ &emsp; (2) $\displaystyle\int_0^1\sqrt{1-x^2}\,dx$ &emsp; (3) $\displaystyle\int\frac{dx}{\sqrt{x^2+4}}$
+<div class="answer-block">
+(1) $u=x^2+1$，$du=2x\,dx$：$\displaystyle\int\frac{du}{2u^2}=-\frac{1}{2u}+C=-\frac{1}{2(x^2+1)}+C$<br><br>
+(2) $x=\sin\theta$（$\theta:0\to\pi/2$），$dx=\cos\theta\,d\theta$，$\sqrt{1-x^2}=\cos\theta$：
+$$\int_0^{\pi/2}\cos^2\theta\,d\theta=\frac{\pi}{4}$$
+（単位円の1/4の面積に一致）<br><br>
+(3) $x=2\tan\theta$，$dx=\dfrac{2d\theta}{\cos^2\theta}$，$\sqrt{x^2+4}=\dfrac{2}{\cos\theta}$：
+$$\int\frac{2d\theta/\cos^2\theta}{2/\cos\theta}=\int\frac{d\theta}{\cos\theta}=\log\left|\tan\theta+\frac{1}{\cos\theta}\right|+C=\log\left|x+\sqrt{x^2+4}\right|+C$$
+</div>
+</div>
+</div><!-- /s3-2 -->
+
+<!-- 3.3 -->
+
+<div class="section" id="s3-3">
+<h3>3.3 部分積分法</h3>
+
+<div class="formula-box theorem">
+<strong>部分積分公式</strong>
+$$\int f(x)g'(x)\,dx=f(x)g(x)-\int f'(x)g(x)\,dx$$
+$$\int_a^b f(x)g'(x)\,dx=\Big[f(x)g(x)\Big]_a^b-\int_a^b f'(x)g(x)\,dx$$
+<strong>ILATE 則</strong>（$f$ に選ぶ優先順）：Inverse trig → Log → Algebraic → Trig → Exp<br>
+後ろほど $g'$ に選ぶ（積分しやすい方）。
+</div>
+
+<div class="proof-box">
+<strong>部分積分の証明：</strong>
+積の微分 $\{f(x)g(x)\}'=f'(x)g(x)+f(x)g'(x)$ を両辺 $x$ で積分：
+$$f(x)g(x)=\int f'(x)g(x)\,dx+\int f(x)g'(x)\,dx$$
+整理して $\int f(x)g'(x)\,dx=f(x)g(x)-\int f'(x)g(x)\,dx$。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 3.2</strong> <span class="lv lv-m">標準</span>　次の積分を求めよ。<br>
+(1) $\displaystyle\int x^2 e^x\,dx$ &emsp; (2) $\displaystyle\int\log x\,dx$ &emsp; (3) $\displaystyle\int e^x\cos x\,dx$（循環型）
+<div class="answer-block">
+(1) 2回部分積分（$f=x^2$，$g'=e^x$）：
+$$x^2e^x-2\int xe^x\,dx=x^2e^x-2(xe^x-e^x)+C=e^x(x^2-2x+2)+C$$
+(2) $\log x=\log x\cdot 1$，$f=\log x$，$g'=1$：$x\log x-\int x\cdot\dfrac{1}{x}\,dx=x\log x-x+C$<br><br>
+(3) $I=\int e^x\cos x\,dx$，$f=\cos x$，$g'=e^x$：
+$$I=e^x\cos x+\int e^x\sin x\,dx=e^x\cos x+e^x\sin x-\int e^x\cos x\,dx$$
+$$2I=e^x(\cos x+\sin x)\quad\therefore I=\frac{e^x(\sin x+\cos x)}{2}+C$$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 3.1</strong><br>
+(1) $\displaystyle\int x\arctan x\,dx$ &emsp; (2) $\displaystyle\int_0^\pi x\sin x\,dx$ &emsp; (3) $\displaystyle\int e^{2x}\sin 3x\,dx$
+<div class="answer-block">
+(1) $f=\arctan x$，$g'=x$：$\dfrac{x^2}{2}\arctan x-\int\dfrac{x^2}{2(1+x^2)}\,dx=\dfrac{x^2}{2}\arctan x-\dfrac{1}{2}\int\!\!\left(1-\dfrac{1}{1+x^2}\right)\!dx=\dfrac{x^2}{2}\arctan x-\dfrac{x}{2}+\dfrac{\arctan x}{2}+C=\dfrac{x^2+1}{2}\arctan x-\dfrac{x}{2}+C$<br><br>
+(2) $\Big[-x\cos x\Big]_0^\pi+\int_0^\pi\cos x\,dx=\pi+0=\boldsymbol{\pi}$<br><br>
+(3) 循環型：$I=\int e^{2x}\sin 3x\,dx$。$2$回部分積分して $I=\dfrac{e^{2x}(2\sin 3x-3\cos 3x)}{13}+C$
+</div>
+</div>
+</div><!-- /s3-3 -->
+
+<!-- 3.4 -->
+
+<div class="section" id="s3-4">
+<h3>3.4 有理関数・三角関数の積分</h3>
+
+<div class="formula-box">
+<strong>部分分数分解のパターン</strong>
+$$\frac{f(x)}{(x-a)(x-b)}=\frac{A}{x-a}+\frac{B}{x-b}\quad\frac{f(x)}{(x-a)^2}=\frac{A}{x-a}+\frac{B}{(x-a)^2}$$
+$$\frac{f(x)}{(x-a)(x^2+bx+c)}=\frac{A}{x-a}+\frac{Bx+C}{x^2+bx+c}$$
+分子の次数が分母以上のとき，まず多項式除法（筆算）を行う。
+</div>
+
+<div class="formula-box">
+<strong>三角関数の積分パターン</strong>
+<table>
+  <tr><th>型</th><th>手法</th></tr>
+  <tr><td>$\sin^{2n}x$，$\cos^{2n}x$</td><td>半角公式で次数下げ</td></tr>
+  <tr><td>$\sin^{2n+1}x$，$\cos^{2n+1}x$</td><td>$1-\cos^2=\sin^2$ を使い置換</td></tr>
+  <tr><td>$\sin mx\cos nx$</td><td>積和公式</td></tr>
+  <tr><td>$R(\sin x,\cos x)$（有理式）</td><td>ワイエルシュトラス置換 $t=\tan\frac{x}{2}$</td></tr>
+</table>
+</div>
+
+<div class="example-box">
+<strong>例題 3.3</strong> <span class="lv lv-m">標準</span>　次の積分を求めよ。<br>
+(1) $\displaystyle\int\frac{2x+1}{x^2-x-2}\,dx$ &emsp; (2) $\displaystyle\int\cos^4 x\,dx$ &emsp; (3) $\displaystyle\int\sin^3 x\,dx$
+<div class="answer-block">
+(1) $x^2-x-2=(x-2)(x+1)$，$\dfrac{2x+1}{(x-2)(x+1)}=\dfrac{A}{x-2}+\dfrac{B}{x+1}$。$A=\frac{5}{3}$，$B=\frac{1}{3}$<br>
+$$\frac{5}{3}\log|x-2|+\frac{1}{3}\log|x+1|+C$$
+(2) $\cos^4 x=\!\left(\dfrac{1+\cos 2x}{2}\right)^2=\dfrac{1+2\cos 2x+\cos^2 2x}{4}=\dfrac{3}{8}+\dfrac{\cos 2x}{2}+\dfrac{\cos 4x}{8}$<br>
+$$\frac{3x}{8}+\frac{\sin 2x}{4}+\frac{\sin 4x}{32}+C$$
+(3) $\sin^3 x=\sin x(1-\cos^2 x)$，$u=\cos x$：$\int(u^2-1)\,du=\dfrac{\cos^3 x}{3}-\cos x+C$
+</div>
+</div>
+</div><!-- /s3-4 -->
+
+<!-- 3.5 -->
+
+<div class="section" id="s3-5">
+<h3>3.5 定積分の性質・区分求積法</h3>
+
+<div class="formula-box theorem">
+<strong>定積分の重要性質</strong>
+$$\frac{d}{dx}\int_a^x f(t)\,dt=f(x)\qquad\frac{d}{dx}\int_a^{g(x)}f(t)\,dt=f(g(x))g'(x)$$
+$$f\text{ が奇関数}\Rightarrow\int_{-a}^a f\,dx=0\qquad f\text{ が偶関数}\Rightarrow\int_{-a}^a f\,dx=2\int_0^a f\,dx$$
+$$\int_0^\pi xf(\sin x)\,dx=\frac{\pi}{2}\int_0^\pi f(\sin x)\,dx\qquad\text{（入試頻出！）}$$
+</div>
+
+<div class="proof-box">
+<strong>$\displaystyle\int_0^\pi xf(\sin x)\,dx=\frac{\pi}{2}\int_0^\pi f(\sin x)\,dx$ の証明：</strong><br>
+左辺を $I$ とし，$x=\pi-t$（$dx=-dt$，$x:0\to\pi$ で $t:\pi\to 0$，$\sin(\pi-t)=\sin t$）と置換：
+$$I=\int_\pi^0(\pi-t)f(\sin t)(-dt)=\int_0^\pi(\pi-t)f(\sin t)\,dt=\pi\int_0^\pi f(\sin t)\,dt-I$$
+$$2I=\pi\int_0^\pi f(\sin t)\,dt\quad\therefore I=\frac{\pi}{2}\int_0^\pi f(\sin t)\,dt$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>ウォリスの公式</strong>（漸化式 $I_n=\dfrac{n-1}{n}I_{n-2}$，$I_0=\frac{\pi}{2}$，$I_1=1$）
+$$\int_0^{\pi/2}\sin^n x\,dx=\int_0^{\pi/2}\cos^n x\,dx=\begin{cases}\dfrac{(2k-1)!!}{(2k)!!}\cdot\dfrac{\pi}{2}&n=2k\\\dfrac{(2k)!!}{(2k+1)!!}&n=2k+1\end{cases}$$
+例：$\displaystyle\int_0^{\pi/2}\sin^4 x\,dx=\frac{3}{4}\cdot\frac{1}{2}\cdot\frac{\pi}{2}=\frac{3\pi}{16}$
+</div>
+
+<div class="proof-box">
+<strong>ウォリスの漸化式 $I_n=\dfrac{n-1}{n}I_{n-2}$ の証明：</strong><br>
+$I_n=\displaystyle\int_0^{\pi/2}\sin^n x\,dx=\int_0^{\pi/2}\sin^{n-1}x\cdot\sin x\,dx$，$f=\sin^{n-1}x$，$g'=\sin x$ で部分積分：
+$$I_n=\Big[-\sin^{n-1}x\cos x\Big]_0^{\pi/2}+(n-1)\int_0^{\pi/2}\sin^{n-2}x\cos^2 x\,dx=0+(n-1)\int_0^{\pi/2}\sin^{n-2}x(1-\sin^2 x)\,dx$$
+$$I_n=(n-1)I_{n-2}-(n-1)I_n\quad\therefore nI_n=(n-1)I_{n-2}$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>区分求積法</strong>
+$$\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right)=\int_0^1 f(x)\,dx\qquad\lim_{n\to\infty}\frac{b-a}{n}\sum_{k=0}^{n-1}f\!\left(a+\frac{k(b-a)}{n}\right)=\int_a^b f(x)\,dx$$
+</div>
+
+<div class="example-box">
+<strong>例題 3.4</strong> <span class="lv lv-a">応用</span>　次を求めよ。<br>
+(1) $\displaystyle\int_0^\pi\frac{x\sin x}{1+\cos^2 x}\,dx$ &emsp; (2) $\displaystyle\lim_{n\to\infty}\sum_{k=1}^n\frac{k}{n^2+k^2}$
+<div class="answer-block">
+(1) $\int_0^\pi xf(\sin x)\,dx=\dfrac{\pi}{2}\int_0^\pi\dfrac{\sin x}{1+\cos^2 x}\,dx$。$u=\cos x$（$u:1\to-1$）：
+$$\frac{\pi}{2}\int_1^{-1}\frac{-du}{1+u^2}=\frac{\pi}{2}\int_{-1}^1\frac{du}{1+u^2}=\frac{\pi}{2}\Big[\arctan u\Big]_{-1}^1=\frac{\pi}{2}\cdot\frac{\pi}{2}=\frac{\pi^2}{4}$$
+(2) $\dfrac{k}{n^2+k^2}=\dfrac{1}{n}\cdot\dfrac{k/n}{1+(k/n)^2}$，区分求積：$\displaystyle\int_0^1\frac{x}{1+x^2}\,dx=\Big[\frac{\log(1+x^2)}{2}\Big]_0^1=\frac{\log 2}{2}$
+</div>
+</div>
+</div><!-- /s3-5 -->
+
+<!-- 3.6 -->
+
+<div class="section" id="s3-6">
+<h3>3.6 面積・体積・弧長の計算</h3>
+
+<div class="formula-box important">
+<strong>面積・体積・弧長の公式一覧</strong>
+<table>
+  <tr><th>項目</th><th>公式</th></tr>
+  <tr><td>2曲線の面積</td><td>$S=\displaystyle\int_a^b|f(x)-g(x)|\,dx$</td></tr>
+  <tr><td>$x$ 軸回転体</td><td>$V=\pi\displaystyle\int_a^b\{f(x)\}^2\,dx$</td></tr>
+  <tr><td>$y$ 軸回転体（バウムクーヘン）</td><td>$V=2\pi\displaystyle\int_a^b x f(x)\,dx$（$0\leq a$，$f\geq 0$）</td></tr>
+  <tr><td>媒介変数の $x$ 軸回転体</td><td>$V=\pi\displaystyle\int_{t_1}^{t_2}y^2\dot{x}\,dt$（$\dot{x}>0$ のとき）</td></tr>
+  <tr><td>曲線の長さ（直交座標）</td><td>$L=\displaystyle\int_a^b\sqrt{1+\{f'(x)\}^2}\,dx$</td></tr>
+  <tr><td>曲線の長さ（媒介変数）</td><td>$L=\displaystyle\int_{t_1}^{t_2}\sqrt{\dot{x}^2+\dot{y}^2}\,dt$</td></tr>
+  <tr><td>極方程式 $r=f(\theta)$ の面積</td><td>$S=\dfrac{1}{2}\displaystyle\int_\alpha^\beta r^2\,d\theta$</td></tr>
+  <tr><td>極方程式の弧長</td><td>$L=\displaystyle\int_\alpha^\beta\sqrt{r^2+\left(\dfrac{dr}{d\theta}\right)^2}\,d\theta$</td></tr>
+</table>
+</div>
+
+<div class="proof-box">
+<strong>バウムクーヘン分割（$y$ 軸回転体積）の導出：</strong><br>
+$y=f(x)\geq 0$（$a\leq x\leq b$，$0\leq a$）の図形を $y$ 軸回りに回転させる。<br>
+$[x, x+dx]$ の微小部分を回転すると半径 $x$，厚さ $dx$，高さ $f(x)$ の薄い円筒（シェル）になり：
+$$dV=2\pi x\cdot f(x)\cdot dx$$
+$a$ から $b$ まで積分して $V=2\pi\displaystyle\int_a^b xf(x)\,dx$。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 3.5</strong> <span class="lv lv-m">標準</span>　次を求めよ。<br>
+(1) 曲線 $y=\sqrt{x}$ と $y=x$ で囲む面積　(2) (1)の図形を $y$ 軸回りに回転させた体積
+<div class="answer-block">
+(1) 交点：$\sqrt{x}=x\Rightarrow x=0,1$。$0\leq x\leq 1$ で $\sqrt{x}\geq x$。
+$$S=\int_0^1(\sqrt{x}-x)\,dx=\Big[\frac{2}{3}x^{3/2}-\frac{x^2}{2}\Big]_0^1=\frac{2}{3}-\frac{1}{2}=\frac{1}{6}$$
+(2) バウムクーヘン分割：
+$$V=2\pi\int_0^1 x(\sqrt{x}-x)\,dx=2\pi\int_0^1(x^{3/2}-x^2)\,dx=2\pi\Big[\frac{2}{5}x^{5/2}-\frac{x^3}{3}\Big]_0^1=2\pi\cdot\frac{1}{15}=\frac{2\pi}{15}$$
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 3.6</strong> <span class="lv lv-a">応用</span>　サイクロイド $x=t-\sin t$，$y=1-\cos t$（$0\leq t\leq 2\pi$）の弧長と，$x$ 軸との囲む面積を求めよ。
+<div class="answer-block">
+$\dot{x}=1-\cos t$，$\dot{y}=\sin t$。$\dot{x}^2+\dot{y}^2=2-2\cos t=4\sin^2\dfrac{t}{2}$<br>
+<strong>弧長：</strong>$L=\displaystyle\int_0^{2\pi}2\sin\dfrac{t}{2}\,dt=\Big[-4\cos\dfrac{t}{2}\Big]_0^{2\pi}=4+4=\boldsymbol{8}$<br><br>
+<strong>面積：</strong>$S=\displaystyle\int_0^{2\pi}y\dot{x}\,dt=\int_0^{2\pi}(1-\cos t)^2\,dt=\int_0^{2\pi}\!\!\left(1-2\cos t+\cos^2 t\right)\!dt=\Big[t-2\sin t+\dfrac{t}{2}+\dfrac{\sin 2t}{4}\Big]_0^{2\pi}=\boldsymbol{3\pi}$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 3.2</strong> <span class="lv lv-a">応用</span><br>
+(1) $\displaystyle\int_0^\infty xe^{-x}\,dx$ を求めよ。&emsp; (2) 曲線 $y=\log x$（$1\leq x\leq e$）の長さを求めよ。
+<div class="answer-block">
+(1) 部分積分：$\Big[-xe^{-x}\Big]_0^\infty+\int_0^\infty e^{-x}\,dx=0+\Big[-e^{-x}\Big]_0^\infty=0+1=\boldsymbol{1}$<br><br>
+(2) $y'=\dfrac{1}{x}$。$L=\int_1^e\sqrt{1+\dfrac{1}{x^2}}\,dx=\int_1^e\dfrac{\sqrt{x^2+1}}{x}\,dx$。$x=\tan\theta$ と置換して計算すると：<br>
+$L=\sqrt{e^2+1}-\sqrt{2}+\log\!\left(\dfrac{e+\sqrt{e^2+1}}{1+\sqrt{2}}\right)$
+</div>
+</div>
+</div><!-- /s3-6 -->
+
+<div class="section" id="s3-7">
+<h3>3.7 総合練習問題</h3>
+<div class="exercise-block">
+<strong>総合 3</strong> <span class="lv lv-a">応用</span>　$I_n=\displaystyle\int_0^1 x^n e^x\,dx$ について，(1) $I_n+nI_{n-1}=e$ を示せ，(2) $\displaystyle\lim_{n\to\infty}nI_n$ を求めよ。
+<div class="answer-block">
+(1) 部分積分（$f=x^n$，$g'=e^x$）：$I_n=\Big[x^n e^x\Big]_0^1-n\int_0^1 x^{n-1}e^x\,dx=e-nI_{n-1}$，整理して $I_n+nI_{n-1}=e$。■<br><br>
+(2) $0<x<1$ で $1<e^x<e$ より $\dfrac{1}{n+1}=\int_0^1 x^n\,dx<I_n<e\int_0^1 x^n\,dx=\dfrac{e}{n+1}$<br>
+はさみうちより $\dfrac{n}{n+1}\leq nI_n\leq\dfrac{en}{n+1}$，$n\to\infty$ で両端とも $1$（左端）と $e$（右端）に収束するが，<br>
+より精密に $nI_n$ の漸化式から $nI_n=n(e-nI_{n-1})$ を分析すると $nI_n\to 1$。
+</div>
+</div>
+</div>
+</div><!-- /ch3 -->
+
+<!-- ============================================================
+     第４章　ベクトル
+============================================================ -->
+
+<div class="chapter" id="ch4">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 04</div>
+  <h2>ベ ク ト ル</h2>
+  <p>ベクトルの代数的演算から始まり，内積の幾何学的意味，空間の直線・平面の方程式，外積（クロス積）による体積計算まで体系的に学ぶ。</p>
+</div>
+
+<!-- 4.1 -->
+
+<div class="section" id="s4-1">
+<h3>4.1 ベクトルの演算・分点公式</h3>
+
+<div class="formula-box important">
+<strong>基本公式（平面・空間共通）</strong>
+$$\vec{a}\pm\vec{b}=(a_1\pm b_1,\,a_2\pm b_2,\,a_3\pm b_3),\quad k\vec{a}=(ka_1,ka_2,ka_3)$$
+$$|\vec{a}|=\sqrt{a_1^2+a_2^2+a_3^2}$$
+<strong>分点公式：</strong>$A(\vec{a})$，$B(\vec{b})$ を $m:n$ に内分する点 $P$ の位置ベクトル：
+$$\vec{p}=\frac{n\vec{a}+m\vec{b}}{m+n}$$
+外分（$m:n$，$m\neq n$）：$\vec{p}=\dfrac{-n\vec{a}+m\vec{b}}{m-n}$　　重心：$\vec{g}=\dfrac{\vec{a}+\vec{b}+\vec{c}}{3}$
+</div>
+
+<div class="formula-box theorem">
+<strong>一次独立と表現の一意性</strong><br>
+2ベクトル $\vec{a}$，$\vec{b}$ が<strong>一次独立</strong>（平行でない，$\vec{0}$ でない）のとき，平面上の任意の $\vec{p}$ は $\vec{p}=s\vec{a}+t\vec{b}$ と一意に表せる。<br>
+<strong>共線条件：</strong>$A,P,B$ が同一直線上 $\Leftrightarrow$ $\overrightarrow{AP}=k\overrightarrow{AB}$ となる実数 $k$ が存在。
+</div>
+
+<div class="example-box">
+<strong>例題 4.1</strong> <span class="lv lv-m">標準</span>　$\triangle OAB$ において $\overrightarrow{OA}=\vec{a}$，$\overrightarrow{OB}=\vec{b}$ とする。辺 $OA$，$OB$ の $2:1$ 内分点をそれぞれ $M$，$N$ とし，$BM$ と $AN$ の交点 $P$ を求めよ。
+<div class="answer-block">
+$\overrightarrow{OM}=\dfrac{2}{3}\vec{a}$，$\overrightarrow{ON}=\dfrac{1}{3}\vec{b}$<br><br>
+直線 $BM$ 上：$\overrightarrow{OP}=\vec{b}+t\!\left(\dfrac{2}{3}\vec{a}-\vec{b}\right)=\dfrac{2t}{3}\vec{a}+(1-t)\vec{b}$<br>
+直線 $AN$ 上：$\overrightarrow{OP}=\vec{a}+s\!\left(\dfrac{1}{3}\vec{b}-\vec{a}\right)=(1-s)\vec{a}+\dfrac{s}{3}\vec{b}$<br><br>
+$\vec{a},\vec{b}$ は一次独立なので係数比較：$\dfrac{2t}{3}=1-s$，$1-t=\dfrac{s}{3}$<br>
+解くと $t=\dfrac{3}{5}$，$s=\dfrac{6}{5}$（$P$ は $AN$ の延長上）<br>
+$\overrightarrow{OP}=\dfrac{2}{5}\vec{a}+\dfrac{2}{5}\vec{b}$
+</div>
+</div>
+</div><!-- /s4-1 -->
+
+<!-- 4.2 -->
+
+<div class="section" id="s4-2">
+<h3>4.2 内積・正射影・角度</h3>
+
+<div class="formula-box definition">
+<strong>内積の定義と成分公式</strong>
+$$\vec{a}\cdot\vec{b}=|\vec{a}||\vec{b}|\cos\theta\quad(0\leq\theta\leq\pi)$$
+$$\vec{a}\cdot\vec{b}=a_1b_1+a_2b_2+a_3b_3$$
+</div>
+
+<div class="proof-box">
+<strong>内積の成分表示の証明：</strong><br>
+余弦定理 $|\vec{a}-\vec{b}|^2=|\vec{a}|^2+|\vec{b}|^2-2|\vec{a}||\vec{b}|\cos\theta$ と，成分計算 $|\vec{a}-\vec{b}|^2=(a_1-b_1)^2+(a_2-b_2)^2+(a_3-b_3)^2=|\vec{a}|^2+|\vec{b}|^2-2(a_1b_1+a_2b_2+a_3b_3)$ を比較して：
+$$|\vec{a}||\vec{b}|\cos\theta=a_1b_1+a_2b_2+a_3b_3$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>内積の重要公式</strong>
+$$|\vec{a}\pm\vec{b}|^2=|\vec{a}|^2\pm 2\vec{a}\cdot\vec{b}+|\vec{b}|^2$$
+<strong>垂直条件：</strong>$\vec{a}\perp\vec{b}\Leftrightarrow\vec{a}\cdot\vec{b}=0$（$\vec{a},\vec{b}\neq\vec{0}$）<br>
+<strong>正射影ベクトル：</strong>$\vec{b}$ の $\vec{a}$ への正射影 $=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}$<br>
+<strong>三角形の面積：</strong>$S=\dfrac{1}{2}\sqrt{|\vec{b}|^2|\vec{c}|^2-(\vec{b}\cdot\vec{c})^2}$（$\vec{b}=\overrightarrow{AB}$，$\vec{c}=\overrightarrow{AC}$）
+</div>
+
+<div class="example-box">
+<strong>例題 4.2</strong> <span class="lv lv-m">標準</span>　$\vec{a}=(2,-1,3)$，$\vec{b}=(1,2,-1)$ について，(1) $\vec{a}\cdot\vec{b}$，(2) なす角 $\theta$，(3) $\vec{b}$ を $\vec{a}$ に平行な成分と垂直な成分に分解せよ。
+<div class="answer-block">
+(1) $\vec{a}\cdot\vec{b}=2-2-3=-3$<br><br>
+(2) $|\vec{a}|=\sqrt{14}$，$|\vec{b}|=\sqrt{6}$。$\cos\theta=\dfrac{-3}{\sqrt{84}}=-\dfrac{3}{2\sqrt{21}}$<br><br>
+(3) 平行成分：$\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}=\dfrac{-3}{14}(2,-1,3)=\!\left(-\dfrac{3}{7},\dfrac{3}{14},-\dfrac{9}{14}\right)$<br>
+垂直成分：$\vec{b}-\!\left(-\dfrac{3}{7},\dfrac{3}{14},-\dfrac{9}{14}\right)=\!\left(\dfrac{10}{7},\dfrac{25}{14},-\dfrac{5}{14}\right)$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 4.1</strong><br>
+$\triangle ABC$ において $\overrightarrow{AB}=(1,2,-2)$，$\overrightarrow{AC}=(2,-1,1)$ とする。<br>
+(1) $\angle A$ を求めよ。&emsp; (2) $\triangle ABC$ の面積を求めよ。&emsp; (3) $A$ から $BC$ に下ろした垂線の足 $H$ を求めよ。
+<div class="answer-block">
+(1) $\vec{b}\cdot\vec{c}=2-2-2=-2$，$|\vec{b}|=3$，$|\vec{c}|=\sqrt{6}$。$\cos A=\dfrac{-2}{3\sqrt{6}}$<br><br>
+(2) $S=\dfrac{1}{2}\sqrt{9\cdot 6-4}=\dfrac{1}{2}\sqrt{50}=\dfrac{5\sqrt{2}}{2}$<br><br>
+(3) $H=B+t(C-B)$ で $\overrightarrow{AH}\perp\overrightarrow{BC}$：$\overrightarrow{AH}=\overrightarrow{AB}+t\overrightarrow{BC}=(1+t,2-3t,-2+3t)$，$\overrightarrow{BC}=(1,-3,3)$。<br>
+内積 $=0$：$(1+t)-3(2-3t)+3(-2+3t)=0\Rightarrow 19t=11\Rightarrow t=\dfrac{11}{19}$。$H=A+\overrightarrow{AH}$（$A$ を原点とすれば $H=\overrightarrow{AH}$ のベクトル）
+</div>
+</div>
+</div><!-- /s4-2 -->
+
+<!-- 4.3 -->
+
+<div class="section" id="s4-3">
+<h3>4.3 空間ベクトルと座標</h3>
+
+<div class="formula-box">
+<strong>空間座標の公式</strong>
+$$|AB|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}$$
+<strong>球面の方程式</strong>（中心 $(a,b,c)$，半径 $r$）：$(x-a)^2+(y-b)^2+(z-c)^2=r^2$<br>
+<strong>球面の一般形：</strong>$x^2+y^2+z^2+lx+my+nz+d=0$ は中心 $(-l/2,-m/2,-n/2)$，半径 $\sqrt{(l/2)^2+(m/2)^2+(n/2)^2-d}$ の球（$>0$ のとき）
+</div>
+</div><!-- /s4-3 -->
+
+<!-- 4.4 -->
+
+<div class="section" id="s4-4">
+<h3>4.4 直線・平面の方程式</h3>
+
+<div class="formula-box theorem">
+<strong>空間の直線・平面の方程式</strong>
+<table>
+  <tr><th>図形</th><th>方程式</th><th>条件</th></tr>
+  <tr><td>直線（点 $A$ + 方向 $\vec{d}$）</td><td>$\vec{p}=\vec{a}+t\vec{d}$</td><td>$t\in\mathbb{R}$</td></tr>
+  <tr><td>直線（2点 $A,B$）</td><td>$\vec{p}=(1-t)\vec{a}+t\vec{b}$</td><td></td></tr>
+  <tr><td>平面（点 $A$ + 法線 $\vec{n}$）</td><td>$\vec{n}\cdot(\vec{p}-\vec{a})=0$</td><td>成分形：$l(x-a_1)+\cdots=0$</td></tr>
+  <tr><td>点と平面の距離</td><td>$D=\dfrac{|ax_0+by_0+cz_0+d|}{\sqrt{a^2+b^2+c^2}}$</td><td>平面 $ax+by+cz+d=0$</td></tr>
+</table>
+</div>
+
+<div class="example-box">
+<strong>例題 4.3</strong> <span class="lv lv-m">標準</span>　3点 $A(1,0,0)$，$B(0,1,0)$，$C(0,0,1)$ を通る平面の方程式と，原点 $O$ からの距離を求めよ。
+<div class="answer-block">
+3点を通るので平面の方程式を $ax+by+cz=1$ とおく（定数項 $=1$）。<br>
+$A$：$a=1$，$B$：$b=1$，$C$：$c=1$。平面の方程式：<strong>$x+y+z=1$</strong><br><br>
+点 $O(0,0,0)$ から平面 $x+y+z-1=0$ への距離：$D=\dfrac{|0+0+0-1|}{\sqrt{1+1+1}}=\dfrac{1}{\sqrt{3}}=\dfrac{\sqrt{3}}{3}$
+</div>
+</div>
+</div><!-- /s4-4 -->
+
+<!-- 4.5 -->
+
+<div class="section" id="s4-5">
+<h3>4.5 外積・四面体の体積</h3>
+
+<div class="formula-box definition">
+<strong>外積（クロス積）の定義</strong>
+$$\vec{a}\times\vec{b}=\begin{vmatrix}\vec{i}&\vec{j}&\vec{k}\\a_1&a_2&a_3\\b_1&b_2&b_3\end{vmatrix}=(a_2b_3-a_3b_2,\;a_3b_1-a_1b_3,\;a_1b_2-a_2b_1)$$
+</div>
+
+<div class="formula-box theorem">
+<strong>外積の性質</strong>
+<ul class="bullet">
+  <li>$\vec{a}\times\vec{b}\perp\vec{a}$ かつ $\vec{a}\times\vec{b}\perp\vec{b}$（両方に垂直）</li>
+  <li>$|\vec{a}\times\vec{b}|=|\vec{a}||\vec{b}|\sin\theta$（平行四辺形の面積）</li>
+  <li>$\vec{a}\times\vec{b}=-\vec{b}\times\vec{a}$（反交換性）</li>
+  <li>$\vec{a}\parallel\vec{b}\Leftrightarrow\vec{a}\times\vec{b}=\vec{0}$</li>
+  <li>三角形の面積：$S=\dfrac{1}{2}|\vec{a}\times\vec{b}|$</li>
+</ul>
+<strong>スカラー三重積と四面体の体積：</strong>
+$$V_{\text{四面体}}=\frac{1}{6}|\vec{a}\cdot(\vec{b}\times\vec{c})|$$
+</div>
+
+<div class="proof-box">
+<strong>$|\vec{a}\times\vec{b}|=|\vec{a}||\vec{b}|\sin\theta$ の証明：</strong><br>
+$|\vec{a}\times\vec{b}|^2=(a_2b_3-a_3b_2)^2+(a_3b_1-a_1b_3)^2+(a_1b_2-a_2b_1)^2$ を展開すると：
+$$=|\vec{a}|^2|\vec{b}|^2-(a_1b_1+a_2b_2+a_3b_3)^2=|\vec{a}|^2|\vec{b}|^2-(\vec{a}\cdot\vec{b})^2=|\vec{a}|^2|\vec{b}|^2(1-\cos^2\theta)=|\vec{a}|^2|\vec{b}|^2\sin^2\theta$$
+<div class="qed">■</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>入試問題（阪大・改）</span><span class="etag tag-vec">ベクトル</span></div>
+<div class="exam-body">
+<p>空間に4点 $O(0,0,0)$，$A(1,0,0)$，$B(0,1,0)$，$C(0,0,1)$ がある。</p>
+<p>(1) $\triangle ABC$ の面積を求めよ。&emsp; (2) 四面体 $OABC$ の体積を求めよ。</p>
+<div class="answer-block">
+(1) $\overrightarrow{AB}=(-1,1,0)$，$\overrightarrow{AC}=(-1,0,1)$<br>
+$\overrightarrow{AB}\times\overrightarrow{AC}=(1\cdot 1-0\cdot 0,\;0\cdot(-1)-(-1)\cdot 1,\;(-1)\cdot 0-1\cdot(-1))=(1,1,1)$<br>
+$S=\dfrac{1}{2}|(1,1,1)|=\dfrac{\sqrt{3}}{2}$<br><br>
+(2) 法線ベクトル $(1,1,1)$ より平面 $ABC$：$x+y+z=1$。原点からの距離 $h=\dfrac{1}{\sqrt{3}}$。<br>
+$V=\dfrac{1}{3}\cdot S\cdot h=\dfrac{1}{3}\cdot\dfrac{\sqrt{3}}{2}\cdot\dfrac{1}{\sqrt{3}}=\dfrac{1}{6}$
+</div>
+</div>
+</div>
+</div><!-- /s4-5 -->
+</div><!-- /ch4 -->
+
+<!-- ============================================================
+     第５章　複素数平面
+============================================================ -->
+
+<div class="chapter" id="ch5">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 05</div>
+  <h2>複素数平面</h2>
+  <p>複素数を平面上の点として幾何学的に扱う。極形式，ド・モアブルの定理の証明，$n$ 乗根，$\cos\frac{2\pi}{5}$ の計算，図形変換・軌跡まで完全攻略。</p>
+</div>
+
+<!-- 5.1 -->
+
+<div class="section" id="s5-1">
+<h3>5.1 複素数の演算・基本性質</h3>
+
+<div class="formula-box important">
+<strong>複素数の演算・共役・絶対値</strong><br>
+$z=a+bi$（$a,b\in\mathbb{R}$，$i^2=-1$）に対して：
+$$\bar{z}=a-bi,\quad|z|=\sqrt{a^2+b^2},\quad z\bar{z}=|z|^2$$
+$$z+\bar{z}=2\text{Re}(z),\quad z-\bar{z}=2i\,\text{Im}(z)$$
+$$\overline{z_1\pm z_2}=\bar{z_1}\pm\bar{z_2},\quad\overline{z_1 z_2}=\bar{z_1}\bar{z_2},\quad\overline{\!\left(\frac{z_1}{z_2}\right)}=\frac{\bar{z_1}}{\bar{z_2}}$$
+$$|z_1 z_2|=|z_1||z_2|,\quad\left|\frac{z_1}{z_2}\right|=\frac{|z_1|}{|z_2|},\quad|z_1+z_2|\leq|z_1|+|z_2|\quad\text{（三角不等式）}$$
+</div>
+
+<div class="proof-box">
+<strong>三角不等式 $|z_1+z_2|\leq|z_1|+|z_2|$ の証明：</strong>
+$$|z_1+z_2|^2=(z_1+z_2)\overline{(z_1+z_2)}=(z_1+z_2)(\bar{z_1}+\bar{z_2})=|z_1|^2+z_1\bar{z_2}+\bar{z_1}z_2+|z_2|^2$$
+$z_1\bar{z_2}+\bar{z_1}z_2=2\text{Re}(z_1\bar{z_2})\leq 2|z_1\bar{z_2}|=2|z_1||z_2|$ なので：
+$$|z_1+z_2|^2\leq(|z_1|+|z_2|)^2$$
+両辺 $\geq 0$ で平方根をとれば $|z_1+z_2|\leq|z_1|+|z_2|$。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 5.1</strong> <span class="lv lv-b">基礎</span>　$z=2+i$，$w=1-2i$ のとき，$z\cdot w$，$\dfrac{z}{w}$，$|z-w|$ を求めよ。
+<div class="answer-block">
+$zw=(2+i)(1-2i)=2-4i+i-2i^2=4-3i$<br><br>
+$\dfrac{z}{w}=\dfrac{(2+i)(1+2i)}{(1-2i)(1+2i)}=\dfrac{2+4i+i+2i^2}{5}=\dfrac{2i}{5}\cdot\dfrac{0+5i}{5}=\dfrac{0+5i}{5}$... 再計算：分子 $=2+4i+i-2=5i$，よって $i$<br><br>
+$z-w=(1+3i)$，$|z-w|=\sqrt{1+9}=\sqrt{10}$
+</div>
+</div>
+</div><!-- /s5-1 -->
+
+<!-- 5.2 -->
+
+<div class="section" id="s5-2">
+<h3>5.2 極形式・偏角</h3>
+
+<div class="formula-box definition">
+<strong>極形式とオイラーの公式</strong>
+$$z=r(\cos\theta+i\sin\theta)=re^{i\theta}\quad(r=|z|\geq 0,\;\theta=\arg z)$$
+$$e^{i\theta}=\cos\theta+i\sin\theta\qquad\text{（オイラーの公式）}$$
+$$\text{特に }e^{i\pi}+1=0\text{（オイラーの等式）}$$
+</div>
+
+<div class="formula-box theorem">
+<strong>積・商の絶対値と偏角</strong>
+$$|z_1 z_2|=|z_1||z_2|,\quad\arg(z_1 z_2)=\arg z_1+\arg z_2$$
+$$\left|\frac{z_1}{z_2}\right|=\frac{|z_1|}{|z_2|},\quad\arg\frac{z_1}{z_2}=\arg z_1-\arg z_2$$
+</div>
+
+<div class="proof-box">
+<strong>積の偏角加法定理の証明：</strong>
+$z_1=r_1 e^{i\theta_1}$，$z_2=r_2 e^{i\theta_2}$ とすると：
+$$z_1 z_2=r_1 r_2 e^{i(\theta_1+\theta_2)}=r_1 r_2\{\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\}$$
+したがって $|z_1z_2|=r_1r_2=|z_1||z_2|$，$\arg(z_1z_2)=\theta_1+\theta_2=\arg z_1+\arg z_2$。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 5.2</strong> <span class="lv lv-m">標準</span>　次を極形式で表し，絶対値と偏角を求めよ。<br>
+(1) $z=1+\sqrt{3}i$ &emsp; (2) $z=-2i$ &emsp; (3) $\dfrac{1+i}{\sqrt{3}-i}$
+<div class="answer-block">
+(1) $|z|=2$，$\arg z=\dfrac{\pi}{3}$。$z=2\!\left(\cos\dfrac{\pi}{3}+i\sin\dfrac{\pi}{3}\right)$<br><br>
+(2) $|z|=2$，$\arg z=-\dfrac{\pi}{2}$。$z=2\!\left(\cos\!\left(-\dfrac{\pi}{2}\right)+i\sin\!\left(-\dfrac{\pi}{2}\right)\right)$<br><br>
+(3) $1+i=\sqrt{2}e^{i\pi/4}$，$\sqrt{3}-i=2e^{-i\pi/6}$。<br>
+$\dfrac{\sqrt{2}e^{i\pi/4}}{2e^{-i\pi/6}}=\dfrac{\sqrt{2}}{2}e^{i(\pi/4+\pi/6)}=\dfrac{\sqrt{2}}{2}e^{i5\pi/12}$。絶対値 $\dfrac{\sqrt{2}}{2}$，偏角 $\dfrac{5\pi}{12}$
+</div>
+</div>
+</div><!-- /s5-2 -->
+
+<!-- 5.3 -->
+
+<div class="section" id="s5-3">
+<h3>5.3 ド・モアブルの定理と証明</h3>
+
+<div class="formula-box theorem">
+<strong>ド・モアブルの定理</strong>
+$$(\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta\quad(n\in\mathbb{Z})$$
+</div>
+
+<div class="proof-box">
+<strong>ド・モアブルの定理の証明（数学的帰納法，$n\geq 0$）：</strong><br>
+$n=0$：両辺 $=1$ ✓<br>
+$n=k$ で成立と仮定，$n=k+1$：
+$$(\cos\theta+i\sin\theta)^{k+1}=(\cos k\theta+i\sin k\theta)(\cos\theta+i\sin\theta)$$
+$$=\cos k\theta\cos\theta-\sin k\theta\sin\theta+i(\sin k\theta\cos\theta+\cos k\theta\sin\theta)=\cos(k+1)\theta+i\sin(k+1)\theta\;\checkmark$$
+$n<0$：$n=-m$（$m>0$）として $(\cos\theta+i\sin\theta)^{-m}=\dfrac{1}{(\cos\theta+i\sin\theta)^m}=\dfrac{1}{\cos m\theta+i\sin m\theta}=\cos m\theta-i\sin m\theta=\cos(-m\theta)+i\sin(-m\theta)$ ✓
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 5.3</strong> <span class="lv lv-m">標準</span>　ド・モアブルの定理を使い，$\cos 3\theta$，$\sin 3\theta$ を $\cos\theta$，$\sin\theta$ で表せ。
+<div class="answer-block">
+$(\cos\theta+i\sin\theta)^3=\cos 3\theta+i\sin 3\theta$<br>
+左辺 $=\cos^3\theta+3\cos^2\theta(i\sin\theta)+3\cos\theta(i\sin\theta)^2+(i\sin\theta)^3$<br>
+$=(\cos^3\theta-3\cos\theta\sin^2\theta)+i(3\cos^2\theta\sin\theta-\sin^3\theta)$<br>
+実部・虚部を比較：
+$$\cos 3\theta=\cos^3\theta-3\cos\theta\sin^2\theta=4\cos^3\theta-3\cos\theta$$
+$$\sin 3\theta=3\cos^2\theta\sin\theta-\sin^3\theta=3\sin\theta-4\sin^3\theta$$
+</div>
+</div>
+</div><!-- /s5-3 -->
+
+<!-- 5.4 -->
+
+<div class="section" id="s5-4">
+<h3>5.4 $n$ 乗根・1の $n$ 乗根</h3>
+
+<div class="formula-box theorem">
+<strong>$n$ 乗根の公式</strong><br>
+$w=\rho e^{i\varphi}$ のとき $z^n=w$ の解は：
+$$z_k=\rho^{1/n}\exp\!\left(\frac{i(\varphi+2k\pi)}{n}\right)\quad(k=0,1,\ldots,n-1)$$
+<strong>1の $n$ 乗根（$z^n=1$ の解）：</strong>
+$$\omega_k=e^{2\pi ik/n}=\cos\frac{2k\pi}{n}+i\sin\frac{2k\pi}{n}\quad(k=0,1,\ldots,n-1)$$
+これらは単位円を $n$ 等分する頂点（正 $n$ 角形の頂点）。<br>
+<strong>代数的性質：</strong>$\omega=e^{2\pi i/n}$ とすると $1+\omega+\omega^2+\cdots+\omega^{n-1}=0$
+</div>
+
+<div class="proof-box">
+<strong>$1+\omega+\omega^2+\cdots+\omega^{n-1}=0$ の証明：</strong><br>
+$\omega\neq 1$ のとき等比数列の和：$\dfrac{\omega^n-1}{\omega-1}=\dfrac{1-1}{\omega-1}=0$（$\omega^n=1$ より）
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 5.4</strong> <span class="lv lv-a">応用</span>　$\omega=e^{2\pi i/5}$（1の原始5乗根）とするとき，$1+\omega+\omega^2+\omega^3+\omega^4=0$ を用いて $\cos\dfrac{2\pi}{5}$ の値を求めよ。
+<div class="answer-block">
+$c=\cos\dfrac{2\pi}{5}$，$s=\sin\dfrac{2\pi}{5}$ とおく。$\omega+\omega^4=2c$，$\omega^2+\omega^3=2\cos\dfrac{4\pi}{5}=2(2c^2-1)$（倍角）<br>
+和 $\omega+\omega^2+\omega^3+\omega^4=-1$ より：$2c+2(2c^2-1)=-1$，すなわち $4c^2+2c-1=0$<br>
+$c=\dfrac{-2\pm\sqrt{4+16}}{8}=\dfrac{-1\pm\sqrt{5}}{4}$<br>
+$0<\dfrac{2\pi}{5}<\dfrac{\pi}{2}$ より $c>0$，したがって $\cos\dfrac{2\pi}{5}=\dfrac{-1+\sqrt{5}}{4}$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 5.1</strong><br>
+(1) $z^3=-8$ の解を全て求めよ。&emsp; (2) $z^4=2+2\sqrt{3}i$ の解を極形式で表せ。
+<div class="answer-block">
+(1) $-8=8e^{i\pi}$。$z_k=2e^{i(\pi+2k\pi)/3}$（$k=0,1,2$）。$z=2e^{i\pi/3},2e^{i\pi},2e^{i5\pi/3}$，すなわち $z=1+\sqrt{3}i,\,-2,\,1-\sqrt{3}i$<br><br>
+(2) $|2+2\sqrt{3}i|=4$，$\arg=\dfrac{\pi}{3}$。$z_k=4^{1/4}e^{i(\pi/3+2k\pi)/4}=\sqrt{2}e^{i(\pi/12+k\pi/2)}$（$k=0,1,2,3$）
+</div>
+</div>
+</div><!-- /s5-4 -->
+
+<!-- 5.5 -->
+
+<div class="section" id="s5-5">
+<h3>5.5 複素数平面上の図形・変換・軌跡</h3>
+
+<div class="formula-box theorem">
+<strong>複素数平面上の基本図形</strong>
+<table>
+  <tr><th>条件</th><th>図形</th></tr>
+  <tr><td>$|z-\alpha|=r$</td><td>点 $\alpha$ を中心，半径 $r$ の円</td></tr>
+  <tr><td>$|z-\alpha|=|z-\beta|$</td><td>線分 $\alpha\beta$ の垂直二等分線</td></tr>
+  <tr><td>$\arg(z-\alpha)=\theta$</td><td>点 $\alpha$ を始点，方向 $\theta$ の半直線</td></tr>
+  <tr><td>$\arg\dfrac{z-\alpha}{z-\beta}=\theta$</td><td>$\alpha\beta$ を見込む角が $\theta$ の弧</td></tr>
+  <tr><td>$\left|\dfrac{z-\alpha}{z-\beta}\right|=k$（$k\neq 1$）</td><td>アポロニウスの円</td></tr>
+</table>
+</div>
+
+<div class="formula-box theorem">
+<strong>複素数による変換（回転・拡大）</strong><br>
+点 $\alpha$ を中心に角 $\theta$ 回転し $r$ 倍拡大する変換：
+$$z\mapsto\alpha+r e^{i\theta}(z-\alpha)$$
+特に原点中心の回転（$\alpha=0$，$r=1$）：$z\mapsto ze^{i\theta}$
+</div>
+
+<div class="example-box">
+<strong>例題 5.5</strong> <span class="lv lv-a">応用</span>　$|z|=1$ 上を $z$ が動くとき，$w=z+\dfrac{1}{z}$ の軌跡を求めよ。
+<div class="answer-block">
+$z=e^{i\theta}=\cos\theta+i\sin\theta$ とおくと $\dfrac{1}{z}=\bar{z}=\cos\theta-i\sin\theta$（$|z|=1$ より $1/z=\bar{z}$）<br>
+$$w=z+\bar{z}=2\cos\theta\in[-2,2]$$
+$w$ は実軸上の閉区間 $[-2,2]$ を描く。（$w$ の虚部は恒等的に 0）
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>入試問題（京大・改）</span><span class="etag tag-cmp">複素数</span></div>
+<div class="exam-body">
+<p>$z$ が $|z-1|=1$ を満たすとき，$w=\dfrac{z}{z-2}$ の軌跡を求めよ。</p>
+<div class="answer-block">
+$z=1+e^{i\theta}=1+\cos\theta+i\sin\theta$ とおくと，$z-2=-1+\cos\theta+i\sin\theta$。<br><br>
+別解：$w=\dfrac{z}{z-2}$ より $z=\dfrac{2w}{w-1}$（$w\neq 1$）。<br>
+$|z-1|=1$ に代入：$\left|\dfrac{2w}{w-1}-1\right|=\left|\dfrac{w+1}{w-1}\right|=1$<br>
+$|w+1|=|w-1|$ より $w$ は 点 $-1$ と点 $1$ から等距離 $\Rightarrow$ $w$ の実部 $=0$（虚軸）。ただし $w=1$ は除く（$z=\infty$）。<br>
+軌跡は<strong>虚軸（実部 $=0$ の直線）</strong>（ただし $w=1$ すなわち $z=\infty$ を除く。$z=0$ は $w=0$ であり，$z=0\in\{|z-1|=1\}$ を確認：$|0-1|=1$ ✓）
+</div>
+</div>
+</div>
+</div><!-- /s5-5 -->
+</div><!-- /ch5 -->
+
+<!-- ============================================================
+     第６章　式と曲線
+============================================================ -->
+
+<div class="chapter" id="ch6">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 06</div>
+  <h2>式と曲線</h2>
+  <p>2次曲線を焦点の幾何学的定義から導出し，接線公式を証明する。媒介変数表示の微分・面積・弧長，極座標と極方程式を体系的に扱う。</p>
+</div>
+
+<!-- 6.1 -->
+
+<div class="section" id="s6-1">
+<h3>6.1 2次曲線の定義・導出</h3>
+
+<div class="formula-box important">
+<strong>2次曲線の標準形・焦点・準線・漸近線</strong>
+<table>
+  <tr><th>曲線</th><th>標準形</th><th>焦点</th><th>準線・漸近線</th></tr>
+  <tr><td>放物線</td><td>$y^2=4px$</td><td>$(p,0)$</td><td>$x=-p$（準線）</td></tr>
+  <tr><td>放物線</td><td>$x^2=4py$</td><td>$(0,p)$</td><td>$y=-p$（準線）</td></tr>
+  <tr><td>楕円（$a>b>0$）</td><td>$\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$</td><td>$(\pm c,0)$，$c^2=a^2-b^2$</td><td>$x=\pm\dfrac{a^2}{c}$（準線）</td></tr>
+  <tr><td>双曲線</td><td>$\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$</td><td>$(\pm c,0)$，$c^2=a^2+b^2$</td><td>$y=\pm\dfrac{b}{a}x$（漸近線）</td></tr>
+</table>
+</div>
+
+<div class="theorem-box proof-box">
+<strong>楕円 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ の方程式の導出（焦点定義から）：</strong><br>
+2焦点 $F_1(-c,0)$，$F_2(c,0)$ からの距離の和が $2a$ の点 $P(x,y)$ の軌跡を求める。<br>
+$|PF_1|+|PF_2|=2a$ より：
+$$|PF_1|=\sqrt{(x+c)^2+y^2},\quad|PF_2|=\sqrt{(x-c)^2+y^2}$$
+$|PF_1|-|PF_2|=2a-2|PF_2|$… 直接 $|PF_1|=2a-|PF_2|$ として両辺を2乗：
+$$(x+c)^2+y^2=(2a-\sqrt{(x-c)^2+y^2})^2$$
+$=4a^2-4a\sqrt{(x-c)^2+y^2}+(x-c)^2+y^2$<br>
+整理：$4a\sqrt{(x-c)^2+y^2}=4a^2-4cx$，$a\sqrt{(x-c)^2+y^2}=a^2-cx$<br>
+両辺を2乗：$a^2\{(x-c)^2+y^2\}=(a^2-cx)^2$<br>
+$a^2 x^2-2a^2cx+a^2c^2+a^2y^2=a^4-2a^2cx+c^2x^2$<br>
+$(a^2-c^2)x^2+a^2y^2=a^2(a^2-c^2)$<br>
+$b^2=a^2-c^2$ とおけば $b^2x^2+a^2y^2=a^2b^2$，すなわち $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$。
+<div class="qed">■</div>
+</div>
+
+<div class="proof-box">
+<strong>楕円の接線公式の証明：</strong><br>
+楕円 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ を陰関数微分：
+$$\frac{2x}{a^2}+\frac{2y}{b^2}y'=0\Rightarrow y'=-\frac{b^2 x}{a^2 y}$$
+点 $(x_0,y_0)$ での接線：$y-y_0=-\dfrac{b^2 x_0}{a^2 y_0}(x-x_0)$，整理して：
+$$\frac{x_0 x}{a^2}+\frac{y_0 y}{b^2}=\frac{x_0^2}{a^2}+\frac{y_0^2}{b^2}=1$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box theorem">
+<strong>離心率と統一極方程式</strong><br>
+焦点が原点，対応する準線 $x=-\ell$（$\ell>0$）のとき：
+$$r=\frac{e\ell}{1-e\cos\theta}$$
+$e<1$：楕円，$e=1$：放物線，$e>1$：双曲線（$e$：離心率）
+</div>
+
+<div class="example-box">
+<strong>例題 6.1</strong> <span class="lv lv-m">標準</span>　楕円 $\dfrac{x^2}{9}+\dfrac{y^2}{5}=1$ について：(1) 焦点を求めよ，(2) 点 $(3,0)$ における接線を求めよ，(3) 曲線上の任意の点から2焦点への距離の和を求めよ。
+<div class="answer-block">
+(1) $c^2=9-5=4$，$c=2$。焦点 $(\pm 2,0)$<br><br>
+(2) 接線公式：$\dfrac{3x}{9}+\dfrac{0\cdot y}{5}=1\Rightarrow x=3$<br><br>
+(3) 楕円の定義より $2a=2\sqrt{9}=6$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 6.1</strong><br>
+(1) 双曲線 $x^2-\dfrac{y^2}{3}=1$ の焦点・漸近線・双曲線上の点 $(2,3)$ での接線を求めよ。<br>
+(2) 放物線 $y^2=4x$ の焦点と，点 $(1,2)$ での接線を求めよ。
+<div class="answer-block">
+(1) $c^2=1+3=4$，$c=2$。焦点 $(\pm 2,0)$，漸近線 $y=\pm\sqrt{3}x$。<br>接線：$\dfrac{2x}{1}-\dfrac{3y}{3}=1\Rightarrow 2x-y=1$<br><br>
+(2) $p=1$，焦点 $(1,0)$，準線 $x=-1$。接線：$2y=2(x+1)\Rightarrow y=x+1$
+</div>
+</div>
+</div><!-- /s6-1 -->
+
+<!-- 6.2 -->
+
+<div class="section" id="s6-2">
+<h3>6.2 2次曲線のまとめ・平行移動</h3>
+
+<div class="formula-box">
+<strong>平行移動後の標準形</strong><br>
+$\dfrac{(x-p)^2}{a^2}+\dfrac{(y-q)^2}{b^2}=1$ は楕円の中心が $(p,q)$ に移動したもの。<br>
+一般2次式の判別：$Ax^2+Cy^2+Dx+Ey+F=0$ を平方完成して標準形に帰着させる。
+</div>
+</div><!-- /s6-2 -->
+
+<!-- 6.3 -->
+
+<div class="section" id="s6-3">
+<h3>6.3 媒介変数表示</h3>
+
+<div class="formula-box theorem">
+<strong>媒介変数表示の微分・面積・弧長</strong>
+$$\frac{dy}{dx}=\frac{\dot{y}}{\dot{x}},\quad\frac{d^2y}{dx^2}=\frac{(\dot{y}/\dot{x})'}{\dot{x}}=\frac{\ddot{y}\dot{x}-\dot{y}\ddot{x}}{\dot{x}^3}$$
+$$S=\int_{t_1}^{t_2}|y\dot{x}|\,dt\quad(x\text{ 軸との面積}),\qquad L=\int_{t_1}^{t_2}\sqrt{\dot{x}^2+\dot{y}^2}\,dt$$
+</div>
+
+<div class="example-box">
+<strong>例題 6.2</strong> <span class="lv lv-m">標準</span>　曲線 $x=2\cos t$，$y=\sin t$（$0\leq t\leq 2\pi$）について，(1) 曲線の形状を特定し，(2) 面積を求め，(3) $t=\pi/4$ での接線を求めよ。
+<div class="answer-block">
+(1) $\dfrac{x^2}{4}+y^2=1$，すなわち<strong>楕円</strong>（$a=2$，$b=1$）。<br><br>
+(2) $\dot{x}=-2\sin t$，$S=\int_0^{2\pi}|y\dot{x}|\,dt$。$t:\pi\to 0$ で $x:-2\to 2$（第1・4象限）<br>
+$S=2\int_0^\pi\sin t\cdot 2\sin t\,dt=4\int_0^\pi\sin^2 t\,dt=4\cdot\dfrac{\pi}{2}=2\pi$（または $S=\pi ab=\pi\cdot 2\cdot 1=2\pi$）<br><br>
+(3) $\dot{x}=-2\sin(\pi/4)=-\sqrt{2}$，$\dot{y}=\cos(\pi/4)=\dfrac{1}{\sqrt{2}}$。$\dfrac{dy}{dx}=\dfrac{1/\sqrt{2}}{-\sqrt{2}}=-\dfrac{1}{2}$<br>
+点 $(\sqrt{2},\,\frac{1}{\sqrt{2}})$ での接線：$y-\dfrac{1}{\sqrt{2}}=-\dfrac{1}{2}(x-\sqrt{2})$，すなわち $x+2y=2\sqrt{2}$
+</div>
+</div>
+</div><!-- /s6-3 -->
+
+<!-- 6.4 -->
+
+<div class="section" id="s6-4">
+<h3>6.4 極座標・極方程式</h3>
+
+<div class="formula-box important">
+<strong>極座標の変換・面積・弧長</strong>
+$$x=r\cos\theta,\quad y=r\sin\theta,\quad r=\sqrt{x^2+y^2},\quad\tan\theta=\frac{y}{x}$$
+$$S=\frac{1}{2}\int_\alpha^\beta r^2\,d\theta,\qquad L=\int_\alpha^\beta\sqrt{r^2+\!\left(\frac{dr}{d\theta}\right)^{\!2}}\,d\theta$$
+<strong>代表的な曲線：</strong>
+<table>
+  <tr><th>極方程式</th><th>図形</th></tr>
+  <tr><td>$r=a$</td><td>原点中心・半径 $a$ の円</td></tr>
+  <tr><td>$r=2a\cos\theta$</td><td>$(a,0)$ 中心・半径 $a$ の円</td></tr>
+  <tr><td>$r=a(1+\cos\theta)$</td><td>カルジオイド</td></tr>
+  <tr><td>$r^2=a^2\cos 2\theta$</td><td>レムニスケート</td></tr>
+  <tr><td>$r=a\theta$</td><td>アルキメデスの螺旋</td></tr>
+</table>
+</div>
+
+<div class="proof-box">
+<strong>極座標の面積公式 $S=\dfrac{1}{2}\int_\alpha^\beta r^2\,d\theta$ の導出：</strong><br>
+微小角 $d\theta$ の扇形の面積は $\dfrac{1}{2}r^2\,d\theta$（扇形の面積公式から）。これを $\alpha$ から $\beta$ まで積分して：
+$$S=\frac{1}{2}\int_\alpha^\beta r^2\,d\theta$$
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 6.3</strong> <span class="lv lv-a">応用</span>　カルジオイド $r=a(1+\cos\theta)$（$a>0$）が囲む面積を求めよ。
+<div class="answer-block">
+$$S=\frac{1}{2}\int_0^{2\pi}a^2(1+\cos\theta)^2\,d\theta=\frac{a^2}{2}\int_0^{2\pi}(1+2\cos\theta+\cos^2\theta)\,d\theta$$
+$\int_0^{2\pi}\cos\theta\,d\theta=0$，$\int_0^{2\pi}\cos^2\theta\,d\theta=\pi$：
+$$S=\frac{a^2}{2}(2\pi+0+\pi)=\frac{3\pi a^2}{2}$$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 6.2</strong><br>
+(1) $r=1+2\cos\theta$ の $r\geq 0$ の部分が囲む面積を求めよ。<br>
+(2) $r=2\sin\theta$ を直交座標に変換し，図形を特定せよ。
+<div class="answer-block">
+(1) $r\geq 0$ の条件：$1+2\cos\theta\geq 0\Rightarrow\theta\in[-2\pi/3,2\pi/3]$（対称性を利用）<br>
+$S=2\cdot\dfrac{1}{2}\int_0^{2\pi/3}(1+2\cos\theta)^2\,d\theta=\int_0^{2\pi/3}(1+4\cos\theta+4\cos^2\theta)\,d\theta$<br>
+$=\Big[\theta+4\sin\theta+2\theta+\sin 2\theta\Big]_0^{2\pi/3}=\dfrac{2\pi}{3}+2\sqrt{3}+\dfrac{4\pi}{3}-\dfrac{\sqrt{3}}{2}\cdot 2=2\pi+\sqrt{3}$<br><br>
+(2) 両辺 $r$ 倍：$r^2=2r\sin\theta\Rightarrow x^2+y^2=2y\Rightarrow x^2+(y-1)^2=1$。中心 $(0,1)$，半径 $1$ の円。
+</div>
+</div>
+</div><!-- /s6-4 -->
+</div><!-- /ch6 -->
+
+<!-- ============================================================
+     第７章　入試対策
+============================================================ -->
+
+<div class="chapter" id="ch7">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 07</div>
+  <h2>入 試 対 策</h2>
+  <p>難関大学入試で頻出するテーマの解法パターンを整理し，精選問題で実戦力を養う。公式総まとめと直前チェックリストも収録。</p>
+</div>
+
+<!-- 7.1 -->
+
+<div class="section" id="s7-1">
+<h3>7.1 頻出解法パターン集</h3>
+
+<h4>① 定積分の漸化式 $I_n$ 型</h4>
+<div class="tip-box">
+部分積分で $I_n$ と $I_{n-2}$（または $I_{n-1}$）の関係を導く。$I_0$，$I_1$ を計算してウォリス型の一般項を求める。
+</div>
+
+<h4>② 微分を用いた不等式証明</h4>
+<div class="tip-box">
+$h(x)=$ （左辺 $-$ 右辺）とおき，$h(a)=0$ を確認して $h'(x)$ の符号で $h(x)$ の増減を調べる。
+</div>
+
+<h4>③ 複素数・回転による図形問題</h4>
+<div class="tip-box">
+$w=f(z)$ として $z$ の軌跡条件から $w$ の軌跡を代数的に導く。$z=\frac{az+b}{cz+d}$ 型の一次分数変換が頻出。
+</div>
+
+<h4>④ ベクトルの共線・共面条件</h4>
+<div class="tip-box">
+2ベクトルが一次独立のとき係数比較，空間で3ベクトルが一次独立のとき三成分の係数比較。
+</div>
+
+<h4>⑤ 区分求積法への変換</h4>
+<div class="tip-box">
+$\dfrac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right)$ の形を認識し $\int_0^1 f(x)\,dx$ に帰着させる。
+</div>
+</div><!-- /s7-1 -->
+
+<!-- 7.2 -->
+
+<div class="section" id="s7-2">
+<h3>7.2 精選入試問題</h3>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題1　区分求積法（東大レベル）</span><span class="etag tag-int">積分</span></div>
+<div class="exam-body">
+<p>$\displaystyle\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n\sqrt{\frac{k}{n}}$ を求めよ。</p>
+<div class="answer-block">
+$f(x)=\sqrt{x}$ として区分求積：$\displaystyle\int_0^1\sqrt{x}\,dx=\Big[\frac{2}{3}x^{3/2}\Big]_0^1=\boldsymbol{\frac{2}{3}}$
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題2　積分計算（東工大レベル）</span><span class="etag tag-int">積分</span></div>
+<div class="exam-body">
+<p>$\displaystyle\int_0^\pi x\sin^2 x\,dx$ を求めよ。</p>
+<div class="answer-block">
+$\sin^2 x=\dfrac{1-\cos 2x}{2}$ として：$I=\dfrac{1}{2}\displaystyle\int_0^\pi x\,dx-\dfrac{1}{2}\int_0^\pi x\cos 2x\,dx$<br>
+第1項：$\dfrac{1}{2}\cdot\dfrac{\pi^2}{2}=\dfrac{\pi^2}{4}$<br>
+第2項（部分積分）：$\dfrac{1}{2}\!\left[\dfrac{x\sin 2x}{2}\right]_0^\pi-\dfrac{1}{2}\int_0^\pi\dfrac{\sin 2x}{2}\,dx=0-\dfrac{1}{2}\cdot\Big[-\dfrac{\cos 2x}{4}\Big]_0^\pi=0$<br>
+$\therefore I=\boldsymbol{\dfrac{\pi^2}{4}}$
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題3　微分の応用（京大レベル）</span><span class="etag tag-dif">微分</span></div>
+<div class="exam-body">
+<p>$f(x)=x^3+ax^2+b$ が極大値と極小値をもち，その積が負になるための $a,b$ の条件を求めよ。</p>
+<div class="answer-block">
+$f'(x)=3x^2+2ax=x(3x+2a)$。2つの実根 $x=0$，$x=-\dfrac{2a}{3}$ が相異なる条件：$a\neq 0$<br><br>
+$a>0$ のとき：極大値 $f(0)=b$，極小値 $f\!\left(-\dfrac{2a}{3}\right)=\dfrac{4a^3}{27}+b$<br>
+$a<0$ のとき：極小値 $f(0)=b$，極大値 $f\!\left(-\dfrac{2a}{3}\right)=\dfrac{4a^3}{27}+b$（両場合で積の符号は同じ）<br><br>
+積 $<0$：$b\!\left(b+\dfrac{4a^3}{27}\right)<0$<br>
+条件：$\boldsymbol{a\neq 0}$ かつ $\boldsymbol{b\!\left(b+\dfrac{4a^3}{27}\right)<0}$
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題4　積分不等式（京大）</span><span class="etag tag-int">積分</span></div>
+<div class="exam-body">
+<p>$n$ を正の整数とする。$I_n=\displaystyle\int_0^1 x^n e^x\,dx$ の値が $\dfrac{1}{2}$ より小さくなる最小の $n$ を求めよ。</p>
+<div class="answer-block">
+漸化式 $I_n+nI_{n-1}=e$ を利用（例題3.5(1)より）：<br>
+$I_0=e-1\approx 1.718$，$I_1=e-1\cdot I_0=e-(e-1)=1$，$I_2=e-2I_1=e-2\approx 0.718$<br>
+$I_3=e-3I_2=e-3(e-2)=6-2e\approx 0.563$，$I_4=e-4I_3=e-4(6-2e)=9e-24\approx 0.466$<br>
+$I_3>0.5$ かつ $I_4<0.5$ より，最小の $n$ は $\boldsymbol{n=4}$
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題5　曲線と積分（東大レベル）</span><span class="etag tag-crv">曲線</span></div>
+<div class="exam-body">
+<p>楕円 $x=2\cos t$，$y=\sin t$（$0\leq t\leq 2\pi$）で囲まれた領域を $x$ 軸回転してできる回転体の体積を求めよ。</p>
+<div class="answer-block">
+$V=\pi\displaystyle\int_{-2}^{2}y^2\,dx$。$t:\pi\to 0$ で $x:-2\to 2$，$dx=-2\sin t\,dt$：
+$$V=\pi\int_\pi^0\sin^2 t\cdot(-2\sin t)\,dt=2\pi\int_0^\pi\sin^3 t\,dt$$
+$\int_0^\pi\sin^3 t\,dt=\Big[-\cos t+\dfrac{\cos^3 t}{3}\Big]_0^\pi=\dfrac{4}{3}$，よって $V=2\pi\cdot\dfrac{4}{3}=\boldsymbol{\dfrac{8\pi}{3}}$
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題6　複素数（京大レベル）</span><span class="etag tag-cmp">複素数</span></div>
+<div class="exam-body">
+<p>$\omega=e^{2\pi i/5}$ とするとき，$1+\omega+\omega^2+\omega^3+\omega^4=0$ を利用して $\cos\dfrac{2\pi}{5}$ を求めよ。</p>
+<div class="answer-block">
+例題 5.4 より：$\cos\dfrac{2\pi}{5}=\boldsymbol{\dfrac{-1+\sqrt{5}}{4}}$
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題7　ベクトル（阪大レベル）</span><span class="etag tag-vec">ベクトル</span></div>
+<div class="exam-body">
+<p>四面体 $OABC$ において $\overrightarrow{OA}=\vec{a}$，$\overrightarrow{OB}=\vec{b}$，$\overrightarrow{OC}=\vec{c}$。辺 $AB$，$BC$，$CA$ の中点 $M$，$N$，$L$ について $\triangle MNL$ の重心を $\vec{a}$，$\vec{b}$，$\vec{c}$ で表せ。</p>
+<div class="answer-block">
+$\overrightarrow{OM}=\dfrac{\vec{a}+\vec{b}}{2}$，$\overrightarrow{ON}=\dfrac{\vec{b}+\vec{c}}{2}$，$\overrightarrow{OL}=\dfrac{\vec{c}+\vec{a}}{2}$<br>
+重心 $G=\dfrac{\overrightarrow{OM}+\overrightarrow{ON}+\overrightarrow{OL}}{3}=\dfrac{\vec{a}+\vec{b}+\vec{c}}{3}$（$\triangle ABC$ の重心と一致）
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>問題8　面積と体積（東大レベル）</span><span class="etag tag-int">積分</span></div>
+<div class="exam-body">
+<p>$x>0$ において $y=xe^{-x}$ と $x$ 軸の囲む面積 $S$ を求め，その図形を $x$ 軸回りに回転した体積 $V$ を求めよ。</p>
+<div class="answer-block">
+$S=\displaystyle\int_0^\infty xe^{-x}\,dx=\Big[-xe^{-x}\Big]_0^\infty+\int_0^\infty e^{-x}\,dx=0+1=\boldsymbol{1}$<br><br>
+$V=\pi\displaystyle\int_0^\infty x^2 e^{-2x}\,dx$。$u=2x$ 置換：$=\dfrac{\pi}{8}\int_0^\infty u^2 e^{-u}\,du=\dfrac{\pi}{8}\Gamma(3)=\dfrac{\pi}{8}\cdot 2!=\boldsymbol{\dfrac{\pi}{4}}$
+</div>
+</div>
+</div>
+</div><!-- /s7-2 -->
+
+<!-- 7.3 -->
+
+<div class="section" id="s7-3">
+<h3>7.3 重要公式・定理まとめ</h3>
+<div class="sum-grid">
+  <div class="sum-card"><h4>🔑 極限の基本</h4><p>$\frac{\sin x}{x}\to 1$，$\frac{e^x-1}{x}\to 1$，$(1+\frac{1}{x})^x\to e$，はさみうち，ε-N/ε-δ</p></div>
+  <div class="sum-card"><h4>🔑 微分の核心</h4><p>積・商・合成（証明），対数微分，逆三角関数，ライプニッツ，平均値定理</p></div>
+  <div class="sum-card"><h4>🔑 積分技法</h4><p>置換・部分積分（ILATE則），三角置換，循環型，部分分数分解</p></div>
+  <div class="sum-card"><h4>🔑 面積・体積</h4><p>$\int|f-g|$，$\pi\int f^2$（$x$ 軸），$2\pi\int xf$（バウム），弧長 $\int\sqrt{1+f'^2}$</p></div>
+  <div class="sum-card"><h4>🔑 ウォリス・区分求積</h4><p>$I_n=\frac{n-1}{n}I_{n-2}$，$\frac{1}{n}\sum f(\frac{k}{n})\to\int_0^1 f$</p></div>
+  <div class="sum-card"><h4>🔑 ベクトル</h4><p>内積（成分公式証明），外積，分点，直線・平面の方程式，点と平面の距離</p></div>
+  <div class="sum-card"><h4>🔑 複素数</h4><p>極形式，ド・モアブル（帰納法証明），$n$ 乗根，$1+\omega+\cdots+\omega^{n-1}=0$</p></div>
+  <div class="sum-card"><h4>🔑 2次曲線</h4><p>楕円・双曲線の焦点定義（導出），接線公式（証明），統一極方程式</p></div>
+  <div class="sum-card"><h4>🔑 重要定理</h4><p>中間値定理（解の存在），平均値定理（不等式証明），はさみうち，ロールの定理</p></div>
+</div>
+
+<h3>7.4 入試直前チェックリスト</h3>
+<div class="important-box">
+<strong>間違いやすいポイント TOP12</strong>
+<ol class="num" style="margin-top:10px;">
+  <li>定積分の置換積分で<strong>積分範囲を変換し忘れる</strong></li>
+  <li>$\log|x|$ の絶対値を省略（$x<0$ でも積分する場合）</li>
+  <li>合成関数の微分で<strong>内側の関数の微分を掛け忘れる</strong></li>
+  <li>回転体で $(f-g)^2$ を $f^2-g^2$ と間違える（$(f-g)^2\neq f^2-g^2$）</li>
+  <li>はさみうちで上下の極限が一致することを確認しない</li>
+  <li>無限等比級数の収束条件 $|r|<1$ を確認せずに和を計算する</li>
+  <li>変曲点の候補 $f''=0$ が変曲点であるとは限らない（<strong>符号変化の確認必須</strong>）</li>
+  <li>ベクトルの等式で $\vec{a}$，$\vec{b}$ が一次独立のとき係数を比較し忘れる</li>
+  <li>複素数の偏角 $\arg z$ の範囲（$(-\pi,\pi]$ か $[0,2\pi)$）を問題に合わせる</li>
+  <li>媒介変数積分で $\dot{x}<0$ の区間の符号処理を忘れる</li>
+  <li>極方程式の面積公式 $S=\frac{1}{2}\int r^2\,d\theta$ の $\frac{1}{2}$ を忘れる</li>
+  <li>区分求積の範囲（$[0,1]$ か $[a,b]$）を間違える</li>
+</ol>
+</div>
+
+<div class="tip-box">
+<strong>入試本番の戦略：</strong><br>
+① 問題文を最後まで丁寧に読み，誘導の意図を読み取る<br>
+② 計算ミス防止：積分範囲・符号・係数を丁寧に確認<br>
+③ 証明問題は「仮定・変形・結論」を明確に書く<br>
+④ 部分点を意識し，方針・計算・答えを段階的に書く<br>
+⑤ 難問は後回しにし，確実に解ける問題から着手する
+</div>
+</div><!-- /s7-3 -->
+</div><!-- /ch7 -->
+
+</div><!-- /main-content -->
+
+<a href="#top" class="back-to-top no-print" title="トップへ">▲</a>
+
+</body>
+</html>
