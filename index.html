@@ -308,6 +308,18 @@ ol.steps{padding-left:26px;margin:9px 0;}
 ol.steps li{margin-bottom:6px;line-height:1.85;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13.5px;}
 .back-to-top{position:fixed;bottom:26px;right:26px;background:#0f1e3c;color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:transform .2s;z-index:99;}
 .back-to-top:hover{transform:translateY(-3px);}
+
+/* ====== SYMBOL INLINE MEANING ====== */
+.sym-inline-mean{
+display:block;
+font-size:10px;
+color:#1a4f8a;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-weight:600;
+letter-spacing:.03em;
+line-height:1.4;
+margin-top:2px;
+}
 </style>
 
 </head>
@@ -2037,23 +2049,23 @@ $V=\pi\displaystyle\int_0^\infty x^2 e^{-2x}\,dx$。$u=2x$ 置換：$=\dfrac{\pi
 <h3>A.1 集合・論理記号</h3>
 <div class="table-wrap"><table>
   <tr><th>記号</th><th>読み方</th><th>意味・説明</th><th>用例</th></tr>
-  <tr><td>$\in$</td><td>belong to（belongs to）</td><td>「〜の元である」「〜に属する」</td><td>$x\in A$：$x$ は集合 $A$ の元</td></tr>
-  <tr><td>$\notin$</td><td>does not belong to</td><td>「〜に属さない」</td><td>$0\notin\mathbb{N}$（自然数の定義による）</td></tr>
-  <tr><td>$\subset$</td><td>subset of</td><td>「〜の部分集合」（$A\subset B$：$A$ のすべての元が $B$ に含まれる）</td><td>$\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\subset\mathbb{C}$</td></tr>
-  <tr><td>$\cup$</td><td>union</td><td>和集合：$A\cup B=\{x\mid x\in A\text{ または }x\in B\}$</td><td>$A\cup B$</td></tr>
-  <tr><td>$\cap$</td><td>intersection</td><td>積集合（共通部分）：$A\cap B=\{x\mid x\in A\text{ かつ }x\in B\}$</td><td>$A\cap B$</td></tr>
-  <tr><td>$\emptyset$</td><td>empty set</td><td>空集合：元を一つも含まない集合</td><td>$A\cap B=\emptyset$（互いに素）</td></tr>
-  <tr><td>$\overline{A}$（または $A^c$）</td><td>complement of $A$</td><td>$A$ の補集合（全体集合 $U$ に対して $U\setminus A$）</td><td>$\overline{A}=\{x\in U\mid x\notin A\}$</td></tr>
-  <tr><td>$\Rightarrow$</td><td>implies</td><td>「ならば」（含意）：$P\Rightarrow Q$ は「$P$ が真なら $Q$ も真」</td><td>$x>1\Rightarrow x^2>1$</td></tr>
-  <tr><td>$\Leftrightarrow$</td><td>if and only if（iff）</td><td>「同値」：$P\Leftrightarrow Q$ は $P\Rightarrow Q$ かつ $Q\Rightarrow P$</td><td>$x^2=1\Leftrightarrow x=\pm1$</td></tr>
-  <tr><td>$\forall$</td><td>for all（任意の）</td><td>全称量化子：「すべての〜について」</td><td>$\forall\varepsilon>0,\,\exists N\in\mathbb{N}$</td></tr>
-  <tr><td>$\exists$</td><td>there exists（存在する）</td><td>存在量化子：「〜が存在して」</td><td>$\exists c\in(a,b)$</td></tr>
-  <tr><td>$\mathbb{N}$</td><td>natural numbers</td><td>自然数全体の集合 $\{1,2,3,\ldots\}$（または $\{0,1,2,\ldots\}$）</td><td>$n\in\mathbb{N}$</td></tr>
-  <tr><td>$\mathbb{Z}$</td><td>integers</td><td>整数全体の集合 $\{\ldots,-2,-1,0,1,2,\ldots\}$（Zahlの頭文字）</td><td>$k\in\mathbb{Z}$</td></tr>
-  <tr><td>$\mathbb{Q}$</td><td>rational numbers</td><td>有理数全体（Quotientの頭文字）</td><td>$\frac{p}{q}\in\mathbb{Q}$</td></tr>
-  <tr><td>$\mathbb{R}$</td><td>real numbers</td><td>実数全体の集合</td><td>$x\in\mathbb{R}$</td></tr>
-  <tr><td>$\mathbb{C}$</td><td>complex numbers</td><td>複素数全体の集合</td><td>$z\in\mathbb{C}$</td></tr>
-  <tr><td>$\overset{\text{定義}}{\Longleftrightarrow}$（または $:=$）</td><td>defined as</td><td>「定義によって等しい・同値」</td><td>$\sup S\overset{\text{def}}{=}$ 上限</td></tr>
+  <tr><td>$\in$<br><small class="sym-inline-mean">（〜は〜の元）</small></td><td>belong to（belongs to）</td><td>「〜の元である」「〜に属する」</td><td>$x\in A$：$x$ は集合 $A$ の元</td></tr>
+  <tr><td>$\notin$<br><small class="sym-inline-mean">（〜に属さない）</small></td><td>does not belong to</td><td>「〜に属さない」</td><td>$0\notin\mathbb{N}$（自然数の定義による）</td></tr>
+  <tr><td>$\subset$<br><small class="sym-inline-mean">（部分集合）</small></td><td>subset of</td><td>「〜の部分集合」（$A\subset B$：$A$ のすべての元が $B$ に含まれる）</td><td>$\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\subset\mathbb{C}$</td></tr>
+  <tr><td>$\cup$<br><small class="sym-inline-mean">（和集合）</small></td><td>union</td><td>和集合：$A\cup B=\{x\mid x\in A\text{ または }x\in B\}$</td><td>$A\cup B$</td></tr>
+  <tr><td>$\cap$<br><small class="sym-inline-mean">（共通部分）</small></td><td>intersection</td><td>積集合（共通部分）：$A\cap B=\{x\mid x\in A\text{ かつ }x\in B\}$</td><td>$A\cap B$</td></tr>
+  <tr><td>$\emptyset$<br><small class="sym-inline-mean">（空集合）</small></td><td>empty set</td><td>空集合：元を一つも含まない集合</td><td>$A\cap B=\emptyset$（互いに素）</td></tr>
+  <tr><td>$\overline{A}$（または $A^c$）<br><small class="sym-inline-mean">（補集合）</small></td><td>complement of $A$</td><td>$A$ の補集合（全体集合 $U$ に対して $U\setminus A$）</td><td>$\overline{A}=\{x\in U\mid x\notin A\}$</td></tr>
+  <tr><td>$\Rightarrow$<br><small class="sym-inline-mean">（ならば）</small></td><td>implies</td><td>「ならば」（含意）：$P\Rightarrow Q$ は「$P$ が真なら $Q$ も真」</td><td>$x>1\Rightarrow x^2>1$</td></tr>
+  <tr><td>$\Leftrightarrow$<br><small class="sym-inline-mean">（同値・必要十分）</small></td><td>if and only if（iff）</td><td>「同値」：$P\Leftrightarrow Q$ は $P\Rightarrow Q$ かつ $Q\Rightarrow P$</td><td>$x^2=1\Leftrightarrow x=\pm1$</td></tr>
+  <tr><td>$\forall$<br><small class="sym-inline-mean">（すべての〜）</small></td><td>for all（任意の）</td><td>全称量化子：「すべての〜について」</td><td>$\forall\varepsilon>0,\,\exists N\in\mathbb{N}$</td></tr>
+  <tr><td>$\exists$<br><small class="sym-inline-mean">（〜が存在する）</small></td><td>there exists（存在する）</td><td>存在量化子：「〜が存在して」</td><td>$\exists c\in(a,b)$</td></tr>
+  <tr><td>$\mathbb{N}$<br><small class="sym-inline-mean">（自然数全体）</small></td><td>natural numbers</td><td>自然数全体の集合 $\{1,2,3,\ldots\}$（または $\{0,1,2,\ldots\}$）</td><td>$n\in\mathbb{N}$</td></tr>
+  <tr><td>$\mathbb{Z}$<br><small class="sym-inline-mean">（整数全体）</small></td><td>integers</td><td>整数全体の集合 $\{\ldots,-2,-1,0,1,2,\ldots\}$（Zahlの頭文字）</td><td>$k\in\mathbb{Z}$</td></tr>
+  <tr><td>$\mathbb{Q}$<br><small class="sym-inline-mean">（有理数全体）</small></td><td>rational numbers</td><td>有理数全体（Quotientの頭文字）</td><td>$\frac{p}{q}\in\mathbb{Q}$</td></tr>
+  <tr><td>$\mathbb{R}$<br><small class="sym-inline-mean">（実数全体）</small></td><td>real numbers</td><td>実数全体の集合</td><td>$x\in\mathbb{R}$</td></tr>
+  <tr><td>$\mathbb{C}$<br><small class="sym-inline-mean">（複素数全体）</small></td><td>complex numbers</td><td>複素数全体の集合</td><td>$z\in\mathbb{C}$</td></tr>
+  <tr><td>$\overset{\text{定義}}{\Longleftrightarrow}$（または $:=$）<br><small class="sym-inline-mean">（定義による同値）</small></td><td>defined as</td><td>「定義によって等しい・同値」</td><td>$\sup S\overset{\text{def}}{=}$ 上限</td></tr>
 </table></div>
 </div>
 
@@ -2303,19 +2315,31 @@ var symbolAnnotations = [
   ['ε-N論法', 'ε（イプシロン）=任意の小さな正数、N=十分大きな自然数'],
   ['ε-δ論法', 'ε（イプシロン）,δ（デルタ）=任意の正数'],
   ['ε-δ', 'ε（イプシロン）,δ（デルタ）: 連続性の厳密定義'],
+  ['α-ε', 'α（アルファ）=極限値、ε（イプシロン）=任意の小さな正数'],
+  ['∀', '全称量化子：「すべての〜について」（for all）'],
+  ['∃', '存在量化子：「〜が存在して」（there exists）'],
+  ['⇒', '含意：「ならば」（implies）'],
+  ['⟺', '同値：「必要十分条件」（if and only if）'],
+  ['∈', '帰属：「〜は〜の元（要素）である」（belongs to）'],
+  ['⊂', '包含：「〜の部分集合」（subset of）'],
+  ['∪', '和集合（union）'],
+  ['∩', '積集合・共通部分（intersection）'],
+  ['∅', '空集合：要素を一つも含まない集合（empty set）'],
 ];
 
 function addSymTips() {
   // nav, headings, tip-box etc のテキストを走査してツールチップを付与
-  var selectors = ['h3', 'h4', '.nav-sub', '.nav-ch', '.tip-box', '.formula-box', '.example-box'];
+  var selectors = ['h3', 'h4', '.nav-sub', '.nav-ch', '.tip-box', '.formula-box', '.example-box', '.proof-box', '.important-box', '.note', 'p', 'li'];
   selectors.forEach(function(sel) {
     document.querySelectorAll(sel).forEach(function(el) {
       // MathJax要素を壊さないようにテキストノードのみ操作
       Array.from(el.childNodes).forEach(function(node) {
         if (node.nodeType !== 3) return; // text node only
         var text = node.textContent;
+        var matched = false;
         symbolAnnotations.forEach(function(ann) {
-          if (text.includes(ann[0])) {
+          if (!matched && text.includes(ann[0])) {
+            matched = true;
             var span = document.createElement('span');
             span.innerHTML = text.replace(
               ann[0],
