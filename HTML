@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>数学ⅢC 完全攻略テキスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script>
 MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],tags:'none'},options:{skipHtmlTags:['script','noscript','style','textarea']}};
 </script>
@@ -48,10 +51,22 @@ nav,.no-print,.back-to-top{display:none!important;}
 .section{page-break-inside:auto;}
 h3,h4{page-break-after:avoid;}
 .answer-block{page-break-inside:avoid;break-inside:avoid;}
-table{page-break-inside:avoid;}
+table{page-break-inside:avoid;break-inside:avoid;}
 .two-col,.three-col{page-break-inside:avoid;}
 a{color:inherit;text-decoration:none;}
 .chapter-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+/* ボックスの色をPDFでも保持 */
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.important-box{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.formula-box::before,.proof-box::before,.example-box::before,
+.exercise-block::before,.tip-box::before,.important-box::before{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.exam-hd{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+/* 数式のフォントサイズ調整 */
+.MathJax{font-size:100%!important;}
 }
 @media screen{.print-cover{display:none;}}
 
@@ -258,7 +273,8 @@ ol.steps li{margin-bottom:6px;line-height:1.85;font-family:var(–sans);font-siz
   <div class="nav-ch">Ch.7 入試対策</div>
   <a class="nav-sub" href="#s7-1">解法パターン集</a>
   <a class="nav-sub" href="#s7-2">精選入試問題</a>
-  <a class="nav-sub" href="#s7-3">重要公式まとめ</a>
+  <div class="nav-ch">付録</div>
+  <a class="nav-sub" href="#ch0">数学記号一覧</a>
 </nav>
 
 <div class="main-content">
@@ -291,6 +307,7 @@ ol.steps li{margin-bottom:6px;line-height:1.85;font-family:var(–sans);font-siz
     <a class="toc-card" href="#ch5"><div class="toc-num">CHAPTER 05</div><div class="toc-title">複素数平面</div><div class="toc-topics">共役・絶対値の性質（証明）· 積の偏角加法定理（証明）· ド・モアブルの定理（帰納法）· n乗根 · cos(2π/5)の値 · 図形・変換・軌跡</div></a>
     <a class="toc-card" href="#ch6"><div class="toc-num">CHAPTER 06</div><div class="toc-title">式と曲線</div><div class="toc-topics">楕円・双曲線・放物線の焦点定義（証明）· 接線公式（証明）· 統一極方程式 · 媒介変数微分 · カルジオイド面積</div></a>
     <a class="toc-card" href="#ch7"><div class="toc-num">CHAPTER 07</div><div class="toc-title">入試対策</div><div class="toc-topics">頻出解法パターン · 東大・京大・阪大・東工大レベル精選8題 · 重要公式総まとめ · 直前チェック</div></a>
+    <a class="toc-card" href="#ch0"><div class="toc-num">付録</div><div class="toc-title">数学記号一覧</div><div class="toc-topics">集合・論理 · ギリシャ文字 · 極限・微分・積分 · ベクトル・複素数 · 曲線・その他の記号</div></a>
   </div>
 </div>
 
@@ -1868,6 +1885,160 @@ $V=\pi\displaystyle\int_0^\infty x^2 e^{-2x}\,dx$。$u=2x$ 置換：$=\dfrac{\pi
 </div>
 </div><!-- /s7-3 -->
 </div><!-- /ch7 -->
+
+<!-- ============================================================
+     付録　数学記号一覧
+============================================================ -->
+
+<div class="chapter" id="ch0">
+<div class="chapter-header">
+  <div class="ch-num">付録</div>
+  <h2>数学記号一覧</h2>
+  <p>本テキストで使用する主要な数学記号の意味・読み方・用例をまとめた。記号の正確な理解は答案記述の明確さに直結する。</p>
+</div>
+
+<!-- 集合・論理 -->
+
+<div class="section" id="s0-1">
+<h3>A.1 集合・論理記号</h3>
+<table>
+  <tr><th>記号</th><th>読み方</th><th>意味・説明</th><th>用例</th></tr>
+  <tr><td>$\in$</td><td>belong to（belongs to）</td><td>「〜の元である」「〜に属する」</td><td>$x\in A$：$x$ は集合 $A$ の元</td></tr>
+  <tr><td>$\notin$</td><td>does not belong to</td><td>「〜に属さない」</td><td>$0\notin\mathbb{N}$（自然数の定義による）</td></tr>
+  <tr><td>$\subset$</td><td>subset of</td><td>「〜の部分集合」（$A\subset B$：$A$ のすべての元が $B$ に含まれる）</td><td>$\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\subset\mathbb{C}$</td></tr>
+  <tr><td>$\cup$</td><td>union</td><td>和集合：$A\cup B=\{x\mid x\in A\text{ または }x\in B\}$</td><td>$A\cup B$</td></tr>
+  <tr><td>$\cap$</td><td>intersection</td><td>積集合（共通部分）：$A\cap B=\{x\mid x\in A\text{ かつ }x\in B\}$</td><td>$A\cap B$</td></tr>
+  <tr><td>$\emptyset$</td><td>empty set</td><td>空集合：元を一つも含まない集合</td><td>$A\cap B=\emptyset$（互いに素）</td></tr>
+  <tr><td>$\overline{A}$（または $A^c$）</td><td>complement of $A$</td><td>$A$ の補集合（全体集合 $U$ に対して $U\setminus A$）</td><td>$\overline{A}=\{x\in U\mid x\notin A\}$</td></tr>
+  <tr><td>$\Rightarrow$</td><td>implies</td><td>「ならば」（含意）：$P\Rightarrow Q$ は「$P$ が真なら $Q$ も真」</td><td>$x>1\Rightarrow x^2>1$</td></tr>
+  <tr><td>$\Leftrightarrow$</td><td>if and only if（iff）</td><td>「同値」：$P\Leftrightarrow Q$ は $P\Rightarrow Q$ かつ $Q\Rightarrow P$</td><td>$x^2=1\Leftrightarrow x=\pm1$</td></tr>
+  <tr><td>$\forall$</td><td>for all（任意の）</td><td>全称量化子：「すべての〜について」</td><td>$\forall\varepsilon>0,\,\exists N\in\mathbb{N}$</td></tr>
+  <tr><td>$\exists$</td><td>there exists（存在する）</td><td>存在量化子：「〜が存在して」</td><td>$\exists c\in(a,b)$</td></tr>
+  <tr><td>$\mathbb{N}$</td><td>natural numbers</td><td>自然数全体の集合 $\{1,2,3,\ldots\}$（または $\{0,1,2,\ldots\}$）</td><td>$n\in\mathbb{N}$</td></tr>
+  <tr><td>$\mathbb{Z}$</td><td>integers</td><td>整数全体の集合 $\{\ldots,-2,-1,0,1,2,\ldots\}$（Zahlの頭文字）</td><td>$k\in\mathbb{Z}$</td></tr>
+  <tr><td>$\mathbb{Q}$</td><td>rational numbers</td><td>有理数全体（Quotientの頭文字）</td><td>$\frac{p}{q}\in\mathbb{Q}$</td></tr>
+  <tr><td>$\mathbb{R}$</td><td>real numbers</td><td>実数全体の集合</td><td>$x\in\mathbb{R}$</td></tr>
+  <tr><td>$\mathbb{C}$</td><td>complex numbers</td><td>複素数全体の集合</td><td>$z\in\mathbb{C}$</td></tr>
+  <tr><td>$\overset{\text{def}}{\Leftrightarrow}$（または $:=$）</td><td>defined as</td><td>「定義によって等しい・同値」</td><td>$\sup S\overset{\text{def}}{=}$ 上限</td></tr>
+</table>
+</div>
+
+<!-- ギリシャ文字 -->
+
+<div class="section" id="s0-2">
+<h3>A.2 ギリシャ文字</h3>
+<table>
+  <tr><th>文字</th><th>名前（英語）</th><th>読み（日本語）</th><th>数学での主な用途</th></tr>
+  <tr><td>$\alpha,\,A$</td><td>alpha</td><td>アルファ</td><td>角度・定数・実部</td></tr>
+  <tr><td>$\beta,\,B$</td><td>beta</td><td>ベータ</td><td>角度・定数</td></tr>
+  <tr><td>$\gamma,\,\Gamma$</td><td>gamma</td><td>ガンマ</td><td>$\Gamma$ 関数，角度</td></tr>
+  <tr><td>$\delta,\,\Delta$</td><td>delta</td><td>デルタ</td><td>$\delta$：ε-δ論法の差の閾値；$\Delta$：差分（$\Delta x=x_2-x_1$）</td></tr>
+  <tr><td>$\varepsilon$（または $\epsilon$）</td><td>epsilon</td><td>イプシロン</td><td>ε-N・ε-δ論法で「任意の正の数」</td></tr>
+  <tr><td>$\zeta$</td><td>zeta</td><td>ゼータ</td><td>リーマンゼータ関数 $\zeta(s)$</td></tr>
+  <tr><td>$\eta$</td><td>eta</td><td>エータ</td><td>効率・補助変数</td></tr>
+  <tr><td>$\theta,\,\Theta$</td><td>theta</td><td>シータ</td><td>角度（特に偏角・積分変数）</td></tr>
+  <tr><td>$\iota$</td><td>iota</td><td>イオタ</td><td>（稀）</td></tr>
+  <tr><td>$\kappa$</td><td>kappa</td><td>カッパ</td><td>曲率</td></tr>
+  <tr><td>$\lambda,\,\Lambda$</td><td>lambda</td><td>ラムダ</td><td>固有値・ラグランジュ乗数</td></tr>
+  <tr><td>$\mu$</td><td>mu</td><td>ミュー</td><td>平均・測度</td></tr>
+  <tr><td>$\nu$</td><td>nu</td><td>ニュー</td><td>（稀）自由度</td></tr>
+  <tr><td>$\xi$</td><td>xi</td><td>グザイ（クシー）</td><td>中間値定理の点 $\xi\in(a,b)$</td></tr>
+  <tr><td>$\pi,\,\Pi$</td><td>pi</td><td>パイ</td><td>$\pi\approx3.14159$（円周率）；$\Pi$：積記号</td></tr>
+  <tr><td>$\rho$</td><td>rho</td><td>ロー</td><td>極座標の動径 $r$（別表記）・密度</td></tr>
+  <tr><td>$\sigma,\,\Sigma$</td><td>sigma</td><td>シグマ</td><td>$\sigma$：標準偏差；$\Sigma$：和記号 $\displaystyle\sum_{k=1}^n$</td></tr>
+  <tr><td>$\tau$</td><td>tau</td><td>タウ</td><td>時定数・媒介変数</td></tr>
+  <tr><td>$\upsilon$</td><td>upsilon</td><td>ウプシロン</td><td>（稀）</td></tr>
+  <tr><td>$\phi,\,\varphi,\,\Phi$</td><td>phi</td><td>ファイ</td><td>偏角・黄金比 $\varphi=\frac{1+\sqrt5}{2}$</td></tr>
+  <tr><td>$\chi$</td><td>chi</td><td>カイ</td><td>カイ二乗分布</td></tr>
+  <tr><td>$\psi,\,\Psi$</td><td>psi</td><td>プサイ</td><td>（稀）</td></tr>
+  <tr><td>$\omega,\,\Omega$</td><td>omega</td><td>オメガ</td><td>$\omega=e^{2\pi i/n}$（1の $n$ 乗根）；$\Omega$：全体集合</td></tr>
+</table>
+</div>
+
+<!-- 極限・微分・積分 -->
+
+<div class="section" id="s0-3">
+<h3>A.3 解析学の記号</h3>
+<table>
+  <tr><th>記号</th><th>読み方</th><th>意味・説明</th><th>用例</th></tr>
+  <tr><td>$\displaystyle\lim_{x\to a}f(x)$</td><td>limit of $f(x)$ as $x$ approaches $a$</td><td>$x$ が $a$ に近づくときの $f(x)$ の極限値</td><td>$\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$</td></tr>
+  <tr><td>$\displaystyle\lim_{x\to a^+}$，$\displaystyle\lim_{x\to a^-}$</td><td>right / left limit</td><td>右極限（$a$ より大きい側から），左極限（小さい側から）</td><td>$\displaystyle\lim_{x\to 0^+}\frac{1}{x}=+\infty$</td></tr>
+  <tr><td>$f'(x)$，$\dfrac{df}{dx}$，$\dot{f}$</td><td>$f$ prime；derivative of $f$</td><td>$f$ の導関数（微分係数）。$\dot{f}$ は時間微分に多用</td><td>$(\sin x)'=\cos x$</td></tr>
+  <tr><td>$f^{(n)}(x)$，$\dfrac{d^n f}{dx^n}$</td><td>$n$-th derivative of $f$</td><td>$f$ の $n$ 次導関数</td><td>$(\sin x)^{(n)}=\sin\!\left(x+\frac{n\pi}{2}\right)$</td></tr>
+  <tr><td>$\dfrac{\partial f}{\partial x}$</td><td>partial derivative of $f$ with respect to $x$</td><td>偏微分（他の変数を定数として微分）</td><td>$f(x,y)=x^2y$ のとき $\frac{\partial f}{\partial x}=2xy$</td></tr>
+  <tr><td>$\displaystyle\int f(x)\,dx$</td><td>integral of $f(x)$ with respect to $x$</td><td>不定積分（原始関数）</td><td>$\int x^n\,dx=\frac{x^{n+1}}{n+1}+C$</td></tr>
+  <tr><td>$\displaystyle\int_a^b f(x)\,dx$</td><td>definite integral from $a$ to $b$</td><td>定積分：$a$ から $b$ までの面積（符号付き）</td><td>$\int_0^1 x\,dx=\frac{1}{2}$</td></tr>
+  <tr><td>$[F(x)]_a^b$</td><td>evaluated from $a$ to $b$</td><td>$F(b)-F(a)$</td><td>$\Big[\frac{x^2}{2}\Big]_0^1=\frac{1}{2}$</td></tr>
+  <tr><td>$\displaystyle\sum_{k=1}^{n}$</td><td>sum from $k=1$ to $n$</td><td>$k$ を 1 から $n$ まで動かした和</td><td>$\displaystyle\sum_{k=1}^n k=\frac{n(n+1)}{2}$</td></tr>
+  <tr><td>$\displaystyle\prod_{k=1}^{n}$</td><td>product from $k=1$ to $n$</td><td>$k$ を 1 から $n$ まで動かした積</td><td>$n!=\displaystyle\prod_{k=1}^n k$</td></tr>
+  <tr><td>$n!$</td><td>$n$ factorial</td><td>$n$ の階乗：$1\times2\times\cdots\times n$（$0!=1$ と定義）</td><td>$5!=120$</td></tr>
+  <tr><td>$\dbinom{n}{k}$</td><td>$n$ choose $k$（二項係数）</td><td>$\dfrac{n!}{k!(n-k)!}$</td><td>$\dbinom{5}{2}=10$</td></tr>
+  <tr><td>$\infty$</td><td>infinity</td><td>無限大（実数ではない）</td><td>$\displaystyle\lim_{n\to\infty}$，$\int_0^\infty$</td></tr>
+  <tr><td>$+\infty$，$-\infty$</td><td>positive / negative infinity</td><td>正の無限大・負の無限大</td><td>$\lim_{x\to 0^+}\log x=-\infty$</td></tr>
+  <tr><td>$|x|$</td><td>absolute value of $x$</td><td>絶対値：$|x|=x$（$x\geq0$），$-x$（$x<0$）</td><td>$|{-3}|=3$</td></tr>
+  <tr><td>$\lfloor x\rfloor$</td><td>floor of $x$</td><td>床関数（ガウス記号）：$x$ を超えない最大整数</td><td>$\lfloor 3.7\rfloor=3$</td></tr>
+  <tr><td>$\sup S$，$\inf S$</td><td>supremum / infimum</td><td>上限（最小上界）・下限（最大下界）</td><td>$\sup\{x\mid x^2<2\}=\sqrt{2}$</td></tr>
+  <tr><td>$\max$，$\min$</td><td>maximum / minimum</td><td>最大値・最小値（集合内に実際に存在する場合）</td><td>$\max\{1,3,2\}=3$</td></tr>
+</table>
+</div>
+
+<!-- ベクトル・複素数 -->
+
+<div class="section" id="s0-4">
+<h3>A.4 ベクトル・複素数の記号</h3>
+<table>
+  <tr><th>記号</th><th>読み方</th><th>意味・説明</th><th>用例</th></tr>
+  <tr><td>$\vec{a}$，$\boldsymbol{a}$</td><td>vector $a$</td><td>ベクトル（大きさと向きをもつ量）</td><td>$\vec{a}=(a_1,a_2,a_3)$</td></tr>
+  <tr><td>$\overrightarrow{AB}$</td><td>vector from $A$ to $B$</td><td>点 $A$ から点 $B$ へのベクトル</td><td>$\overrightarrow{AB}=\vec{b}-\vec{a}$</td></tr>
+  <tr><td>$|\vec{a}|$</td><td>magnitude / norm of $\vec{a}$</td><td>ベクトルの大きさ（ノルム）：$\sqrt{a_1^2+a_2^2+a_3^2}$</td><td>$|\vec{a}|=0\Leftrightarrow\vec{a}=\vec{0}$</td></tr>
+  <tr><td>$\vec{a}\cdot\vec{b}$</td><td>dot product（inner product）</td><td>内積：$|\vec{a}||\vec{b}|\cos\theta=a_1b_1+a_2b_2+a_3b_3$</td><td>$\vec{a}\perp\vec{b}\Leftrightarrow\vec{a}\cdot\vec{b}=0$</td></tr>
+  <tr><td>$\vec{a}\times\vec{b}$</td><td>cross product（outer product）</td><td>外積（空間ベクトル）：$\vec{a}$ と $\vec{b}$ に直交するベクトル</td><td>$|\vec{a}\times\vec{b}|=|\vec{a}||\vec{b}|\sin\theta$</td></tr>
+  <tr><td>$i$</td><td>imaginary unit</td><td>虚数単位：$i^2=-1$</td><td>$z=a+bi$（$a,b\in\mathbb{R}$）</td></tr>
+  <tr><td>$\bar{z}$（または $z^*$）</td><td>conjugate of $z$</td><td>複素共役：$\overline{a+bi}=a-bi$</td><td>$z\bar{z}=|z|^2$</td></tr>
+  <tr><td>$|z|$</td><td>modulus / absolute value of $z$</td><td>複素数の絶対値：$|a+bi|=\sqrt{a^2+b^2}$</td><td>$|e^{i\theta}|=1$</td></tr>
+  <tr><td>$\arg z$</td><td>argument of $z$</td><td>偏角：$z=|z|(\cos\theta+i\sin\theta)$ の $\theta$（値域 $(-\pi,\pi]$ など）</td><td>$\arg(-1)=\pi$</td></tr>
+  <tr><td>$\text{Re}(z)$，$\text{Im}(z)$</td><td>real part，imaginary part</td><td>実部・虚部：$z=a+bi$ のとき $\text{Re}(z)=a$，$\text{Im}(z)=b$</td><td>$\text{Re}(3+2i)=3$</td></tr>
+  <tr><td>$e^{i\theta}$</td><td>$e$ to the $i\theta$</td><td>オイラーの公式：$e^{i\theta}=\cos\theta+i\sin\theta$</td><td>$e^{i\pi}+1=0$</td></tr>
+</table>
+</div>
+
+<!-- その他 -->
+
+<div class="section" id="s0-5">
+<h3>A.5 曲線・その他の記号</h3>
+<table>
+  <tr><th>記号</th><th>読み方</th><th>意味・説明</th><th>用例</th></tr>
+  <tr><td>$\therefore$</td><td>therefore</td><td>「ゆえに」「したがって」（結論を導く）</td><td>$f'(x)>0\quad\therefore$ 単調増加</td></tr>
+  <tr><td>$\because$</td><td>because</td><td>「なぜなら」（理由を示す。答案には多用しない）</td><td>—</td></tr>
+  <tr><td>$\square$（または QED）</td><td>end of proof</td><td>証明の終わりを示す（「証明終」）</td><td>■</td></tr>
+  <tr><td>$\approx$</td><td>approximately equal to</td><td>近似値</td><td>$\pi\approx3.14159$</td></tr>
+  <tr><td>$\ll$，$\gg$</td><td>much less / much greater than</td><td>「ずっと小さい・大きい」（オーダー比較）</td><td>$(\log x)^\beta\ll x^\alpha$（$x\to\infty$）</td></tr>
+  <tr><td>$\sim$</td><td>asymptotically equivalent to</td><td>漸近的に等しい：$\frac{f(x)}{g(x)}\to 1$</td><td>$\log n!\sim n\log n$（スターリング）</td></tr>
+  <tr><td>$O(f)$，$o(f)$</td><td>big-O / little-o of $f$</td><td>ランダウ記号：$O(f)$ は「$f$ と同程度以下」，$o(f)$ は「$f$ より遥かに小さい」</td><td>$\sin x=x+O(x^3)$</td></tr>
+  <tr><td>$f:A\to B$</td><td>function from $A$ to $B$</td><td>集合 $A$ から $B$ への写像（関数）</td><td>$f:\mathbb{R}\to\mathbb{R}$，$f(x)=\sin x$</td></tr>
+  <tr><td>$f\circ g$</td><td>$f$ composed with $g$</td><td>合成関数：$(f\circ g)(x)=f(g(x))$</td><td>$(f\circ g)'(x)=f'(g(x))\cdot g'(x)$</td></tr>
+  <tr><td>$\perp$</td><td>perpendicular to</td><td>直交・垂直</td><td>$\vec{a}\perp\vec{b}$</td></tr>
+  <tr><td>$\parallel$</td><td>parallel to</td><td>平行</td><td>$\vec{a}\parallel\vec{b}$</td></tr>
+  <tr><td>$\triangle$</td><td>triangle</td><td>三角形</td><td>$\triangle ABC$</td></tr>
+  <tr><td>$\angle$</td><td>angle</td><td>角</td><td>$\angle AOB=\theta$</td></tr>
+  <tr><td>$r,\theta$（極座標）</td><td>$r$, theta</td><td>極座標：$x=r\cos\theta$，$y=r\sin\theta$（$r\geq0$，$\theta\in[0,2\pi)$）</td><td>$r=1+\cos\theta$（カルジオイド）</td></tr>
+  <tr><td>$\mathrm{d}s$</td><td>arc length element</td><td>弧長要素：$ds=\sqrt{dx^2+dy^2}=\sqrt{1+f'^2}\,dx$</td><td>$L=\displaystyle\int_a^b ds$</td></tr>
+  <tr><td>$\binom{n}{k}$</td><td>binomial coefficient</td><td>二項係数：$\dfrac{n!}{k!(n-k)!}$</td><td>$(1+x)^n=\displaystyle\sum_{k=0}^n\binom{n}{k}x^k$</td></tr>
+  <tr><td>$\Gamma(n)$</td><td>Gamma function</td><td>$\Gamma$ 関数：$\Gamma(n)=(n-1)!$（$n\in\mathbb{N}$），$\Gamma(n+1)=n\Gamma(n)$</td><td>$\Gamma\!\left(\frac{1}{2}\right)=\sqrt{\pi}$</td></tr>
+  <tr><td>$\log$（または $\ln$）</td><td>logarithm（natural log）</td><td>高校・大学数学では $\log=\log_e$（自然対数）が原則</td><td>$\log e=1$，$\log 1=0$</td></tr>
+  <tr><td>$\arcsin$，$\arccos$，$\arctan$（または $\sin^{-1}$ など）</td><td>inverse sine/cosine/tangent</td><td>逆三角関数：$\arcsin x$ の値域は $[-\frac{\pi}{2},\frac{\pi}{2}]$</td><td>$\arctan 1=\frac{\pi}{4}$</td></tr>
+</table>
+
+<div class="tip-box">
+<strong>答案作成上の注意：</strong><br>
+① $\log$ は特に断りがなければ自然対数 $\log_e$（$\ln$）を指す。常用対数を使う場合は $\log_{10}$ と明記する。<br>
+② $\therefore$ は答案中で多用してよいが，$\because$ は「なぜなら」を文章で書くほうが採点者に伝わりやすい。<br>
+③ $\vec{a}$ はボールドの $\boldsymbol{a}$ と同義。手書きでは上矢印付き $\vec{a}$ が標準的。<br>
+④ 偏角 $\arg z$ の値域は問題の指示に従う（$(-\pi,\pi]$，$[0,2\pi)$ など）。<br>
+⑤ $\sup$ と $\max$ の違い：$\sup$ は集合の外にある場合もある（例：開区間 $(0,1)$ の $\sup=1$ だが $\max$ は存在しない）。
+</div>
+</div>
+</div><!-- /ch0 -->
 
 </div><!-- /main-content -->
 
