@@ -2044,5 +2044,14 @@ $V=\pi\displaystyle\int_0^\infty x^2 e^{-2x}\,dx$。$u=2x$ 置換：$=\dfrac{\pi
 
 <a href="#top" class="back-to-top no-print" title="トップへ">▲</a>
 
+<script>
+// MathJaxが非同期ロード後に全要素を確実に処理する
+window.addEventListener('load', function() {
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise();
+  }
+});
+</script>
+
 </body>
 </html>
