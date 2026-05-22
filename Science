@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>高校化学 完全攻略テキスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- MathJax config removed: formulas converted to MathML -->
+
+<style>
+/* ====== VARIABLES ====== */
+:root{
+  --ink:#0f1e3c; --ink2:#1a3255; --paper:#faf8f4; --warm:#f5f0e8;
+  --rule:#d4cbb8; --accent:#9b1b4b; --blue:#1a4f8a; --green:#145f3a;
+  --gold:#c9870c; --purple:#5c2d8e; --orange:#b94a00;
+  --proof-bg:#edf6fb; --proof-bd:#1e7abf;
+  --form-bg:#fef9e7; --form-bd:#d4890a;
+  --ex-bg:#f0fdf4; --ex-bd:#1a8a4a;
+  --pr-bg:#fdf3ff; --pr-bd:#7e22ce;
+  --tip-bg:#f0f9ff; --tip-bd:#0284c7;
+  --warn-bg:#fff1f2; --warn-bd:#be123c;
+  --exam-bg:#fff8f0; --exam-bd:#b94a00;
+  --serif:'Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic Pro',sans-serif;
+}
+
+/* ====== RESET ====== */
+*{box-sizing:border-box;margin:0;padding:0;}html,body{overflow-x:hidden;max-width:100%;}
+html{font-size:15px;}
+body{font-family:‘Noto Serif JP’,Georgia,serif;background:#faf8f4;color:#0f1e3c;line-height:1.9;}
+p{margin-bottom:11px;}
+strong{font-weight:700;}
+
+/* ====== PAGE / PRINT ====== */
+@page{size:A4;margin:18mm 16mm 18mm 16mm;}
+@media print{
+html{font-size:11px;}
+body{background:#fff;}
+nav,.no-print,.back-to-top{display:none!important;}
+.main-content{margin-left:0!important;}
+.chapter{page-break-before:always;padding:0 0 24px;}
+.chapter:first-of-type{page-break-before:avoid;}
+.print-cover{display:flex!important;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.toc-section{page-break-after:always;}
+.formula-box,.proof-box,.example-box,.exercise-block,.exam-card,.tip-box,.important-box{page-break-inside:avoid;break-inside:avoid;}
+.section{page-break-inside:auto;}
+h3,h4{page-break-after:avoid;}
+.answer-block{page-break-inside:avoid;break-inside:avoid;}
+table{page-break-inside:avoid;break-inside:avoid;}
+.two-col,.three-col{page-break-inside:avoid;}
+a{color:inherit;text-decoration:none;}
+.chapter-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.important-box{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.formula-box::before,.proof-box::before,.example-box::before,
+.exercise-block::before,.tip-box::before,.important-box::before{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.exam-hd{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.MathJax{font-size:100%!important;}
+}
+@media screen{.print-cover{display:none;}}
+
+/* ====== PRINT COVER ====== */
+.print-cover{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 55%,#1a4f8a 100%);
+color:#fff;min-height:100vh;flex-direction:column;align-items:center;
+justify-content:center;text-align:center;padding:80px 56px;
+}
+.print-cover h1{font-size:3.2rem;font-weight:300;letter-spacing:0.12em;margin-bottom:10px;}
+.print-cover h1 span{font-weight:700;color:#f0c040;}
+.print-cover .cv-sub{font-size:1rem;opacity:.65;letter-spacing:.3em;margin-bottom:44px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.print-cover .cv-chs{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:44px;}
+.print-cover .cv-ch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 16px;border-radius:20px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13px;}
+.print-cover .cv-note{font-size:11.5px;opacity:.45;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;letter-spacing:.1em;}
+
+/* ====== NAV TOGGLE BUTTON ====== */
+#nav-toggle-btn{
+position:fixed;top:13px;left:14px;z-index:400;
+background:#0f1e3c;color:#f0c040;
+border:1.5px solid rgba(240,192,64,.4);
+padding:7px 15px 7px 11px;border-radius:7px;cursor:pointer;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:12.5px;font-weight:700;letter-spacing:.04em;
+display:flex;align-items:center;gap:8px;
+box-shadow:0 2px 14px rgba(0,0,0,.4);transition:background .2s;
+user-select:none;
+}
+#nav-toggle-btn:hover{background:#1a3255;}
+#nav-toggle-btn .tgl-icon{font-size:17px;line-height:1;transition:transform .38s cubic-bezier(.4,0,.2,1);display:inline-block;}
+#nav-toggle-btn.open .tgl-icon{transform:rotate(90deg);}
+
+/* ====== NAV ====== */
+nav{
+position:fixed;top:0;left:0;width:100%;
+max-height:0;overflow:hidden;
+transition:max-height .45s cubic-bezier(.4,0,.2,1);
+background:#0f1e3c;color:#ccc;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:11.5px;z-index:350;
+box-shadow:0 6px 36px rgba(0,0,0,.5);
+}
+nav.nav-open{max-height:82vh;overflow-y:auto;}
+.nav-inner{
+padding:56px 24px 24px;
+display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 28px;
+}
+.nav-col{flex:0 0 auto;min-width:158px;max-width:210px;margin-bottom:12px;}
+.nav-title{
+color:#fff;font-weight:700;font-size:13px;
+padding:0 0 9px;border-bottom:1px solid rgba(255,255,255,.12);
+margin-bottom:6px;letter-spacing:.06em;display:block;
+}
+nav a{display:block;color:#8ab;text-decoration:none;padding:3px 0 3px 8px;transition:all .18s;border-left:2px solid transparent;}
+nav a:hover{color:#fff;border-left-color:#f0c040;padding-left:14px;}
+.nav-ch{color:#f0c040;font-weight:700;margin-top:10px;margin-bottom:3px;font-size:11px;letter-spacing:.06em;}
+.nav-col .nav-ch:first-child{margin-top:0;}
+.nav-sub{font-size:10.5px;color:#678;padding-left:14px!important;}
+.nav-sub:hover{color:#acd;}
+#nav-overlay{
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.38);z-index:200;
+}
+#nav-overlay.active{display:block;}
+
+/* ====== SYMBOL TOOLTIP ====== */
+.sym-tip{
+position:relative;display:inline;cursor:help;
+border-bottom:1px dashed rgba(26,79,138,.55);
+}
+.sym-tip::after{
+content:attr(data-tip);
+position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
+background:#1a3255;color:#ddeeff;
+font-size:11px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-weight:400;line-height:1.6;
+padding:5px 10px;border-radius:6px;white-space:nowrap;
+box-shadow:0 3px 14px rgba(0,0,0,.35);
+opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;
+}
+.sym-tip::before{
+content:’’;position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);
+border:5px solid transparent;border-top-color:#1a3255;
+opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;
+}
+.sym-tip:hover::after,.sym-tip:hover::before{opacity:1;}
+
+/* Symbol guide floating panel */
+#sym-guide-btn{
+position:fixed;bottom:80px;right:24px;z-index:150;
+background:#1a4f8a;color:#fff;border:none;
+width:44px;height:44px;border-radius:50%;cursor:pointer;
+font-size:19px;box-shadow:0 2px 12px rgba(0,0,0,.3);
+transition:transform .2s,background .2s;
+display:flex;align-items:center;justify-content:center;
+}
+#sym-guide-btn:hover{background:#0f1e3c;transform:scale(1.1);}
+#sym-guide-panel{
+position:fixed;bottom:134px;right:24px;z-index:150;
+width:330px;max-height:430px;overflow-y:auto;
+background:#fff;border:1.5px solid #d4cbb8;border-radius:10px;
+box-shadow:0 8px 36px rgba(0,0,0,.18);
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:12px;line-height:1.7;display:none;
+}
+#sym-guide-panel.open{display:block;}
+.sg-hd{
+background:#0f1e3c;color:#fff;padding:10px 16px;border-radius:8px 8px 0 0;
+font-weight:700;font-size:13px;letter-spacing:.04em;
+display:flex;align-items:center;justify-content:space-between;
+}
+.sg-hd button{background:none;border:none;color:#aaa;cursor:pointer;font-size:18px;line-height:1;padding:0;}
+.sg-hd button:hover{color:#fff;}
+.sg-body{padding:12px 14px;}
+.sg-sec{margin-bottom:14px;}
+.sg-sec-title{color:#1a4f8a;font-size:11px;font-weight:700;letter-spacing:.08em;
+border-bottom:1px solid #e0dbd0;padding-bottom:4px;margin-bottom:6px;}
+.sg-row{display:grid;grid-template-columns:56px 80px 1fr;gap:4px;align-items:baseline;padding:2px 0;}
+.sg-sym{font-size:14px;color:#0f1e3c;font-weight:700;}
+.sg-read{color:#9b1b4b;font-size:11px;}
+.sg-mean{color:#444;font-size:10.5px;}
+
+/* ====== LAYOUT ====== */
+.main-content{margin-left:0;width:100%;overflow-x:hidden;}
+@media(max-width:900px){.main-content{margin-left:0;width:100%;}}
+
+/* ====== HEADER ====== */
+.header-banner{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 50%,#16325e 100%);
+color:#fff;padding:40px 40px 34px;position:relative;overflow:hidden;
+}
+.header-banner::before{content:’’;position:absolute;top:-50px;right:-50px;width:280px;height:280px;border:1px solid rgba(255,255,255,.04);border-radius:50%;}
+.header-banner h1{font-size:2.5em;font-weight:300;letter-spacing:.08em;margin-bottom:8px;}
+.header-banner h1 span{font-weight:700;color:#f0c040;}
+.header-banner p{color:rgba(255,255,255,.55);font-size:13px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.hd-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+.hd-badge{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);padding:3px 11px;border-radius:16px;font-size:12px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+
+/* ====== TOC ====== */
+.toc-section{padding:36px 40px;border-bottom:2px solid #d4cbb8;}
+.toc-section h2{font-size:1.6em;margin-bottom:24px;border-bottom:2px solid #0f1e3c;padding-bottom:9px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.toc-card{border:1.5px solid #d4cbb8;border-radius:8px;padding:16px;text-decoration:none;color:inherit;display:block;transition:all .2s;}
+.toc-card:hover{border-color:#1a4f8a;transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08);}
+.toc-num{font-size:10.5px;color:#9b1b4b;font-weight:700;letter-spacing:.1em;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.toc-title{font-size:1.15em;font-weight:700;margin:4px 0 8px;}
+.toc-topics{font-size:11.5px;color:#666;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;line-height:1.7;}
+
+/* ====== CHAPTER ====== */
+.chapter{padding:0 40px 40px;border-bottom:2px solid #d4cbb8;}
+.chapter-header{padding:42px 0 24px;border-bottom:3px solid #0f1e3c;margin-bottom:28px;}
+.ch-num{font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:11px;font-weight:600;color:#9b1b4b;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.chapter-header h2{font-size:2em;font-weight:600;letter-spacing:.03em;line-height:1.3;}
+.chapter-header p{margin-top:9px;color:#555;font-size:13.5px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;max-width:640px;}
+
+/* ====== SECTIONS ====== */
+.section{margin-bottom:38px;}
+h3{font-size:1.2em;font-weight:700;color:#1a4f8a;border-left:4px solid #1a4f8a;padding-left:12px;margin:30px 0 14px;}
+h4{font-size:1.02em;font-weight:700;color:#0f1e3c;margin:18px 0 9px;padding-bottom:3px;border-bottom:1px dashed #d4cbb8;}
+.section-sep{border:none;border-top:1px dashed #d4cbb8;margin:22px 0;}
+
+/* ====== BOX BASE ====== */
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.exam-card,.important-box{
+border-radius:7px;padding:18px 22px;margin:16px 0;position:relative;
+}
+/* FORMULA */
+.formula-box{background:#fef9e7;border:1.5px solid #d4890a;border-left:5px solid #d4890a;}
+.formula-box::before{content:‘公式’;position:absolute;top:-10px;left:14px;background:#d4890a;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.08em;}
+.formula-box.theorem::before{content:‘法則’;background:#1a4f8a;}
+.formula-box.definition::before{content:‘定義’;background:#9b1b4b;}
+.formula-box.important::before{content:‘重要’;background:#b91c1c;}
+.formula-box.reaction::before{content:‘反応式’;background:#145f3a;}
+/* PROOF → 導出 */
+.proof-box{background:#edf6fb;border:1.5px solid #1e7abf;border-left:5px solid #1e7abf;}
+.proof-box::before{content:‘導出’;position:absolute;top:-10px;left:14px;background:#1e7abf;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAMPLE */
+.example-box{background:#f0fdf4;border:1.5px solid #1a8a4a;border-left:5px solid #1a8a4a;}
+.example-box::before{content:‘例題’;position:absolute;top:-10px;left:14px;background:#1a8a4a;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXERCISE */
+.exercise-block{background:#fdf3ff;border:1.5px solid #7e22ce;border-left:5px solid #7e22ce;}
+.exercise-block::before{content:‘練習’;position:absolute;top:-10px;left:14px;background:#7e22ce;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* TIP */
+.tip-box{background:#f0f9ff;border:1.5px solid #0284c7;border-left:5px solid #0284c7;}
+.tip-box::before{content:‘POINT’;position:absolute;top:-10px;left:14px;background:#0284c7;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.06em;}
+/* IMPORTANT */
+.important-box{background:#fff1f2;border:1.5px solid #be123c;border-left:5px solid #be123c;}
+.important-box::before{content:‘注意’;position:absolute;top:-10px;left:14px;background:#be123c;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAM CARD */
+.exam-card{border:2px solid #1a3255;border-radius:8px;overflow:hidden;margin:18px 0;background:#fff;}
+.exam-hd{background:linear-gradient(90deg,#0f1e3c,#1a3255);color:#fff;padding:10px 17px;display:flex;justify-content:space-between;align-items:center;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13px;font-weight:600;}
+.exam-body{padding:18px 20px;}
+.etag{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.tag-thm{background:#fde68a;color:#78350f;}
+.tag-eq{background:#a8e6cf;color:#145f3a;}
+.tag-org{background:#fca5a5;color:#7f1d1d;}
+.tag-inorg{background:#bfdbfe;color:#1e3a5f;}
+.tag-calc{background:#f4a261;color:#fff;}
+.tag-rxn{background:#c4b5fd;color:#3b0764;}
+
+/* ====== ANSWER BLOCK ====== */
+.answer-block{background:#fefefe;border:1px dashed #aaa;border-radius:6px;padding:13px 17px;margin-top:12px;}
+.answer-block::before{content:‘解答’;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;color:#777;display:block;margin-bottom:5px;letter-spacing:.1em;}
+
+/* ====== TABLE ====== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;margin:14px 0;}
+table{border-collapse:collapse;width:100%;font-size:13px;border:1px solid #b0a090;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;min-width:auto;}
+th{background:#0f1e3c;color:#fff;padding:8px 12px;text-align:center;font-weight:500;letter-spacing:.04em;}
+td{padding:7px 12px;border:1px solid #b0a090;text-align:center;vertical-align:middle;}
+tr:nth-child(even) td{background:#f5f0e8;}
+
+/* ====== GRID ====== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;}
+@media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr;}}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0;}
+.sum-card{background:#fff;border:1.5px solid #d4cbb8;border-radius:8px;padding:14px 16px;}
+.sum-card h4{font-size:13px;margin-bottom:7px;border:none;padding:0;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.sum-card p{font-size:12.5px;color:#444;margin:0;line-height:1.7;}
+
+/* ====== MISC ====== */
+.hl{background:#fef3d0;padding:1px 3px;border-radius:2px;}
+.red{color:#b91c1c;font-weight:700;}
+.blue{color:#1a4f8a;font-weight:700;}
+.green{color:#145f3a;font-weight:700;}
+.note{background:#f8f9fa;border-left:4px solid #adb5bd;padding:10px 15px;margin:12px 0;font-size:13px;color:#555;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;border-radius:0 5px 5px 0;}
+.lv{font-size:10px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:9px;margin-left:7px;vertical-align:middle;}
+.lv-b{background:#d1fae5;color:#065f46;}
+.lv-m{background:#fef9c3;color:#713f12;}
+.lv-a{background:#fce7f3;color:#9d174d;}
+.lv-e{background:#ede9fe;color:#4c1d95;}
+ul.bullet,ol.num{padding-left:22px;margin:9px 0;}
+ul.bullet li,ol.num li{margin-bottom:5px;line-height:1.85;}
+ol.steps{padding-left:26px;margin:9px 0;}
+ol.steps li{margin-bottom:6px;line-height:1.85;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13.5px;}
+.back-to-top{position:fixed;bottom:26px;right:26px;background:#0f1e3c;color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:transform .2s;z-index:99;}
+.back-to-top:hover{transform:translateY(-3px);}
+/* 化学式インライン強調 */
+.chem{font-family:‘Noto Sans JP’,monospace;font-weight:600;color:#145f3a;}
+</style>
+
+<style>
+.math-inline { font-style: italic; }
+.math-display { display: block; text-align: center; margin: 1em 0; font-style: italic; }
+.ce-formula { font-style: normal; }
+</style>
+
+</head>
+<body>
+
+<!-- PRINT COVER -->
+
+<div class="print-cover">
+  <h1>高校化学 <span>完全攻略テキスト</span></h1>
+  <div class="cv-sub">COMPLETE HIGH SCHOOL CHEMISTRY STUDY GUIDE</div>
+  <div class="cv-chs">
+    <span class="cv-ch">第1章 物質の構成</span>
+    <span class="cv-ch">第2章 化学結合</span>
+    <span class="cv-ch">第3章 物質量と計算</span>
+    <span class="cv-ch">第4章 酸・塩基</span>
+    <span class="cv-ch">第5章 酸化還元</span>
+    <span class="cv-ch">第6章 熱化学・平衡</span>
+    <span class="cv-ch">第7章 無機化学</span>
+    <span class="cv-ch">第8章 有機化学</span>
+    <span class="cv-ch">第9章 入試対策</span>
+  </div>
+  <div class="cv-note">法則の導出 · 例題 · 類題 · 入試問題 ― 化学基礎から難関大学レベルまで完全網羅</div>
+</div>
+
+<!-- NAVIGATION TOGGLE BUTTON -->
+
+<button id="nav-toggle-btn" class="no-print" aria-label="目次を開く/閉じる">
+  <span class="tgl-icon">▶</span> 目次
+</button>
+<div id="nav-overlay" class="no-print"></div>
+
+<!-- NAVIGATION -->
+
+<nav class="no-print" id="top">
+<div class="nav-inner">
+
+  <div class="nav-col">
+    <span class="nav-title">高校化学 完全攻略</span>
+    <a href="#toc" style="color:#f0c040;font-weight:600;">▸ 目次ページへ</a>
+    <div class="nav-ch" style="margin-top:14px;">Ch.1 物質の構成</div>
+    <a class="nav-sub" href="#s1-1">元素・原子・同位体</a>
+    <a class="nav-sub" href="#s1-2">電子配置と周期表</a>
+    <a class="nav-sub" href="#s1-3">練習問題</a>
+    <div class="nav-ch">Ch.2 化学結合</div>
+    <a class="nav-sub" href="#s2-1">イオン結合・共有結合</a>
+    <a class="nav-sub" href="#s2-2">分子の形・極性・水素結合</a>
+    <a class="nav-sub" href="#s2-3">金属結合・結晶の分類</a>
+    <a class="nav-sub" href="#s2-4">練習問題</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.3 物質量と計算</div>
+    <a class="nav-sub" href="#s3-1">原子量・分子量・mol</a>
+    <a class="nav-sub" href="#s3-2">化学反応式の量的関係</a>
+    <a class="nav-sub" href="#s3-3">溶液の濃度</a>
+    <a class="nav-sub" href="#s3-4">練習問題</a>
+    <div class="nav-ch">Ch.4 酸・塩基</div>
+    <a class="nav-sub" href="#s4-1">酸・塩基の定義とpH</a>
+    <a class="nav-sub" href="#s4-2">中和反応と塩</a>
+    <a class="nav-sub" href="#s4-3">中和滴定</a>
+    <a class="nav-sub" href="#s4-4">練習問題</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.5 酸化還元</div>
+    <a class="nav-sub" href="#s5-1">酸化数と酸化還元の定義</a>
+    <a class="nav-sub" href="#s5-2">半反応式と酸化還元反応式</a>
+    <a class="nav-sub" href="#s5-3">電池と電気分解</a>
+    <a class="nav-sub" href="#s5-4">練習問題</a>
+    <div class="nav-ch">Ch.6 熱化学・化学平衡</div>
+    <a class="nav-sub" href="#s6-1">反応エンタルピーとヘスの法則</a>
+    <a class="nav-sub" href="#s6-2">化学平衡と平衡定数</a>
+    <a class="nav-sub" href="#s6-3">ルシャトリエの原理</a>
+    <a class="nav-sub" href="#s6-4">練習問題</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.7 無機化学</div>
+    <a class="nav-sub" href="#s7-1">典型元素の性質と反応</a>
+    <a class="nav-sub" href="#s7-2">遷移元素・金属イオンの確認</a>
+    <a class="nav-sub" href="#s7-3">練習問題</a>
+    <div class="nav-ch">Ch.8 有機化学</div>
+    <a class="nav-sub" href="#s8-1">有機化合物の分類と命名</a>
+    <a class="nav-sub" href="#s8-2">脂肪族化合物</a>
+    <a class="nav-sub" href="#s8-3">芳香族化合物</a>
+    <a class="nav-sub" href="#s8-4">高分子化合物</a>
+    <a class="nav-sub" href="#s8-5">練習問題</a>
+    <div class="nav-ch">Ch.9 入試対策</div>
+    <a class="nav-sub" href="#s9-1">解法パターン集</a>
+    <a class="nav-sub" href="#s9-2">精選入試問題</a>
+    <div class="nav-ch">付録</div>
+    <a class="nav-sub" href="#ch0">化学記号・周期表一覧</a>
+  </div>
+
+</div>
+</nav>
+
+<div class="main-content">
+
+<!-- HEADER -->
+
+<div class="header-banner no-print">
+  <h1>高校化学 <span>完全攻略テキスト</span></h1>
+  <p>法則の導出 · 例題 · 類題 · 入試問題 ― 化学基礎から難関大学レベルまで完全網羅</p>
+  <div class="hd-badges">
+    <span class="hd-badge">第1章 物質の構成</span>
+    <span class="hd-badge">第2章 化学結合</span>
+    <span class="hd-badge">第3章 物質量と計算</span>
+    <span class="hd-badge">第4章 酸・塩基</span>
+    <span class="hd-badge">第5章 酸化還元</span>
+    <span class="hd-badge">第6章 熱化学・平衡</span>
+    <span class="hd-badge">第7章 無機化学</span>
+    <span class="hd-badge">第8章 有機化学</span>
+    <span class="hd-badge">第9章 入試対策</span>
+  </div>
+</div>
+
+<!-- TOC -->
+
+<div class="toc-section no-print" id="toc">
+  <h2>目次</h2>
+  <div class="toc-grid">
+    <a class="toc-card" href="#ch1"><div class="toc-num">CHAPTER 01</div><div class="toc-title">物質の構成</div><div class="toc-topics">元素と原子 · 同位体と相対質量 · 電子配置とオクテット則 · 周期表のグループと周期 · 価電子</div></a>
+    <a class="toc-card" href="#ch2"><div class="toc-num">CHAPTER 02</div><div class="toc-title">化学結合</div><div class="toc-topics">イオン結合 · 共有結合と電子式 · 分子の形とVSEPR · 電気陰性度と極性 · 水素結合 · 金属結合 · 結晶の分類</div></a>
+    <a class="toc-card" href="#ch3"><div class="toc-num">CHAPTER 03</div><div class="toc-title">物質量と化学計算</div><div class="toc-topics">アボガドロ定数とmol · 化学反応式の量的関係 · 気体の状態方程式 · モル濃度・質量パーセント濃度 · 混合気体</div></a>
+    <a class="toc-card" href="#ch4"><div class="toc-num">CHAPTER 04</div><div class="toc-title">酸・塩基と中和</div><div class="toc-topics">アレニウス・ブレンステッド定義 · pH計算 · 弱酸・弱塩基の電離平衡 · 中和反応と塩の加水分解 · 中和滴定曲線</div></a>
+    <a class="toc-card" href="#ch5"><div class="toc-num">CHAPTER 05</div><div class="toc-title">酸化還元</div><div class="toc-topics">酸化数の決定規則 · 半反応式の作り方 · イオン化傾向 · ダニエル電池・鉛蓄電池 · ファラデーの法則</div></a>
+    <a class="toc-card" href="#ch6"><div class="toc-num">CHAPTER 06</div><div class="toc-title">熱化学・化学平衡</div><div class="toc-topics">生成エンタルピー · ヘスの法則（導出）· 結合エネルギー · 平衡定数Kc · ルシャトリエの原理 · Kpとの変換</div></a>
+    <a class="toc-card" href="#ch7"><div class="toc-num">CHAPTER 07</div><div class="toc-title">無機化学</div><div class="toc-topics">1・2族 · ハロゲン · 硫黄・窒素・リン · 炭素・ケイ素 · 鉄・銅・アルミニウム · 金属イオンの系統分離</div></a>
+    <a class="toc-card" href="#ch8"><div class="toc-num">CHAPTER 08</div><div class="toc-title">有機化学</div><div class="toc-topics">アルカン・アルケン・アルキン · アルコール・アルデヒド・ケトン · エステル化・加水分解 · ベンゼン誘導体 · 高分子化合物</div></a>
+    <a class="toc-card" href="#ch9"><div class="toc-num">CHAPTER 09</div><div class="toc-title">入試対策</div><div class="toc-topics">頻出解法パターン · 東大・京大・名大レベル精選問題 · 重要公式総まとめ · 直前チェック</div></a>
+    <a class="toc-card" href="#ch0"><div class="toc-num">付録</div><div class="toc-title">化学記号・周期表</div><div class="toc-topics">元素記号一覧 · よく使うイオン式 · 国際単位系(SI) · 化学式の読み方 · 反応式の書き方</div></a>
+  </div>
+</div>
+
+<!-- ============================================================
+     第１章　物質の構成
+============================================================ -->
+
+<div class="chapter" id="ch1">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 01</div>
+  <h2>物質の構成</h2>
+  <p>物質を構成する原子の構造から始め，電子配置と周期表の関係を体系的に理解する。同位体，相対原子質量，価電子数のルールを確実に習得する。</p>
+</div>
+
+<!-- 1.1 -->
+
+<div class="section" id="s1-1">
+<h3>1.1 元素・原子・同位体</h3>
+
+<div class="formula-box definition">
+<strong>原子の構造</strong><br>
+原子は<strong>核（陽子＋中性子）</strong>と<strong>電子</strong>からなる。
+<ul class="bullet">
+  <li><strong>原子番号 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math></strong>：陽子の数（= 中性原子の電子数）</li>
+  <li><strong>質量数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></strong>：陽子数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math> ＋ 中性子数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></li>
+  <li>元素記号表記：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow></mrow><mi>Z</mi><mi>A</mi></msubsup><mtext mathvariant="normal">X</mtext></mrow><annotation encoding="application/x-tex">{}^A_Z\text{X}</annotation></semantics></math>（例：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow></mrow><mrow><mspace width="0.167em"></mspace><mn>6</mn></mrow><mn>12</mn></msubsup><mtext mathvariant="normal">C</mtext></mrow><annotation encoding="application/x-tex">{}^{12}_{\,6}\text{C}</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow></mrow><mn>92</mn><mn>235</mn></msubsup><mtext mathvariant="normal">U</mtext></mrow><annotation encoding="application/x-tex">{}^{235}_{92}\text{U}</annotation></semantics></math>）</li>
+</ul>
+</div>
+
+<div class="formula-box definition">
+<strong>同位体（アイソトープ）</strong><br>
+<strong>陽子数（原子番号）が同じで中性子数が異なる原子</strong>を互いに同位体という。化学的性質はほぼ同一，質量は異なる。<br>
+例：水素の同位体 — <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow></mrow><mn>1</mn><mn>1</mn></msubsup><mtext mathvariant="normal">H</mtext></mrow><annotation encoding="application/x-tex">{}^1_1\text{H}</annotation></semantics></math>（軽水素），<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow></mrow><mn>1</mn><mn>2</mn></msubsup><mtext mathvariant="normal">H</mtext></mrow><annotation encoding="application/x-tex">{}^2_1\text{H}</annotation></semantics></math>（重水素，D），<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mrow></mrow><mn>1</mn><mn>3</mn></msubsup><mtext mathvariant="normal">H</mtext></mrow><annotation encoding="application/x-tex">{}^3_1\text{H}</annotation></semantics></math>（三重水素，T）
+</div>
+
+<div class="formula-box theorem">
+<strong>相対原子質量（原子量）</strong><br>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>12</mn></msup><mtext mathvariant="normal">C</mtext></mrow><annotation encoding="application/x-tex">{}^{12}\text{C}</annotation></semantics></math> を <strong>12</strong> と定め，これを基準にした各原子の相対的な質量。<br>
+天然には複数の同位体が一定の割合（同位体比）で存在するため，原子量は存在比による<strong>加重平均</strong>：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><mrow><mo stretchy="true" form="prefix">(</mo><msub><mtext mathvariant="normal">同位体</mtext><mi>i</mi></msub><mtext mathvariant="normal">の相対質量</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mtext mathvariant="normal">同位体</mtext><mi>i</mi></msub><mtext mathvariant="normal">の存在比</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M = \sum_i (\text{同位体}_i\text{の相対質量}) \times (\text{同位体}_i\text{の存在比})</annotation></semantics></math>
+例：塩素 Cl の原子量 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>34.969</mn><mo>×</mo><mn>0.7577</mn><mo>+</mo><mn>36.966</mn><mo>×</mo><mn>0.2423</mn><mo>≈</mo><mn>35.45</mn></mrow><annotation encoding="application/x-tex">34.969 \times 0.7577 + 36.966 \times 0.2423 \approx 35.45</annotation></semantics></math>
+</div>
+
+<div class="example-box">
+<strong>例題 1.1</strong> <span class="lv lv-b">基礎</span>　ホウ素 B には <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>10</mn></msup><mtext mathvariant="normal">B</mtext></mrow><annotation encoding="application/x-tex">{}^{10}\text{B}</annotation></semantics></math>（相対質量 10.013，存在比 19.9%）と <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>11</mn></msup><mtext mathvariant="normal">B</mtext></mrow><annotation encoding="application/x-tex">{}^{11}\text{B}</annotation></semantics></math>（相対質量 11.009，存在比 80.1%）がある。ホウ素の原子量を求めよ。
+<div class="answer-block">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">B</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>10.013</mn><mo>×</mo><mn>0.199</mn><mo>+</mo><mn>11.009</mn><mo>×</mo><mn>0.801</mn><mo>=</mo><mn>1.993</mn><mo>+</mo><mn>8.818</mn><mo>=</mo><mn mathvariant="bold">10.81</mn></mrow><annotation encoding="application/x-tex">M(\text{B}) = 10.013 \times 0.199 + 11.009 \times 0.801 = 1.993 + 8.818 = \mathbf{10.81}</annotation></semantics></math>
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.1</strong>　塩素 Cl の原子量を求めよ。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>35</mn></msup><mtext mathvariant="normal">Cl</mtext></mrow><annotation encoding="application/x-tex">{}^{35}\text{Cl}</annotation></semantics></math>：相対質量 34.97，存在比 75.77%；<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>37</mn></msup><mtext mathvariant="normal">Cl</mtext></mrow><annotation encoding="application/x-tex">{}^{37}\text{Cl}</annotation></semantics></math>：相対質量 36.97，存在比 24.23%。
+<div class="answer-block">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Cl</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>34.97</mn><mo>×</mo><mn>0.7577</mn><mo>+</mo><mn>36.97</mn><mo>×</mo><mn>0.2423</mn><mo>=</mo><mn>26.50</mn><mo>+</mo><mn>8.957</mn><mo>≈</mo><mn mathvariant="bold">35.45</mn></mrow><annotation encoding="application/x-tex">M(\text{Cl}) = 34.97 \times 0.7577 + 36.97 \times 0.2423 = 26.50 + 8.957 \approx \mathbf{35.45}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s1-1 -->
+
+<!-- 1.2 -->
+
+<div class="section" id="s1-2">
+<h3>1.2 電子配置と周期表</h3>
+
+<div class="formula-box theorem">
+<strong>電子殻と収容数</strong><br>
+電子は<strong>電子殻</strong>（K・L・M・N…）に内側から順に配置。第 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> 殻の最大収容電子数 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2n^2</annotation></semantics></math>。
+<div class="table-wrap"><table>
+  <tr><th>殻</th><th>K</th><th>L</th><th>M</th><th>N</th></tr>
+  <tr><td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+  <tr><td>最大数</td><td>2</td><td>8</td><td>18</td><td>32</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box definition">
+<strong>価電子と最外殻電子</strong><br>
+<strong>最外殻電子</strong>：最も外側の殻にある電子。<strong>価電子</strong>：化学結合・反応に関与する電子（典型元素では最外殻電子と一致）。<br>
+貴ガス（He, Ne, Ar, …）は価電子数 = 0（最外殻は満員 → 安定）。<br>
+<strong>オクテット則</strong>：多くの原子は価電子を 8 個にしようとして結合を形成する。
+</div>
+
+<div class="tip-box">
+<strong>周期表と電子配置の対応</strong><br>
+・<strong>周期</strong>（横の行）：最外殻の殻番号 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> に対応。第 2 周期 → L殻が最外殻。<br>
+・<strong>族</strong>（縦の列）：典型元素では価電子数 = 族番号の1の位（例：14族 → 価電子 4）。<br>
+・18族（貴ガス）：最外殻満員，化学的に不活性。
+</div>
+
+<div class="table-wrap"><table>
+  <tr><th>原子番号</th><th>元素記号</th><th>K殻</th><th>L殻</th><th>M殻</th><th>価電子</th><th>族</th></tr>
+  <tr><td>1</td><td>H</td><td>1</td><td>—</td><td>—</td><td>1</td><td>1</td></tr>
+  <tr><td>6</td><td>C</td><td>2</td><td>4</td><td>—</td><td>4</td><td>14</td></tr>
+  <tr><td>8</td><td>O</td><td>2</td><td>6</td><td>—</td><td>6</td><td>16</td></tr>
+  <tr><td>11</td><td>Na</td><td>2</td><td>8</td><td>1</td><td>1</td><td>1</td></tr>
+  <tr><td>17</td><td>Cl</td><td>2</td><td>8</td><td>7</td><td>7</td><td>17</td></tr>
+  <tr><td>18</td><td>Ar</td><td>2</td><td>8</td><td>8</td><td>0</td><td>18</td></tr>
+</table></div>
+
+<div class="exercise-block">
+<strong>練習 1.2</strong>　次の原子の電子配置（K・L・M殻）と価電子数を答えよ。(1) Al (Z=13)　(2) S (Z=16)　(3) Ca (Z=20)
+<div class="answer-block">
+(1) Al：K=2, L=8, M=3，価電子 <strong>3</strong><br>
+(2) S：K=2, L=8, M=6，価電子 <strong>6</strong><br>
+(3) Ca：K=2, L=8, M=8, N=2，価電子 <strong>2</strong>
+</div>
+</div>
+</div><!-- /s1-2 -->
+
+<!-- 1.3 練習 -->
+
+<div class="section" id="s1-3">
+<h3>1.3 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 1-A</span><span class="etag tag-calc">計算</span></div>
+  <div class="exam-body">
+    <p>マグネシウム Mg には <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>24</mn></msup><mtext mathvariant="normal">Mg</mtext></mrow><annotation encoding="application/x-tex">{}^{24}\text{Mg}</annotation></semantics></math>（相対質量24.0，存在比 78.99%），<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>25</mn></msup><mtext mathvariant="normal">Mg</mtext></mrow><annotation encoding="application/x-tex">{}^{25}\text{Mg}</annotation></semantics></math>（25.0，10.00%），<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>26</mn></msup><mtext mathvariant="normal">Mg</mtext></mrow><annotation encoding="application/x-tex">{}^{26}\text{Mg}</annotation></semantics></math>（26.0，11.01%）がある。</p>
+    <p>(1) Mg の原子量を求めよ。&emsp; (2) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow></mrow><mn>24</mn></msup><mtext mathvariant="normal">Mg</mtext></mrow><annotation encoding="application/x-tex">{}^{24}\text{Mg}</annotation></semantics></math> の中性子数はいくつか。</p>
+    <div class="answer-block">
+    (1) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>24.0</mn><mo>×</mo><mn>0.7899</mn><mo>+</mo><mn>25.0</mn><mo>×</mo><mn>0.1000</mn><mo>+</mo><mn>26.0</mn><mo>×</mo><mn>0.1101</mn><mo>=</mo><mn>18.96</mn><mo>+</mo><mn>2.500</mn><mo>+</mo><mn>2.863</mn><mo>=</mo><mn mathvariant="bold">24.32</mn></mrow><annotation encoding="application/x-tex">24.0\times0.7899 + 25.0\times0.1000 + 26.0\times0.1101 = 18.96+2.500+2.863 = \mathbf{24.32}</annotation></semantics></math><br>
+    (2) 質量数 24 − 陽子数 12 = <strong>12</strong>
+    </div>
+  </div>
+</div>
+</div><!-- /s1-3 -->
+</div><!-- /ch1 -->
+
+<!-- ============================================================
+     第２章　化学結合
+============================================================ -->
+
+<div class="chapter" id="ch2">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 02</div>
+  <h2>化学結合と物質の性質</h2>
+  <p>イオン結合・共有結合・金属結合の特徴と結晶構造を学ぶ。分子の形（VSEPR理論）や電気陰性度，水素結合が物質の性質（沸点・溶解性）を決める仕組みを理解する。</p>
+</div>
+
+<div class="section" id="s2-1">
+<h3>2.1 イオン結合・共有結合</h3>
+
+<div class="formula-box definition">
+<strong>イオン結合</strong><br>
+陽イオンと陰イオンの<strong>静電気力（クーロン力）</strong>による結合。<br>
+一般に<strong>金属元素（電気陰性度小）</strong>と<strong>非金属元素（電気陰性度大）</strong>の間で形成。<br>
+例：<span class="math-inline">NaCl</span>（Na<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi></mi><mo>+</mo></msup><annotation encoding="application/x-tex">^+</annotation></semantics></math> と Cl<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi></mi><mo>−</mo></msup><annotation encoding="application/x-tex">^-</annotation></semantics></math>），<span class="math-inline">CaCl<sub>2</sub></span>（Ca<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi></mi><mrow><mn>2</mn><mo>+</mo></mrow></msup><annotation encoding="application/x-tex">^{2+}</annotation></semantics></math> と 2Cl<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi></mi><mo>−</mo></msup><annotation encoding="application/x-tex">^-</annotation></semantics></math>）<br>
+イオン結晶は<strong>硬くもろい，高融点，水溶液・融解液が導電性をもつ</strong>。
+</div>
+
+<div class="formula-box definition">
+<strong>共有結合</strong><br>
+2つの原子が<strong>電子対を共有</strong>することによる結合。非金属元素どうしで形成。<br>
+・<strong>単結合</strong>：共有電子対 1組（例：H–H，H–Cl）<br>
+・<strong>二重結合</strong>：共有電子対 2組（例：O=O，C=O）<br>
+・<strong>三重結合</strong>：共有電子対 3組（例：N≡N，C≡O）<br>
+<strong>非共有電子対（孤立電子対）</strong>：共有に使われない電子対。分子の形に影響する。
+</div>
+
+<div class="tip-box">
+<strong>電子式（ルイス構造式）の書き方</strong><br>
+① 価電子の合計を数える　② 中心原子に周辺原子を結合する（まず単結合）　③ 残りの電子を非共有電子対として配置　④ オクテットを満たすように二重・三重結合に変更
+</div>
+
+<div class="example-box">
+<strong>例題 2.1</strong> <span class="lv lv-b">基礎</span>　次の分子の電子式（ルイス構造式）を書き，共有電子対数と非共有電子対数を答えよ。(1) <span class="math-inline">H<sub>2</sub>O</span>　(2) <span class="math-inline">NH<sub>3</sub></span>　(3) <span class="math-inline">CO<sub>2</sub></span>
+<div class="answer-block">
+(1) <span class="math-inline">H<sub>2</sub>O</span>：O の価電子6，H×2の価電子2，合計8。H–O–H，非共有電子対2組（Oに）。共有2，非共有2。<br>
+(2) <span class="math-inline">NH<sub>3</sub></span>：N 価電子5，H×3 価電子3，合計8。H–N–H（3本）＋Nに非共有1組。共有3，非共有1。<br>
+(3) <span class="math-inline">CO<sub>2</sub></span>：C 価電子4，O×2 価電子12，合計16。O=C=O（二重結合×2），各Oに非共有2組。共有4，非共有4。
+</div>
+</div>
+</div><!-- /s2-1 -->
+
+<div class="section" id="s2-2">
+<h3>2.2 分子の形・極性・水素結合</h3>
+
+<div class="formula-box theorem">
+<strong>VSEPR 理論（電子対反発理論）</strong><br>
+中心原子のまわりの電子対（共有電子対＋非共有電子対）は<strong>反発が最小になるよう</strong>配置される。非共有電子対は共有電子対より大きく反発。
+<div class="table-wrap"><table>
+  <tr><th>電子対数</th><th>非共有電子対</th><th>分子形</th><th>例</th><th>結合角（概略）</th></tr>
+  <tr><td>2</td><td>0</td><td>直線形</td><td>CO₂，BeCl₂</td><td>180°</td></tr>
+  <tr><td>3</td><td>0</td><td>正三角形</td><td>BF₃</td><td>120°</td></tr>
+  <tr><td>4</td><td>0</td><td>正四面体形</td><td>CH₄，CCl₄</td><td>109.5°</td></tr>
+  <tr><td>4</td><td>1</td><td>三角錐形</td><td>NH₃</td><td>107°</td></tr>
+  <tr><td>4</td><td>2</td><td>折れ線形</td><td>H₂O</td><td>104.5°</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box definition">
+<strong>電気陰性度と極性</strong><br>
+<strong>電気陰性度</strong>：原子が共有電子対を引きつける強さ（Pauling スケール）。F が最大（4.0）。<br>
+2原子間の電気陰性度の差が大きいほど<strong>結合の極性</strong>が大きくなる。<br>
+分子全体の極性は，<strong>各結合の双極子モーメントのベクトル和</strong>で決まる。<br>
+例：<span class="math-inline">CO<sub>2</sub></span> は各 C=O 結合に極性があるが，直線形で対称 → <strong>無極性分子</strong>。<br>
+<span class="math-inline">H<sub>2</sub>O</span> は折れ線形 → <strong>極性分子</strong>。
+</div>
+
+<div class="formula-box theorem">
+<strong>水素結合</strong><br>
+<strong>F・O・N</strong> に結合した H が，近傍の F・O・N の非共有電子対と形成する<span class="hl">静電引力（分子間力の中で比較的強い）</span>。<br>
+水素結合の強さ：分子間力（ファンデルワールス力）より強く，共有結合より弱い。<br>
+→ <span class="math-inline">H<sub>2</sub>O</span> の異常に高い沸点（100°C）・比熱・表面張力の原因。
+</div>
+
+<div class="exercise-block">
+<strong>練習 2.2</strong>　次の各組の分子を沸点の高い順に並べ，理由を述べよ。<br>
+(1) <span class="math-inline">HF</span>，<span class="math-inline">HCl</span>，<span class="math-inline">HBr</span>，<span class="math-inline">HI</span>　(2) <span class="math-inline">CH<sub>4</sub></span>，<span class="math-inline">SiH<sub>4</sub></span>，<span class="math-inline">GeH<sub>4</sub></span>
+<div class="answer-block">
+(1) HF が水素結合をもつため沸点が最高。HCl〜HI はファンデルワールス力（分子量大→強い）：<br>
+<strong>HF &gt; HI &gt; HBr &gt; HCl</strong><br>
+(2) 水素結合なし。分子量が大きいほどファンデルワールス力が強く沸点高：<strong>GeH₄ &gt; SiH₄ &gt; CH₄</strong>
+</div>
+</div>
+</div><!-- /s2-2 -->
+
+<div class="section" id="s2-3">
+<h3>2.3 金属結合と結晶の分類</h3>
+
+<div class="formula-box definition">
+<strong>金属結合と自由電子</strong><br>
+金属原子の価電子が特定の原子に属さず，<strong>結晶全体を自由に移動</strong>（自由電子）。陽イオンの格子と自由電子の静電引力が金属結合。<br>
+→ 電気・熱の良導体，展延性・光沢の原因。
+</div>
+
+<div class="formula-box theorem">
+<strong>結晶の4分類まとめ</strong>
+<div class="table-wrap"><table>
+  <tr><th>種類</th><th>構成粒子</th><th>結合力</th><th>特徴</th><th>例</th></tr>
+  <tr><td><strong>イオン結晶</strong></td><td>陽・陰イオン</td><td>クーロン力</td><td>高融点，硬くもろい，水溶液導電</td><td>NaCl，CaCO₃</td></tr>
+  <tr><td><strong>共有結合結晶</strong></td><td>原子</td><td>共有結合</td><td>最高融点，非常に硬い，不溶</td><td>ダイヤモンド，SiO₂</td></tr>
+  <tr><td><strong>分子結晶</strong></td><td>分子</td><td>分子間力</td><td>低融点，柔らかい，多くが不導体</td><td>ドライアイス，ヨウ素</td></tr>
+  <tr><td><strong>金属結晶</strong></td><td>金属陽イオン+自由電子</td><td>金属結合</td><td>展延性，電気・熱導体，金属光沢</td><td>Fe，Cu，Au</td></tr>
+</table></div>
+</div>
+</div><!-- /s2-3 -->
+
+<div class="section" id="s2-4">
+<h3>2.4 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 2-A</span><span class="etag tag-rxn">結合・構造</span></div>
+  <div class="exam-body">
+    <p>次の物質の結晶の種類を答え，沸点が高い順に並べよ。<br>
+    (ア) NaCl (イ) CO₂ (ウ) SiO₂ (エ) Na (オ) I₂</p>
+    <div class="answer-block">
+    (ア)イオン結晶　(イ)分子結晶　(ウ)共有結合結晶　(エ)金属結晶　(オ)分子結晶<br>
+    融点・沸点の高い順：<strong>SiO₂ &gt; NaCl &gt; Na &gt; I₂ &gt; CO₂</strong><br>
+    （共有結合 &gt; イオン &gt; 金属 &gt; 分子間力の大きい分子結晶 &gt; 小さい分子結晶）
+    </div>
+  </div>
+</div>
+</div><!-- /s2-4 -->
+</div><!-- /ch2 -->
+
+<!-- ============================================================
+     第３章　物質量と化学計算
+============================================================ -->
+
+<div class="chapter" id="ch3">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 03</div>
+  <h2>物質量と化学計算</h2>
+  <p>mol（物質量）は化学計算の核心。アボガドロ定数，モル質量，気体のモル体積，溶液の濃度を正確に使いこなし，反応式の量的関係（反応量計算）まで体系的に学ぶ。</p>
+</div>
+
+<div class="section" id="s3-1">
+<h3>3.1 原子量・mol・アボガドロ定数</h3>
+
+<div class="formula-box definition">
+<strong>mol の定義（2019年改定）</strong><br>
+1 mol = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>A</mi></msub><mo>=</mo><mn>6.022</mn><mo>×</mo><msup><mn>10</mn><mn>23</mn></msup></mrow><annotation encoding="application/x-tex">N_A = 6.022 \times 10^{23}</annotation></semantics></math> 個（アボガドロ定数）の粒子の集まり。<br>
+<strong>モル質量</strong>：1 mol あたりの質量 [g/mol] = 原子量・分子量・式量に単位 g/mol を付けたもの。
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">物質量 [mol]</mtext><mo>=</mo><mfrac><mtext mathvariant="normal">質量 [g]</mtext><mtext mathvariant="normal">モル質量 [g/mol]</mtext></mfrac><mo>=</mo><mfrac><mtext mathvariant="normal">粒子数</mtext><msub><mi>N</mi><mi>A</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">\text{物質量 [mol]} = \frac{\text{質量 [g]}}{\text{モル質量 [g/mol]}} = \frac{\text{粒子数}}{N_A}</annotation></semantics></math>
+</div>
+
+<div class="formula-box theorem">
+<strong>気体のモル体積（標準状態）</strong><br>
+0°C，1.013×10⁵ Pa（標準状態）において，理想気体 1 mol の体積 = <strong>22.4 L/mol</strong>（アボガドロの法則）。<br>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><mrow><mi>V</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">L</mtext><mo stretchy="true" form="postfix">]</mo></mrow></mrow><mrow><mn>22.4</mn><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">L/mol</mtext><mo stretchy="true" form="postfix">]</mo></mrow></mrow></mfrac><mspace width="1.0em"></mspace><mtext mathvariant="normal">（標準状態）</mtext></mrow><annotation encoding="application/x-tex">n = \frac{V\,[\text{L}]}{22.4\,[\text{L/mol}]}\quad\text{（標準状態）}</annotation></semantics></math>
+標準状態以外では<strong>気体の状態方程式</strong>を使う：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi><mspace width="2.0em"></mspace><mi>R</mi><mo>=</mo><mn>8.314</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">J/(mol·K)</mtext><mo>=</mo><mn>8.314</mn><mspace width="0.167em"></mspace><msup><mtext mathvariant="normal">Pa·m</mtext><mn>3</mn></msup><mi>/</mi><mtext mathvariant="normal">(mol·K)</mtext></mrow><annotation encoding="application/x-tex">PV = nRT \qquad R = 8.314\,\text{J/(mol·K)} = 8.314\,\text{Pa·m}^3/\text{(mol·K)}</annotation></semantics></math>
+</div>
+
+<div class="proof-box">
+<strong>アボガドロの法則の導出（気体分子運動論より）</strong><br>
+気体の圧力 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math> は，分子数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>，分子の質量 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>，平均二乗速度 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><msup><mi>v</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{v^2}</annotation></semantics></math>，容積 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math> を用いて：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mfrac><mrow><mi>N</mi><mi>m</mi><mover><msup><mi>v</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover></mrow><mrow><mn>3</mn><mi>V</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">P = \frac{Nm\overline{v^2}}{3V}</annotation></semantics></math>
+温度が等しければ <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="true"><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mover><msup><mi>v</mi><mn>2</mn></msup><mo accent="true">¯</mo></mover><mo>=</mo><mfrac displaystyle="true"><mn>3</mn><mn>2</mn></mfrac><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">\dfrac{1}{2}m\overline{v^2} = \dfrac{3}{2}k_BT</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>B</mi></msub><annotation encoding="application/x-tex">k_B</annotation></semantics></math>: ボルツマン定数）は分子の種類によらない。<br>
+よって <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>N</mi><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi><mo>=</mo><mi>n</mi><msub><mi>N</mi><mi>A</mi></msub><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">PV = Nk_BT = nN_Ak_BT = nRT</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msub><mi>N</mi><mi>A</mi></msub><msub><mi>k</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">R = N_A k_B</annotation></semantics></math>）。<br>
+同温同圧では <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mi>n</mi><mi>R</mi><mi>T</mi></mrow><mi>P</mi></mfrac></mrow><annotation encoding="application/x-tex">V = \dfrac{nRT}{P}</annotation></semantics></math> — <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> が等しければ <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math> は等しい（<strong>アボガドロの法則</strong>）。
+</div>
+
+<div class="example-box">
+<strong>例題 3.1</strong> <span class="lv lv-b">基礎</span>　次の各問に答えよ。<br>
+(1) CO₂（式量44）11 g は何 mol か。また標準状態での体積は何 L か。<br>
+(2) 27°C，2.0×10⁵ Pa で 3.0 L の気体は何 mol か。（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>8.3</mn><mo>×</mo><msup><mn>10</mn><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">R=8.3\times10^3</annotation></semantics></math>  Pa·L/mol·K）
+<div class="answer-block">
+(1) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac displaystyle="true"><mn>11</mn><mn>44</mn></mfrac><mo>=</mo><mrow><mn mathvariant="bold">0.25</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐦𝐨𝐥</mtext></mrow></mrow><annotation encoding="application/x-tex">n=\dfrac{11}{44}=\mathbf{0.25\,\text{mol}}</annotation></semantics></math>　体積 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.25</mn><mo>×</mo><mn>22.4</mn><mo>=</mo><mrow><mn mathvariant="bold">5.6</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐋</mtext></mrow></mrow><annotation encoding="application/x-tex">= 0.25\times22.4 = \mathbf{5.6\,\text{L}}</annotation></semantics></math><br><br>
+(2) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mn>300</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">K</mtext></mrow><annotation encoding="application/x-tex">T=300\,\text{K}</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">PV=nRT</annotation></semantics></math> より <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>2.0</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup><mo>×</mo><mn>3.0</mn></mrow><mrow><mn>8.3</mn><mo>×</mo><msup><mn>10</mn><mn>3</mn></msup><mo>×</mo><mn>300</mn></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>6.0</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><mrow><mn>2.49</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow></mfrac><mo>≈</mo><mrow><mn mathvariant="bold">0.24</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐦𝐨𝐥</mtext></mrow></mrow><annotation encoding="application/x-tex">n=\dfrac{2.0\times10^5\times3.0}{8.3\times10^3\times300}=\dfrac{6.0\times10^5}{2.49\times10^6}\approx\mathbf{0.24\,\text{mol}}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s3-1 -->
+
+<div class="section" id="s3-2">
+<h3>3.2 化学反応式の量的関係</h3>
+
+<div class="formula-box theorem">
+<strong>化学反応式の係数比 = mol 比</strong><br>
+化学反応式の係数は<strong>物質量（mol）の比</strong>を表す（質量の比でも体積の比でもない）。<br>
+例：<span class="math-inline">2H<sub>2</sub> + O<sub>2</sub>  →  2H<sub>2</sub>O</span><br>
+H₂ : O₂ : H₂O = 2 mol : 1 mol : 2 mol（= 4g : 32g : 36g　≠ 2:1:2 の質量）
+</div>
+
+<div class="formula-box reaction">
+<strong>化学反応式の書き方・バランスの取り方</strong>
+<ol class="steps">
+  <li>反応物・生成物を正しく記入（化学式を正確に）</li>
+  <li>原子の数が両辺で等しくなるよう係数（整数）を合わせる</li>
+  <li>係数は最小の整数比にする</li>
+  <li>状態記号 (s),(l),(g),(aq) を必要に応じて記入</li>
+</ol>
+</div>
+
+<div class="example-box">
+<strong>例題 3.2</strong> <span class="lv lv-m">標準</span>　エタン C₂H₆ が完全燃焼する化学反応式を書き，C₂H₆ 6.0 g を完全燃焼させたときに生じる CO₂ と H₂O の質量を求めよ。（C=12，H=1，O=16）
+<div class="answer-block">
+反応式：<span class="math-inline">2C<sub>2</sub>H<sub>6</sub> + 7O<sub>2</sub>  →  4CO<sub>2</sub> + 6H<sub>2</sub>O</span><br>
+C₂H₆ のモル質量 = 30 g/mol，<span class="math-inline">n(C<sub>2</sub>H<sub>6</sub>) = 6.0/30 = 0.20 mol</span><br>
+係数比より CO₂ : C₂H₆ = 4:2 = 2:1 → <span class="math-inline">n(CO<sub>2</sub>) = 0.40 mol</span>，質量 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.40</mn><mo>×</mo><mn>44</mn><mo>=</mo><mrow><mn mathvariant="bold">17.6</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐠</mtext></mrow></mrow><annotation encoding="application/x-tex">= 0.40\times44 = \mathbf{17.6\,\text{g}}</annotation></semantics></math><br>
+H₂O : C₂H₆ = 6:2 = 3:1 → <span class="math-inline">n(H<sub>2</sub>O) = 0.60 mol</span>，質量 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.60</mn><mo>×</mo><mn>18</mn><mo>=</mo><mrow><mn mathvariant="bold">10.8</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐠</mtext></mrow></mrow><annotation encoding="application/x-tex">= 0.60\times18 = \mathbf{10.8\,\text{g}}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s3-2 -->
+
+<div class="section" id="s3-3">
+<h3>3.3 溶液の濃度</h3>
+
+<div class="formula-box">
+<strong>濃度の定義と変換</strong><br>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">質量パーセント濃度</mtext><mspace width="0.167em"></mspace><mi>w</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mi>%</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mfrac><mtext mathvariant="normal">溶質の質量</mtext><mtext mathvariant="normal">溶液の質量</mtext></mfrac><mo>×</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">\text{質量パーセント濃度}\,w\,[\%] = \frac{\text{溶質の質量}}{\text{溶液の質量}}\times100</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">モル濃度</mtext><mspace width="0.167em"></mspace><mi>c</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">mol/L</mtext><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mfrac><mtext mathvariant="normal">溶質の物質量 [mol]</mtext><mtext mathvariant="normal">溶液の体積 [L]</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{モル濃度}\,c\,[\text{mol/L}] = \frac{\text{溶質の物質量 [mol]}}{\text{溶液の体積 [L]}}</annotation></semantics></math>
+<strong>変換式</strong>（密度 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math> [g/mL]，モル質量 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math> [g/mol]，質量パーセント <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math> [%]）：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mfrac><mrow><mn>10</mn><mi>w</mi><mi>d</mi></mrow><mi>M</mi></mfrac></mrow><annotation encoding="application/x-tex">c = \frac{10wd}{M}</annotation></semantics></math>
+</div>
+
+<div class="proof-box">
+<strong>変換式の導出</strong><br>
+溶液 1 L（= 1000 mL）の質量 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mi>d</mi></mrow><annotation encoding="application/x-tex">1000d</annotation></semantics></math> [g]，溶質の質量 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mi>d</mi><mo>×</mo><mfrac displaystyle="true"><mi>w</mi><mn>100</mn></mfrac></mrow><annotation encoding="application/x-tex">1000d \times \dfrac{w}{100}</annotation></semantics></math> [g]。<br>
+物質量 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="true"><mrow><mn>1000</mn><mi>d</mi><mo>⋅</mo><mi>w</mi></mrow><mrow><mn>100</mn><mi>M</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>10</mn><mi>d</mi><mi>w</mi></mrow><mi>M</mi></mfrac></mrow><annotation encoding="application/x-tex">\dfrac{1000d \cdot w}{100M} = \dfrac{10dw}{M}</annotation></semantics></math> [mol]。<br>
+これが 1 L 中の mol 数なので <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>10</mn><mi>w</mi><mi>d</mi></mrow><mi>M</mi></mfrac></mrow><annotation encoding="application/x-tex">c = \dfrac{10wd}{M}</annotation></semantics></math>。
+</div>
+
+<div class="example-box">
+<strong>例題 3.3</strong> <span class="lv lv-m">標準</span>　濃塩酸：質量パーセント濃度 36.5%，密度 1.18 g/mL，HCl のモル質量 36.5 g/mol。モル濃度を求めよ。
+<div class="answer-block">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mfrac><mrow><mn>10</mn><mo>×</mo><mn>36.5</mn><mo>×</mo><mn>1.18</mn></mrow><mn>36.5</mn></mfrac><mo>=</mo><mfrac><mrow><mn>10</mn><mo>×</mo><mn>1.18</mn><mo>×</mo><mn>36.5</mn></mrow><mn>36.5</mn></mfrac><mo>=</mo><mn>10</mn><mo>×</mo><mn>1.18</mn><mo>=</mo><mrow><mn mathvariant="bold">11.8</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐦𝐨𝐥/𝐋</mtext></mrow></mrow><annotation encoding="application/x-tex">c = \frac{10 \times 36.5 \times 1.18}{36.5} = \frac{10 \times 1.18 \times 36.5}{36.5} = 10 \times 1.18 = \mathbf{11.8\,\text{mol/L}}</annotation></semantics></math>
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 3.3</strong>　市販の硫酸 H₂SO₄（モル質量98）は質量パーセント濃度98%，密度1.84 g/mL である。モル濃度を求めよ。
+<div class="answer-block">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>10</mn><mo>×</mo><mn>98</mn><mo>×</mo><mn>1.84</mn></mrow><mn>98</mn></mfrac><mo>=</mo><mn>10</mn><mo>×</mo><mn>1.84</mn><mo>=</mo><mrow><mn mathvariant="bold">18.4</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐦𝐨𝐥/𝐋</mtext></mrow></mrow><annotation encoding="application/x-tex">c = \dfrac{10\times98\times1.84}{98} = 10\times1.84 = \mathbf{18.4\,\text{mol/L}}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s3-3 -->
+
+<div class="section" id="s3-4">
+<h3>3.4 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 3-A</span><span class="etag tag-calc">mol計算</span></div>
+  <div class="exam-body">
+    <p>プロパン C₃H₈（モル質量44）11 g を完全燃焼させた。</p>
+    <p>(1) 必要な O₂ の体積（標準状態）を求めよ。 (2) 生成する H₂O の物質量を求めよ。</p>
+    <div class="answer-block">
+    反応式：<span class="math-inline">C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub>  →  3CO<sub>2</sub> + 4H<sub>2</sub>O</span><br>
+    <span class="math-inline">n(C<sub>3</sub>H<sub>8</sub>) = 11/44 = 0.25 mol</span><br>
+    (1) <span class="math-inline">n(O<sub>2</sub>) = 5×0.25 = 1.25 mol</span>，体積 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1.25</mn><mo>×</mo><mn>22.4</mn><mo>=</mo><mrow><mn mathvariant="bold">28.0</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐋</mtext></mrow></mrow><annotation encoding="application/x-tex">= 1.25\times22.4 = \mathbf{28.0\,\text{L}}</annotation></semantics></math><br>
+    (2) <span class="math-inline">n(H<sub>2</sub>O) = 4×0.25 = <b>1.0 mol</b></span>
+    </div>
+  </div>
+</div>
+</div><!-- /s3-4 -->
+</div><!-- /ch3 -->
+
+<!-- ============================================================
+     第４章　酸・塩基
+============================================================ -->
+
+<div class="chapter" id="ch4">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 04</div>
+  <h2>酸・塩基と中和</h2>
+  <p>アレニウス定義からブレンステッド–ローリー定義へと視野を広げ，pH の計算，弱酸の電離平衡，中和反応と塩の性質，中和滴定の操作と計算まで体系的に学ぶ。</p>
+</div>
+
+<div class="section" id="s4-1">
+<h3>4.1 酸・塩基の定義と pH</h3>
+
+<div class="formula-box definition">
+<strong>アレニウス定義とブレンステッド–ローリー定義</strong><br>
+・<strong>アレニウス</strong>：水溶液中で H⁺ を生じる → 酸；OH⁻ を生じる → 塩基<br>
+・<strong>ブレンステッド–ローリー</strong>：H⁺（プロトン）を供与する → 酸；H⁺ を受容する → 塩基<br>
+例：<span class="math-inline">NH<sub>3</sub> + H<sub>2</sub>O  ⇌  NH<sub>4</sub>+ + OH-</span> で，NH₃ は塩基，H₂O は酸として働く。
+</div>
+
+<div class="formula-box">
+<strong>水素イオン濃度と pH</strong><br>
+25°C での水のイオン積：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>w</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">OH</mtext><mo>−</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>14</mn></mrow></msup><mspace width="0.167em"></mspace><msup><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">mol/L</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">K_w = [\text{H}^+][\text{OH}^-] = 1.0\times10^{-14}\,(\text{mol/L})^2</annotation></semantics></math><br>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">pH</mtext><mo>=</mo><mo>−</mo><msub><mo>log</mo><mn>10</mn></msub><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\text{pH} = -\log_{10}[\text{H}^+]</annotation></semantics></math>
+中性：pH = 7，酸性：pH &lt; 7，塩基性：pH &gt; 7（25°C）
+</div>
+
+<div class="formula-box theorem">
+<strong>強酸・弱酸の pH 計算</strong><br>
+<strong>強酸</strong>（完全電離）：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> [mol/L] の HCl → <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">[\text{H}^+] = c</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">pH</mtext><mo>=</mo><mo>−</mo><mo>log</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">\text{pH} = -\log c</annotation></semantics></math><br>
+<strong>弱酸</strong>（部分電離）：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> [mol/L] の HA，電離度 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>，電離定数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mo>=</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">A</mtext><mo>−</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">HA</mtext><mo stretchy="true" form="postfix">]</mo></mrow></mfrac><mo>≈</mo><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>c</mi><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mrow><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>≈</mo><mi>c</mi><msup><mi>α</mi><mn>2</mn></msup><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mo>≪</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">K_a = \frac{[\text{H}^+][\text{A}^-]}{[\text{HA}]} \approx \frac{(c\alpha)^2}{c(1-\alpha)} \approx c\alpha^2\quad(\alpha\ll1)</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∴</mo><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><msqrt><mrow><msub><mi>K</mi><mi>a</mi></msub><mi>c</mi></mrow></msqrt><mspace width="0.167em"></mspace><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">pH</mtext><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><msub><mi>K</mi><mi>a</mi></msub><mo>−</mo><mo>log</mo><mi>c</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\therefore\,[\text{H}^+] = \sqrt{K_a c}\,,\quad \text{pH} = \frac{1}{2}(pK_a - \log c)</annotation></semantics></math>
+</div>
+
+<div class="example-box">
+<strong>例題 4.1</strong> <span class="lv lv-m">標準</span>　0.10 mol/L の酢酸 CH₃COOH（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mo>=</mo><mn>1.8</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">K_a = 1.8\times10^{-5}</annotation></semantics></math>）水溶液の pH を求めよ。（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>log</mo><mn>1.34</mn><mo>=</mo><mn>0.127</mn></mrow><annotation encoding="application/x-tex">\log 1.34 = 0.127</annotation></semantics></math>）
+<div class="answer-block">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><msqrt><mrow><msub><mi>K</mi><mi>a</mi></msub><mi>c</mi></mrow></msqrt><mo>=</mo><msqrt><mrow><mn>1.8</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup><mo>×</mo><mn>0.10</mn></mrow></msqrt><mo>=</mo><msqrt><mrow><mn>1.8</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow></msqrt><mo>=</mo><mn>1.34</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">mol/L</mtext></mrow><annotation encoding="application/x-tex">[\text{H}^+] = \sqrt{K_a c} = \sqrt{1.8\times10^{-5}\times0.10} = \sqrt{1.8\times10^{-6}} = 1.34\times10^{-3}\,\text{mol/L}</annotation></semantics></math><br>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">pH</mtext><mo>=</mo><mo>−</mo><mo>log</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1.34</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>3</mn><mo>−</mo><mo>log</mo><mn>1.34</mn><mo>=</mo><mn>3.000</mn><mo>−</mo><mn>0.127</mn><mo>=</mo><mn mathvariant="bold">2.87</mn></mrow><annotation encoding="application/x-tex">\text{pH} = -\log(1.34\times10^{-3}) = 3 - \log 1.34 = 3.000 - 0.127 = \mathbf{2.87}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s4-1 -->
+
+<div class="section" id="s4-2">
+<h3>4.2 中和反応と塩の性質</h3>
+
+<div class="formula-box reaction">
+<strong>中和の基本式</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mtext mathvariant="normal">酸が放出する H</mtext><mo>+</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> の mol</mtext></mrow><mo>=</mo><msup><mtext mathvariant="normal">塩基が放出する OH</mtext><mo>−</mo></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> の mol</mtext></mrow></mrow><annotation encoding="application/x-tex">\text{酸が放出する H}^+\text{ の mol} = \text{塩基が放出する OH}^-\text{ の mol}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>a</mi></msub><msub><mi>V</mi><mi>a</mi></msub><msub><mi>n</mi><mi>a</mi></msub><mo>=</mo><msub><mi>c</mi><mi>b</mi></msub><msub><mi>V</mi><mi>b</mi></msub><msub><mi>n</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">c_a V_a n_a = c_b V_b n_b</annotation></semantics></math>
+（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>：モル濃度，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>：体積，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>：価数）
+</div>
+
+<div class="formula-box theorem">
+<strong>塩の加水分解と水溶液の液性</strong>
+<div class="table-wrap"><table>
+  <tr><th>塩の種類</th><th>例</th><th>水溶液の液性</th><th>理由</th></tr>
+  <tr><td>強酸＋強塩基</td><td>NaCl</td><td>中性</td><td>加水分解しない</td></tr>
+  <tr><td>弱酸＋強塩基</td><td>CH₃COONa</td><td>塩基性</td><td>CH₃COO⁻ が加水分解：CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻</td></tr>
+  <tr><td>強酸＋弱塩基</td><td>NH₄Cl</td><td>酸性</td><td>NH₄⁺ が加水分解：NH₄⁺ + H₂O ⇌ NH₃ + H₃O⁺</td></tr>
+  <tr><td>弱酸＋弱塩基</td><td>CH₃COONH₄</td><td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>a</mi></msub><mo>=</mo><msub><mi>K</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">K_a=K_b</annotation></semantics></math> なら中性</td><td>両方加水分解</td></tr>
+</table></div>
+</div>
+</div><!-- /s4-2 -->
+
+<div class="section" id="s4-3">
+<h3>4.3 中和滴定</h3>
+
+<div class="formula-box">
+<strong>中和滴定の操作と指示薬</strong><br>
+<div class="table-wrap"><table>
+  <tr><th>滴定の組み合わせ</th><th>当量点の pH</th><th>適切な指示薬</th></tr>
+  <tr><td>強酸 × 強塩基</td><td>7</td><td>フェノールフタレイン / メチルオレンジ どちらでも可</td></tr>
+  <tr><td>弱酸 × 強塩基</td><td>&gt; 7（塩基性）</td><td>フェノールフタレイン（変色域 pH 8.3–10）</td></tr>
+  <tr><td>強酸 × 弱塩基</td><td>&lt; 7（酸性）</td><td>メチルオレンジ（変色域 pH 3.1–4.4）</td></tr>
+</table></div>
+</div>
+
+<div class="example-box">
+<strong>例題 4.3</strong> <span class="lv lv-m">標準</span>　濃度不明の酢酸水溶液 10.0 mL を，0.100 mol/L の NaOH で滴定したところ，20.0 mL で中和点に達した。酢酸水溶液のモル濃度を求めよ。
+<div class="answer-block">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>a</mi></msub><msub><mi>V</mi><mi>a</mi></msub><msub><mi>n</mi><mi>a</mi></msub><mo>=</mo><msub><mi>c</mi><mi>b</mi></msub><msub><mi>V</mi><mi>b</mi></msub><msub><mi>n</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">c_a V_a n_a = c_b V_b n_b</annotation></semantics></math>，酢酸は1価，NaOH も1価：<br>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>a</mi></msub><mo>×</mo><mn>10.0</mn><mo>×</mo><mn>1</mn><mo>=</mo><mn>0.100</mn><mo>×</mo><mn>20.0</mn><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c_a \times 10.0 \times 1 = 0.100 \times 20.0 \times 1</annotation></semantics></math><br>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>a</mi></msub><mo>=</mo><mfrac displaystyle="true"><mrow><mn>0.100</mn><mo>×</mo><mn>20.0</mn></mrow><mn>10.0</mn></mfrac><mo>=</mo><mrow><mn mathvariant="bold">0.200</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐦𝐨𝐥/𝐋</mtext></mrow></mrow><annotation encoding="application/x-tex">c_a = \dfrac{0.100 \times 20.0}{10.0} = \mathbf{0.200\,\text{mol/L}}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s4-3 -->
+
+<div class="section" id="s4-4">
+<h3>4.4 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 4-A</span><span class="etag tag-calc">pH計算</span></div>
+  <div class="exam-body">
+    <p>0.010 mol/L の HCl 水溶液について次の各問に答えよ。<br>
+    (1) pH を求めよ。　(2) この溶液を水で100倍希釈したときの pH を求めよ。</p>
+    <div class="answer-block">
+    (1) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>0.010</mn><mo>=</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">mol/L</mtext></mrow><annotation encoding="application/x-tex">[\text{H}^+] = 0.010 = 10^{-2}\,\text{mol/L}</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">pH</mtext><mo>=</mo><mn>𝟐</mn></mrow><annotation encoding="application/x-tex">\text{pH} = \mathbf{2}</annotation></semantics></math><br>
+    (2) 希釈後 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msup><mtext mathvariant="normal">H</mtext><mo>+</mo></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">mol/L</mtext></mrow><annotation encoding="application/x-tex">[\text{H}^+] = 10^{-4}\,\text{mol/L}</annotation></semantics></math>，pH ≒ <strong>4</strong>（水の自己電離は <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mo>−</mo><mn>7</mn></mrow></msup><annotation encoding="application/x-tex">10^{-7}</annotation></semantics></math> なので無視できる範囲）
+    </div>
+  </div>
+</div>
+</div><!-- /s4-4 -->
+</div><!-- /ch4 -->
+
+<!-- ============================================================
+     第５章　酸化還元
+============================================================ -->
+
+<div class="chapter" id="ch5">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 05</div>
+  <h2>酸化還元反応</h2>
+  <p>酸化数の概念を使って酸化・還元を定義し，半反応式の組み合わせから酸化還元反応式を導く方法を習得する。電池・電気分解ではファラデーの法則が重要。</p>
+</div>
+
+<div class="section" id="s5-1">
+<h3>5.1 酸化数と酸化還元の定義</h3>
+
+<div class="formula-box definition">
+<strong>酸化数の決定規則</strong>
+<ol class="num">
+  <li>単体中の原子の酸化数 = 0（例：Cu, H₂, O₂, N₂ すべて 0）</li>
+  <li>単原子イオンの酸化数 = イオンの電荷（例：Na⁺ → +1，Cl⁻ → −1）</li>
+  <li>化合物中の H は <strong>+1</strong>（ただし金属水素化物 NaH など → −1）</li>
+  <li>化合物中の O は <strong>−2</strong>（ただし過酸化物 H₂O₂ → −1，OF₂ → +2）</li>
+  <li>多原子イオンでは，各原子の酸化数の和 = イオンの電荷</li>
+  <li>中性化合物では，各原子の酸化数の和 = 0</li>
+</ol>
+</div>
+
+<div class="formula-box theorem">
+<strong>酸化・還元の定義（酸化数による）</strong><br>
+・<strong>酸化</strong>：酸化数が<span class="red">増加</span>すること（電子を失う）<br>
+・<strong>還元</strong>：酸化数が<span class="blue">減少</span>すること（電子を得る）<br>
+・<strong>酸化剤</strong>：相手を酸化し，自身は還元される物質<br>
+・<strong>還元剤</strong>：相手を還元し，自身は酸化される物質
+</div>
+
+<div class="example-box">
+<strong>例題 5.1</strong> <span class="lv lv-b">基礎</span>　次の反応で各原子の酸化数変化を求め，酸化剤・還元剤を答えよ。<br>
+<span class="math-inline">Cu + 2H<sub>2</sub>SO<sub>4</sub>(濃)  →  CuSO<sub>4</sub> + SO<sub>2</sub> + 2H<sub>2</sub>O</span>
+<div class="answer-block">
+Cu：0 → +2（酸化数増加 → <span class="red">酸化</span>）→ Cu は<strong>還元剤</strong><br>
+S（H₂SO₄中）：+6 → +4（SO₂中，酸化数減少 → <span class="blue">還元</span>）→ H₂SO₄ は<strong>酸化剤</strong><br>
+H：+1 → +1，O：-2 → -2（変化なし）
+</div>
+</div>
+</div><!-- /s5-1 -->
+
+<div class="section" id="s5-2">
+<h3>5.2 半反応式と酸化還元反応式</h3>
+
+<div class="formula-box theorem">
+<strong>半反応式の作り方</strong>
+<ol class="steps">
+  <li>変化する物質（反応物・生成物）を書く</li>
+  <li>O 原子を H₂O で合わせる（酸性条件）</li>
+  <li>H 原子を H⁺ で合わせる</li>
+  <li>電荷を e⁻ で合わせる</li>
+</ol>
+例：酸性条件での <span class="math-inline">MnO<sub>4</sub>-</span> の還元：<br>
+<span class="math-inline">MnO<sub>4</sub>- + 8H+ + 5e-  →  Mn<sup>2+ + 4H2O</sup></span>
+</div>
+
+<div class="formula-box reaction">
+<strong>酸化還元反応式の組み合わせ</strong><br>
+酸化剤の半反応式と還元剤の半反応式を，<strong>e⁻ の数が等しくなるよう係数倍して加える</strong>。<br>
+例：過マンガン酸カリウムによるシュウ酸の酸化（酸性）<br>
+酸化剤：<span class="math-inline">MnO<sub>4</sub>- + 8H+ + 5e-  →  Mn<sup>2+ + 4H2O</sup></span> …①<br>
+還元剤：<span class="math-inline">C<sub>2</sub>O<sub>4</sub><sup>2-  →  2CO2 + 2e-</sup></span> …②<br>
+①×2 + ②×5：<span class="math-inline">2MnO<sub>4</sub>- + 5C<sub>2</sub>O<sub>4</sub><sup>2- + 16H+  →  2Mn^2+</sup> + 10CO2 + 8H2O</span>
+</div>
+
+<div class="exercise-block">
+<strong>練習 5.2</strong>　過酸化水素 H₂O₂ が酸化剤として働く酸性条件での半反応式を書け。また還元剤として働く場合の半反応式も書け。
+<div class="answer-block">
+酸化剤：<span class="math-inline">H<sub>2</sub>O<sub>2</sub> + 2H+ + 2e-  →  2H<sub>2</sub>O</span><br>
+還元剤：<span class="math-inline">H<sub>2</sub>O<sub>2</sub>  →  O<sub>2</sub> + 2H+ + 2e-</span>
+</div>
+</div>
+</div><!-- /s5-2 -->
+
+<div class="section" id="s5-3">
+<h3>5.3 電池と電気分解</h3>
+
+<div class="formula-box theorem">
+<strong>イオン化傾向と電池</strong><br>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">Li</mtext><mo>&gt;</mo><mtext mathvariant="normal">K</mtext><mo>&gt;</mo><mtext mathvariant="normal">Ca</mtext><mo>&gt;</mo><mtext mathvariant="normal">Na</mtext><mo>&gt;</mo><mtext mathvariant="normal">Mg</mtext><mo>&gt;</mo><mtext mathvariant="normal">Al</mtext><mo>&gt;</mo><mtext mathvariant="normal">Zn</mtext><mo>&gt;</mo><mtext mathvariant="normal">Fe</mtext><mo>&gt;</mo><mtext mathvariant="normal">Ni</mtext><mo>&gt;</mo><mtext mathvariant="normal">Sn</mtext><mo>&gt;</mo><mtext mathvariant="normal">Pb</mtext><mo>&gt;</mo><mrow><mo stretchy="true" form="prefix" mathvariant="bold">(</mo><msub><mi>𝐇</mi><mn>𝟐</mn></msub><mo stretchy="true" form="postfix" mathvariant="bold">)</mo></mrow><mo>&gt;</mo><mtext mathvariant="normal">Cu</mtext><mo>&gt;</mo><mtext mathvariant="normal">Hg</mtext><mo>&gt;</mo><mtext mathvariant="normal">Ag</mtext><mo>&gt;</mo><mtext mathvariant="normal">Pt</mtext><mo>&gt;</mo><mtext mathvariant="normal">Au</mtext></mrow><annotation encoding="application/x-tex">\text{Li} &gt; \text{K} &gt; \text{Ca} &gt; \text{Na} &gt; \text{Mg} &gt; \text{Al} &gt; \text{Zn} &gt; \text{Fe} &gt; \text{Ni} &gt; \text{Sn} &gt; \text{Pb} &gt; \mathbf{(H_2)} &gt; \text{Cu} &gt; \text{Hg} &gt; \text{Ag} &gt; \text{Pt} &gt; \text{Au}</annotation></semantics></math><br>
+イオン化傾向の大きい金属が<strong>負極（酸化）</strong>，小さい金属が<strong>正極（還元）</strong>。
+</div>
+
+<div class="formula-box">
+<strong>ファラデーの法則</strong><br>
+電気量 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mi>I</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Q = It</annotation></semantics></math>（電流 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math> [A]，時間 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math> [s]）に比例した物質量が析出・溶解する。
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mfrac><mi>Q</mi><mrow><mi>z</mi><mi>F</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>I</mi><mi>t</mi></mrow><mrow><mi>z</mi><mi>F</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">n = \frac{Q}{zF} = \frac{It}{zF}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>：イオンの価数，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mn>9.65</mn><mo>×</mo><msup><mn>10</mn><mn>4</mn></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">C/mol</mtext></mrow><annotation encoding="application/x-tex">F = 9.65\times10^4\,\text{C/mol}</annotation></semantics></math>（ファラデー定数）
+</div>
+
+<div class="example-box">
+<strong>例題 5.3</strong> <span class="lv lv-m">標準</span>　硫酸銅 CuSO₄ 水溶液に白金電極を用いて，2.0 A の電流を 965 秒間流した。陰極に析出する Cu の質量を求めよ。（Cu = 64，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mn>9.65</mn><mo>×</mo><msup><mn>10</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">F = 9.65\times10^4</annotation></semantics></math> C/mol）
+<div class="answer-block">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mn>2.0</mn><mo>×</mo><mn>965</mn><mo>=</mo><mn>1930</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">C</mtext></mrow><annotation encoding="application/x-tex">Q = 2.0 \times 965 = 1930\,\text{C}</annotation></semantics></math><br>
+<span class="math-inline">n(Cu) = Q/zF = 1930/2×9.65×10<sup>4</sup> = 1930/1.93×10<sup>5</sup> = 0.010 mol</span><br>
+質量 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.010</mn><mo>×</mo><mn>64</mn><mo>=</mo><mrow><mn mathvariant="bold">0.64</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐠</mtext></mrow></mrow><annotation encoding="application/x-tex">= 0.010 \times 64 = \mathbf{0.64\,\text{g}}</annotation></semantics></math>
+</div>
+</div>
+</div><!-- /s5-3 -->
+
+<div class="section" id="s5-4">
+<h3>5.4 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 5-A</span><span class="etag tag-rxn">酸化還元</span></div>
+  <div class="exam-body">
+    <p>次の反応において，各下線の原子の酸化数を求め，酸化・還元されている原子をそれぞれ答えよ。<br>
+    <span class="math-inline">\underline{S + \underlineHN\underlineO3(希)  →  \underlineSO4<sup>2-</sup> + \underlineNO + H2O}</span>（未調整）</p>
+    <div class="answer-block">
+    S：0 → +6（酸化），N：+5 → +2（還元）<br>
+    バランス後：<span class="math-inline">3S + 8HNO<sub>3</sub>(希)  →  3H<sub>2</sub>SO<sub>4</sub> + 8NO + 4H<sub>2</sub>O</span>（あるいはイオン式で展開）
+    </div>
+  </div>
+</div>
+</div><!-- /s5-4 -->
+</div><!-- /ch5 -->
+
+<!-- ============================================================
+     第６章　熱化学・化学平衡
+============================================================ -->
+
+<div class="chapter" id="ch6">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 06</div>
+  <h2>熱化学・化学平衡</h2>
+  <p>反応エンタルピーとヘスの法則で熱量を計算し，化学平衡では平衡定数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> の導き方とルシャトリエの原理による平衡移動を体系的に理解する。</p>
+</div>
+
+<div class="section" id="s6-1">
+<h3>6.1 反応エンタルピーとヘスの法則</h3>
+
+<div class="formula-box definition">
+<strong>反応エンタルピー <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math></strong><br>
+定圧条件における熱変化。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta H &gt; 0</annotation></semantics></math>：<strong>吸熱反応</strong>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta H &lt; 0</annotation></semantics></math>：<strong>発熱反応</strong>。<br>
+・<strong>生成エンタルピー</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Δ</mi><mi>f</mi></msub><msup><mi>H</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">\Delta_f H^\circ</annotation></semantics></math>：成分元素の単体から 1 mol の化合物を生成するときの <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math><br>
+・<strong>燃焼エンタルピー</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Δ</mi><mi>c</mi></msub><msup><mi>H</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">\Delta_c H^\circ</annotation></semantics></math>：1 mol の物質が完全燃焼するときの <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math>（常に <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">&lt; 0</annotation></semantics></math>）<br>
+・<strong>結合エンタルピー</strong>：気体分子中の 1 mol の結合を切断するのに必要なエネルギー
+</div>
+
+<div class="formula-box theorem">
+<strong>ヘスの法則（総熱量不変の法則）</strong><br>
+反応の <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math> は，<strong>経路によらず反応の始状態と終状態だけで決まる</strong>。<br>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>H</mi><mtext mathvariant="normal">反応</mtext></msub><mo>=</mo><mo>∑</mo><msub><mi>Δ</mi><mi>f</mi></msub><msup><mi>H</mi><mo>∘</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">生成物</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mo>∑</mo><msub><mi>Δ</mi><mi>f</mi></msub><msup><mi>H</mi><mo>∘</mo></msup><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">反応物</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Delta H_\text{反応} = \sum \Delta_f H^\circ(\text{生成物}) - \sum \Delta_f H^\circ(\text{反応物})</annotation></semantics></math>
+また結合エネルギー <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math> を使う場合：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>=</mo><mo>∑</mo><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">切断する結合</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mo>∑</mo><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">形成する結合</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Delta H = \sum E(\text{切断する結合}) - \sum E(\text{形成する結合})</annotation></semantics></math>
+</div>
+
+<div class="proof-box">
+<strong>ヘスの法則の熱力学的根拠</strong><br>
+エンタルピー <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math> は<strong>状態関数</strong>（系の状態のみに依存，経路に依存しない）。<br>
+したがって経路 A（直接反応）でも経路 B（中間段階を経る反応）でも：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>H</mi><mi>A</mi></msub><mo>=</mo><mi>Δ</mi><msub><mi>H</mi><msub><mi>B</mi><mn>1</mn></msub></msub><mo>+</mo><mi>Δ</mi><msub><mi>H</mi><msub><mi>B</mi><mn>2</mn></msub></msub><mo>+</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">\Delta H_A = \Delta H_{B_1} + \Delta H_{B_2} + \cdots</annotation></semantics></math>
+これはエネルギー保存則の拡張そのもの。
+</div>
+
+<div class="example-box">
+<strong>例題 6.1</strong> <span class="lv lv-m">標準</span>　次の熱化学データからダイヤモンドの黒鉛に対する相対的な <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Δ</mi><mi>f</mi></msub><msup><mi>H</mi><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">\Delta_f H^\circ</annotation></semantics></math> を求めよ。<br>
+① <span class="math-inline">C(黒鉛) + O<sub>2</sub>  →  CO<sub>2</sub></span> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>H</mi><mn>1</mn></msub><mo>=</mo><mo>−</mo><mn>393.5</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">kJ/mol</mtext></mrow><annotation encoding="application/x-tex">\Delta H_1 = -393.5\,\text{kJ/mol}</annotation></semantics></math><br>
+② <span class="math-inline">C(ダイヤ) + O<sub>2</sub>  →  CO<sub>2</sub></span> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><msub><mi>H</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>395.4</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">kJ/mol</mtext></mrow><annotation encoding="application/x-tex">\Delta H_2 = -395.4\,\text{kJ/mol}</annotation></semantics></math>
+<div class="answer-block">
+求めたいのは <span class="math-inline">C(黒鉛)  →  C(ダイヤ)</span> の <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math>。<br>
+② − ①：<span class="math-inline">C(黒鉛)  →  C(ダイヤ)</span><br>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>=</mo><mi>Δ</mi><msub><mi>H</mi><mn>2</mn></msub><mo>−</mo><mi>Δ</mi><msub><mi>H</mi><mn>1</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>395.4</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>393.5</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo mathvariant="bold">+</mo><mn mathvariant="bold">1.9</mn><mspace width="0.167em"></mspace><mtext mathvariant="bold">𝐤𝐉/𝐦𝐨𝐥</mtext></mrow></mrow><annotation encoding="application/x-tex">\Delta H = \Delta H_2 - \Delta H_1 = (-395.4) - (-393.5) = \mathbf{+1.9\,\text{kJ/mol}}</annotation></semantics></math>（吸熱）
+</div>
+</div>
+</div><!-- /s6-1 -->
+
+<div class="section" id="s6-2">
+<h3>6.2 化学平衡と平衡定数</h3>
+
+<div class="formula-box definition">
+<strong>化学平衡と平衡定数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math></strong><br>
+可逆反応 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mtext mathvariant="normal">A</mtext><mo>+</mo><mi>b</mi><mtext mathvariant="normal">B</mtext><mo>⇌</mo><mi>c</mi><mtext mathvariant="normal">C</mtext><mo>+</mo><mi>d</mi><mtext mathvariant="normal">D</mtext></mrow><annotation encoding="application/x-tex">a\text{A} + b\text{B} \rightleftharpoons c\text{C} + d\text{D}</annotation></semantics></math> が平衡状態のとき，温度が一定なら：
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>c</mi></msub><mo>=</mo><mfrac><mrow><msup><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">C</mtext><mo stretchy="true" form="postfix">]</mo></mrow><mi>c</mi></msup><msup><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">D</mtext><mo stretchy="true" form="postfix">]</mo></mrow><mi>d</mi></msup></mrow><mrow><msup><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">A</mtext><mo stretchy="true" form="postfix">]</mo></mrow><mi>a</mi></msup><msup><mrow><mo stretchy="true" form="prefix">[</mo><mtext mathvariant="normal">B</mtext><mo stretchy="true" form="postfix">]</mo></mrow><mi>b</mi></msup></mrow></mfrac><mo>=</mo><mtext mathvariant="normal">一定</mtext></mrow><annotation encoding="application/x-tex">K_c = \frac{[\text{C}]^c[\text{D}]^d}{[\text{A}]^a[\text{B}]^b} = \text{一定}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> は<strong>温度のみに依存</strong>し，濃度・圧力・触媒に依存しない。<br>
+気体反応では圧平衡定数 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>p</mi></msub><mo>=</mo><msub><mi>K</mi><mi>c</mi></msub><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>Δ</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">K_p = K_c(RT)^{\Delta n}</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">\Delta n</annotation></semantics></math>：気体の mol 変化量）も使う。
+</div>
+
+<div class="example-box">
+<strong>例題 6.2</strong> <span class="lv lv-m">標準</span>　<span class="math-inline">N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  ⇌  2NH<sub>3</sub>(g)</span> の平衡で，ある温度での <span class="math-inline">[N<sub>2</sub>]=0.50</span>，<span class="math-inline">[H<sub>2</sub>]=0.30</span>，<span class="math-inline">[NH<sub>3</sub>]=0.20</span> mol/L。<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> を求めよ。
+<div class="answer-block">
+<span class="math-display">K_c = [NH<sub>3</sub>]<sup>2</sup>/[N<sub>2</sub>][H<sub>2</sub>]<sup>3</sup> = (0.20)<sup>2</sup>/(0.50)(0.30)<sup>3</sup> = 0.040/0.50 × 0.027 = 0.040/0.0135 ≈ <b>2.96</b></span>
+</div>
+</div>
+</div><!-- /s6-2 -->
+
+<div class="section" id="s6-3">
+<h3>6.3 ルシャトリエの原理</h3>
+
+<div class="formula-box theorem">
+<strong>ルシャトリエの平衡移動の原理</strong><br>
+<span class="hl">平衡状態にある系に変化（外力）を与えると，その変化を和らげる方向に平衡が移動する。</span>
+<div class="table-wrap"><table>
+  <tr><th>変化</th><th>平衡移動の方向</th></tr>
+  <tr><td>反応物の濃度増加</td><td>正反応（生成物を増やす方向）</td></tr>
+  <tr><td>生成物の濃度増加</td><td>逆反応（反応物を増やす方向）</td></tr>
+  <tr><td>圧力増加（気体）</td><td>気体の mol 数が<strong>減少</strong>する方向</td></tr>
+  <tr><td>温度上昇</td><td><strong>吸熱</strong>方向（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> が変化する）</td></tr>
+  <tr><td>触媒の添加</td><td>平衡移動なし（正逆反応速度を等しく上昇）</td></tr>
+</table></div>
+</div>
+
+<div class="important-box">
+温度変化のみが <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> の値を変化させる。濃度・圧力変化は <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> を変えず，平衡の位置だけ移動させる。触媒は<strong>平衡定数も平衡組成も変えない</strong>。
+</div>
+</div><!-- /s6-3 -->
+
+<div class="section" id="s6-4">
+<h3>6.4 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 6-A</span><span class="etag tag-eq">平衡</span></div>
+  <div class="exam-body">
+    <p>アンモニア合成反応 <span class="math-inline">N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  ⇌  2NH<sub>3</sub>(g)</span> は発熱反応（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta H &lt; 0</annotation></semantics></math>）である。NH₃ の収率を高めるためにはどのような条件が有利か。ルシャトリエの原理を使って説明せよ。</p>
+    <div class="answer-block">
+    ①<strong>高圧</strong>：気体の合計 mol 数 4→2 に減少する方向（正反応）に移動 → 有利。<br>
+    ②<strong>低温</strong>：発熱反応なので，温度を下げると発熱方向（正反応）に移動 → 平衡的には有利。ただし反応速度が遅くなるため，<strong>実際には400–600°C・鉄触媒</strong>を使う（ハーバー・ボッシュ法）。<br>
+    ③<strong>NH₃ の除去</strong>：生成物濃度を下げると正反応方向に移動。
+    </div>
+  </div>
+</div>
+</div><!-- /s6-4 -->
+</div><!-- /ch6 -->
+
+<!-- ============================================================
+     第７章　無機化学
+============================================================ -->
+
+<div class="chapter" id="ch7">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 07</div>
+  <h2>無機化学</h2>
+  <p>典型元素（1・2族，ハロゲン，酸素族，窒素族，炭素族）と遷移元素の主要な反応を整理する。金属イオンの系統分離も入試頻出。</p>
+</div>
+
+<div class="section" id="s7-1">
+<h3>7.1 典型元素の性質と反応</h3>
+
+<div class="formula-box theorem">
+<strong>アルカリ金属（1族）の特徴</strong><br>
+Li, Na, K, Rb, Cs, Fr。価電子1個，酸化数常に +1。<br>
+・水と激しく反応：<span class="math-inline">2Na + 2H<sub>2</sub>O  →  2NaOH + H<sub>2</sub></span><br>
+・炎色反応：Li(赤)，Na(黄)，K(紫)，Ca(橙赤)，Sr(紅)，Ba(黄緑)，Cu(緑)
+</div>
+
+<div class="formula-box reaction">
+<strong>ハロゲン（17族）の主な反応</strong><br>
+F₂ &gt; Cl₂ &gt; Br₂ &gt; I₂ の順に酸化力が強い（イオン化エネルギーが大きい）。<br>
+・塩素水中：<span class="math-inline">Cl<sub>2</sub> + H<sub>2</sub>O  ⇌  HCl + HClO</span>（次亜塩素酸：漂白・殺菌）<br>
+・ヨウ素デンプン反応：I₂ ＋デンプン → 青紫色（I₂ の検出）<br>
+・ハロゲン化物イオンの検出：AgNO₃ aq を加える<br>
+　AgCl（白色沈殿），AgBr（淡黄色），AgI（黄色）— すべて光で黒変
+</div>
+
+<div class="formula-box reaction">
+<strong>硫酸の製造（接触法）</strong>
+<ol class="steps">
+  <li><span class="math-inline">S + O<sub>2</sub>  →  SO<sub>2</sub></span>（硫黄の燃焼）</li>
+  <li><span class="math-inline">2SO<sub>2</sub> + O<sub>2</sub>  → [V₂O₅, 450°C] 2SO3</span>（酸化・平衡反応）</li>
+  <li><span class="math-inline">SO<sub>3</sub> + H<sub>2</sub>O  →  H<sub>2</sub>SO<sub>4</sub></span>（SO₃を濃H₂SO₄に吸収させ，水で希釈）</li>
+</ol>
+</div>
+
+<div class="formula-box reaction">
+<strong>アンモニアの製造（ハーバー・ボッシュ法）と工業的利用</strong><br>
+<span class="math-inline">N<sub>2</sub> + 3H<sub>2</sub>  → [Fe触媒，400–600°C，200–1000 atm] 2NH3</span><br>
+NH₃ → HNO₃（オストワルト法）：<br>
+① <span class="math-inline">4NH<sub>3</sub> + 5O<sub>2</sub>  → [Pt触媒] 4NO + 6H2O</span><br>
+② <span class="math-inline">2NO + O<sub>2</sub>  →  2NO<sub>2</sub></span><br>
+③ <span class="math-inline">3NO<sub>2</sub> + H<sub>2</sub>O  →  2HNO<sub>3</sub> + NO</span>
+</div>
+</div><!-- /s7-1 -->
+
+<div class="section" id="s7-2">
+<h3>7.2 遷移元素・金属イオンの確認</h3>
+
+<div class="formula-box theorem">
+<strong>鉄の製錬（溶鉱炉）</strong><br>
+<span class="math-inline">Fe<sub>2</sub>O<sub>3</sub> + 3CO  →  2Fe + 3CO<sub>2</sub></span>（コークスが還元剤）<br>
+鉄の酸化：<span class="math-inline">Fe  →  Fe<sup>2+  →  Fe^3+</sup></span><br>
+Fe²⁺：うすい緑色，<span class="math-inline">Fe(OH)<sub>2</sub></span> 白色沈殿 → 空気で酸化され褐色の <span class="math-inline">Fe(OH)<sub>3</sub></span><br>
+Fe³⁺：黄褐色，<span class="math-inline">Fe(OH)<sub>3</sub></span> 赤褐色沈殿，チオシアン酸塩 KSCN → 血赤色（Fe³⁺ の検出）
+</div>
+
+<div class="table-wrap"><table>
+  <tr><th>イオン</th><th>色</th><th>水酸化物沈殿</th><th>確認反応</th></tr>
+  <tr><td>Cu²⁺</td><td>青色</td><td>Cu(OH)₂（青白色）</td><td>アンモニア過剰で深青色（テトラアンミン銅錯体）</td></tr>
+  <tr><td>Fe²⁺</td><td>淡緑色</td><td>Fe(OH)₂（白色）</td><td>空気で酸化 → Fe(OH)₃（褐色）</td></tr>
+  <tr><td>Fe³⁺</td><td>黄褐色</td><td>Fe(OH)₃（赤褐色）</td><td>KSCN → 血赤色</td></tr>
+  <tr><td>Al³⁺</td><td>無色</td><td>Al(OH)₃（白色）</td><td>両性：NaOH 過剰で溶解 <span class="math-inline">[Al(OH)<sub>4</sub>]-</span></td></tr>
+  <tr><td>Ca²⁺</td><td>無色</td><td>（沈殿しにくい）</td><td>CO₃²⁻ 加える → CaCO₃ 白色沈殿；炎色：橙赤色</td></tr>
+  <tr><td>Ag⁺</td><td>無色</td><td>Ag₂O（褐色）</td><td>Cl⁻ → AgCl 白色；NH₃ 過剰で溶解</td></tr>
+</table></div>
+</div><!-- /s7-2 -->
+
+<div class="section" id="s7-3">
+<h3>7.3 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 7-A</span><span class="etag tag-inorg">無機</span></div>
+  <div class="exam-body">
+    <p>次の操作で観察される現象を答えよ。<br>
+    (1) 硫酸鉄(Ⅱ) FeSO₄ 水溶液に KSCN 水溶液を加えた。<br>
+    (2) 塩化アルミニウム AlCl₃ 水溶液に NaOH を少量加えた後，過剰に加えた。<br>
+    (3) 硝酸銀 AgNO₃ 水溶液に希塩酸を加えた。</p>
+    <div class="answer-block">
+    (1) Fe²⁺ は KSCN に反応しないため<strong>変化なし</strong>（血赤色は Fe³⁺ の反応）<br>
+    (2) 少量：白色沈殿 Al(OH)₃ が生成。過剰：<strong>溶解</strong>（<span class="math-inline">Al(OH)<sub>3</sub> + NaOH  →  Na[Al(OH)<sub>4</sub>]</span>）<br>
+    (3) 白色沈殿 AgCl が生成する（<span class="math-inline">Ag+ + Cl-  →  AgCl v</span>）
+    </div>
+  </div>
+</div>
+</div><!-- /s7-3 -->
+</div><!-- /ch7 -->
+
+<!-- ============================================================
+     第８章　有機化学
+============================================================ -->
+
+<div class="chapter" id="ch8">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 08</div>
+  <h2>有機化学</h2>
+  <p>有機化合物の分類と官能基，脂肪族（アルカン・アルケン・アルコール系）から芳香族（ベンゼン誘導体）を経て，天然・合成高分子まで体系的に習得する。</p>
+</div>
+
+<div class="section" id="s8-1">
+<h3>8.1 有機化合物の分類と命名</h3>
+
+<div class="formula-box definition">
+<strong>主要な官能基と化合物の分類</strong>
+<div class="table-wrap"><table>
+  <tr><th>官能基</th><th>構造</th><th>化合物名</th><th>例</th></tr>
+  <tr><td>ヒドロキシ基</td><td>–OH</td><td>アルコール，フェノール</td><td>CH₃OH（メタノール），C₆H₅OH</td></tr>
+  <tr><td>アルデヒド基</td><td>–CHO</td><td>アルデヒド</td><td>HCHO（ホルムアルデヒド）</td></tr>
+  <tr><td>ケトン基</td><td>C=O（内部）</td><td>ケトン</td><td>CH₃COCH₃（アセトン）</td></tr>
+  <tr><td>カルボキシ基</td><td>–COOH</td><td>カルボン酸</td><td>CH₃COOH（酢酸）</td></tr>
+  <tr><td>エステル結合</td><td>–COO–</td><td>エステル</td><td>CH₃COOC₂H₅（酢酸エチル）</td></tr>
+  <tr><td>アミノ基</td><td>–NH₂</td><td>アミン，アミノ酸</td><td>C₆H₅NH₂（アニリン）</td></tr>
+  <tr><td>ニトロ基</td><td>–NO₂</td><td>ニトロ化合物</td><td>C₆H₅NO₂（ニトロベンゼン）</td></tr>
+</table></div>
+</div>
+</div><!-- /s8-1 -->
+
+<div class="section" id="s8-2">
+<h3>8.2 脂肪族化合物</h3>
+
+<div class="formula-box theorem">
+<strong>アルカン・アルケン・アルキンの特徴</strong><br>
+・<strong>アルカン</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">C</mtext><mi>n</mi></msub><msub><mtext mathvariant="normal">H</mtext><mrow><mn>2</mn><mi>n</mi><mo>+</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\text{C}_n\text{H}_{2n+2}</annotation></semantics></math>：単結合のみ，置換反応（ハロゲン化）が起こりやすい<br>
+・<strong>アルケン</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">C</mtext><mi>n</mi></msub><msub><mtext mathvariant="normal">H</mtext><mrow><mn>2</mn><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\text{C}_n\text{H}_{2n}</annotation></semantics></math>：C=C 二重結合あり，付加反応（HX，H₂，Br₂ の付加）<br>
+・<strong>アルキン</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">C</mtext><mi>n</mi></msub><msub><mtext mathvariant="normal">H</mtext><mrow><mn>2</mn><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\text{C}_n\text{H}_{2n-2}</annotation></semantics></math>：C≡C 三重結合あり，付加反応（2段階）
+</div>
+
+<div class="formula-box reaction">
+<strong>アルコールの酸化（酸化経路）</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">第1級アルコール</mtext><mover><mo>→</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>O</mi><mo stretchy="true" form="postfix">]</mo></mrow></mover><mtext mathvariant="normal">アルデヒド</mtext><mover><mo>→</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>O</mi><mo stretchy="true" form="postfix">]</mo></mrow></mover><mtext mathvariant="normal">カルボン酸</mtext></mrow><annotation encoding="application/x-tex">\text{第1級アルコール} \xrightarrow{[O]} \text{アルデヒド} \xrightarrow{[O]} \text{カルボン酸}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">第2級アルコール</mtext><mover><mo>→</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>O</mi><mo stretchy="true" form="postfix">]</mo></mrow></mover><mtext mathvariant="normal">ケトン（それ以上酸化されにくい）</mtext></mrow><annotation encoding="application/x-tex">\text{第2級アルコール} \xrightarrow{[O]} \text{ケトン（それ以上酸化されにくい）}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="normal">第3級アルコール</mtext><mo>→</mo><mtext mathvariant="normal">酸化されにくい</mtext></mrow><annotation encoding="application/x-tex">\text{第3級アルコール} \rightarrow \text{酸化されにくい}</annotation></semantics></math>
+</div>
+
+<div class="formula-box reaction">
+<strong>エステル化と加水分解</strong><br>
+<span class="math-inline">RCOOH + R'OH  ⇌ [H+, \Delta][-H<sub>2</sub>O] RCOOR' + H<sub>2</sub>O</span><br>
+・エステル化は可逆反応（酸触媒）。<br>
+・塩基による加水分解（鹸化）：<span class="math-inline">RCOOR' + NaOH  →  RCOONa + R'OH</span>（不可逆）
+</div>
+
+<div class="example-box">
+<strong>例題 8.2</strong> <span class="lv lv-m">標準</span>　エタノール C₂H₅OH を酢酸 CH₃COOH と反応させてエステルを合成する反応式を書け。また，このエステル（酢酸エチル）を NaOH 水溶液で加水分解するときの反応式も書け。
+<div class="answer-block">
+エステル化：<span class="math-inline">CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH  ⇌ [H+] CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O</span><br>
+鹸化：<span class="math-inline">CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + NaOH  →  CH<sub>3</sub>COONa + C<sub>2</sub>H<sub>5</sub>OH</span>
+</div>
+</div>
+</div><!-- /s8-2 -->
+
+<div class="section" id="s8-3">
+<h3>8.3 芳香族化合物</h3>
+
+<div class="formula-box definition">
+<strong>ベンゼンの構造と反応</strong><br>
+ベンゼン <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">C</mtext><mn>6</mn></msub><msub><mtext mathvariant="normal">H</mtext><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">\text{C}_6\text{H}_6</annotation></semantics></math>：正六角形，すべての結合が等価（共鳴構造）。<br>
+・<strong>ニトロ化</strong>：<span class="math-inline">C<sub>6</sub>H<sub>6</sub> + HNO<sub>3</sub>  → [H<sub>2</sub>SO<sub>4</sub>] C6H5NO2 + H2O</span><br>
+・<strong>スルホン化</strong>：<span class="math-inline">C<sub>6</sub>H<sub>6</sub> + H<sub>2</sub>SO<sub>4</sub>(発煙)  →  C<sub>6</sub>H<sub>5</sub>SO<sub>3</sub>H + H<sub>2</sub>O</span><br>
+・<strong>ハロゲン化</strong>（置換）：<span class="math-inline">C<sub>6</sub>H<sub>6</sub> + Cl<sub>2</sub>  → [FeCl<sub>3</sub>] C6H5Cl + HCl</span><br>
+・<strong>付加反応</strong>（例外）：<span class="math-inline">C<sub>6</sub>H<sub>6</sub> + 3H<sub>2</sub>  → [Ni, 高温高圧] C6H12</span>（シクロヘキサン）
+</div>
+
+<div class="formula-box reaction">
+<strong>フェノールの合成経路（クメン法）</strong>
+<ol class="steps">
+  <li>ベンゼン＋プロペン → クメン（異性化）</li>
+  <li>クメン＋O₂ → クメンヒドロペルオキシド</li>
+  <li>希硫酸で分解 → <strong>フェノール＋アセトン</strong></li>
+</ol>
+</div>
+</div><!-- /s8-3 -->
+
+<div class="section" id="s8-4">
+<h3>8.4 高分子化合物</h3>
+
+<div class="formula-box definition">
+<strong>付加重合と縮合重合</strong><br>
+・<strong>付加重合</strong>：二重結合をもつモノマーが次々に付加して鎖を形成。<br>
+　例：<span class="math-inline">nCH<sub>2</sub>=CH<sub>2</sub>  →  [-CH<sub>2</sub>-CH<sub>2</sub>-]_n</span>（ポリエチレン）<br>
+・<strong>縮合重合</strong>：2種類の官能基を持つモノマーが水などの小分子を脱離しながら結合。<br>
+　例：ナイロン-6,6：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mspace width="0.167em"></mspace><msub><mtext mathvariant="normal">H</mtext><mn>2</mn></msub><mtext mathvariant="normal">N</mtext><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mtext mathvariant="normal">CH</mtext><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>6</mn></msub><msub><mtext mathvariant="normal">NH</mtext><mn>2</mn></msub><mo>+</mo><mi>n</mi><mspace width="0.167em"></mspace><mtext mathvariant="normal">HOOC</mtext><msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mtext mathvariant="normal">CH</mtext><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msub><mtext mathvariant="normal">COOH</mtext></mrow><annotation encoding="application/x-tex">n\,\text{H}_2\text{N}(\text{CH}_2)_6\text{NH}_2 + n\,\text{HOOC}(\text{CH}_2)_4\text{COOH}</annotation></semantics></math><br>
+　→ <span class="math-inline">[-NH(CH<sub>2</sub>)<sub>6</sub>NHCO(CH<sub>2</sub>)<sub>4</sub>CO-]_n + nH<sub>2</sub>O</span>
+</div>
+
+<div class="table-wrap"><table>
+  <tr><th>高分子</th><th>モノマー</th><th>重合形式</th><th>用途</th></tr>
+  <tr><td>ポリエチレン（PE）</td><td>エチレン CH₂=CH₂</td><td>付加重合</td><td>袋・容器</td></tr>
+  <tr><td>PET（ポリエチレンテレフタラート）</td><td>エチレングリコール＋テレフタル酸</td><td>縮合重合</td><td>ペットボトル・繊維</td></tr>
+  <tr><td>ナイロン-6,6</td><td>ヘキサメチレンジアミン＋アジピン酸</td><td>縮合重合</td><td>繊維・歯車</td></tr>
+  <tr><td>天然ゴム（cis-ポリイソプレン）</td><td>イソプレン（天然）</td><td>付加重合</td><td>タイヤ</td></tr>
+</table></div>
+</div><!-- /s8-4 -->
+
+<div class="section" id="s8-5">
+<h3>8.5 章末練習問題</h3>
+<div class="exam-card">
+  <div class="exam-hd"><span>章末問題 8-A</span><span class="etag tag-org">有機</span></div>
+  <div class="exam-body">
+    <p>分子式 C₄H₈O₂ で表されるエステル A を NaOH 水溶液で加水分解すると，アルコール B と酢酸ナトリウムが得られた。<br>
+    (1) エステル A の構造式を書け。<br>
+    (2) アルコール B の名称を答えよ。</p>
+    <div class="answer-block">
+    酢酸ナトリウム CH₃COONa が生成したので，酸成分は酢酸 CH₃COOH（C₂H₄O₂）。<br>
+    残りのアルコール部分：C₄H₈O₂ − CH₂O（エステル結合分）= C₂H₅OH → <strong>エタノール</strong><br>
+    (1) 構造式：<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">CH</mtext><mn>3</mn></msub><msub><mtext mathvariant="normal">COOCH</mtext><mn>2</mn></msub><msub><mtext mathvariant="normal">CH</mtext><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">\text{CH}_3\text{COOCH}_2\text{CH}_3</annotation></semantics></math>（酢酸エチル）<br>
+    (2) <strong>エタノール（エチルアルコール）</strong>
+    </div>
+  </div>
+</div>
+</div><!-- /s8-5 -->
+</div><!-- /ch8 -->
+
+<!-- ============================================================
+     第９章　入試対策
+============================================================ -->
+
+<div class="chapter" id="ch9">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 09</div>
+  <h2>入試対策</h2>
+  <p>頻出解法パターンの整理と，東大・京大・名大・東工大レベルの精選問題。典型的な落とし穴と採点者が重視するポイントも合わせて解説する。</p>
+</div>
+
+<div class="section" id="s9-1">
+<h3>9.1 頻出解法パターン集</h3>
+
+<div class="sum-grid">
+  <div class="sum-card">
+    <h4>① mol 計算の鉄則</h4>
+    <p>①何の mol か明確にする → ②mol 変換（質量÷M, 体積÷22.4, 粒子数÷<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>A</mi></msub><annotation encoding="application/x-tex">N_A</annotation></semantics></math>）→ ③反応式の係数比で mol を移行 → ④求める量に変換</p>
+  </div>
+  <div class="sum-card">
+    <h4>② 酸化還元反応式の作り方</h4>
+    <p>半反応式を e⁻ の数で合わせる → 加算して e⁻ を消去 → イオン式から化学式へ（必要なら H⁺ や SO₄²⁻ を補う）</p>
+  </div>
+  <div class="sum-card">
+    <h4>③ pH 計算のチェックリスト</h4>
+    <p>強酸か弱酸か？ → 希釈・混合の場合は mol で考える → 中和後は塩の加水分解を考慮 → 対数計算 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mo>log</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>n</mi><mo>−</mo><mo>log</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">-\log(a\times10^{-n}) = n - \log a</annotation></semantics></math></p>
+  </div>
+  <div class="sum-card">
+    <h4>④ 有機構造決定のステップ</h4>
+    <p>①分子式（元素分析・質量分析）→ ②不飽和度 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>C</mi><mo>+</mo><mn>2</mn><mo>+</mo><mi>N</mi><mo>−</mo><mi>H</mi><mo>−</mo><mi>X</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(2C+2+N-H-X)/2</annotation></semantics></math> → ③官能基の特定（試薬反応）→ ④異性体の列挙と絞り込み</p>
+  </div>
+  <div class="sum-card">
+    <h4>⑤ 化学平衡の ICE 表</h4>
+    <p>I（Initial），C（Change），E（Equilibrium）の3行で平衡量を整理し，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> の式に代入する。2次方程式が出たら解の吟味（正の解）を忘れずに。</p>
+  </div>
+  <div class="sum-card">
+    <h4>⑥ 電気分解の量的計算</h4>
+    <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mi>I</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">Q = It</annotation></semantics></math> → <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>Q</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mi>F</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n = Q/(zF)</annotation></semantics></math> の流れ。陽極・陰極で起きる反応を別々に書く。極板の材質（Pt か Cu かで反応が異なる）に注意。</p>
+  </div>
+</div>
+</div><!-- /s9-1 -->
+
+<div class="section" id="s9-2">
+<h3>9.2 精選入試問題</h3>
+
+<div class="exam-card">
+  <div class="exam-hd"><span>入試問題 A　　酸化還元滴定</span><span class="etag tag-rxn">酸化還元＋mol</span></div>
+  <div class="exam-body">
+    <p>過マンガン酸カリウム <span class="math-inline">KMnO<sub>4</sub></span> 標準溶液（0.020 mol/L）で，過酸化水素 <span class="math-inline">H<sub>2</sub>O<sub>2</sub></span> 水溶液（10.0 mL）を酸性条件下で滴定したところ，24.0 mL を要した。H₂O₂ 水溶液のモル濃度を求めよ。<br>
+    （関係する反応：<span class="math-inline">MnO<sub>4</sub>- + 8H+ + 5e-  →  Mn<sup>2+ + 4H2O</sup></span>；<span class="math-inline">H<sub>2</sub>O<sub>2</sub>  →  O<sub>2</sub> + 2H+ + 2e-</span>）</p>
+    <div class="answer-block">
+    <span class="math-inline">n(KMnO<sub>4</sub>) = 0.020 × 24.0/1000 = 4.8×10<sup>-4</sup> mol</span><br>
+    半反応式より，e⁻ 比：MnO₄⁻ は5 e⁻，H₂O₂ は2 e⁻。<br>
+    <span class="math-inline">5 n(H<sub>2</sub>O<sub>2</sub>) = 2 n(MnO<sub>4</sub>-) × 5/2</span>… ←直接 e⁻ mol を等置：<br>
+    <span class="math-inline">2 n(H<sub>2</sub>O<sub>2</sub>) = 5 n(MnO<sub>4</sub>-)</span><br>
+    <span class="math-inline">n(H<sub>2</sub>O<sub>2</sub>) = 5/2×4.8×10<sup>-4</sup> = 1.2×10<sup>-3</sup> mol</span><br>
+    <span class="math-inline">c(H<sub>2</sub>O<sub>2</sub>) = \dfrac1.2×10<sup>-3</sup>0.0100 = <b>0.12 mol/L</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="exam-card">
+  <div class="exam-hd"><span>入試問題 B　　構造決定</span><span class="etag tag-org">有機</span></div>
+  <div class="exam-body">
+    <p>化合物 A は分子式 C₃H₆O₂ で表される。A はナトリウムと反応して H₂ を発生し，また銀鏡反応を示した。A の構造式を書き，その名称を答えよ。（不飽和度の計算を示すこと）</p>
+    <div class="answer-block">
+    不飽和度 = <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="true"><mrow><mn>2</mn><mo>×</mo><mn>3</mn><mo>+</mo><mn>2</mn><mo>−</mo><mn>6</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>2</mn><mn>2</mn></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\dfrac{2\times3+2-6}{2} = \dfrac{2}{2} = 1</annotation></semantics></math>（二重結合 or 環1つ）<br>
+    ① Na と反応 → –OH を含む（アルコール or カルボン酸 or フェノール）<br>
+    ② 銀鏡反応 → –CHO（アルデヒド基）を含む<br>
+    不飽和度1なのにアルデヒドと –OH の両方 → アルデヒドの C=O が不飽和度1。<br>
+    C₃H₆O₂ − CHO(C1H1O1) = C₂H₅O → CH₂OH–CH₂– などを検討。<br>
+    構造式：<strong>HOCH₂CH₂CHO</strong>（3-ヒドロキシプロパナール）<br>
+    名称：<strong>3-ヒドロキシプロパナール</strong>（ヒドロキシプロパナール）
+    </div>
+  </div>
+</div>
+
+<div class="exam-card">
+  <div class="exam-hd"><span>入試問題 C　　化学平衡の計算</span><span class="etag tag-eq">平衡</span></div>
+  <div class="exam-body">
+    <p>密閉容器に <span class="math-inline">N<sub>2</sub>O<sub>4</sub></span> 0.10 mol を入れ，一定温度で平衡に達した。このとき <span class="math-inline">N<sub>2</sub>O<sub>4</sub></span> の解離度（解離した割合）が 0.40 であった。容器の体積を 2.0 L とするとき，この温度での <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math> を求めよ。<br>
+    <span class="math-inline">N<sub>2</sub>O<sub>4</sub>(g)  ⇌  2NO<sub>2</sub>(g)</span></p>
+    <div class="answer-block">
+    ICE 表（mol）：<br>
+    　I：N₂O₄ = 0.10，NO₂ = 0<br>
+    　C：−0.10×0.40 = −0.040，＋2×0.040 = +0.080<br>
+    　E：0.060，0.080<br>
+    濃度：<span class="math-inline">[N<sub>2</sub>O<sub>4</sub>] = 0.060/2.0 = 0.030 mol/L</span>，<span class="math-inline">[NO<sub>2</sub>] = 0.080/2.0 = 0.040 mol/L</span><br>
+    <span class="math-display">K_c = [NO<sub>2</sub>]<sup>2</sup>/[N<sub>2</sub>O<sub>4</sub>] = (0.040)<sup>2</sup>/0.030 = \frac1.6×10<sup>-3</sup>0.030 = <b>0.053 mol/L</b></span>
+    </div>
+  </div>
+</div>
+</div><!-- /s9-2 -->
+</div><!-- /ch9 -->
+
+<!-- ============================================================
+     付録　化学記号・周期表
+============================================================ -->
+
+<div class="chapter" id="ch0">
+<div class="chapter-header">
+  <div class="ch-num">付録</div>
+  <h2>化学記号・周期表一覧</h2>
+  <p>入試で使う元素記号，イオン式，単位，記号の読み方をまとめた。</p>
+</div>
+
+<div class="section">
+<h3>主要元素記号と原子量（入試標準値）</h3>
+<div class="table-wrap"><table>
+  <tr><th>Z</th><th>記号</th><th>元素名</th><th>原子量</th><th>Z</th><th>記号</th><th>元素名</th><th>原子量</th></tr>
+  <tr><td>1</td><td>H</td><td>水素</td><td>1</td><td>14</td><td>Si</td><td>ケイ素</td><td>28</td></tr>
+  <tr><td>2</td><td>He</td><td>ヘリウム</td><td>4</td><td>15</td><td>P</td><td>リン</td><td>31</td></tr>
+  <tr><td>6</td><td>C</td><td>炭素</td><td>12</td><td>16</td><td>S</td><td>硫黄</td><td>32</td></tr>
+  <tr><td>7</td><td>N</td><td>窒素</td><td>14</td><td>17</td><td>Cl</td><td>塩素</td><td>35.5</td></tr>
+  <tr><td>8</td><td>O</td><td>酸素</td><td>16</td><td>19</td><td>K</td><td>カリウム</td><td>39</td></tr>
+  <tr><td>9</td><td>F</td><td>フッ素</td><td>19</td><td>20</td><td>Ca</td><td>カルシウム</td><td>40</td></tr>
+  <tr><td>11</td><td>Na</td><td>ナトリウム</td><td>23</td><td>26</td><td>Fe</td><td>鉄</td><td>56</td></tr>
+  <tr><td>12</td><td>Mg</td><td>マグネシウム</td><td>24</td><td>29</td><td>Cu</td><td>銅</td><td>64</td></tr>
+  <tr><td>13</td><td>Al</td><td>アルミニウム</td><td>27</td><td>30</td><td>Zn</td><td>亜鉛</td><td>65</td></tr>
+</table></div>
+
+<h3>よく使うイオン式一覧</h3>
+<div class="two-col">
+<div>
+<h4>陽イオン</h4>
+<div class="table-wrap"><table>
+  <tr><th>式</th><th>名称</th></tr>
+  <tr><td>H⁺</td><td>水素イオン</td></tr>
+  <tr><td>Na⁺, K⁺, Li⁺</td><td>ナトリウム，カリウム，リチウムイオン</td></tr>
+  <tr><td>Mg²⁺, Ca²⁺, Ba²⁺</td><td>マグネシウム，カルシウム，バリウムイオン</td></tr>
+  <tr><td>Al³⁺</td><td>アルミニウムイオン</td></tr>
+  <tr><td>Fe²⁺, Fe³⁺</td><td>鉄(Ⅱ), 鉄(Ⅲ)イオン</td></tr>
+  <tr><td>Cu²⁺</td><td>銅(Ⅱ)イオン</td></tr>
+  <tr><td>Ag⁺</td><td>銀イオン</td></tr>
+  <tr><td>NH₄⁺</td><td>アンモニウムイオン</td></tr>
+</table></div>
+</div>
+<div>
+<h4>陰イオン</h4>
+<div class="table-wrap"><table>
+  <tr><th>式</th><th>名称</th></tr>
+  <tr><td>Cl⁻, Br⁻, I⁻, F⁻</td><td>塩化物，臭化物，ヨウ化物，フッ化物イオン</td></tr>
+  <tr><td>O²⁻, S²⁻</td><td>酸化物，硫化物イオン</td></tr>
+  <tr><td>OH⁻</td><td>水酸化物イオン</td></tr>
+  <tr><td>NO₃⁻, NO₂⁻</td><td>硝酸塩，亜硝酸塩イオン</td></tr>
+  <tr><td>SO₄²⁻, SO₃²⁻</td><td>硫酸，亜硫酸イオン</td></tr>
+  <tr><td>CO₃²⁻, HCO₃⁻</td><td>炭酸，炭酸水素イオン</td></tr>
+  <tr><td>PO₄³⁻</td><td>リン酸イオン</td></tr>
+  <tr><td>MnO₄⁻</td><td>過マンガン酸イオン</td></tr>
+</table></div>
+</div>
+</div>
+
+<h3>重要な物理定数</h3>
+<div class="formula-box">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>A</mi></msub><mo>=</mo><mn>6.022</mn><mo>×</mo><msup><mn>10</mn><mn>23</mn></msup><mspace width="0.167em"></mspace><msup><mtext mathvariant="normal">mol</mtext><mrow><mo>−</mo><mn>1</mn></mrow></msup><mspace width="1.0em"></mspace><mi>F</mi><mo>=</mo><mn>9.65</mn><mo>×</mo><msup><mn>10</mn><mn>4</mn></msup><mspace width="0.167em"></mspace><mtext mathvariant="normal">C/mol</mtext><mspace width="1.0em"></mspace><mi>R</mi><mo>=</mo><mn>8.314</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">J/(mol·K)</mtext></mrow><annotation encoding="application/x-tex">N_A = 6.022\times10^{23}\,\text{mol}^{-1}\quad F = 9.65\times10^4\,\text{C/mol}\quad R = 8.314\,\text{J/(mol·K)}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>w</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">25°C</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>14</mn></mrow></msup><mspace width="1.0em"></mspace><mtext mathvariant="normal">標準モル体積</mtext><mo>=</mo><mn>22.4</mn><mspace width="0.167em"></mspace><mtext mathvariant="normal">L/mol（0°C, 1 atm）</mtext></mrow><annotation encoding="application/x-tex">K_w(\text{25°C}) = 1.0\times10^{-14}\quad\text{標準モル体積} = 22.4\,\text{L/mol（0°C, 1 atm）}</annotation></semantics></math>
+</div>
+
+<h3>記号の読み方ガイド</h3>
+<div class="note">
+① <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\Delta H</annotation></semantics></math> はデルタエイチ（enthalpy の変化量）。発熱なら <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta H &lt; 0</annotation></semantics></math>，吸熱なら <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>H</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Delta H &gt; 0</annotation></semantics></math>（熱化学方程式の旧表記とは符号が逆）。<br>
+② <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>c</mi></msub><annotation encoding="application/x-tex">K_c</annotation></semantics></math>・<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>p</mi></msub><annotation encoding="application/x-tex">K_p</annotation></semantics></math>・<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>a</mi></msub><annotation encoding="application/x-tex">K_a</annotation></semantics></math>・<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>b</mi></msub><annotation encoding="application/x-tex">K_b</annotation></semantics></math>・<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>w</mi></msub><annotation encoding="application/x-tex">K_w</annotation></semantics></math> の添字はそれぞれ concentration（濃度），pressure（圧力），acid（酸），base（塩基），water（水）を意味する。<br>
+③ <span class="math-inline"> → </span> は一方向の反応，<span class="math-inline"> ⇌ </span> は可逆反応（平衡）を表す。<br>
+④ 酸化数を示す場合，ローマ数字表記（鉄(Ⅱ)，鉄(Ⅲ)）と上付き符号（Fe²⁺，Fe³⁺）の両方が使われる。<br>
+⑤ <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="normal">(aq)</mtext><annotation encoding="application/x-tex">\text{(aq)}</annotation></semantics></math> は水溶液，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="normal">(g)</mtext><annotation encoding="application/x-tex">\text{(g)}</annotation></semantics></math> は気体，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="normal">(l)</mtext><annotation encoding="application/x-tex">\text{(l)}</annotation></semantics></math> は液体，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtext mathvariant="normal">(s)</mtext><annotation encoding="application/x-tex">\text{(s)}</annotation></semantics></math> は固体を表す状態記号。
+</div>
+</div>
+</div><!-- /ch0 -->
+
+</div><!-- /main-content -->
+
+<a href="#top" class="back-to-top no-print" title="トップへ">▲</a>
+
+<!-- Symbol Guide Panel -->
+
+<button id="sym-guide-btn" class="no-print" title="化学記号の読み方ガイド">⚗️</button>
+
+<div id="sym-guide-panel" class="no-print">
+  <div class="sg-hd">
+    ⚗️ 化学記号の読み方ガイド
+    <button onclick="document.getElementById('sym-guide-panel').classList.remove('open')">✕</button>
+  </div>
+  <div class="sg-body">
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 量・単位</div>
+      <div class="sg-row"><span class="sg-sym">mol</span><span class="sg-read">モル</span><span class="sg-mean">物質量の単位（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>N</mi><mi>A</mi></msub><annotation encoding="application/x-tex">N_A</annotation></semantics></math> 個の集まり）</span></div>
+      <div class="sg-row"><span class="sg-sym">M</span><span class="sg-read">モル/リットル</span><span class="sg-mean">モル濃度の単位 mol/L</span></div>
+      <div class="sg-row"><span class="sg-sym">atm</span><span class="sg-read">アトム/気圧</span><span class="sg-mean">圧力の単位（1 atm = 101325 Pa）</span></div>
+      <div class="sg-row"><span class="sg-sym">eV</span><span class="sg-read">電子ボルト</span><span class="sg-mean">エネルギーの単位（1 eV ≈ 96 kJ/mol）</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 熱・平衡記号</div>
+      <div class="sg-row"><span class="sg-sym">ΔH</span><span class="sg-read">デルタエイチ</span><span class="sg-mean">反応エンタルピー変化（kJ/mol）</span></div>
+      <div class="sg-row"><span class="sg-sym">ΔG</span><span class="sg-read">デルタジー</span><span class="sg-mean">ギブズ自由エネルギー変化</span></div>
+      <div class="sg-row"><span class="sg-sym">Kc, Kp</span><span class="sg-read">ケーシー，ケーピー</span><span class="sg-mean">濃度・圧力平衡定数</span></div>
+      <div class="sg-row"><span class="sg-sym">Ka, Kb</span><span class="sg-read">ケーエー，ケービー</span><span class="sg-mean">酸・塩基の電離定数</span></div>
+      <div class="sg-row"><span class="sg-sym">Kw</span><span class="sg-read">ケーダブリュー</span><span class="sg-mean">水のイオン積（25°C で 10⁻¹⁴）</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 反応矢印</div>
+      <div class="sg-row"><span class="sg-sym">→</span><span class="sg-read">いちほうこうせいぶん</span><span class="sg-mean">一方向反応（不可逆）</span></div>
+      <div class="sg-row"><span class="sg-sym">⇌</span><span class="sg-read">りょうほうこうせいぶん</span><span class="sg-mean">可逆反応・平衡</span></div>
+      <div class="sg-row"><span class="sg-sym">↓</span><span class="sg-read">ちんでん</span><span class="sg-mean">沈殿生成</span></div>
+      <div class="sg-row"><span class="sg-sym">↑</span><span class="sg-read">きたい</span><span class="sg-mean">気体発生</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 酸化数・電荷</div>
+      <div class="sg-row"><span class="sg-sym">Fe²⁺</span><span class="sg-read">てつにイオン</span><span class="sg-mean">鉄(Ⅱ)イオン，+2価</span></div>
+      <div class="sg-row"><span class="sg-sym">e⁻</span><span class="sg-read">でんし</span><span class="sg-mean">電子（電荷 −e）</span></div>
+      <div class="sg-row"><span class="sg-sym">+Ⅳ</span><span class="sg-read">さんかすうプラス4</span><span class="sg-mean">酸化数 +4（例：SO₂中の S）</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== 目次トグル ==========
+(function() {
+  var btn = document.getElementById('nav-toggle-btn');
+  var nav = document.querySelector('nav');
+  var overlay = document.getElementById('nav-overlay');
+  if (!btn || !nav) return;
+  function openNav() {
+    nav.classList.add('nav-open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.classList.add('active');
+  }
+  function closeNav() {
+    nav.classList.remove('nav-open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.remove('active');
+  }
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (nav.classList.contains('nav-open')) closeNav();
+    else openNav();
+  });
+  if (overlay) overlay.addEventListener('click', closeNav);
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { setTimeout(closeNav, 200); });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNav();
+  });
+})();
+
+// ========== 記号ガイドパネル ==========
+(function() {
+  var btn = document.getElementById('sym-guide-btn');
+  var panel = document.getElementById('sym-guide-panel');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (!panel.contains(e.target) && e.target !== btn) {
+      panel.classList.remove('open');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
