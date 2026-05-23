@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>地理総合・地理探究 完全攻略テキスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ====== VARIABLES ====== */
+:root{
+  --ink:#0f1e3c; --ink2:#1a3255; --paper:#faf8f4; --warm:#f5f0e8;
+  --rule:#d4cbb8; --accent:#9b1b4b; --blue:#1a4f8a; --green:#145f3a;
+  --gold:#c9870c; --purple:#5c2d8e; --orange:#b94a00;
+  --proof-bg:#edf6fb; --proof-bd:#1e7abf;
+  --form-bg:#fef9e7; --form-bd:#d4890a;
+  --ex-bg:#f0fdf4; --ex-bd:#1a8a4a;
+  --pr-bg:#fdf3ff; --pr-bd:#7e22ce;
+  --tip-bg:#f0f9ff; --tip-bd:#0284c7;
+  --warn-bg:#fff1f2; --warn-bd:#be123c;
+  --exam-bg:#fff8f0; --exam-bd:#b94a00;
+  --serif:'Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic Pro',sans-serif;
+}
+
+/* ====== RESET ====== */
+*{box-sizing:border-box;margin:0;padding:0;}html,body{overflow-x:hidden;max-width:100%;}
+html{font-size:15px;}
+body{font-family:‘Noto Serif JP’,Georgia,serif;background:#faf8f4;color:#0f1e3c;line-height:1.9;}
+p{margin-bottom:11px;}
+strong{font-weight:700;}
+
+/* ====== PAGE / PRINT ====== */
+@page{size:A4;margin:18mm 16mm 18mm 16mm;}
+@media print{
+html{font-size:11px;}
+body{background:#fff;}
+nav,.no-print,.back-to-top{display:none!important;}
+.main-content{margin-left:0!important;}
+.chapter{page-break-before:always;padding:0 0 24px;}
+.chapter:first-of-type{page-break-before:avoid;}
+.print-cover{display:flex!important;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.toc-section{page-break-after:always;}
+.formula-box,.proof-box,.example-box,.exercise-block,.exam-card,.tip-box,.important-box{page-break-inside:avoid;break-inside:avoid;}
+.section{page-break-inside:auto;}
+h3,h4{page-break-after:avoid;}
+.answer-block{page-break-inside:avoid;break-inside:avoid;}
+table{page-break-inside:avoid;break-inside:avoid;}
+.two-col,.three-col{page-break-inside:avoid;}
+a{color:inherit;text-decoration:none;}
+.chapter-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.important-box{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.formula-box::before,.proof-box::before,.example-box::before,
+.exercise-block::before,.tip-box::before,.important-box::before{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.exam-hd{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+@media screen{.print-cover{display:none;}}
+
+/* ====== PRINT COVER ====== */
+.print-cover{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 55%,#1a4f8a 100%);
+color:#fff;min-height:100vh;flex-direction:column;align-items:center;
+justify-content:center;text-align:center;padding:80px 56px;
+}
+.print-cover h1{font-size:3.2rem;font-weight:300;letter-spacing:0.12em;margin-bottom:10px;}
+.print-cover h1 span{font-weight:700;color:#f0c040;}
+.print-cover .cv-sub{font-size:1rem;opacity:.65;letter-spacing:.3em;margin-bottom:44px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.print-cover .cv-chs{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:44px;}
+.print-cover .cv-ch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 16px;border-radius:20px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13px;}
+.print-cover .cv-note{font-size:11.5px;opacity:.45;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;letter-spacing:.1em;}
+
+/* ====== NAV TOGGLE BUTTON ====== */
+#nav-toggle-btn{
+position:fixed;top:13px;left:14px;z-index:400;
+background:#0f1e3c;color:#f0c040;
+border:1.5px solid rgba(240,192,64,.4);
+padding:7px 15px 7px 11px;border-radius:7px;cursor:pointer;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:12.5px;font-weight:700;letter-spacing:.04em;
+display:flex;align-items:center;gap:8px;
+box-shadow:0 2px 14px rgba(0,0,0,.4);transition:background .2s;
+user-select:none;
+}
+#nav-toggle-btn:hover{background:#1a3255;}
+#nav-toggle-btn .tgl-icon{font-size:17px;line-height:1;transition:transform .38s cubic-bezier(.4,0,.2,1);display:inline-block;}
+#nav-toggle-btn.open .tgl-icon{transform:rotate(90deg);}
+
+/* ====== NAV (top pulldown panel) ====== */
+nav{
+position:fixed;top:0;left:0;width:100%;
+max-height:0;overflow:hidden;
+transition:max-height .45s cubic-bezier(.4,0,.2,1);
+background:#0f1e3c;color:#ccc;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:11.5px;z-index:350;
+box-shadow:0 6px 36px rgba(0,0,0,.5);
+}
+nav.nav-open{max-height:82vh;overflow-y:auto;}
+.nav-inner{
+padding:56px 24px 24px;
+display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 28px;
+}
+.nav-col{flex:0 0 auto;min-width:158px;max-width:210px;margin-bottom:12px;}
+.nav-title{
+color:#fff;font-weight:700;font-size:13px;
+padding:0 0 9px;border-bottom:1px solid rgba(255,255,255,.12);
+margin-bottom:6px;letter-spacing:.06em;display:block;
+}
+nav a{display:block;color:#8ab;text-decoration:none;padding:3px 0 3px 8px;transition:all .18s;border-left:2px solid transparent;}
+nav a:hover{color:#fff;border-left-color:#f0c040;padding-left:14px;}
+.nav-ch{color:#f0c040;font-weight:700;margin-top:10px;margin-bottom:3px;font-size:11px;letter-spacing:.06em;}
+.nav-col .nav-ch:first-child{margin-top:0;}
+.nav-sub{font-size:10.5px;color:#678;padding-left:14px!important;}
+.nav-sub:hover{color:#acd;}
+#nav-overlay{
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.38);z-index:200;
+}
+#nav-overlay.active{display:block;}
+
+/* ====== SYMBOL TOOLTIP ====== */
+.sym-tip{
+position:relative;display:inline;cursor:help;
+border-bottom:1px dashed rgba(26,79,138,.55);
+}
+.sym-tip::after{
+content:attr(data-tip);
+position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
+background:#1a3255;color:#ddeeff;
+font-size:11px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-weight:400;line-height:1.6;
+padding:5px 10px;border-radius:6px;white-space:nowrap;
+box-shadow:0 3px 14px rgba(0,0,0,.35);
+opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;
+}
+.sym-tip::before{
+content:’’;position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);
+border:5px solid transparent;border-top-color:#1a3255;
+opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;
+}
+.sym-tip:hover::after,.sym-tip:hover::before{opacity:1;}
+
+/* Symbol guide floating panel */
+#sym-guide-btn{
+position:fixed;bottom:80px;right:24px;z-index:150;
+background:#1a4f8a;color:#fff;border:none;
+width:44px;height:44px;border-radius:50%;cursor:pointer;
+font-size:19px;box-shadow:0 2px 12px rgba(0,0,0,.3);
+transition:transform .2s,background .2s;
+display:flex;align-items:center;justify-content:center;
+}
+#sym-guide-btn:hover{background:#0f1e3c;transform:scale(1.1);}
+#sym-guide-panel{
+position:fixed;bottom:134px;right:24px;z-index:150;
+width:330px;max-height:430px;overflow-y:auto;
+background:#fff;border:1.5px solid #d4cbb8;border-radius:10px;
+box-shadow:0 8px 36px rgba(0,0,0,.18);
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:12px;line-height:1.7;display:none;
+}
+#sym-guide-panel.open{display:block;}
+.sg-hd{
+background:#0f1e3c;color:#fff;padding:10px 16px;border-radius:8px 8px 0 0;
+font-weight:700;font-size:13px;letter-spacing:.04em;
+display:flex;align-items:center;justify-content:space-between;
+}
+.sg-hd button{background:none;border:none;color:#aaa;cursor:pointer;font-size:18px;line-height:1;padding:0;}
+.sg-hd button:hover{color:#fff;}
+.sg-body{padding:12px 14px;}
+.sg-sec{margin-bottom:14px;}
+.sg-sec-title{color:#1a4f8a;font-size:11px;font-weight:700;letter-spacing:.08em;
+border-bottom:1px solid #e0dbd0;padding-bottom:4px;margin-bottom:6px;}
+.sg-row{display:grid;grid-template-columns:64px 90px 1fr;gap:4px;align-items:baseline;padding:2px 0;}
+.sg-sym{font-size:13px;color:#0f1e3c;font-weight:700;}
+.sg-read{color:#9b1b4b;font-size:11px;}
+.sg-mean{color:#444;font-size:10.5px;}
+
+/* ====== LAYOUT ====== */
+.main-content{margin-left:0;width:100%;overflow-x:hidden;}
+@media(max-width:900px){.main-content{margin-left:0;width:100%;}}
+/* ====== HEADER ====== */
+.header-banner{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 50%,#16325e 100%);
+color:#fff;padding:40px 40px 34px;position:relative;overflow:hidden;
+}
+.header-banner::before{content:’’;position:absolute;top:-50px;right:-50px;width:280px;height:280px;border:1px solid rgba(255,255,255,.04);border-radius:50%;}
+.header-banner h1{font-size:2.5em;font-weight:300;letter-spacing:.08em;margin-bottom:8px;}
+.header-banner h1 span{font-weight:700;color:#f0c040;}
+.header-banner p{color:rgba(255,255,255,.55);font-size:13px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.hd-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+.hd-badge{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);padding:3px 11px;border-radius:16px;font-size:12px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+
+/* ====== TOC ====== */
+.toc-section{padding:36px 40px;border-bottom:2px solid #d4cbb8;}
+.toc-section h2{font-size:1.6em;margin-bottom:24px;border-bottom:2px solid #0f1e3c;padding-bottom:9px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.toc-card{border:1.5px solid #d4cbb8;border-radius:8px;padding:16px;text-decoration:none;color:inherit;display:block;transition:all .2s;}
+.toc-card:hover{border-color:#1a4f8a;transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08);}
+.toc-num{font-size:10.5px;color:#9b1b4b;font-weight:700;letter-spacing:.1em;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.toc-title{font-size:1.15em;font-weight:700;margin:4px 0 8px;}
+.toc-topics{font-size:11.5px;color:#666;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;line-height:1.7;}
+
+/* ====== CHAPTER ====== */
+.chapter{padding:0 40px 40px;border-bottom:2px solid #d4cbb8;}
+.chapter-header{padding:42px 0 24px;border-bottom:3px solid #0f1e3c;margin-bottom:28px;}
+.ch-num{font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:11px;font-weight:600;color:#9b1b4b;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.chapter-header h2{font-size:2em;font-weight:600;letter-spacing:.03em;line-height:1.3;}
+.chapter-header p{margin-top:9px;color:#555;font-size:13.5px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;max-width:640px;}
+
+/* ====== SECTIONS ====== */
+.section{margin-bottom:38px;}
+h3{font-size:1.2em;font-weight:700;color:#1a4f8a;border-left:4px solid #1a4f8a;padding-left:12px;margin:30px 0 14px;}
+h4{font-size:1.02em;font-weight:700;color:#0f1e3c;margin:18px 0 9px;padding-bottom:3px;border-bottom:1px dashed #d4cbb8;}
+.section-sep{border:none;border-top:1px dashed #d4cbb8;margin:22px 0;}
+
+/* ====== BOX BASE ====== */
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.exam-card,.important-box{
+border-radius:7px;padding:18px 22px;margin:16px 0;position:relative;
+}
+/* FORMULA (→ 地理では「まとめ・定義」) */
+.formula-box{background:#fef9e7;border:1.5px solid #d4890a;border-left:5px solid #d4890a;}
+.formula-box::before{content:‘まとめ’;position:absolute;top:-10px;left:14px;background:#d4890a;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.08em;}
+.formula-box.theorem::before{content:‘重要事項’;background:#1a4f8a;}
+.formula-box.definition::before{content:‘定義・用語’;background:#9b1b4b;}
+.formula-box.important::before{content:‘重要’;background:#b91c1c;}
+/* PROOF (→ 地理では「背景・解説」) */
+.proof-box{background:#edf6fb;border:1.5px solid #1e7abf;border-left:5px solid #1e7abf;}
+.proof-box::before{content:‘背景・解説’;position:absolute;top:-10px;left:14px;background:#1e7abf;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAMPLE */
+.example-box{background:#f0fdf4;border:1.5px solid #1a8a4a;border-left:5px solid #1a8a4a;}
+.example-box::before{content:‘例題’;position:absolute;top:-10px;left:14px;background:#1a8a4a;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXERCISE */
+.exercise-block{background:#fdf3ff;border:1.5px solid #7e22ce;border-left:5px solid #7e22ce;}
+.exercise-block::before{content:‘確認問題’;position:absolute;top:-10px;left:14px;background:#7e22ce;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* TIP */
+.tip-box{background:#f0f9ff;border:1.5px solid #0284c7;border-left:5px solid #0284c7;}
+.tip-box::before{content:‘POINT’;position:absolute;top:-10px;left:14px;background:#0284c7;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.06em;}
+/* IMPORTANT */
+.important-box{background:#fff1f2;border:1.5px solid #be123c;border-left:5px solid #be123c;}
+.important-box::before{content:‘注意’;position:absolute;top:-10px;left:14px;background:#be123c;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAM CARD */
+.exam-card{border:2px solid #1a3255;border-radius:8px;overflow:hidden;margin:18px 0;background:#fff;}
+.exam-hd{background:linear-gradient(90deg,#0f1e3c,#1a3255);color:#fff;padding:10px 17px;display:flex;justify-content:space-between;align-items:center;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13px;font-weight:600;}
+.exam-body{padding:18px 20px;}
+.etag{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.tag-nat{background:#a8d8ea;color:#0f1e3c;}
+.tag-agr{background:#a8e6cf;color:#145f3a;}
+.tag-ind{background:#f4a261;color:#fff;}
+.tag-urb{background:#74b9ff;color:#0f1e3c;}
+.tag-env{background:#55efc4;color:#0f1e3c;}
+.tag-pop{background:#fd79a8;color:#fff;}
+.tag-geo{background:#f0c040;color:#1a1a2e;}
+.tag-tra{background:#a29bfe;color:#fff;}
+
+/* ====== ANSWER BLOCK ====== */
+.answer-block{background:#fefefe;border:1px dashed #aaa;border-radius:6px;padding:13px 17px;margin-top:12px;}
+.answer-block::before{content:‘解答・解説’;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;color:#777;display:block;margin-bottom:5px;letter-spacing:.1em;}
+
+/* ====== TABLE ====== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;margin:14px 0;}table{border-collapse:collapse;width:100%;font-size:13px;border:1px solid #b0a090;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;min-width:auto;}
+th{background:#0f1e3c;color:#fff;padding:8px 12px;text-align:center;font-weight:500;letter-spacing:.04em;}
+td{padding:7px 12px;border:1px solid #b0a090;text-align:center;vertical-align:middle;}
+tr:nth-child(even) td{background:#f5f0e8;}
+
+/* ====== GRID ====== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;}
+@media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr;}}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0;}
+.sum-card{background:#fff;border:1.5px solid #d4cbb8;border-radius:8px;padding:14px 16px;}
+.sum-card h4{font-size:13px;margin-bottom:7px;border:none;padding:0;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.sum-card p{font-size:12.5px;color:#444;margin:0;line-height:1.7;}
+
+/* ====== MISC ====== */
+.hl{background:#fef3d0;padding:1px 3px;border-radius:2px;}
+.red{color:#b91c1c;font-weight:700;}
+.blue{color:#1a4f8a;font-weight:700;}
+.green{color:#145f3a;font-weight:700;}
+.note{background:#f8f9fa;border-left:4px solid #adb5bd;padding:10px 15px;margin:12px 0;font-size:13px;color:#555;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;border-radius:0 5px 5px 0;}
+.lv{font-size:10px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:9px;margin-left:7px;vertical-align:middle;}
+.lv-b{background:#d1fae5;color:#065f46;}
+.lv-m{background:#fef9c3;color:#713f12;}
+.lv-a{background:#fce7f3;color:#9d174d;}
+.lv-e{background:#ede9fe;color:#4c1d95;}
+ul.bullet,ol.num{padding-left:22px;margin:9px 0;}
+ul.bullet li,ol.num li{margin-bottom:5px;line-height:1.85;}
+ol.steps{padding-left:26px;margin:9px 0;}
+ol.steps li{margin-bottom:6px;line-height:1.85;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13.5px;}
+.back-to-top{position:fixed;bottom:26px;right:26px;background:#0f1e3c;color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:transform .2s;z-index:99;}
+.back-to-top:hover{transform:translateY(-3px);}
+</style>
+
+</head>
+<body>
+
+<!-- PRINT COVER -->
+
+<div class="print-cover">
+  <h1>地理総合・地理探究 <span>完全攻略テキスト</span></h1>
+  <div class="cv-sub">COMPLETE GEOGRAPHY STUDY GUIDE</div>
+  <div class="cv-chs">
+    <span class="cv-ch">第1章 地図と地理情報</span>
+    <span class="cv-ch">第2章 自然環境</span>
+    <span class="cv-ch">第3章 気候・植生・土壌</span>
+    <span class="cv-ch">第4章 資源・産業</span>
+    <span class="cv-ch">第5章 人口・都市・村落</span>
+    <span class="cv-ch">第6章 国家・民族・文化</span>
+    <span class="cv-ch">第7章 地域統合と国際問題</span>
+    <span class="cv-ch">第8章 入試対策</span>
+  </div>
+  <div class="cv-note">基礎知識 · 論述対策 · 統計読解 · 入試問題 ― 地理総合から地理探究まで完全網羅</div>
+</div>
+
+<!-- NAVIGATION TOGGLE BUTTON -->
+
+<button id="nav-toggle-btn" class="no-print" aria-label="目次を開く/閉じる">
+  <span class="tgl-icon">▶</span> 目次
+</button>
+<div id="nav-overlay" class="no-print"></div>
+
+<!-- NAVIGATION -->
+
+<nav class="no-print" id="top">
+<div class="nav-inner">
+
+  <div class="nav-col">
+    <span class="nav-title">地理総合・地理探究</span>
+    <a href="#toc" style="color:#f0c040;font-weight:600;">▸ 目次ページへ</a>
+    <div class="nav-ch" style="margin-top:14px;">Ch.1 地図と地理情報</div>
+    <a class="nav-sub" href="#s1-1">地図の種類と図法</a>
+    <a class="nav-sub" href="#s1-2">地理情報システム（GIS）</a>
+    <a class="nav-sub" href="#s1-3">時差の計算</a>
+    <a class="nav-sub" href="#s1-4">地形図の読み方</a>
+    <div class="nav-ch">Ch.2 自然環境</div>
+    <a class="nav-sub" href="#s2-1">地形の形成</a>
+    <a class="nav-sub" href="#s2-2">プレートテクトニクス</a>
+    <a class="nav-sub" href="#s2-3">海岸・河川地形</a>
+    <a class="nav-sub" href="#s2-4">氷河・乾燥地形</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.3 気候・植生・土壌</div>
+    <a class="nav-sub" href="#s3-1">ケッペンの気候区分</a>
+    <a class="nav-sub" href="#s3-2">熱帯・乾燥帯</a>
+    <a class="nav-sub" href="#s3-3">温帯・亜寒帯・寒帯</a>
+    <a class="nav-sub" href="#s3-4">植生と土壌</a>
+    <a class="nav-sub" href="#s3-5">大気の大循環・海流</a>
+    <div class="nav-ch">Ch.4 資源・産業</div>
+    <a class="nav-sub" href="#s4-1">農業の種類と分布</a>
+    <a class="nav-sub" href="#s4-2">鉱産資源</a>
+    <a class="nav-sub" href="#s4-3">工業の立地と分布</a>
+    <a class="nav-sub" href="#s4-4">水産業・林業</a>
+    <a class="nav-sub" href="#s4-5">貿易と物流</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.5 人口・都市・村落</div>
+    <a class="nav-sub" href="#s5-1">人口問題と人口転換</a>
+    <a class="nav-sub" href="#s5-2">人口ピラミッド</a>
+    <a class="nav-sub" href="#s5-3">都市の機能と構造</a>
+    <a class="nav-sub" href="#s5-4">村落の形態</a>
+    <div class="nav-ch">Ch.6 国家・民族・文化</div>
+    <a class="nav-sub" href="#s6-1">国家の領域と境界</a>
+    <a class="nav-sub" href="#s6-2">民族・言語・宗教</a>
+    <a class="nav-sub" href="#s6-3">地域紛争と難民問題</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.7 地域統合と国際問題</div>
+    <a class="nav-sub" href="#s7-1">地域統合（EU・ASEANほか）</a>
+    <a class="nav-sub" href="#s7-2">環境問題・SDGs</a>
+    <a class="nav-sub" href="#s7-3">エネルギー問題</a>
+    <div class="nav-ch">Ch.8 入試対策</div>
+    <a class="nav-sub" href="#s8-1">論述解法パターン</a>
+    <a class="nav-sub" href="#s8-2">統計読解・グラフ</a>
+    <a class="nav-sub" href="#s8-3">精選入試問題</a>
+    <div class="nav-ch">付録</div>
+    <a class="nav-sub" href="#ch0">地理用語・略語一覧</a>
+  </div>
+
+</div>
+</nav>
+
+<div class="main-content">
+
+<!-- HEADER -->
+
+<div class="header-banner no-print">
+  <h1>地理総合・地理探究 <span>完全攻略テキスト</span></h1>
+  <p>基礎知識 · 論述対策 · 統計読解 · 入試問題 ― 地理総合から地理探究まで完全網羅</p>
+  <div class="hd-badges">
+    <span class="hd-badge">第1章 地図と地理情報</span>
+    <span class="hd-badge">第2章 自然環境</span>
+    <span class="hd-badge">第3章 気候・植生・土壌</span>
+    <span class="hd-badge">第4章 資源・産業</span>
+    <span class="hd-badge">第5章 人口・都市・村落</span>
+    <span class="hd-badge">第6章 国家・民族・文化</span>
+    <span class="hd-badge">第7章 地域統合と国際問題</span>
+    <span class="hd-badge">第8章 入試対策</span>
+  </div>
+</div>
+
+<!-- TOC -->
+
+<div class="toc-section no-print" id="toc">
+  <h2>目次</h2>
+  <div class="toc-grid">
+    <a class="toc-card" href="#ch1"><div class="toc-num">CHAPTER 01</div><div class="toc-title">地図と地理情報</div><div class="toc-topics">図法の種類と特徴 · GIS・リモートセンシング · 時差計算 · 地形図の等高線・読み方 · 縮尺と距離</div></a>
+    <a class="toc-card" href="#ch2"><div class="toc-num">CHAPTER 02</div><div class="toc-title">自然環境</div><div class="toc-topics">プレートテクトニクス · 造山運動 · 安定陸塊 · 河川・海岸地形 · 氷河地形 · カルスト地形 · 乾燥地形</div></a>
+    <a class="toc-card" href="#ch3"><div class="toc-num">CHAPTER 03</div><div class="toc-title">気候・植生・土壌</div><div class="toc-topics">ケッペン気候区分の体系 · 各気候帯の特徴 · 大気大循環 · 海流 · 植生と土壌の対応 · 気候変動</div></a>
+    <a class="toc-card" href="#ch4"><div class="toc-num">CHAPTER 04</div><div class="toc-title">資源・産業</div><div class="toc-topics">農業の分類と地域性 · 食料問題 · 鉱産資源と産出国 · 工業立地論 · NIEs・BRICSの工業化 · 貿易構造</div></a>
+    <a class="toc-card" href="#ch5"><div class="toc-num">CHAPTER 05</div><div class="toc-title">人口・都市・村落</div><div class="toc-topics">人口転換モデル · 人口ピラミッドの読み方 · 少子高齢化 · 都市化とスプロール · 都市問題 · 村落の分類</div></a>
+    <a class="toc-card" href="#ch6"><div class="toc-num">CHAPTER 06</div><div class="toc-title">国家・民族・文化</div><div class="toc-topics">領土・領海・EEZ · 民族と言語の分布 · 世界宗教 · 地域紛争の背景 · 難民問題 · 民族自決</div></a>
+    <a class="toc-card" href="#ch7"><div class="toc-num">CHAPTER 07</div><div class="toc-title">地域統合と国際問題</div><div class="toc-topics">EU・ASEAN・AFTAほか · 地球温暖化と国際条約 · エネルギー問題 · SDGs · 南北問題 · 持続可能な開発</div></a>
+    <a class="toc-card" href="#ch8"><div class="toc-num">CHAPTER 08</div><div class="toc-title">入試対策</div><div class="toc-topics">論述問題の解法 · 統計グラフの読解 · 東大・京大・一橋 · 共通テスト対策 · 重要統計一覧</div></a>
+    <a class="toc-card" href="#ch0"><div class="toc-num">付録</div><div class="toc-title">地理用語・略語一覧</div><div class="toc-topics">国際機関略語 · 地理指標 · 主要統計 · 各地域の地誌キーワード</div></a>
+  </div>
+</div>
+
+<!-- ============================================================
+     第１章　地図と地理情報
+============================================================ -->
+
+<div class="chapter" id="ch1">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 01</div>
+  <h2>地図と地理情報</h2>
+  <p>地理学の基礎である地図の種類・図法を体系的に整理し，GIS・時差・地形図の読み方を習得する。入試では時差計算と図法の特徴問題が頻出。</p>
+</div>
+
+<!-- 1.1 -->
+
+<div class="section" id="s1-1">
+<h3>1.1 地図の種類と図法</h3>
+
+<div class="formula-box definition">
+<strong>地図の分類</strong><br>
+地図は大きく <strong>一般図</strong>（地形図・地勢図・地形全図）と <strong>主題図</strong>（人口分布図・土地利用図・統計地図）に分けられる。また，球面を平面に展開する方法を <strong>図法</strong> という。
+</div>
+
+<div class="formula-box theorem">
+<strong>主要図法の特徴まとめ</strong>
+<div class="table-wrap"><table>
+  <tr><th>図法名</th><th>正角</th><th>正積</th><th>正距</th><th>主な用途</th></tr>
+  <tr><td>メルカトル図法</td><td>○</td><td>×</td><td>×（経線上）</td><td>海図・航路図</td></tr>
+  <tr><td>モルワイデ図法</td><td>×</td><td>○</td><td>×</td><td>世界分布図</td></tr>
+  <tr><td>サンソン図法</td><td>×</td><td>○</td><td>×</td><td>大陸分布図</td></tr>
+  <tr><td>グード図法（ホモロサイン）</td><td>×</td><td>○</td><td>×</td><td>世界分布図（断裂）</td></tr>
+  <tr><td>正距方位図法</td><td>×</td><td>×</td><td>○（中心から）</td><td>航空路・通信圏</td></tr>
+  <tr><td>ランベルト正積方位図法</td><td>×</td><td>○</td><td>×</td><td>大陸・半球図</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>メルカトル図法の原理と高緯度歪み</strong><br>
+メルカトル図法は経線・緯線がすべて直角に交わる <strong>正角（等角）図法</strong>。任意の2点を結ぶ等角航路（<span class="sym-tip" data-tip="地球上で常に同じ方位角を保つ航路">ラム線</span>）が直線で表せるため海図に適する。<br><br>
+ただし，緯度 φ における緯線の拡大率は <strong>1/cosφ</strong> であり，高緯度になるほど面積が極端に拡大される。グリーンランドがアフリカ大陸と同程度に見えるのはこのためで，実際の面積比はグリーンランド：アフリカ ≈ 1：14。
+</div>
+
+<div class="tip-box">
+<strong>入試頻出：図法の選択問題の解き方</strong><br>
+① 「航路図・海図」→ メルカトル（等角航路が直線）<br>
+② 「世界の分布を正確に比較」→ 正積図法（モルワイデ・グード）<br>
+③ 「ある地点からの距離・方位を知りたい」→ 正距方位図法<br>
+④ 「高緯度が歪む」→ メルカトルを疑う
+</div>
+
+<div class="example-box">
+<strong>例題 1.1</strong> <span class="lv lv-b">基礎</span>　次の記述のうち正しいものを選べ。<br>
+ア．メルカトル図法では，すべての直線が2点間の最短経路（大圏コース）を示す。<br>
+イ．正距方位図法は中心点から任意の地点までの距離と方位を正しく表す。<br>
+ウ．モルワイデ図法は正角図法の一種である。<br>
+エ．グード図法は海上を断裂させることで陸地の形を正積に保つ。
+<div class="answer-block">
+<strong>正解：イ</strong><br>
+ア：メルカトル図法で直線となるのは等角航路（ラム線）。大圏コースは曲線になる（正距方位図法では中心を通る直線が大圏コース）。<br>
+ウ：モルワイデ図法は<strong>正積</strong>図法。正角ではない。<br>
+エ：グード図法は海洋部を断裂させる。陸地の歪みを最小化しながら正積を保つ。→ <strong>イのみ正しい</strong>。
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>確認問題 1.1</strong>　次の問いに答えよ。<br>
+(1) 正距方位図法において，中心点から見た各地点の方位と距離のうち，正確に表されるのはどちらか。また，その図法が航空路の表示に使われる理由を述べよ。<br>
+(2) 高緯度地域の面積が実際より大きく表示される図法を一つあげ，その理由を説明せよ。
+<div class="answer-block">
+(1) <strong>方位・距離ともに</strong>正確に表される（ただし中心点からのみ）。航空路は2地点間の最短距離（大圏コース）が直線で示されるため，飛行機の経路計画に適する。<br>
+(2) <strong>メルカトル図法</strong>。緯度 φ における拡大率が 1/cosφ となるため，高緯度ほど南北・東西ともに拡大され，面積が過大表示される。
+</div>
+</div>
+</div><!-- /s1-1 -->
+
+<!-- 1.2 -->
+
+<div class="section" id="s1-2">
+<h3>1.2 地理情報システム（GIS）・リモートセンシング</h3>
+
+<div class="formula-box definition">
+<strong>GIS（Geographic Information System）</strong><br>
+地理的な位置情報をデジタルデータとして管理・分析・表示するシステム。複数の <strong>レイヤー</strong>（地形・土地利用・人口・交通網など）を重ね合わせ（<strong>オーバーレイ</strong>）ることで，空間的パターンを把握する。
+</div>
+
+<div class="formula-box theorem">
+<strong>リモートセンシング</strong><br>
+人工衛星や航空機から地表を観測する技術。<strong>可視光・赤外線・マイクロ波</strong>など様々な波長を利用。植生の健全度を示す <strong>NDVI</strong>（正規化植生指数）や，夜間光データによる経済活動の把握，SAR（合成開口レーダー）による地殻変動検出などに応用される。
+</div>
+
+<div class="proof-box">
+<strong>GISの活用事例</strong><br>
+①<strong>防災分野</strong>：ハザードマップ作成（洪水浸水域・土砂崩れリスクの可視化）<br>
+②<strong>都市計画</strong>：人口分布・交通量データと土地利用を重ねた最適配置分析<br>
+③<strong>農業</strong>：衛星画像から作物の生育状況を把握し，精密農業（スマート農業）に活用<br>
+④<strong>環境モニタリング</strong>：熱帯雨林の減少・氷河の後退・砂漠化の進行を定量的に追跡
+</div>
+
+<div class="tip-box">
+GPS・GIS・リモートセンシングは混同しやすい。GPS は <strong>位置情報の取得</strong>，GIS は <strong>地理情報の統合・分析</strong>，リモートセンシングは <strong>非接触での地表観測</strong>。それぞれ相互補完的に使われる。
+</div>
+</div><!-- /s1-2 -->
+
+<!-- 1.3 -->
+
+<div class="section" id="s1-3">
+<h3>1.3 時差の計算</h3>
+
+<div class="formula-box">
+<strong>時差の基本公式</strong><br>
+地球は24時間で360°自転するため，経度15°につき1時間の時差が生じる。<br>
+$$\text{時差（時間）} = \frac{|\text{経度差}|}{15}$$
+東経の地点ほど時刻が早い（東に行くほど＋，西に行くほど－）。<br>
+<strong>日付変更線</strong>（おおむね経度180°）をまたぐ場合は日付を加減する。
+</div>
+
+<div class="example-box">
+<strong>例題 1.3</strong> <span class="lv lv-b">基礎</span>　東京（東経135°）が3月15日の午後9時のとき，次の都市の現地時刻を求めよ。<br>
+(1) ロンドン（経度0°）　(2) ニューヨーク（西経75°）　(3) ロサンゼルス（西経120°）
+<div class="answer-block">
+(1) 経度差：135°－0°＝135°　時差：135÷15＝<strong>9時間</strong>（東京が進んでいる）<br>
+　　　東京21:00 → ロンドン 21:00－9＝<strong>3月15日 正午（12:00）</strong><br><br>
+(2) 経度差：135°＋75°＝210°　時差：210÷15＝<strong>14時間</strong><br>
+　　　東京21:00 → ニューヨーク 21:00－14＝<strong>3月15日 午前7時</strong><br><br>
+(3) 経度差：135°＋120°＝255°　時差：255÷15＝<strong>17時間</strong><br>
+　　　東京21:00 → ロサンゼルス 21:00－17＝<strong>3月15日 午前4時</strong>
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>確認問題 1.3</strong> <span class="lv lv-m">標準</span>　シドニー（東経150°）で7月20日の午前8時のとき，次の問いに答えよ。<br>
+(1) カイロ（東経30°）の日時を求めよ。<br>
+(2) サンフランシスコ（西経120°）の日時を求めよ。<br>
+(3) 東京（東経135°）とシドニーの時差は何時間か。また，どちらが時刻が早いか。
+<div class="answer-block">
+(1) 経度差150°－30°＝120°，時差8時間。シドニー午前8時－8時間＝<strong>7月20日 午前0時（カイロ）</strong><br>
+(2) 経度差150°＋120°＝270°，時差18時間。午前8時－18時間＝前日の午後2時＝<strong>7月19日 午後2時</strong><br>
+(3) 経度差150°－135°＝15°，時差<strong>1時間</strong>。東経150°のシドニーが東京より<strong>1時間早い</strong>。
+</div>
+</div>
+</div><!-- /s1-3 -->
+
+<!-- 1.4 -->
+
+<div class="section" id="s1-4">
+<h3>1.4 地形図の読み方</h3>
+
+<div class="formula-box theorem">
+<strong>等高線の基本ルール</strong>
+<ul class="bullet">
+  <li>等高線は同じ標高の点を結んだ線。閉じた曲線を形成する（開いたまま地図端に至る場合を除く）。</li>
+  <li><strong>主曲線</strong>（細線）：25,000分の1地形図では10m間隔，50,000分の1では20m間隔。</li>
+  <li><strong>計曲線</strong>（太線）：主曲線5本ごとに引く（50m・100m単位）。</li>
+  <li>等高線の間隔が<strong>狭い</strong>→急傾斜，<strong>広い</strong>→緩傾斜。</li>
+  <li>等高線が上流側に<strong>凸</strong>（山側にへこむ）→尾根，<strong>谷側に凸</strong>→谷（V字）。</li>
+</ul>
+</div>
+
+<div class="tip-box">
+<strong>地形図の読み取りチェックリスト（入試対策）</strong><br>
+① 縮尺を確認（25,000分の1：等高線10m / 50,000分の1：20m）<br>
+② 北を確認（上が北が原則，方位記号があれば従う）<br>
+③ 等高線の密度で傾斜を判断<br>
+④ 等高線が川に向かって<span class="hl">V字</span>（谷），尾根は等高線が山頂側に凸<br>
+⑤ 記号の確認：△（三角点），○（水準点），田（水田），果（果樹園）など
+</div>
+
+<div class="example-box">
+<strong>例題 1.4</strong> <span class="lv lv-m">標準</span>　25,000分の1地形図において，等高線の間隔が地図上で2mmの区間の実際の水平距離と，標高差が30mのとき，この区間の平均勾配（傾斜角のtanの値）を求めよ。
+<div class="answer-block">
+縮尺25,000分の1なので，地図上2mm＝実際2mm×25,000＝<strong>50m</strong>。<br>
+標高差30m，水平距離50mより，平均勾配 tan θ ＝ 30/50 ＝ <strong>3/5（0.6）</strong>。<br>
+（実際の入試では傾斜の急緩を比較する問題が多い）
+</div>
+</div>
+</div><!-- /s1-4 -->
+</div><!-- /ch1 -->
+
+<!-- ============================================================
+     第２章　自然環境
+============================================================ -->
+
+<div class="chapter" id="ch2">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 02</div>
+  <h2>自然環境</h2>
+  <p>地球の内部構造・プレートテクトニクス・造山運動から，河川・海岸・氷河・カルスト・乾燥地形まで，地形形成のメカニズムを体系的に理解する。</p>
+</div>
+
+<!-- 2.1 -->
+
+<div class="section" id="s2-1">
+<h3>2.1 地形の形成と地球内部構造</h3>
+
+<div class="formula-box definition">
+<strong>地球内部の層構造</strong><br>
+地球は外側から <strong>地殻</strong>（大陸地殻：平均35km，海洋地殻：平均7km）→ <strong>マントル</strong>（岩石圏・アセノスフェア）→ <strong>外核</strong>（液体Fe-Ni）→ <strong>内核</strong>（固体Fe-Ni）の順に構成される。地殻とマントル最上部を合わせた硬い層を <strong>リソスフェア（岩石圏）</strong>，その下の流動しやすい層を <strong>アセノスフェア</strong> という。
+</div>
+
+<div class="formula-box theorem">
+<strong>大地形の分類</strong>
+<div class="table-wrap"><table>
+  <tr><th>区分</th><th>特徴</th><th>主な地域</th></tr>
+  <tr><td><strong>安定陸塊</strong></td><td>先カンブリア時代の古い岩盤，地震・火山なし</td><td>カナダ楯状地，シベリア卓状地，アラビア楯状地，ブラジル高原，アフリカ大陸中央部</td></tr>
+  <tr><td><strong>古期造山帯</strong></td><td>古生代に形成，侵食が進み低くなだらか</td><td>アパラチア，カレドニア（スカンジナビア），ウラル，ドラケンスバーグ，グレートディバイディング</td></tr>
+  <tr><td><strong>新期造山帯</strong></td><td>中生代以降に形成，高くけわしい，地震・火山多い</td><td>環太平洋造山帯（ロッキー・アンデス・日本列島），アルプス＝ヒマラヤ造山帯</td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+<strong>「安定・古期・新期」を覚えるコツ</strong><br>
+安定陸塊 → <span class="hl">鉄鉱石・金などの鉱産資源が豊富</span>（カナダ・ブラジル・オーストラリアの鉄鉱石）<br>
+古期造山帯 → <span class="hl">石炭が豊富</span>（アパラチア・ウラル・ライン炭田）<br>
+新期造山帯 → <span class="hl">石油・地熱・火山噴火・大地震</span>（環太平洋・アルプス＝ヒマラヤ）
+</div>
+</div><!-- /s2-1 -->
+
+<!-- 2.2 -->
+
+<div class="section" id="s2-2">
+<h3>2.2 プレートテクトニクス</h3>
+
+<div class="formula-box theorem">
+<strong>プレート境界の種類</strong>
+<div class="table-wrap"><table>
+  <tr><th>境界の種類</th><th>プレートの動き</th><th>地形</th><th>例</th></tr>
+  <tr><td>発散境界（広がる）</td><td>離れる</td><td>海嶺・地溝帯</td><td>大西洋中央海嶺，東アフリカ地溝帯</td></tr>
+  <tr><td>収束境界（沈み込み）</td><td>一方が沈む</td><td>海溝・弧状列島</td><td>日本海溝，マリアナ海溝，ペルー＝チリ海溝</td></tr>
+  <tr><td>収束境界（衝突）</td><td>大陸同士が衝突</td><td>褶曲山脈</td><td>ヒマラヤ山脈，アルプス山脈</td></tr>
+  <tr><td>すれ違い境界（トランスフォーム）</td><td>横にずれる</td><td>トランスフォーム断層</td><td>サンアンドレアス断層，アルパイン断層</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>ヒマラヤ山脈とアルプス山脈の形成</strong><br>
+インド・オーストラリアプレートがユーラシアプレートに衝突（約5000万年前〜）してヒマラヤ・チベット高原が形成された。アフリカプレートがヨーロッパ・アジアプレートに衝突してアルプスが形成。どちらも大陸地殻同士の衝突のため，沈み込みは起こらず<strong>褶曲・隆起</strong>が卓越する。海溝は形成されない。
+</div>
+
+<div class="example-box">
+<strong>例題 2.2</strong> <span class="lv lv-m">標準</span>　次の地形の形成に関わるプレート境界の種類を答え，それぞれの地形の特徴を述べよ。<br>
+(1) 大西洋中央海嶺　(2) 日本列島（島弧）　(3) ヒマラヤ山脈　(4) サンアンドレアス断層
+<div class="answer-block">
+(1) <strong>発散境界</strong>。プレートが離れることでマグマが噴出し，海底の山脈（海嶺）を形成する。アイスランドは海嶺上にあり，火山活動が活発。<br>
+(2) <strong>収束境界（沈み込み型）</strong>。太平洋プレートが北アメリカ・ユーラシアプレートの下に沈み込み，海溝・弧状列島・火山帯を形成。頻繁な地震・火山活動。<br>
+(3) <strong>収束境界（衝突型）</strong>。大陸地殻同士の衝突により，沈み込みなく褶曲・隆起が続き，世界最高峰の山脈を形成。<br>
+(4) <strong>すれ違い境界（トランスフォーム断層）</strong>。太平洋プレートと北アメリカプレートが横にずれ，大規模な断層を形成。大地震（1906年サンフランシスコ地震など）が繰り返し発生。
+</div>
+</div>
+</div><!-- /s2-2 -->
+
+<!-- 2.3 -->
+
+<div class="section" id="s2-3">
+<h3>2.3 河川・海岸地形</h3>
+
+<div class="formula-box theorem">
+<strong>河川地形</strong>
+<div class="table-wrap"><table>
+  <tr><th>地形</th><th>形成場所</th><th>特徴・利用</th></tr>
+  <tr><td>扇状地</td><td>山地→平野の出口</td><td>礫質で水はけ良，果樹園・桑畑に利用</td></tr>
+  <tr><td>三角州（デルタ）</td><td>河口</td><td>粘土・泥，水田に利用，水害リスク大</td></tr>
+  <tr><td>氾濫原・自然堤防</td><td>中下流部</td><td>自然堤防（砂）→集落・畑，後背湿地→水田</td></tr>
+  <tr><td>河岸段丘</td><td>中流部</td><td>地盤隆起や海面低下で旧河床が段状に残る，集落・畑</td></tr>
+  <tr><td>V字谷・峡谷</td><td>上流部</td><td>侵食が卓越，急流，水力発電</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box theorem">
+<strong>海岸地形</strong>
+<div class="table-wrap"><table>
+  <tr><th>地形</th><th>形成要因</th><th>特徴</th></tr>
+  <tr><td>リアス海岸</td><td>沈水（三陸・スペイン北西）</td><td>谷が沈水，複雑な入り江，養殖業</td></tr>
+  <tr><td>フィヨルド</td><td>氷河谷の沈水（ノルウェー・チリ）</td><td>U字谷が沈水，急峻・水深大</td></tr>
+  <tr><td>砂嘴・砂州・陸繋島</td><td>沿岸流による堆積</td><td>天橋立（日本），砂州で陸と繋がった島</td></tr>
+  <tr><td>サンゴ礁</td><td>熱帯・亜熱帯の造礁サンゴ</td><td>裾礁→堡礁→環礁（ダーウィンの説）</td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+<strong>扇状地と三角州の違いを問う問題は頻出。</strong><br>
+扇状地：<span class="hl">山地出口</span>，<span class="hl">礫質</span>，水はけ良→果樹・桑。地下水が豊富で扇端部に湧水帯。<br>
+三角州：<span class="hl">河口</span>，<span class="hl">泥・粘土</span>，低湿→水田。海面上昇や地盤沈下の影響を受けやすい。
+</div>
+</div><!-- /s2-3 -->
+
+<!-- 2.4 -->
+
+<div class="section" id="s2-4">
+<h3>2.4 氷河地形・乾燥地形・カルスト地形</h3>
+
+<div class="formula-box theorem">
+<strong>氷河地形</strong>
+<div class="table-wrap"><table>
+  <tr><th>地形</th><th>形成</th><th>代表例</th></tr>
+  <tr><td>U字谷</td><td>氷河の侵食</td><td>アルプス，スカンジナビア</td></tr>
+  <tr><td>カール（圏谷）</td><td>氷河の侵食（山頂付近）</td><td>アルプス</td></tr>
+  <tr><td>モレーン（堆石）</td><td>氷河による堆積</td><td>北ヨーロッパ平原</td></tr>
+  <tr><td>フィヨルド</td><td>U字谷が沈水</td><td>ノルウェー，チリ南部，ニュージーランド</td></tr>
+  <tr><td>エスカー</td><td>氷河下の融水による堆積</td><td>フィンランド，カナダ</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box theorem">
+<strong>乾燥地形</strong><br>
+砂漠における地形：<strong>ワジ</strong>（乾燥地の涸れ川，雨季に一時的に水が流れる），<strong>オアシス</strong>（地下水が湧出），<strong>砂丘（エルグ）</strong>，<strong>岩石砂漠（レグ・ハンマーダ）</strong>，<strong>メサ・ビュート</strong>（卓状地，孤立した台地）。<br><br>
+<strong>カルスト地形</strong>：石灰岩が雨水（弱酸性）で溶食されて形成。<strong>ドリーネ</strong>（小凹地），<strong>ウバーレ</strong>（ドリーネが合体），<strong>ポリエ</strong>（大規模窪地），<strong>鍾乳洞</strong>，<strong>残丘（ラペ）</strong>。中国桂林，スロベニアのカルスト地方が有名。
+</div>
+
+<div class="exercise-block">
+<strong>確認問題 2.4</strong>　次の地形と，それが典型的に見られる地域の組み合わせとして正しいものをすべて選べ。<br>
+ア．フィヨルド ― ノルウェー西岸 &emsp; イ．扇状地 ― 三陸海岸 &emsp; ウ．カール ― スイスアルプス &emsp; エ．ドリーネ ― 中国桂林 &emsp; オ．ワジ ― サハラ砂漠
+<div class="answer-block">
+<strong>正解：ア・ウ・エ・オ</strong><br>
+イが誤り。三陸海岸の典型地形は<strong>リアス海岸</strong>（谷の沈水による複雑な入り江）。扇状地は山地と平野の接する出口に形成される。
+</div>
+</div>
+</div><!-- /s2-4 -->
+</div><!-- /ch2 -->
+
+<!-- ============================================================
+     第３章　気候・植生・土壌
+============================================================ -->
+
+<div class="chapter" id="ch3">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 03</div>
+  <h2>気候・植生・土壌</h2>
+  <p>ケッペンの気候区分を体系的に習得し，各気候帯の成因・分布・植生・土壌・農業との対応を整理する。気候図の読み取りは入試最頻出。</p>
+</div>
+
+<!-- 3.1 -->
+
+<div class="section" id="s3-1">
+<h3>3.1 ケッペンの気候区分体系</h3>
+
+<div class="formula-box important">
+<strong>ケッペン気候区分の判定フロー</strong><br>
+<ol class="num">
+  <li><strong>B（乾燥帯）</strong>：年降水量 &lt; 乾燥限界（蒸発量）か？ → Yes → B帯</li>
+  <li><strong>A（熱帯）</strong>：最寒月平均気温 ≧ 18℃ → A帯</li>
+  <li><strong>E（寒帯）</strong>：最暖月平均気温 &lt; 10℃ → E帯（&lt;0℃ → EF, 0〜10℃ → ET）</li>
+  <li><strong>C（温帯）</strong>：最寒月 −3℃〜18℃ → C帯</li>
+  <li><strong>D（亜寒帯）</strong>：最寒月 &lt; −3℃ かつ最暖月 ≧ 10℃ → D帯</li>
+</ol>
+</div>
+
+<div class="formula-box theorem">
+<strong>気候区分の一覧（入試必須）</strong>
+<div class="table-wrap"><table>
+  <tr><th>記号</th><th>気候名</th><th>特徴</th><th>植生</th><th>主な地域</th></tr>
+  <tr><td>Af</td><td>熱帯雨林</td><td>年中高温多雨（最少月≧60mm）</td><td>熱帯雨林（セルバ）</td><td>アマゾン，コンゴ，東南アジア島部</td></tr>
+  <tr><td>Am</td><td>熱帯モンスーン</td><td>乾季あるが短い</td><td>熱帯雨林に近い</td><td>インド西岸，バングラデシュ</td></tr>
+  <tr><td>Aw</td><td>サバナ</td><td>明瞭な乾季（冬）</td><td>サバナ（疎林＋草原）</td><td>ブラジル高原，アフリカ中央部</td></tr>
+  <tr><td>BW</td><td>砂漠</td><td>極端な乾燥</td><td>ほぼ植生なし</td><td>サハラ，アラビア，ゴビ，アタカマ</td></tr>
+  <tr><td>BS</td><td>ステップ</td><td>BW周辺，少ない雨</td><td>短草草原</td><td>カザフスタン，グレートプレーンズ</td></tr>
+  <tr><td>Cs</td><td>地中海性</td><td>夏乾燥・冬温暖湿潤</td><td>硬葉樹林（マキ・オリーブ）</td><td>地中海沿岸，カリフォルニア，南西オーストラリア</td></tr>
+  <tr><td>Cf</td><td>温暖湿潤/西岸海洋性</td><td>年中温暖・降水（季節差あり/なし）</td><td>混合林</td><td>日本・中国東部（Cfa），西欧（Cfb）</td></tr>
+  <tr><td>Cw</td><td>温暖冬季少雨</td><td>夏多雨・冬乾燥</td><td>照葉樹林</td><td>中国南部，インド北部</td></tr>
+  <tr><td>Df/Dw</td><td>亜寒帯湿潤/冬季少雨</td><td>冷涼，タイガ</td><td>針葉樹林（タイガ）</td><td>シベリア，カナダ，スカンジナビア</td></tr>
+  <tr><td>ET</td><td>ツンドラ</td><td>最暖月0〜10℃</td><td>コケ・地衣類</td><td>北極沿岸，ラブラドル，スバールバル</td></tr>
+  <tr><td>EF</td><td>氷雪</td><td>最暖月0℃未満</td><td>植生なし</td><td>グリーンランド内陸，南極大陸</td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+<strong>CfaとCfbの区別</strong><br>
+Cfa（温暖湿潤）：最暖月 ≧ 22℃。夏に高温（日本，アメリカ東部，アルゼンチン）。<br>
+Cfb（西岸海洋性）：最暖月 &lt; 22℃。年較差が小さく温和（西欧，ニュージーランド南部）。<br>
+偏西風と暖流（北大西洋海流）の影響で，西欧は高緯度でも温暖。
+</div>
+
+<div class="example-box">
+<strong>例題 3.1</strong> <span class="lv lv-m">標準</span>　次の気候データからケッペンの気候区を判定せよ。<br>
+A地点：最寒月気温−2℃，最暖月気温20℃，年降水量1,100mm，冬に多雨。<br>
+B地点：最寒月気温20℃，年降水量2,200mm，最少月降水量80mm。<br>
+C地点：最寒月気温15℃，夏に乾燥（最少月降水量12mm），年降水量450mm。
+<div class="answer-block">
+A地点：最寒月−2℃（−3℃以上）→ C帯。冬に多雨・夏に相対的乾燥 → <strong>Cs（地中海性気候）</strong><br>
+（判定のポイント：最乾月が夏，最多月が冬）<br><br>
+B地点：最寒月20℃（≧18℃）→ A帯。最少月80mm（≧60mm）→ <strong>Af（熱帯雨林気候）</strong><br><br>
+C地点：最寒月15℃ → C帯。夏に乾燥（6〜8月が乾季）→ Cs候補。年降水量450mmはBWと迷うが，最寒月15℃でB帯に該当する乾燥限界を超えるか確認が必要。ここでは最寒月が高くA帯でなく，夏乾燥の型 → <strong>Cs（地中海性気候）</strong>
+</div>
+</div>
+</div><!-- /s3-1 -->
+
+<!-- 3.2 -->
+
+<div class="section" id="s3-2">
+<h3>3.2 熱帯・乾燥帯の成因と分布</h3>
+
+<div class="formula-box theorem">
+<strong>大気の大循環（ハドレー循環・フェレル循環・極循環）</strong><br>
+赤道付近：<span class="hl">赤道低圧帯</span> → 上昇気流 → 多雨（熱帯収束帯 ITCZ）<br>
+南北緯20〜30°：<span class="hl">中緯度高圧帯（亜熱帯高圧帯）</span> → 下降気流 → 乾燥（砂漠）<br>
+南北緯60°付近：<span class="hl">亜寒帯低圧帯</span> → 前線帯，多雨<br>
+極：<span class="hl">極高圧帯</span> → 下降気流 → 乾燥・寒冷
+</div>
+
+<div class="proof-box">
+<strong>乾燥帯が形成される4つの要因</strong><br>
+① <strong>亜熱帯高圧帯</strong>：緯度20〜30°の下降気流帯（サハラ，アラビア，グレートビクトリア）<br>
+② <strong>大陸内部</strong>：海洋からの水蒸気が届かない（ゴビ砂漠，グレートベースン）<br>
+③ <strong>山脈の雨陰</strong>：ロッキー山脈東側のグレートプレーンズ，パタゴニア砂漠（アンデス東側）<br>
+④ <strong>寒流の影響</strong>：寒流上の大気は安定して上昇しにくい。沿岸砂漠を形成（アタカマ沿岸＝ペルー海流，ナミブ砂漠＝ベンゲラ海流）
+</div>
+
+<div class="tip-box">
+<strong>砂漠と寒流の組み合わせ（超頻出）</strong><br>
+アタカマ砂漠（南米）← <span class="hl">ペルー海流（フンボルト海流）</span><br>
+ナミブ砂漠（アフリカ西岸）← <span class="hl">ベンゲラ海流</span><br>
+カラハリ砂漠（アフリカ南部）← 内陸・亜熱帯高圧帯<br>
+サハラ砂漠 ← 亜熱帯高圧帯（世界最大）
+</div>
+</div><!-- /s3-2 -->
+
+<!-- 3.3 -->
+
+<div class="section" id="s3-3">
+<h3>3.3 温帯・亜寒帯・寒帯の気候</h3>
+
+<div class="formula-box theorem">
+<strong>温帯気候の地域差の成因</strong>
+<div class="table-wrap"><table>
+  <tr><th>気候型</th><th>季節</th><th>偏西風</th><th>海流</th><th>主な地域</th></tr>
+  <tr><td>地中海性（Cs）</td><td>夏乾燥・冬多雨</td><td>夏：高圧帯が北上し乾燥</td><td>寒流沿岸も多い</td><td>地中海沿岸・カリフォルニア・チリ中部</td></tr>
+  <tr><td>西岸海洋性（Cfb）</td><td>年中多雨・温和</td><td>偏西風が卓越</td><td>暖流（北大西洋・北太平洋）</td><td>西欧・バンクーバー・チリ南部</td></tr>
+  <tr><td>温暖湿潤（Cfa）</td><td>夏高温多雨・冬寒い</td><td>夏：モンスーン・台風</td><td>暖流（黒潮・メキシコ湾流）</td><td>日本・中国東部・米国東部</td></tr>
+  <tr><td>温暖冬季少雨（Cw）</td><td>夏多雨・冬乾燥</td><td>モンスーン卓越</td><td>－</td><td>中国南部・インド北部</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box theorem">
+<strong>亜寒帯（D帯）と寒帯（E帯）</strong><br>
+<strong>Df（亜寒帯湿潤）</strong>：シベリア西部，スカンジナビア，カナダ。タイガ（針葉樹林）が広がる。ポドゾル（酸性の漂白土壌）。<br>
+<strong>Dw（亜寒帯冬季少雨）</strong>：シベリア東部（チェルスキー山脈以東）。大陸内部で冬の乾燥が強い。<strong>オイミャコン</strong>は北半球の寒極（最低−71℃）。<br>
+<strong>ET（ツンドラ）</strong>：永久凍土（パーマフロスト）が発達。夏の融解によりサーモカルスト地形が形成される。<br>
+<strong>EF（氷雪）</strong>：グリーンランド内陸・南極大陸。年間を通じて氷で覆われる。
+</div>
+</div><!-- /s3-3 -->
+
+<!-- 3.4 -->
+
+<div class="section" id="s3-4">
+<h3>3.4 植生と土壌の対応</h3>
+
+<div class="formula-box theorem">
+<strong>気候・植生・土壌の対応</strong>
+<div class="table-wrap"><table>
+  <tr><th>気候</th><th>植生</th><th>土壌</th><th>農業適性</th></tr>
+  <tr><td>熱帯雨林（Af）</td><td>常緑広葉樹（多層林）</td><td>ラトソル（赤色・肥沃度低）</td><td>移動耕作，プランテーション</td></tr>
+  <tr><td>サバナ（Aw）</td><td>疎林＋長草草原</td><td>ラトソル系</td><td>牧畜・商業的農業</td></tr>
+  <tr><td>地中海性（Cs）</td><td>硬葉樹林（マキ・オリーブ）</td><td>テラロッサ（赤色石灰岩風化土）</td><td>オリーブ・柑橘・ぶどう・小麦</td></tr>
+  <tr><td>ステップ（BS）</td><td>短草草原</td><td>チェルノーゼム（黒土，肥沃）</td><td>小麦・とうもろこし・牧畜</td></tr>
+  <tr><td>温帯（Cfb）</td><td>落葉広葉樹（ブナ・オーク）</td><td>褐色森林土</td><td>混合農業・酪農</td></tr>
+  <tr><td>亜寒帯（D帯）</td><td>針葉樹林（タイガ）</td><td>ポドゾル（酸性，肥沃度低）</td><td>林業・一部小麦</td></tr>
+  <tr><td>ツンドラ（ET）</td><td>コケ・地衣類・草本</td><td>ツンドラ土（永久凍土上）</td><td>農業不適（トナカイ遊牧）</td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+<strong>チェルノーゼムの分布</strong>はロシア南部（ウクライナ〜カザフスタン）と，アメリカのプレーリー（プレーリー土），アルゼンチンのパンパ（パンパ土）。いずれも世界有数の穀倉地帯。熱帯雨林のラトソルは<span class="hl">雨が多く養分が流れ，肥沃度は低い</span>（逆説的）ことに注意。
+</div>
+
+<div class="exercise-block">
+<strong>確認問題 3.4</strong>　ステップ気候（BS）に発達するチェルノーゼムが肥沃な理由を，気候・植生の観点から100字程度で論述せよ。
+<div class="answer-block">
+ステップ気候は半乾燥で降水量が少ないため，土壌中の有機物（腐植）が雨水で流出しにくい。また，草本植物の根が地下で有機物を蓄積する。蒸発量が大きいため養分が地表に集積しやすく，腐植に富んだ黒色の肥沃な土壌が形成される。（約100字）
+</div>
+</div>
+</div><!-- /s3-4 -->
+</div><!-- /ch3 -->
+
+<!-- ============================================================
+     第４章　資源・産業
+============================================================ -->
+
+<div class="chapter" id="ch4">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 04</div>
+  <h2>資源・産業</h2>
+  <p>農業の分類から世界の食料問題，エネルギー資源・鉱産資源の分布，工業の立地，貿易構造まで扱う。統計の読み取りと論述が頻出。</p>
+</div>
+
+<!-- 4.1 -->
+
+<div class="section" id="s4-1">
+<h3>4.1 農業の分類と地域性</h3>
+
+<div class="formula-box theorem">
+<strong>農業の分類体系</strong>
+<div class="table-wrap"><table>
+  <tr><th>区分</th><th>農業形態</th><th>特徴</th><th>主な地域</th></tr>
+  <tr><td rowspan="3">自給的農業</td><td>遊牧</td><td>乾燥・寒冷地，移動しながら家畜飼育</td><td>サヘル，中央アジア，モンゴル</td></tr>
+  <tr><td>焼畑農業</td><td>熱帯の移動耕作</td><td>アマゾン，コンゴ，東南アジア</td></tr>
+  <tr><td>集約的稲作</td><td>東・東南アジアの水田稲作</td><td>モンスーンアジア</td></tr>
+  <tr><td rowspan="4">商業的農業</td><td>混合農業</td><td>穀物＋家畜飼育，輪作</td><td>西欧，中欧</td></tr>
+  <tr><td>酪農</td><td>乳製品生産，Cfb気候</td><td>北欧，北米五大湖周辺</td></tr>
+  <tr><td>地中海式農業</td><td>オリーブ・柑橘・小麦・ぶどう</td><td>地中海沿岸，カリフォルニア</td></tr>
+  <tr><td>企業的農業</td><td>大規模機械化，穀物・肉牛</td><td>北米，オーストラリア，アルゼンチン</td></tr>
+  <tr><td>プランテーション</td><td>熱帯・亜熱帯，単一商品作物</td><td>コーヒー・カカオ・天然ゴム・バナナ</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>アジアモンスーンと稲作</strong><br>
+東・東南・南アジアは夏季の <strong>モンスーン（季節風）</strong> により高温多雨となり，水田稲作に適する。二毛作・二期作が可能な地域も多い。人口扶養力が高いため，モンスーンアジアは世界人口の約60%を占める。<br><br>
+対照的に，ヨーロッパは偏西風・混合農業，乾燥地帯は遊牧・灌漑農業が中心となる。
+</div>
+
+<div class="tip-box">
+<strong>プランテーション作物の産出国（頻出統計）</strong><br>
+コーヒー：ブラジル（世界1位），ベトナム，コロンビア<br>
+カカオ：コートジボワール（世界1位），ガーナ，インドネシア<br>
+天然ゴム：タイ（世界1位），インドネシア，マレーシア<br>
+バナナ：インド（生産多いが自給中心），フィリピン・エクアドル（輸出上位）<br>
+茶：中国（1位），インド，ケニア
+</div>
+
+<div class="example-box">
+<strong>例題 4.1</strong> <span class="lv lv-a">応用</span>　ブラジルにおける農業の多様性について，自然環境と結びつけながら論述せよ（200字程度）。
+<div class="answer-block">
+ブラジルは国土が広大で気候が多様なため，農業形態も異なる。北部アマゾン盆地はAf気候で焼畑農業や熱帯林が広がる。内陸のセラード（サバナ）はAw気候の大農場地帯で，大豆・牧畜が大規模に展開されている。南東部は温帯（Cfa〜Cfb）に属し，コーヒー（サンパウロ州高原）・サトウキビ・柑橘が盛んで，近年はエタノール農業も拡大している。多様な気候帯を活かし，世界最大のコーヒー・大豆生産国となった。（約200字）
+</div>
+</div>
+</div><!-- /s4-1 -->
+
+<!-- 4.2 -->
+
+<div class="section" id="s4-2">
+<h3>4.2 鉱産資源・エネルギー資源</h3>
+
+<div class="formula-box theorem">
+<strong>主要鉱産資源の産出国（上位）</strong>
+<div class="table-wrap"><table>
+  <tr><th>資源</th><th>主な産出国</th><th>備考</th></tr>
+  <tr><td>石油</td><td>米国，サウジアラビア，ロシア，イラク</td><td>OPECが生産調整（OPEC+含む）</td></tr>
+  <tr><td>天然ガス</td><td>米国，ロシア，イラン，カタール</td><td>LNG輸送が一般化</td></tr>
+  <tr><td>石炭</td><td>中国，インド，オーストラリア，米国</td><td>古期造山帯に多い</td></tr>
+  <tr><td>鉄鉱石</td><td>オーストラリア，ブラジル，中国</td><td>安定陸塊（楯状地）に豊富</td></tr>
+  <tr><td>ボーキサイト（アルミ原料）</td><td>オーストラリア，ギニア，ブラジル</td><td>熱帯の風化土壌に多い</td></tr>
+  <tr><td>銅</td><td>チリ（世界1位），ペルー，中国</td><td>環太平洋造山帯に分布</td></tr>
+  <tr><td>レアアース</td><td>中国（世界生産の約60%）</td><td>電子部品・EV電池に不可欠</td></tr>
+</table></div>
+</div>
+
+<div class="important-box">
+<strong>石油の地政学的リスク</strong><br>
+中東（ペルシャ湾岸）に世界の確認埋蔵量の約半分が集中。<strong>ホルムズ海峡</strong>は日本の原油輸入の約8割が通過する戦略的要衝。OPECの生産削減は石油価格に直接影響する。<br>
+近年はシェール革命（米国）により米国が世界最大の石油・天然ガス産出国となり，エネルギー地政学が大きく変化した。
+</div>
+</div><!-- /s4-2 -->
+
+<!-- 4.3 -->
+
+<div class="section" id="s4-3">
+<h3>4.3 工業の立地と地域変化</h3>
+
+<div class="formula-box theorem">
+<strong>工業立地の類型</strong>
+<div class="table-wrap"><table>
+  <tr><th>立地型</th><th>特徴</th><th>例</th></tr>
+  <tr><td>原料指向型</td><td>原料産地に立地（原料が重い・変質）</td><td>鉄鋼（臨海）・セメント・製紙・砂糖精製</td></tr>
+  <tr><td>消費地指向型</td><td>市場（消費地）に立地（完成品が重い・鮮度）</td><td>生鮮食品・ビール・印刷・自動車（最終組立）</td></tr>
+  <tr><td>労働力指向型</td><td>安価・豊富な労働力に立地</td><td>繊維・縫製・電子部品組立（途上国に多い）</td></tr>
+  <tr><td>臨空港型</td><td>航空輸送に適した軽量・高付加価値</td><td>IC・医薬品・精密機器</td></tr>
+  <tr><td>集積指向型</td><td>関連産業が集積，産業集積の利益</td><td>シリコンバレー・シリコンバレーほか</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>NIEs・BRICSの工業化</strong><br>
+<strong>NIEs（新興工業経済地域）</strong>：韓国・台湾・シンガポール・香港は1970〜90年代に輸出指向型工業化を推進。安価な労働力と外資誘致が原動力。現在は高付加価値産業へ移行。<br>
+<strong>BRICSブラジル・ロシア・インド・中国・南アフリカ）</strong>は2000年代以降急速に工業化。特に<strong>中国</strong>は「世界の工場」として製造業を牽引し，現在は半導体・EV・再生可能エネルギー分野でも技術力を高めている。
+</div>
+</div><!-- /s4-3 -->
+</div><!-- /ch4 -->
+
+<!-- ============================================================
+     第５章　人口・都市・村落
+============================================================ -->
+
+<div class="chapter" id="ch5">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 05</div>
+  <h2>人口・都市・村落</h2>
+  <p>人口転換モデル・人口ピラミッド・都市化・都市問題・村落の分類を整理する。少子高齢化と発展途上国の人口爆発は論述頻出テーマ。</p>
+</div>
+
+<!-- 5.1 -->
+
+<div class="section" id="s5-1">
+<h3>5.1 人口問題と人口転換モデル</h3>
+
+<div class="formula-box theorem">
+<strong>人口転換モデル（4段階）</strong>
+<div class="table-wrap"><table>
+  <tr><th>段階</th><th>出生率</th><th>死亡率</th><th>自然増加率</th><th>代表的地域</th></tr>
+  <tr><td>第1段階</td><td>高</td><td>高</td><td>低</td><td>かつての前近代社会</td></tr>
+  <tr><td>第2段階</td><td>高</td><td>低下</td><td>高（人口爆発）</td><td>サブサハラアフリカ，一部南アジア</td></tr>
+  <tr><td>第3段階</td><td>低下</td><td>低</td><td>中程度</td><td>東南アジア，中南米</td></tr>
+  <tr><td>第4段階</td><td>低</td><td>低</td><td>低（少子高齢化）</td><td>日本，西欧，韓国</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>少子高齢化の要因と影響</strong><br>
+<strong>少子化の要因</strong>：女性の高学歴化・社会進出，晩婚化・未婚率上昇，育児コストの増大，住宅費高騰<br>
+<strong>高齢化の要因</strong>：医療技術の進歩・栄養改善による平均寿命の延伸，少子化による若年人口減少<br>
+<strong>影響</strong>：労働力不足，社会保障費の増大，財政圧迫，外国人労働者の増加，地方の過疎化促進
+</div>
+
+<div class="tip-box">
+<strong>合計特殊出生率（TFR）の目安</strong><br>
+人口置換水準（人口が維持される水準）：先進国では <span class="hl">約2.1</span>。<br>
+日本（2023年）：約1.20（過去最低水準）。韓国：約0.72（世界最低水準）。<br>
+ニジェール：約6〜7（世界最高水準）。
+</div>
+
+<div class="example-box">
+<strong>例題 5.1</strong> <span class="lv lv-a">応用</span>　日本の少子化が進行している社会的・経済的背景を，3つの観点から論述せよ（150字程度）。
+<div class="answer-block">
+①<strong>女性の社会進出と晩婚化</strong>：高学歴化・キャリア志向の高まりにより，結婚・出産の年齢が上昇し，生涯未婚率も増加している。<br>
+②<strong>育児コストと住宅費の増大</strong>：教育費・保育費の高さ，都市部の住宅費が子育てを困難にしている。<br>
+③<strong>雇用の不安定化</strong>：非正規雇用の増加により経済的な将来不安が高まり，子どもを持つ決断を躊躇させている。（約150字）
+</div>
+</div>
+</div><!-- /s5-1 -->
+
+<!-- 5.2 -->
+
+<div class="section" id="s5-2">
+<h3>5.2 人口ピラミッドの読み方</h3>
+
+<div class="formula-box definition">
+<strong>人口ピラミッドの主要3形態</strong><br>
+<strong>①ピラミッド型（富士山型）</strong>：出生率・死亡率ともに高い発展途上国の初期段階。年少人口が多く老年人口が少ない。<br>
+<strong>②つりがね型</strong>：出生率が低下しつつあるが，まだ年少・壮年人口が多い。成長段階の国。<br>
+<strong>③つぼ型（逆ピラミッド）</strong>：少子高齢化が進行した先進国。年少人口が老年人口より少ない。日本・ドイツ・イタリアなど。
+</div>
+
+<div class="tip-box">
+人口ピラミッドを読む際は，①特定年齢層の凹み（戦争・飢饉による死亡増，ベビーブーマーの山），②男女比の偏り（男性労働力の流出），③急激な変化（移民受け入れによる壮年人口の突出）に注目する。
+</div>
+</div><!-- /s5-2 -->
+
+<!-- 5.3 -->
+
+<div class="section" id="s5-3">
+<h3>5.3 都市化・都市問題</h3>
+
+<div class="formula-box theorem">
+<strong>都市化の段階</strong><br>
+①<strong>都市化段階</strong>：農村から都市へ人口集中（インフラ整備が追いつかない）<br>
+②<strong>郊外化（スプロール）段階</strong>：都市中心部から郊外へ拡散，自動車依存社会<br>
+③<strong>逆都市化段階</strong>：都市中心部・郊外ともに人口減少，農村・地方へ分散<br>
+④<strong>再都市化段階</strong>：都心回帰（ジェントリフィケーション），再開発による都心復活
+</div>
+
+<div class="proof-box">
+<strong>先進国と発展途上国の都市問題の違い</strong><br>
+<strong>先進国</strong>：都市の老朽化，スプロール，ドーナツ化現象，都市財政の悪化，ジェントリフィケーションによるコミュニティ喪失<br>
+<strong>発展途上国</strong>：急速な人口流入に社会資本整備が追いつかず，スラム（ファベーラ・バリオなど）の形成，衛生問題，交通渋滞，住宅不足，非公式経済（インフォーマルセクター）の肥大化
+</div>
+
+<div class="formula-box definition">
+<strong>メガシティ・プライメイトシティ</strong><br>
+<strong>メガシティ</strong>：人口1,000万人以上の都市。現在世界に30以上。東京（世界最大），デリー，上海，ムンバイなど。<br>
+<strong>プライメイトシティ（首位都市）</strong>：首都など最大都市に人口・機能が極端に集中する現象。バンコク（タイ），ジャカルタ（インドネシア），ソウル（韓国）など。<br>
+<strong>宗主国による植民地都市</strong>が港湾都市として発達し，独立後もそこに一極集中したケースが多い。
+</div>
+</div><!-- /s5-3 -->
+</div><!-- /ch5 -->
+
+<!-- ============================================================
+     第６章　国家・民族・文化
+============================================================ -->
+
+<div class="chapter" id="ch6">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 06</div>
+  <h2>国家・民族・文化</h2>
+  <p>領土・領海・EEZの定義，民族・言語・宗教の世界分布，地域紛争と難民問題を扱う。背景の理解が論述問題の鍵となる。</p>
+</div>
+
+<!-- 6.1 -->
+
+<div class="section" id="s6-1">
+<h3>6.1 国家の領域と境界</h3>
+
+<div class="formula-box definition">
+<strong>国家の領域</strong>
+<div class="table-wrap"><table>
+  <tr><th>区分</th><th>定義</th><th>備考</th></tr>
+  <tr><td>領土</td><td>国家が主権を持つ陸地</td><td>島嶼も含む</td></tr>
+  <tr><td>領海</td><td>基線から12海里（約22km）</td><td>外国船の無害通航権あり</td></tr>
+  <tr><td>接続水域</td><td>基線から24海里</td><td>関税・出入国管理の適用</td></tr>
+  <tr><td>EEZ（排他的経済水域）</td><td>基線から200海里</td><td>水産資源・鉱物資源の独占的権利</td></tr>
+  <tr><td>公海</td><td>いずれの国の管轄外</td><td>公海自由の原則</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>国境の種類</strong><br>
+<strong>自然的国境</strong>：河川・山脈・海などの自然地形を利用（ライン川・ピレネー山脈・ヒマラヤ山脈）<br>
+<strong>人工的国境（直線国境）</strong>：植民地支配の遺産として経緯線・直線で引かれた国境。アフリカ・北米西部・中東に多い。民族の分布を無視して引かれたため，独立後に紛争の原因となる。
+</div>
+</div><!-- /s6-1 -->
+
+<!-- 6.2 -->
+
+<div class="section" id="s6-2">
+<h3>6.2 民族・言語・宗教の分布</h3>
+
+<div class="formula-box theorem">
+<strong>世界の主要言語系統</strong>
+<div class="table-wrap"><table>
+  <tr><th>語族</th><th>主な言語</th><th>主な地域</th></tr>
+  <tr><td>インド＝ヨーロッパ語族</td><td>英語・フランス語・スペイン語・ドイツ語・ヒンディー語・ロシア語</td><td>ヨーロッパ・南北アメリカ・南アジア</td></tr>
+  <tr><td>シナ＝チベット語族</td><td>中国語（漢語）・チベット語</td><td>東アジア</td></tr>
+  <tr><td>アフロ＝アジア語族</td><td>アラビア語・ヘブライ語・アムハラ語</td><td>北アフリカ・西アジア</td></tr>
+  <tr><td>ニジェール＝コルドファン語族</td><td>スワヒリ語・バントゥー諸語</td><td>サブサハラアフリカ</td></tr>
+  <tr><td>オーストロネシア語族</td><td>マレー語・タガログ語・マダガスカル語</td><td>東南アジア島部・太平洋</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box theorem">
+<strong>世界三大宗教の分布</strong>
+<div class="table-wrap"><table>
+  <tr><th>宗教</th><th>信者数（概算）</th><th>主な分布</th><th>特徴</th></tr>
+  <tr><td>キリスト教</td><td>約25億人</td><td>ヨーロッパ・南北アメリカ・オセアニア・サブサハラ</td><td>カトリック・プロテスタント・正教会に三分</td></tr>
+  <tr><td>イスラーム</td><td>約20億人</td><td>西アジア・北アフリカ・中央アジア・南アジア・東南アジア</td><td>スンナ派（多数）・シーア派（イランほか）</td></tr>
+  <tr><td>仏教</td><td>約5億人</td><td>東アジア・東南アジア・南アジア</td><td>上座部（東南アジア）・大乗（東アジア）</td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+インドネシアは世界最大のムスリム人口（約2億3千万人）を抱えながら，公用語はマレー語系の<span class="hl">インドネシア語</span>，国是は「パンチャシラ（建国五原則）」で多宗教・多民族の共存を規定している。
+</div>
+</div><!-- /s6-2 -->
+
+<!-- 6.3 -->
+
+<div class="section" id="s6-3">
+<h3>6.3 地域紛争・難民問題</h3>
+
+<div class="formula-box theorem">
+<strong>主要な地域紛争の背景類型</strong>
+<div class="table-wrap"><table>
+  <tr><th>類型</th><th>事例</th><th>主な要因</th></tr>
+  <tr><td>民族・宗教紛争</td><td>旧ユーゴスラビア，パレスチナ，ルワンダ</td><td>民族・宗派の対立，植民地の遺産</td></tr>
+  <tr><td>資源をめぐる紛争</td><td>南スーダン，コンゴ民主共和国</td><td>石油・ダイヤモンド・コバルトなど</td></tr>
+  <tr><td>分離独立運動</td><td>クルド問題，カシミール，チベット</td><td>民族自決の要求</td></tr>
+  <tr><td>国境問題</td><td>南シナ海，ナゴルノカラバフ</td><td>直線国境・植民地境界の矛盾</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>難民問題の現状（2020年代）</strong><br>
+UNHCR（国連難民高等弁務官事務所）によると，世界の強制移動者数は1億人を超えている。主な難民発生源はシリア，アフガニスタン，ウクライナ，コンゴ民主共和国など。<br>
+難民認定には<strong>「人種・宗教・国籍・特定の社会的集団への帰属・政治的意見を理由に迫害される恐れがある」</strong>（1951年難民条約の定義）が必要で，経済難民は含まれない。
+</div>
+</div><!-- /s6-3 -->
+</div><!-- /ch6 -->
+
+<!-- ============================================================
+     第７章　地域統合と国際問題
+============================================================ -->
+
+<div class="chapter" id="ch7">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 07</div>
+  <h2>地域統合と国際問題</h2>
+  <p>EU・ASEAN・AFTAなどの地域統合，地球温暖化・エネルギー問題・SDGsを扱う。国際条約の名称と内容の整理が入試で問われる。</p>
+</div>
+
+<!-- 7.1 -->
+
+<div class="section" id="s7-1">
+<h3>7.1 地域統合</h3>
+
+<div class="formula-box theorem">
+<strong>主要な地域統合機構</strong>
+<div class="table-wrap"><table>
+  <tr><th>名称</th><th>加盟国数（概数）</th><th>特徴</th></tr>
+  <tr><td>EU（欧州連合）</td><td>27か国（英国離脱後）</td><td>単一市場・共通通貨ユーロ（19か国）・シェンゲン協定</td></tr>
+  <tr><td>ASEAN（東南アジア諸国連合）</td><td>10か国</td><td>政治・安全保障・経済協力，非干渉原則</td></tr>
+  <tr><td>USMCA（旧NAFTA）</td><td>米・加・メキシコ</td><td>北米自由貿易地域，関税撤廃</td></tr>
+  <tr><td>MERCOSUR（南米共同市場）</td><td>ブラジル・アルゼンチン等</td><td>南米の経済統合</td></tr>
+  <tr><td>AU（アフリカ連合）</td><td>55か国</td><td>アフリカ全域，OAUを発展的解消</td></tr>
+  <tr><td>APEC（アジア太平洋経済協力）</td><td>21か国・地域</td><td>貿易自由化フォーラム，法的拘束力なし</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>EUの特徴と課題</strong><br>
+EUは単なる自由貿易協定を超え，<strong>経済・通貨統合（ユーロ）</strong> と <strong>政治統合</strong> を目指す。シェンゲン協定域内では国境審査なしに移動可能。<br>
+一方，ユーロ危機（ギリシャ債務問題），英国のBrexit，移民問題をめぐる加盟国間の対立など課題も多い。
+</div>
+</div><!-- /s7-1 -->
+
+<!-- 7.2 -->
+
+<div class="section" id="s7-2">
+<h3>7.2 環境問題・SDGs</h3>
+
+<div class="formula-box theorem">
+<strong>主要な国際環境条約</strong>
+<div class="table-wrap"><table>
+  <tr><th>条約・合意</th><th>採択年</th><th>内容</th></tr>
+  <tr><td>気候変動枠組条約（UNFCCC）</td><td>1992年</td><td>温室効果ガス削減の基本枠組み</td></tr>
+  <tr><td>京都議定書</td><td>1997年</td><td>先進国に削減義務（共通だが差異ある責任）</td></tr>
+  <tr><td>パリ協定</td><td>2015年</td><td>全締約国が削減目標（NDC）を提出，1.5℃目標</td></tr>
+  <tr><td>モントリオール議定書</td><td>1987年</td><td>オゾン層破壊物質（フロン類）の規制</td></tr>
+  <tr><td>ラムサール条約</td><td>1971年</td><td>湿地の保護</td></tr>
+  <tr><td>ワシントン条約（CITES）</td><td>1973年</td><td>絶滅危惧野生生物の取引規制</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box theorem">
+<strong>SDGs（持続可能な開発目標）</strong><br>
+2015年に国連で採択，2030年までの17の目標と169のターゲットから成る。前身はMDGs（ミレニアム開発目標）。先進国・途上国ともに取り組むユニバーサルな目標。<br>
+キーワード：<span class="hl">「誰一人取り残さない（Leave no one behind）」</span>，環境・社会・経済の三側面の統合，多様なステークホルダーの参加。
+</div>
+
+<div class="tip-box">
+<strong>地球温暖化の論述頻出ポイント</strong><br>
+①原因：化石燃料燃焼・森林破壊によるCO₂増加，メタン（農業・畜産），N₂O（農業）<br>
+②影響：海面上昇（低地・島嶼国），極端な気象（洪水・干ばつ），生態系破壊，農業生産への影響<br>
+③責任の議論：先進国の歴史的排出 vs 途上国の経済発展の権利 →「共通だが差異ある責任」
+</div>
+</div><!-- /s7-2 -->
+</div><!-- /ch7 -->
+
+<!-- ============================================================
+     第８章　入試対策
+============================================================ -->
+
+<div class="chapter" id="ch8">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 08</div>
+  <h2>入試対策</h2>
+  <p>論述問題の解法パターン・統計グラフの読み取り・共通テスト対策・二次試験の精選問題を扱う。</p>
+</div>
+
+<!-- 8.1 -->
+
+<div class="section" id="s8-1">
+<h3>8.1 論述問題の解法パターン</h3>
+
+<div class="tip-box">
+<strong>地理論述の黄金テンプレート</strong><br>
+地理論述は「<span class="hl">原因（自然的要因・人文的要因）→ 結果 → 影響・課題</span>」の流れで構成する。<br>
+① <strong>位置・地形・気候</strong> などの自然条件を最初に示す<br>
+② それが <strong>農業・産業・人口・都市</strong> にどう影響するかを説明<br>
+③ 比較問題は <strong>共通点と相違点</strong> を必ず両方述べる<br>
+④ キーワード（ケッペン記号・固有名詞・統計）を正確に使う
+</div>
+
+<div class="exam-card">
+<div class="exam-hd">
+<span>入試問題 8.1（東大レベル）</span>
+<span class="etag tag-urb">都市・人口</span>
+</div>
+<div class="exam-body">
+インドと中国を比較した場合，インドの工業化が中国より遅れた理由を，人口・教育・インフラ・政治体制の観点から論述せよ（200字程度）。
+<div class="answer-block">
+インドは中国と同様に大規模な人口を有するが，カースト制度に基づく社会的分断が人材の流動性を制限してきた。識字率・高等教育の普及も中国より遅れ，製造業に必要な技術労働者の育成が困難だった。インフラ面でも道路・電力・港湾整備が立ち遅れ，物流コストが高い。政治的には民主主義体制のため土地収用・政策決定に時間がかかり，中国の権威主義体制による国家主導の大規模開発に対応できなかった。近年はIT産業・製薬を中心に急成長している。（約200字）
+</div>
+</div>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd">
+<span>入試問題 8.2（京大レベル）</span>
+<span class="etag tag-nat">自然環境</span>
+</div>
+<div class="exam-body">
+アタカマ砂漠とサハラ砂漠は，ともに乾燥気候であるが，形成要因に違いがある。それぞれの形成要因を説明し，降水量・気温の季節変化の特徴を比較せよ（250字程度）。
+<div class="answer-block">
+アタカマ砂漠は南米太平洋岸に位置し，①亜熱帯高圧帯による下降気流，②アンデス山脈の雨陰，③ペルー（フンボルト）海流の冷却効果により海上の大気が安定し，陸風も抑制される，の三重の要因で形成される。年中ほぼ無降水で世界最乾燥の地。気温は寒流の影響で年較差・日較差ともに小さく，沿岸では霧（ガルーア）が発生する。<br>
+サハラ砂漠は亜熱帯高圧帯の下降気流が主因。乾季・雨季の区別があるが，降水量は年間250mm未満。気温の日較差・年較差がアタカマより大きく，内陸では夏季に50℃を超える。（約250字）
+</div>
+</div>
+</div>
+</div><!-- /s8-1 -->
+
+<!-- 8.2 -->
+
+<div class="section" id="s8-2">
+<h3>8.2 統計読解・グラフ問題</h3>
+
+<div class="formula-box theorem">
+<strong>統計グラフ読み取りの手順</strong>
+<ol class="num">
+  <li>グラフの種類・縦軸・横軸・単位を確認する</li>
+  <li>最大値・最小値・平均値などの分布を把握する</li>
+  <li>複数の国・地域を比較する場合は<strong>相対的な違い</strong>と<strong>絶対量</strong>の両方に注目する</li>
+  <li>傾向（増加・減少・変曲点）と要因を関連付ける</li>
+  <li>地図上の分布と統計値を対応させて地域性を読む</li>
+</ol>
+</div>
+
+<div class="example-box">
+<strong>例題 8.2</strong> <span class="lv lv-a">応用</span>　人口ピラミッドを比較するとき，「つぼ型」を示す国の課題と，「ピラミッド型」を示す国の課題をそれぞれ論述せよ（各100字）。
+<div class="answer-block">
+<strong>つぼ型（日本・ドイツ等）の課題：</strong>少子高齢化により生産年齢人口が減少し，労働力不足と社会保障費の増大が同時進行する。年金・医療費の財政圧迫が深刻で，外国人労働者の受け入れや女性・高齢者の就労促進が急務となる。<br><br>
+<strong>ピラミッド型（サブサハラアフリカ等）の課題：</strong>急速な人口増加で食料・住宅・教育・雇用が追いつかず，若年層の失業率が高止まりする。都市への人口集中によりスラムが拡大し，インフラ整備が困難な悪循環が生じる。
+</div>
+</div>
+</div><!-- /s8-2 -->
+
+<!-- 8.3 -->
+
+<div class="section" id="s8-3">
+<h3>8.3 重要統計・知識チェックリスト</h3>
+
+<div class="formula-box">
+<strong>世界の主要指標（入試直前チェック）</strong>
+<div class="table-wrap"><table>
+  <tr><th>指標</th><th>世界1位</th><th>日本の順位・特徴</th></tr>
+  <tr><td>人口</td><td>インド（2023年〜）</td><td>約1億2千万人，11位前後</td></tr>
+  <tr><td>面積</td><td>ロシア</td><td>61位（約38万km²）</td></tr>
+  <tr><td>米生産量</td><td>中国</td><td>日本は10位前後</td></tr>
+  <tr><td>小麦生産量</td><td>中国</td><td>日本はほとんど輸入依存</td></tr>
+  <tr><td>大豆生産量</td><td>ブラジル</td><td>日本は輸入大国（米国・ブラジル・アルゼンチン）</td></tr>
+  <tr><td>鉄鉱石生産</td><td>オーストラリア</td><td>日本はほぼ100%輸入</td></tr>
+  <tr><td>原油生産</td><td>米国</td><td>日本は輸入（中東依存80%以上）</td></tr>
+  <tr><td>再生可能エネルギー発電</td><td>中国（絶対量）</td><td>日本は割合が低く課題</td></tr>
+  <tr><td>CO₂排出量</td><td>中国</td><td>日本は5位前後</td></tr>
+</table></div>
+</div>
+
+<div class="important-box">
+<strong>混同しやすい用語ペア（入試頻出）</strong><br>
+・リアス海岸（谷の沈水）vs フィヨルド（氷河谷の沈水）：どちらも複雑な入り江だが形成要因が異なる<br>
+・扇状地（礫・山麓出口）vs 三角州（粘土・河口）：土質と位置が逆<br>
+・チェルノーゼム（ステップの黒土・肥沃）vs ポドゾル（タイガの白土・酸性・肥沃度低）<br>
+・難民（条約難民）vs 移民（経済的理由での移動）：定義が異なる<br>
+・EEZ（200海里，資源権益）vs 公海（いずれの国の管轄外）<br>
+・メルカトル（正角・面積歪む）vs モルワイデ（正積・形歪む）
+</div>
+</div><!-- /s8-3 -->
+</div><!-- /ch8 -->
+
+<!-- ============================================================
+     付録　地理用語・略語一覧
+============================================================ -->
+
+<div class="chapter" id="ch0">
+<div class="chapter-header">
+  <div class="ch-num">付録</div>
+  <h2>地理用語・略語一覧</h2>
+  <p>国際機関略語・地理指標・各地域の地誌キーワードを整理する。</p>
+</div>
+
+<div class="section">
+<h3>国際機関・略語</h3>
+<div class="table-wrap"><table>
+  <tr><th>略語</th><th>正式名称</th><th>主な役割</th></tr>
+  <tr><td>UN</td><td>国際連合（United Nations）</td><td>平和維持・人権・開発</td></tr>
+  <tr><td>UNHCR</td><td>国連難民高等弁務官事務所</td><td>難民保護</td></tr>
+  <tr><td>WTO</td><td>世界貿易機関</td><td>自由貿易の推進・紛争解決</td></tr>
+  <tr><td>IMF</td><td>国際通貨基金</td><td>国際金融安定・融資</td></tr>
+  <tr><td>WB</td><td>世界銀行</td><td>途上国への開発援助・融資</td></tr>
+  <tr><td>WHO</td><td>世界保健機関</td><td>国際保健・感染症対策</td></tr>
+  <tr><td>FAO</td><td>国連食糧農業機関</td><td>食料問題・農業</td></tr>
+  <tr><td>OPEC</td><td>石油輸出国機構</td><td>産油国の生産調整</td></tr>
+  <tr><td>OECD</td><td>経済協力開発機構</td><td>先進国の経済政策協調</td></tr>
+  <tr><td>ODA</td><td>政府開発援助</td><td>先進国から途上国への公的援助</td></tr>
+  <tr><td>GNI</td><td>国民総所得</td><td>GDPに海外からの純所得を加算</td></tr>
+  <tr><td>HDI</td><td>人間開発指数</td><td>UNDP，寿命・教育・所得で算出</td></tr>
+  <tr><td>NDC</td><td>国が決定する貢献（パリ協定）</td><td>各国の温室効果ガス削減目標</td></tr>
+  <tr><td>SDGs</td><td>持続可能な開発目標</td><td>2030年までの17目標</td></tr>
+  <tr><td>GIS</td><td>地理情報システム</td><td>地理データの統合・分析</td></tr>
+</table></div>
+</div>
+
+<div class="section">
+<h3>地誌頻出キーワード（地域別）</h3>
+<div class="sum-grid">
+  <div class="sum-card"><h4>🌏 東アジア</h4><p>一人っ子政策（廃止），高齢化，レアアース，黄土（レス），チャイナプラスワン，台湾海峡問題</p></div>
+  <div class="sum-card"><h4>🌴 東南アジア</h4><p>ASEAN，プランテーション（天然ゴム・パーム油），プライメイトシティ，環太平洋火山帯，AFTA</p></div>
+  <div class="sum-card"><h4>🕌 西アジア・中東</h4><p>石油メジャー，OPEC，ホルムズ海峡，砂漠化，水問題，パレスチナ問題，スンナ派・シーア派</p></div>
+  <div class="sum-card"><h4>🌾 南アジア</h4><p>緑の革命，IT産業（バンガロール），人口ボーナス，カースト，カシミール問題，インダス文明</p></div>
+  <div class="sum-card"><h4>🌍 アフリカ</h4><p>直線国境（植民地の遺産），モノカルチャー経済，サヘル（砂漠化），資源の呪い，AU，難民</p></div>
+  <div class="sum-card"><h4>🌎 南北アメリカ</h4><p>シェール革命，プレーリー，アマゾン開発（セラード），ラテンアメリカの格差，USMCA</p></div>
+  <div class="sum-card"><h4>🏰 ヨーロッパ</h4><p>EU・ユーロ・シェンゲン，Brexit，移民問題，混合農業・酪農，北海油田，偏西風・暖流</p></div>
+  <div class="sum-card"><h4>🦘 オセアニア</h4><p>安定陸塊（鉄鉱石・石炭），グレートバリアリーフ，アボリジニ・マオリ，白豪主義→多文化主義</p></div>
+</div>
+
+<div class="important-box">
+<strong>地理論述で犯しやすい典型的なミス</strong><br>
+① 「リアス海岸」→ フィヨルドと混同（形成要因：谷の沈水 vs 氷河谷の沈水）<br>
+② 「チェルノーゼム」→ ポドゾル（タイガ）と混同（場所：ステップ vs タイガ）<br>
+③ 「正積図法」→ 正角図法（メルカトル）と混同（目的：面積比較 vs 航路）<br>
+④ EEZの範囲 → 12海里（領海）と200海里（EEZ）の区別<br>
+⑤ 「共通だが差異ある責任」→ 全員同一義務（誤）ではなく先進国により重い削減義務
+</div>
+</div>
+</div><!-- /ch0 -->
+
+</div><!-- /main-content -->
+
+<a href="#top" class="back-to-top no-print" title="トップへ">▲</a>
+
+<!-- Symbol Guide Panel -->
+
+<button id="sym-guide-btn" class="no-print" title="地理用語ガイド">🌐</button>
+
+<div id="sym-guide-panel" class="no-print">
+  <div class="sg-hd">
+    🌐 地理略語・記号ガイド
+    <button onclick="document.getElementById('sym-guide-panel').classList.remove('open')">✕</button>
+  </div>
+  <div class="sg-body">
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 気候記号（ケッペン）</div>
+      <div class="sg-row"><span class="sg-sym">Af</span><span class="sg-read">熱帯雨林</span><span class="sg-mean">年中高温多雨</span></div>
+      <div class="sg-row"><span class="sg-sym">Aw</span><span class="sg-read">サバナ</span><span class="sg-mean">乾季（冬）あり</span></div>
+      <div class="sg-row"><span class="sg-sym">BW</span><span class="sg-read">砂漠</span><span class="sg-mean">極端な乾燥</span></div>
+      <div class="sg-row"><span class="sg-sym">BS</span><span class="sg-read">ステップ</span><span class="sg-mean">半乾燥草原</span></div>
+      <div class="sg-row"><span class="sg-sym">Cs</span><span class="sg-read">地中海性</span><span class="sg-mean">夏乾燥・冬多雨</span></div>
+      <div class="sg-row"><span class="sg-sym">Cfa</span><span class="sg-read">温暖湿潤</span><span class="sg-mean">最暖月≧22℃</span></div>
+      <div class="sg-row"><span class="sg-sym">Cfb</span><span class="sg-read">西岸海洋性</span><span class="sg-mean">最暖月＜22℃</span></div>
+      <div class="sg-row"><span class="sg-sym">Df</span><span class="sg-read">亜寒帯湿潤</span><span class="sg-mean">タイガ，ポドゾル</span></div>
+      <div class="sg-row"><span class="sg-sym">ET</span><span class="sg-read">ツンドラ</span><span class="sg-mean">最暖月0〜10℃</span></div>
+      <div class="sg-row"><span class="sg-sym">EF</span><span class="sg-read">氷雪</span><span class="sg-mean">最暖月0℃未満</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 国際機関略語</div>
+      <div class="sg-row"><span class="sg-sym">UN</span><span class="sg-read">国際連合</span><span class="sg-mean">平和維持・安保理</span></div>
+      <div class="sg-row"><span class="sg-sym">UNHCR</span><span class="sg-read">難民高等弁務官</span><span class="sg-mean">難民保護</span></div>
+      <div class="sg-row"><span class="sg-sym">WTO</span><span class="sg-read">世貿機関</span><span class="sg-mean">自由貿易推進</span></div>
+      <div class="sg-row"><span class="sg-sym">OPEC</span><span class="sg-read">石油輸出国機構</span><span class="sg-mean">産油国カルテル</span></div>
+      <div class="sg-row"><span class="sg-sym">FAO</span><span class="sg-read">食糧農業機関</span><span class="sg-mean">食料・農業統計</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 海洋・領域</div>
+      <div class="sg-row"><span class="sg-sym">EEZ</span><span class="sg-read">排他的経済水域</span><span class="sg-mean">基線から200海里</span></div>
+      <div class="sg-row"><span class="sg-sym">領海</span><span class="sg-read">りょうかい</span><span class="sg-mean">基線から12海里</span></div>
+      <div class="sg-row"><span class="sg-sym">ITCZ</span><span class="sg-read">熱帯収束帯</span><span class="sg-mean">赤道付近の上昇気流帯</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 地理統計</div>
+      <div class="sg-row"><span class="sg-sym">TFR</span><span class="sg-read">合計特殊出生率</span><span class="sg-mean">置換水準≈2.1</span></div>
+      <div class="sg-row"><span class="sg-sym">HDI</span><span class="sg-read">人間開発指数</span><span class="sg-mean">寿命・教育・所得</span></div>
+      <div class="sg-row"><span class="sg-sym">GNI</span><span class="sg-read">国民総所得</span><span class="sg-mean">GDP＋海外純所得</span></div>
+      <div class="sg-row"><span class="sg-sym">ODA</span><span class="sg-read">政府開発援助</span><span class="sg-mean">先進国→途上国</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== 目次トグル（上からプルダウン）==========
+(function() {
+  var btn = document.getElementById('nav-toggle-btn');
+  var nav = document.querySelector('nav');
+  var overlay = document.getElementById('nav-overlay');
+  if (!btn || !nav) return;
+
+  function openNav() {
+    nav.classList.add('nav-open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.classList.add('active');
+  }
+  function closeNav() {
+    nav.classList.remove('nav-open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.remove('active');
+  }
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (nav.classList.contains('nav-open')) closeNav();
+    else openNav();
+  });
+
+  if (overlay) overlay.addEventListener('click', closeNav);
+
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      setTimeout(closeNav, 200);
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNav();
+  });
+})();
+
+// ========== 記号ガイドパネル ==========
+(function() {
+  var btn = document.getElementById('sym-guide-btn');
+  var panel = document.getElementById('sym-guide-panel');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (!panel.contains(e.target) && e.target !== btn) {
+      panel.classList.remove('open');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
