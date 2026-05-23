@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>数学ⅡB 完全攻略テキスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],tags:'none'},options:{skipHtmlTags:['script','noscript','style','textarea']}};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* ====== VARIABLES ====== */
+:root{
+  --ink:#0f1e3c; --ink2:#1a3255; --paper:#faf8f4; --warm:#f5f0e8;
+  --rule:#d4cbb8; --accent:#9b1b4b; --blue:#1a4f8a; --green:#145f3a;
+  --gold:#c9870c; --purple:#5c2d8e; --orange:#b94a00;
+  --proof-bg:#edf6fb; --proof-bd:#1e7abf;
+  --form-bg:#fef9e7; --form-bd:#d4890a;
+  --ex-bg:#f0fdf4; --ex-bd:#1a8a4a;
+  --pr-bg:#fdf3ff; --pr-bd:#7e22ce;
+  --tip-bg:#f0f9ff; --tip-bd:#0284c7;
+  --warn-bg:#fff1f2; --warn-bd:#be123c;
+  --exam-bg:#fff8f0; --exam-bd:#b94a00;
+  --serif:'Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic Pro',sans-serif;
+}
+
+/* ====== RESET ====== */
+*{box-sizing:border-box;margin:0;padding:0;}html,body{overflow-x:hidden;max-width:100%;}
+html{font-size:15px;}
+body{font-family:‘Noto Serif JP’,Georgia,serif;background:#faf8f4;color:#0f1e3c;line-height:1.9;}
+p{margin-bottom:11px;}
+strong{font-weight:700;}
+
+/* ====== PAGE / PRINT ====== */
+@page{size:A4;margin:18mm 16mm 18mm 16mm;}
+@media print{
+html{font-size:11px;}
+body{background:#fff;}
+nav,.no-print,.back-to-top{display:none!important;}
+.main-content{margin-left:0!important;}
+.chapter{page-break-before:always;padding:0 0 24px;}
+.chapter:first-of-type{page-break-before:avoid;}
+.print-cover{display:flex!important;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.toc-section{page-break-after:always;}
+.formula-box,.proof-box,.example-box,.exercise-block,.exam-card,.tip-box,.important-box{page-break-inside:avoid;break-inside:avoid;}
+.section{page-break-inside:auto;}
+h3,h4{page-break-after:avoid;}
+.answer-block{page-break-inside:avoid;break-inside:avoid;}
+table{page-break-inside:avoid;break-inside:avoid;}
+.two-col,.three-col{page-break-inside:avoid;}
+a{color:inherit;text-decoration:none;}
+.chapter-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.important-box{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.formula-box::before,.proof-box::before,.example-box::before,
+.exercise-block::before,.tip-box::before,.important-box::before{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+.exam-hd{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.MathJax{font-size:100%!important;}
+}
+@media screen{.print-cover{display:none;}}
+
+/* ====== PRINT COVER ====== */
+.print-cover{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 55%,#1a4f8a 100%);
+color:#fff;min-height:100vh;flex-direction:column;align-items:center;
+justify-content:center;text-align:center;padding:80px 56px;
+}
+.print-cover h1{font-size:3.2rem;font-weight:300;letter-spacing:0.12em;margin-bottom:10px;}
+.print-cover h1 span{font-weight:700;color:#f0c040;}
+.print-cover .cv-sub{font-size:1rem;opacity:.65;letter-spacing:.3em;margin-bottom:44px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.print-cover .cv-chs{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:44px;}
+.print-cover .cv-ch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 16px;border-radius:20px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13px;}
+.print-cover .cv-note{font-size:11.5px;opacity:.45;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;letter-spacing:.1em;}
+
+/* ====== NAV TOGGLE BUTTON ====== */
+#nav-toggle-btn{
+position:fixed;top:13px;left:14px;z-index:400;
+background:#0f1e3c;color:#f0c040;
+border:1.5px solid rgba(240,192,64,.4);
+padding:7px 15px 7px 11px;border-radius:7px;cursor:pointer;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:12.5px;font-weight:700;letter-spacing:.04em;
+display:flex;align-items:center;gap:8px;
+box-shadow:0 2px 14px rgba(0,0,0,.4);transition:background .2s;
+user-select:none;
+}
+#nav-toggle-btn:hover{background:#1a3255;}
+#nav-toggle-btn .tgl-icon{font-size:17px;line-height:1;transition:transform .38s cubic-bezier(.4,0,.2,1);display:inline-block;}
+#nav-toggle-btn.open .tgl-icon{transform:rotate(90deg);}
+
+/* ====== NAV ====== */
+nav{
+position:fixed;top:0;left:0;width:100%;
+max-height:0;overflow:hidden;
+transition:max-height .45s cubic-bezier(.4,0,.2,1);
+background:#0f1e3c;color:#ccc;
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:11.5px;z-index:350;
+box-shadow:0 6px 36px rgba(0,0,0,.5);
+}
+nav.nav-open{max-height:82vh;overflow-y:auto;}
+.nav-inner{
+padding:56px 24px 24px;
+display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 28px;
+}
+.nav-col{flex:0 0 auto;min-width:158px;max-width:210px;margin-bottom:12px;}
+.nav-title{
+color:#fff;font-weight:700;font-size:13px;
+padding:0 0 9px;border-bottom:1px solid rgba(255,255,255,.12);
+margin-bottom:6px;letter-spacing:.06em;display:block;
+}
+nav a{display:block;color:#8ab;text-decoration:none;padding:3px 0 3px 8px;transition:all .18s;border-left:2px solid transparent;}
+nav a:hover{color:#fff;border-left-color:#f0c040;padding-left:14px;}
+.nav-ch{color:#f0c040;font-weight:700;margin-top:10px;margin-bottom:3px;font-size:11px;letter-spacing:.06em;}
+.nav-col .nav-ch:first-child{margin-top:0;}
+.nav-sub{font-size:10.5px;color:#678;padding-left:14px!important;}
+.nav-sub:hover{color:#acd;}
+#nav-overlay{
+display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.38);z-index:200;
+}
+#nav-overlay.active{display:block;}
+
+/* ====== SYMBOL TOOLTIP ====== */
+.sym-tip{
+position:relative;display:inline;cursor:help;
+border-bottom:1px dashed rgba(26,79,138,.55);
+}
+.sym-tip::after{
+content:attr(data-tip);
+position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);
+background:#1a3255;color:#ddeeff;
+font-size:11px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-weight:400;line-height:1.6;
+padding:5px 10px;border-radius:6px;white-space:nowrap;
+box-shadow:0 3px 14px rgba(0,0,0,.35);
+opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;
+}
+.sym-tip::before{
+content:’’;position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);
+border:5px solid transparent;border-top-color:#1a3255;
+opacity:0;pointer-events:none;transition:opacity .18s;z-index:500;
+}
+.sym-tip:hover::after,.sym-tip:hover::before{opacity:1;}
+
+/* QED label */
+.qed .qed-label{
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:10.5px;color:#1e7abf;font-weight:400;
+margin-left:7px;letter-spacing:.03em;
+}
+
+/* Symbol guide floating panel */
+#sym-guide-btn{
+position:fixed;bottom:80px;right:24px;z-index:150;
+background:#1a4f8a;color:#fff;border:none;
+width:44px;height:44px;border-radius:50%;cursor:pointer;
+font-size:19px;box-shadow:0 2px 12px rgba(0,0,0,.3);
+transition:transform .2s,background .2s;
+display:flex;align-items:center;justify-content:center;
+}
+#sym-guide-btn:hover{background:#0f1e3c;transform:scale(1.1);}
+#sym-guide-panel{
+position:fixed;bottom:134px;right:24px;z-index:150;
+width:330px;max-height:430px;overflow-y:auto;
+background:#fff;border:1.5px solid #d4cbb8;border-radius:10px;
+box-shadow:0 8px 36px rgba(0,0,0,.18);
+font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;
+font-size:12px;line-height:1.7;display:none;
+}
+#sym-guide-panel.open{display:block;}
+.sg-hd{
+background:#0f1e3c;color:#fff;padding:10px 16px;border-radius:8px 8px 0 0;
+font-weight:700;font-size:13px;letter-spacing:.04em;
+display:flex;align-items:center;justify-content:space-between;
+}
+.sg-hd button{background:none;border:none;color:#aaa;cursor:pointer;font-size:18px;line-height:1;padding:0;}
+.sg-hd button:hover{color:#fff;}
+.sg-body{padding:12px 14px;}
+.sg-sec{margin-bottom:14px;}
+.sg-sec-title{color:#1a4f8a;font-size:11px;font-weight:700;letter-spacing:.08em;
+border-bottom:1px solid #e0dbd0;padding-bottom:4px;margin-bottom:6px;}
+.sg-row{display:grid;grid-template-columns:44px 82px 1fr;gap:4px;align-items:baseline;padding:2px 0;}
+.sg-sym{font-size:15px;color:#0f1e3c;font-weight:700;}
+.sg-read{color:#9b1b4b;font-size:11px;}
+.sg-mean{color:#444;font-size:10.5px;}
+
+/* ====== LAYOUT ====== */
+.main-content{margin-left:0;width:100%;overflow-x:hidden;}
+@media(max-width:900px){.main-content{margin-left:0;width:100%;}}
+
+/* ====== HEADER ====== */
+.header-banner{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 50%,#16325e 100%);
+color:#fff;padding:40px 40px 34px;position:relative;overflow:hidden;
+}
+.header-banner::before{content:’’;position:absolute;top:-50px;right:-50px;width:280px;height:280px;border:1px solid rgba(255,255,255,.04);border-radius:50%;}
+.header-banner h1{font-size:2.5em;font-weight:300;letter-spacing:.08em;margin-bottom:8px;}
+.header-banner h1 span{font-weight:700;color:#f0c040;}
+.header-banner p{color:rgba(255,255,255,.55);font-size:13px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.hd-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+.hd-badge{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);padding:3px 11px;border-radius:16px;font-size:12px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+
+/* ====== TOC ====== */
+.toc-section{padding:36px 40px;border-bottom:2px solid #d4cbb8;}
+.toc-section h2{font-size:1.6em;margin-bottom:24px;border-bottom:2px solid #0f1e3c;padding-bottom:9px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.toc-card{border:1.5px solid #d4cbb8;border-radius:8px;padding:16px;text-decoration:none;color:inherit;display:block;transition:all .2s;}
+.toc-card:hover{border-color:#1a4f8a;transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08);}
+.toc-num{font-size:10.5px;color:#9b1b4b;font-weight:700;letter-spacing:.1em;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.toc-title{font-size:1.15em;font-weight:700;margin:4px 0 8px;}
+.toc-topics{font-size:11.5px;color:#666;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;line-height:1.7;}
+
+/* ====== CHAPTER ====== */
+.chapter{padding:0 40px 40px;border-bottom:2px solid #d4cbb8;}
+.chapter-header{padding:42px 0 24px;border-bottom:3px solid #0f1e3c;margin-bottom:28px;}
+.ch-num{font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:11px;font-weight:600;color:#9b1b4b;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.chapter-header h2{font-size:2em;font-weight:600;letter-spacing:.03em;line-height:1.3;}
+.chapter-header p{margin-top:9px;color:#555;font-size:13.5px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;max-width:640px;}
+
+/* ====== SECTIONS ====== */
+.section{margin-bottom:38px;}
+h3{font-size:1.2em;font-weight:700;color:#1a4f8a;border-left:4px solid #1a4f8a;padding-left:12px;margin:30px 0 14px;}
+h4{font-size:1.02em;font-weight:700;color:#0f1e3c;margin:18px 0 9px;padding-bottom:3px;border-bottom:1px dashed #d4cbb8;}
+.section-sep{border:none;border-top:1px dashed #d4cbb8;margin:22px 0;}
+
+/* ====== BOX BASE ====== */
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.exam-card,.important-box{
+border-radius:7px;padding:18px 22px;margin:16px 0;position:relative;
+}
+/* FORMULA */
+.formula-box{background:#fef9e7;border:1.5px solid #d4890a;border-left:5px solid #d4890a;}
+.formula-box::before{content:‘公式’;position:absolute;top:-10px;left:14px;background:#d4890a;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.08em;}
+.formula-box.theorem::before{content:‘定理’;background:#1a4f8a;}
+.formula-box.definition::before{content:‘定義’;background:#9b1b4b;}
+.formula-box.important::before{content:‘重要’;background:#b91c1c;}
+/* PROOF */
+.proof-box{background:#edf6fb;border:1.5px solid #1e7abf;border-left:5px solid #1e7abf;}
+.proof-box::before{content:‘証明’;position:absolute;top:-10px;left:14px;background:#1e7abf;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+.proof-box .qed{text-align:right;font-size:16px;color:#1e7abf;margin-top:6px;}
+/* EXAMPLE */
+.example-box{background:#f0fdf4;border:1.5px solid #1a8a4a;border-left:5px solid #1a8a4a;}
+.example-box::before{content:‘例題’;position:absolute;top:-10px;left:14px;background:#1a8a4a;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXERCISE */
+.exercise-block{background:#fdf3ff;border:1.5px solid #7e22ce;border-left:5px solid #7e22ce;}
+.exercise-block::before{content:‘練習’;position:absolute;top:-10px;left:14px;background:#7e22ce;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* TIP */
+.tip-box{background:#f0f9ff;border:1.5px solid #0284c7;border-left:5px solid #0284c7;}
+.tip-box::before{content:‘POINT’;position:absolute;top:-10px;left:14px;background:#0284c7;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.06em;}
+/* IMPORTANT */
+.important-box{background:#fff1f2;border:1.5px solid #be123c;border-left:5px solid #be123c;}
+.important-box::before{content:‘注意’;position:absolute;top:-10px;left:14px;background:#be123c;color:#fff;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAM CARD */
+.exam-card{border:2px solid #1a3255;border-radius:8px;overflow:hidden;margin:18px 0;background:#fff;}
+.exam-hd{background:linear-gradient(90deg,#0f1e3c,#1a3255);color:#fff;padding:10px 17px;display:flex;justify-content:space-between;align-items:center;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13px;font-weight:600;}
+.exam-body{padding:18px 20px;}
+.etag{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.tag-seq{background:#f0c040;color:#1a1a2e;}
+.tag-tri{background:#a8e6cf;color:#145f3a;}
+.tag-exp{background:#f4a261;color:#fff;}
+.tag-com{background:#fd79a8;color:#fff;}
+.tag-geo{background:#74b9ff;color:#0f1e3c;}
+.tag-sta{background:#a29bfe;color:#fff;}
+
+/* ====== ANSWER BLOCK ====== */
+.answer-block{background:#fefefe;border:1px dashed #aaa;border-radius:6px;padding:13px 17px;margin-top:12px;}
+.answer-block::before{content:‘解答’;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:10px;font-weight:700;color:#777;display:block;margin-bottom:5px;letter-spacing:.1em;}
+
+/* ====== TABLE ====== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;margin:14px 0;}
+table{border-collapse:collapse;width:100%;font-size:13px;border:1px solid #b0a090;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;min-width:auto;}
+th{background:#0f1e3c;color:#fff;padding:8px 12px;text-align:center;font-weight:500;letter-spacing:.04em;}
+td{padding:7px 12px;border:1px solid #b0a090;text-align:center;vertical-align:middle;}
+tr:nth-child(even) td{background:#f5f0e8;}
+
+/* ====== GRID ====== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;}
+@media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr;}}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0;}
+.sum-card{background:#fff;border:1.5px solid #d4cbb8;border-radius:8px;padding:14px 16px;}
+.sum-card h4{font-size:13px;margin-bottom:7px;border:none;padding:0;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;}
+.sum-card p{font-size:12.5px;color:#444;margin:0;line-height:1.7;}
+
+/* ====== MISC ====== */
+.hl{background:#fef3d0;padding:1px 3px;border-radius:2px;}
+.red{color:#b91c1c;font-weight:700;}
+.blue{color:#1a4f8a;font-weight:700;}
+.green{color:#145f3a;font-weight:700;}
+.note{background:#f8f9fa;border-left:4px solid #adb5bd;padding:10px 15px;margin:12px 0;font-size:13px;color:#555;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;border-radius:0 5px 5px 0;}
+.lv{font-size:10px;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:9px;margin-left:7px;vertical-align:middle;}
+.lv-b{background:#d1fae5;color:#065f46;}
+.lv-m{background:#fef9c3;color:#713f12;}
+.lv-a{background:#fce7f3;color:#9d174d;}
+.lv-e{background:#ede9fe;color:#4c1d95;}
+ul.bullet,ol.num{padding-left:22px;margin:9px 0;}
+ul.bullet li,ol.num li{margin-bottom:5px;line-height:1.85;}
+ol.steps{padding-left:26px;margin:9px 0;}
+ol.steps li{margin-bottom:6px;line-height:1.85;font-family:‘Noto Sans JP’,‘Hiragino Kaku Gothic Pro’,sans-serif;font-size:13.5px;}
+.back-to-top{position:fixed;bottom:26px;right:26px;background:#0f1e3c;color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:transform .2s;z-index:99;}
+.back-to-top:hover{transform:translateY(-3px);}
+</style>
+
+</head>
+<body>
+
+<!-- PRINT COVER -->
+
+<div class="print-cover">
+  <h1>数学 ⅡB <span>完全攻略テキスト</span></h1>
+  <div class="cv-sub">COMPLETE MATHEMATICS II·B STUDY GUIDE</div>
+  <div class="cv-chs">
+    <span class="cv-ch">第1章 式と証明</span>
+    <span class="cv-ch">第2章 複素数と方程式</span>
+    <span class="cv-ch">第3章 図形と方程式</span>
+    <span class="cv-ch">第4章 三角関数</span>
+    <span class="cv-ch">第5章 指数・対数関数</span>
+    <span class="cv-ch">第6章 微分法・積分法</span>
+    <span class="cv-ch">第7章 数列</span>
+    <span class="cv-ch">第8章 確率分布と統計</span>
+  </div>
+  <div class="cv-note">公式の証明 · 例題 · 類題 · 入試問題 ― 基礎から難関大学レベルまで完全網羅</div>
+</div>
+
+<!-- NAVIGATION TOGGLE BUTTON -->
+
+<button id="nav-toggle-btn" class="no-print" aria-label="目次を開く/閉じる">
+  <span class="tgl-icon">▶</span> 目次
+</button>
+<div id="nav-overlay" class="no-print"></div>
+
+<!-- NAVIGATION -->
+
+<nav class="no-print" id="top">
+<div class="nav-inner">
+
+  <div class="nav-col">
+    <span class="nav-title">数学ⅡB 完全攻略</span>
+    <a href="#toc" style="color:#f0c040;font-weight:600;">▸ 目次ページへ</a>
+    <div class="nav-ch" style="margin-top:14px;">Ch.1 式と証明</div>
+    <a class="nav-sub" href="#s1-1">二項定理</a>
+    <a class="nav-sub" href="#s1-2">恒等式</a>
+    <a class="nav-sub" href="#s1-3">等式・不等式の証明</a>
+    <a class="nav-sub" href="#s1-4">相加平均・相乗平均</a>
+    <div class="nav-ch">Ch.2 複素数と方程式</div>
+    <a class="nav-sub" href="#s2-1">複素数の演算</a>
+    <a class="nav-sub" href="#s2-2">剰余の定理・因数定理</a>
+    <a class="nav-sub" href="#s2-3">高次方程式</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.3 図形と方程式</div>
+    <a class="nav-sub" href="#s3-1">点と直線</a>
+    <a class="nav-sub" href="#s3-2">円の方程式</a>
+    <a class="nav-sub" href="#s3-3">領域</a>
+    <div class="nav-ch">Ch.4 三角関数</div>
+    <a class="nav-sub" href="#s4-1">三角関数のグラフ</a>
+    <a class="nav-sub" href="#s4-2">加法定理</a>
+    <a class="nav-sub" href="#s4-3">三角不等式</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.5 指数・対数関数</div>
+    <a class="nav-sub" href="#s5-1">指数の拡張</a>
+    <a class="nav-sub" href="#s5-2">対数の性質</a>
+    <a class="nav-sub" href="#s5-3">指数・対数方程式と不等式</a>
+    <div class="nav-ch">Ch.6 微分法・積分法</div>
+    <a class="nav-sub" href="#s6-1">微分の定義・基本公式</a>
+    <a class="nav-sub" href="#s6-2">接線・極大・極小</a>
+    <a class="nav-sub" href="#s6-3">定積分と面積</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.7 数列</div>
+    <a class="nav-sub" href="#s7-1">等差・等比数列</a>
+    <a class="nav-sub" href="#s7-2">和の計算・Σ記号</a>
+    <a class="nav-sub" href="#s7-3">漸化式</a>
+    <a class="nav-sub" href="#s7-4">数学的帰納法</a>
+    <div class="nav-ch">Ch.8 確率分布と統計</div>
+    <a class="nav-sub" href="#s8-1">確率分布・期待値</a>
+    <a class="nav-sub" href="#s8-2">二項分布・正規分布</a>
+    <a class="nav-sub" href="#s8-3">標本調査・推定</a>
+  </div>
+
+</div>
+</nav>
+
+<div class="main-content">
+
+<!-- HEADER -->
+
+<div class="header-banner no-print">
+  <h1>数学 ⅡB <span>完全攻略テキスト</span></h1>
+  <p>公式の証明 · 例題 · 類題 · 入試問題 ― 基礎から難関大学レベルまで完全網羅</p>
+  <div class="hd-badges">
+    <span class="hd-badge">第1章 式と証明</span>
+    <span class="hd-badge">第2章 複素数と方程式</span>
+    <span class="hd-badge">第3章 図形と方程式</span>
+    <span class="hd-badge">第4章 三角関数</span>
+    <span class="hd-badge">第5章 指数・対数関数</span>
+    <span class="hd-badge">第6章 微分法・積分法</span>
+    <span class="hd-badge">第7章 数列</span>
+    <span class="hd-badge">第8章 確率分布と統計</span>
+  </div>
+</div>
+
+<!-- TOC -->
+
+<div class="toc-section no-print" id="toc">
+  <h2>目次</h2>
+  <div class="toc-grid">
+    <a class="toc-card" href="#ch1"><div class="toc-num">CHAPTER 01</div><div class="toc-title">式と証明</div><div class="toc-topics">二項定理 · パスカルの三角形 · 恒等式 · 等式の証明 · 不等式の証明 · 相加平均・相乗平均の不等式</div></a>
+    <a class="toc-card" href="#ch2"><div class="toc-num">CHAPTER 02</div><div class="toc-title">複素数と方程式</div><div class="toc-topics">複素数の演算 · 共役複素数 · 剰余の定理 · 因数定理 · 高次方程式 · 虚数解の共役性</div></a>
+    <a class="toc-card" href="#ch3"><div class="toc-num">CHAPTER 03</div><div class="toc-title">図形と方程式</div><div class="toc-topics">点と直線の距離 · 直線の方程式 · 円の方程式 · 円と直線の位置関係 · 領域と最大・最小</div></a>
+    <a class="toc-card" href="#ch4"><div class="toc-num">CHAPTER 04</div><div class="toc-title">三角関数</div><div class="toc-topics">弧度法 · 三角関数のグラフと周期 · 加法定理（証明）· 倍角・半角公式 · 合成 · 三角不等式</div></a>
+    <a class="toc-card" href="#ch5"><div class="toc-num">CHAPTER 05</div><div class="toc-title">指数関数・対数関数</div><div class="toc-topics">指数の拡張（累乗根）· 指数関数のグラフ · 対数の定義と性質 · 対数関数 · 常用対数の応用</div></a>
+    <a class="toc-card" href="#ch6"><div class="toc-num">CHAPTER 06</div><div class="toc-title">微分法・積分法</div><div class="toc-topics">微分の定義 · 多項式の微分 · 接線・法線 · 増減表・極大極小 · 不定積分 · 定積分と面積</div></a>
+    <a class="toc-card" href="#ch7"><div class="toc-num">CHAPTER 07</div><div class="toc-title">数列</div><div class="toc-topics">等差・等比数列 · Σ計算 · 様々な数列 · 漸化式 · 数学的帰納法 · 群数列</div></a>
+    <a class="toc-card" href="#ch8"><div class="toc-num">CHAPTER 08</div><div class="toc-title">確率分布と統計的な推測</div><div class="toc-topics">確率変数・期待値・分散 · 二項分布 · 正規分布 · 標準化 · 標本平均 · 信頼区間</div></a>
+  </div>
+</div>
+
+<!-- ============================================================
+     第１章　式と証明
+============================================================ -->
+
+<div class="chapter" id="ch1">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 01</div>
+  <h2>式　と　証　明</h2>
+  <p>二項定理から始まり，多項式の恒等式，等式・不等式の証明へと進む。相加平均・相乗平均の不等式は入試最頻出の証明技法の一つ。</p>
+</div>
+
+<div class="section" id="s1-1">
+<h3>1.1 二項定理</h3>
+
+<div class="formula-box theorem">
+<strong>二項定理</strong><br>
+$n$ を正の整数とするとき：
+$$（a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k=\binom{n}{0}a^n+\binom{n}{1}a^{n-1}b+\cdots+\binom{n}{n}b^n$$
+ここで二項係数 $\displaystyle\binom{n}{k}={}_nC_k=\frac{n!}{k!(n-k)!}$
+</div>
+
+<div class="proof-box">
+<strong>二項定理の証明（数学的帰納法）：</strong><br>
+<strong>[基底]</strong> $n=1$：$(a+b)^1=a+b=\binom{1}{0}a+\binom{1}{1}b$　成立。<br>
+<strong>[帰納]</strong> $n=m$ で成立と仮定する。
+$$(a+b)^{m+1}=(a+b)^m\cdot(a+b)=\left(\sum_{k=0}^m\binom{m}{k}a^{m-k}b^k\right)(a+b)$$
+$a$ を掛けた項と $b$ を掛けた項を整理し，パスカルの関係式 $\binom{m}{k-1}+\binom{m}{k}=\binom{m+1}{k}$ を用いると：
+$$=\sum_{k=0}^{m+1}\binom{m+1}{k}a^{m+1-k}b^k$$
+よって $n=m+1$ でも成立。帰納法より全ての正の整数 $n$ で成立。
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box">
+<strong>パスカルの関係式と二項係数の性質</strong>
+$$\binom{n}{k-1}+\binom{n}{k}=\binom{n+1}{k},\quad\binom{n}{k}=\binom{n}{n-k}$$
+$$\sum_{k=0}^n\binom{n}{k}=2^n,\quad\sum_{k=0}^n(-1)^k\binom{n}{k}=0,\quad\sum_{k=0}^n\binom{n}{k}^2=\binom{2n}{n}$$
+</div>
+
+<div class="example-box">
+<strong>例題 1.1</strong> <span class="lv lv-b">基礎</span>　$(2x-3)^6$ の展開式における $x^4$ の係数を求めよ。
+<div class="answer-block">
+一般項は $\displaystyle\binom{6}{k}(2x)^{6-k}(-3)^k=\binom{6}{k}2^{6-k}(-3)^k x^{6-k}$<br>
+$x^4$ の項は $6-k=4$，すなわち $k=2$：
+$$\binom{6}{2}\cdot 2^4\cdot(-3)^2=15\times 16\times 9=\boldsymbol{2160}$$
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 1.2</strong> <span class="lv lv-m">標準</span>　$(1+x)^{2n}$ の展開式において $x^n$ の係数を求めよ。また，$\displaystyle\sum_{k=0}^n\binom{n}{k}^2$ の値を求めよ。
+<div class="answer-block">
+$(1+x)^{2n}$ の $x^n$ の係数は $\displaystyle\binom{2n}{n}$。<br>
+一方，$(1+x)^n\cdot(1+x)^n$ と展開し $x^n$ の係数を比較すると：
+$$\sum_{k=0}^n\binom{n}{k}\binom{n}{n-k}=\sum_{k=0}^n\binom{n}{k}^2=\binom{2n}{n}$$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.1</strong>　次を求めよ。<br>
+(1) $\left(x+\dfrac{1}{x}\right)^8$ の展開式における定数項<br>
+(2) $(1+x+x^2)^5$ の展開式における $x^3$ の係数
+<div class="answer-block">
+(1) 一般項 $\binom{8}{k}x^{8-k}\cdot x^{-k}=\binom{8}{k}x^{8-2k}$。定数項は $8-2k=0$，$k=4$：$\binom{8}{4}=\boldsymbol{70}$<br>
+(2) $(1+x+x^2)^5=\left((1+x)+x^2\right)^5$ と見て二項定理を重ねるか，直接係数比較。$(1+x)^5$ の $x^3$ の係数は $\binom{5}{3}=10$，$x^2\cdot(1+x)^5$ の $x^1$ は $5$，$x^4\cdot(1+x)^5$ の $x^{-1}$ は 0。組合せを丁寧に計算すると $\boldsymbol{25}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s1-2">
+<h3>1.2 恒等式</h3>
+
+<div class="formula-box definition">
+<strong>恒等式の定義</strong><br>
+変数 $x$ のどんな値に対しても成立する等式を<strong>恒等式</strong>という。<br>
+多項式の恒等式の判定：両辺の同次の係数が等しい，または特定の値を代入して係数を決定する（<strong>数値代入法</strong>）。
+</div>
+
+<div class="formula-box">
+<strong>恒等式であるための条件</strong><br>
+$a_nx^n+\cdots+a_1x+a_0=b_nx^n+\cdots+b_1x+b_0$ が恒等式
+$$\Longleftrightarrow\quad a_n=b_n,\; a_{n-1}=b_{n-1},\;\ldots,\; a_0=b_0$$
+</div>
+
+<div class="example-box">
+<strong>例題 1.3</strong> <span class="lv lv-b">基礎</span>　$\dfrac{2x+1}{(x-1)(x+2)}=\dfrac{A}{x-1}+\dfrac{B}{x+2}$ が恒等式となる定数 $A,B$ を求めよ。
+<div class="answer-block">
+両辺に $(x-1)(x+2)$ を掛けると：$2x+1=A(x+2)+B(x-1)$<br>
+$x=1$ を代入：$3=3A$ より $A=1$<br>
+$x=-2$ を代入：$-3=-3B$ より $B=1$<br>
+よって $A=\boldsymbol{1},\; B=\boldsymbol{1}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s1-3">
+<h3>1.3 等式・不等式の証明</h3>
+
+<div class="tip-box">
+<strong>証明の基本戦略</strong><br>
+① <strong>等式の証明</strong>：(左辺)−(右辺)=0 を示す，または一方を変形して他方に一致させる。<br>
+② <strong>不等式の証明</strong>：(左辺)−(右辺) の符号を調べる。平方完成・因数分解・絶対値を活用。<br>
+③ 条件つき不等式：条件式を代入・置換して1変数化，または二変数の対称性を利用。
+</div>
+
+<div class="example-box">
+<strong>例題 1.4</strong> <span class="lv lv-m">標準</span>　$a,b$ を実数とするとき，$a^2+b^2\geq ab+a+b-1$ を証明せよ。
+<div class="answer-block">
+左辺−右辺 $= a^2+b^2-ab-a-b+1$<br>
+$= \dfrac{1}{2}\left[(a^2-2ab+b^2)+(a^2-2a+1)+(b^2-2b+1)\right]$<br>
+$= \dfrac{1}{2}\left[(a-b)^2+(a-1)^2+(b-1)^2\right]\geq 0$<br>
+等号は $a=b=1$ のとき成立。
+<div class="qed">■</div>
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.2</strong>　$a,b,c$ を実数とするとき，$a^2+b^2+c^2\geq ab+bc+ca$ を証明せよ。
+<div class="answer-block">
+$a^2+b^2+c^2-ab-bc-ca=\dfrac{1}{2}\left[(a-b)^2+(b-c)^2+(c-a)^2\right]\geq 0$<br>
+等号は $a=b=c$ のとき成立。
+<div class="qed">■</div>
+</div>
+</div>
+</div>
+
+<div class="section" id="s1-4">
+<h3>1.4 相加平均・相乗平均の不等式</h3>
+
+<div class="formula-box theorem">
+<strong>相加平均・相乗平均の不等式（AM-GM 不等式）</strong><br>
+$a\geq 0,\; b\geq 0$ のとき：
+$$\frac{a+b}{2}\geq\sqrt{ab}$$
+等号成立条件：$a=b$
+</div>
+
+<div class="proof-box">
+<strong>AM-GM 不等式の証明：</strong><br>
+$(\sqrt{a}-\sqrt{b})^2\geq 0$（平方は非負）<br>
+展開すると $a-2\sqrt{ab}+b\geq 0$，すなわち $a+b\geq 2\sqrt{ab}$，両辺を 2 で割って：
+$$\frac{a+b}{2}\geq\sqrt{ab}$$
+等号は $\sqrt{a}=\sqrt{b}$，すなわち $a=b$ のとき成立。
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box">
+<strong>3変数への拡張</strong><br>
+$a,b,c\geq 0$ のとき：$\dfrac{a+b+c}{3}\geq\sqrt[3]{abc}$
+</div>
+
+<div class="example-box">
+<strong>例題 1.5</strong> <span class="lv lv-m">標準</span>　$x>0$ のとき，$x+\dfrac{4}{x}$ の最小値を求めよ。
+<div class="answer-block">
+AM-GM より $x+\dfrac{4}{x}\geq 2\sqrt{x\cdot\dfrac{4}{x}}=2\sqrt{4}=4$<br>
+等号は $x=\dfrac{4}{x}$ すなわち $x^2=4$，$x=2$ のとき成立。<br>
+よって最小値 $\boldsymbol{4}$（$x=2$ のとき）
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 1.6</strong> <span class="lv lv-a">応用</span>　$a+b=1\;(a,b>0)$ のとき，$\left(a+\dfrac{1}{a}\right)\left(b+\dfrac{1}{b}\right)$ の最小値を求めよ。
+<div class="answer-block">
+$\left(a+\dfrac{1}{a}\right)\left(b+\dfrac{1}{b}\right)=ab+\dfrac{a}{b}+\dfrac{b}{a}+\dfrac{1}{ab}$<br>
+$a+b=1$ より $(a+b)^2=1$，$ab\leq\dfrac{1}{4}$（AM-GM）。<br>
+$\dfrac{a}{b}+\dfrac{b}{a}\geq 2$，また $ab=t$ とおくと $0<t\leq\dfrac{1}{4}$：<br>
+$=t+\dfrac{a^2+b^2}{ab}+\dfrac{1}{t}=t+\dfrac{1-2t}{t}+\dfrac{1}{t}=t+\dfrac{2-2t}{t}+t-t=\dfrac{2}{t}-1$<br>
+$t\leq\dfrac{1}{4}$ より $\dfrac{2}{t}\geq 8$，最小値は $t=\dfrac{1}{4}$（$a=b=\dfrac{1}{2}$）のとき $\boldsymbol{\dfrac{25}{4}}$
+</div>
+</div>
+</div>
+</div><!-- /ch1 -->
+
+<!-- ============================================================
+     第２章　複素数と方程式
+============================================================ -->
+
+<div class="chapter" id="ch2">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 02</div>
+  <h2>複素数と方程式</h2>
+  <p>複素数の演算から始まり，剰余の定理・因数定理を経て高次方程式の解法へ。虚数解の共役性は方程式の構造を理解する鍵となる。</p>
+</div>
+
+<div class="section" id="s2-1">
+<h3>2.1 複素数の演算</h3>
+
+<div class="formula-box definition">
+<strong>複素数の定義</strong><br>
+$i^2=-1$ を満たす数 $i$（虚数単位）を用いて，$a+bi$（$a,b\in\mathbb{R}$）の形に表される数を<strong>複素数</strong>という。$a$ を実部，$b$ を虚部，$b=0$ のとき実数，$b\neq 0$ のとき虚数，$a=0,b\neq 0$ のとき純虚数という。
+</div>
+
+<div class="formula-box">
+<strong>複素数の演算法則</strong>（$z_1=a+bi,\; z_2=c+di$）
+$$(a+bi)+(c+di)=(a+c)+(b+d)i$$
+$$(a+bi)(c+di)=(ac-bd)+(ad+bc)i$$
+$$\frac{a+bi}{c+di}=\frac{(a+bi)(c-di)}{c^2+d^2}=\frac{ac+bd}{c^2+d^2}+\frac{bc-ad}{c^2+d^2}i$$
+<strong>共役複素数</strong>：$\bar{z}=a-bi$。$z\bar{z}=a^2+b^2=|z|^2$
+</div>
+
+<div class="formula-box theorem">
+<strong>虚数解の共役性（実係数の場合）</strong><br>
+実数係数の多項式 $f(x)$ が虚数 $\alpha=p+qi\;(q\neq 0)$ を解に持つとき，$\bar{\alpha}=p-qi$ も解。
+</div>
+
+<div class="proof-box">
+<strong>虚数解の共役性の証明：</strong><br>
+$f(x)=a_nx^n+\cdots+a_1x+a_0$（$a_k\in\mathbb{R}$）とする。$f(\alpha)=0$ より：
+$$\overline{f(\alpha)}=\overline{a_n\alpha^n+\cdots+a_0}=a_n\bar{\alpha}^n+\cdots+a_0=f(\bar{\alpha})=\bar{0}=0$$
+（共役の和・積の性質 $\overline{z_1+z_2}=\bar{z_1}+\bar{z_2}$，$\overline{z_1 z_2}=\bar{z_1}\bar{z_2}$，$\overline{a}=a$（実数）を使用）<br>
+よって $f(\bar{\alpha})=0$，すなわち $\bar{\alpha}$ も解。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 2.1</strong> <span class="lv lv-b">基礎</span>　$z=2+3i$ のとき，$z^2-4z+13$ を計算せよ。
+<div class="answer-block">
+$z^2=(2+3i)^2=4+12i-9=−5+12i$<br>
+$z^2-4z+13=(-5+12i)-4(2+3i)+13=(-5+12i)-8-12i+13=\boldsymbol{0}$<br>
+（$z=2+3i$ は $z^2-4z+13=0$ の解）
+</div>
+</div>
+</div>
+
+<div class="section" id="s2-2">
+<h3>2.2 剰余の定理・因数定理</h3>
+
+<div class="formula-box theorem">
+<strong>剰余の定理</strong><br>
+多項式 $f(x)$ を $(x-a)$ で割ったときの余りは $f(a)$。
+
+<strong>因数定理</strong><br>
+$f(a)=0 \Longleftrightarrow f(x)$ は $(x-a)$ を因数に持つ。
+
+</div>
+
+<div class="proof-box">
+<strong>剰余の定理の証明：</strong><br>
+$f(x)=(x-a)Q(x)+R$（$R$ は定数）と書けるとき，$x=a$ を代入：
+$$f(a)=(a-a)Q(a)+R=R$$
+よって余りは $f(a)$。
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 2.2</strong> <span class="lv lv-m">標準</span>　$f(x)=x^3-2x^2-x+2$ を因数分解せよ。
+<div class="answer-block">
+$f(1)=1-2-1+2=0$ より $(x-1)$ が因数。組立除法で割ると：<br>
+$f(x)=(x-1)(x^2-x-2)=(x-1)(x+1)(x-2)$<br>
+$\boldsymbol{(x-1)(x+1)(x-2)}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s2-3">
+<h3>2.3 高次方程式</h3>
+
+<div class="formula-box">
+<strong>3次方程式の解と係数の関係</strong><br>
+$ax^3+bx^2+cx+d=0$ の3解を $\alpha,\beta,\gamma$ とするとき：
+$$\alpha+\beta+\gamma=-\frac{b}{a},\quad\alpha\beta+\beta\gamma+\gamma\alpha=\frac{c}{a},\quad\alpha\beta\gamma=-\frac{d}{a}$$
+</div>
+
+<div class="example-box">
+<strong>例題 2.3</strong> <span class="lv lv-a">応用</span>　$x^4-3x^2+2=0$ を解け。
+<div class="answer-block">
+$t=x^2$ とおくと $t^2-3t+2=0$，$(t-1)(t-2)=0$<br>
+$t=1$：$x^2=1$ より $x=\pm 1$<br>
+$t=2$：$x^2=2$ より $x=\pm\sqrt{2}$<br>
+$\boldsymbol{x=\pm 1,\; \pm\sqrt{2}}$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 2.1</strong>　$x^3-6x^2+11x-6=0$ を解け。
+<div class="answer-block">
+$f(1)=1-6+11-6=0$ より $(x-1)$ が因数。<br>
+$f(x)=(x-1)(x^2-5x+6)=(x-1)(x-2)(x-3)$<br>
+$\boldsymbol{x=1,2,3}$
+</div>
+</div>
+</div>
+</div><!-- /ch2 -->
+
+<!-- ============================================================
+     第３章　図形と方程式
+============================================================ -->
+
+<div class="chapter" id="ch3">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 03</div>
+  <h2>図形と方程式</h2>
+  <p>点・直線・円を座標と方程式で記述する。領域と連立不等式の図示，線形計画法による最大・最小は実用的な応用分野。</p>
+</div>
+
+<div class="section" id="s3-1">
+<h3>3.1 点と直線</h3>
+
+<div class="formula-box">
+<strong>基本公式まとめ</strong><br>
+2点 $A(x_1,y_1)$，$B(x_2,y_2)$ に対して：
+$$\text{中点}：\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right),\quad\text{距離}：\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$$
+内分点（$m:n$）：$\left(\dfrac{mx_2+nx_1}{m+n},\dfrac{my_2+ny_1}{m+n}\right)$，外分点（$m:n$，$m\neq n$）：$\left(\dfrac{mx_2-nx_1}{m-n},\dfrac{my_2-ny_1}{m-n}\right)$
+</div>
+
+<div class="formula-box">
+<strong>直線の方程式と点と直線の距離</strong><br>
+2点 $(x_1,y_1),(x_2,y_2)$ を通る直線：$\dfrac{y-y_1}{y_2-y_1}=\dfrac{x-x_1}{x_2-x_1}$<br><br>
+直線 $ax+by+c=0$ と点 $(x_0,y_0)$ の距離：
+$$d=\frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$$
+</div>
+
+<div class="proof-box">
+<strong>点と直線の距離公式の証明：</strong><br>
+直線 $\ell:\; ax+by+c=0$ 上の点 $(x_1,y_1)$（$ax_1+by_1+c=0$）と $P(x_0,y_0)$ を考える。<br>
+$\ell$ の法線ベクトルは $(a,b)$，方向ベクトルは $(-b,a)$。<br>
+$P$ から $\ell$ へ下ろした垂線の足 $H$ を求めると，$PH$ の長さは：
+$$d=\frac{|a(x_0-x_1)+b(y_0-y_1)|}{\sqrt{a^2+b^2}}=\frac{|ax_0+by_0-(ax_1+by_1)|}{\sqrt{a^2+b^2}}=\frac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$$
+（$ax_1+by_1+c=0$ より $ax_1+by_1=-c$）
+<div class="qed">■</div>
+</div>
+</div>
+
+<div class="section" id="s3-2">
+<h3>3.2 円の方程式</h3>
+
+<div class="formula-box">
+<strong>円の方程式</strong><br>
+中心 $(a,b)$，半径 $r$ の円：$(x-a)^2+(y-b)^2=r^2$<br>
+一般形：$x^2+y^2+Dx+Ey+F=0$（中心 $\left(-\dfrac{D}{2},-\dfrac{E}{2}\right)$，半径 $\sqrt{\dfrac{D^2+E^2}{4}-F}$）<br><br>
+<strong>円と直線の位置関係</strong>（中心から直線への距離 $d$，半径 $r$）：<br>
+$d<r$：2交点，$d=r$：接する，$d>r$：共有点なし
+</div>
+
+<div class="example-box">
+<strong>例題 3.1</strong> <span class="lv lv-m">標準</span>　円 $x^2+y^2=5$ と直線 $y=x+1$ の交点を求めよ。
+<div class="answer-block">
+代入：$x^2+(x+1)^2=5$，$2x^2+2x-4=0$，$x^2+x-2=0$，$(x+2)(x-1)=0$<br>
+$x=-2,y=-1$ と $x=1,y=2$。よって交点 $\boldsymbol{(-2,-1),\;(1,2)}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s3-3">
+<h3>3.3 領域</h3>
+
+<div class="tip-box">
+<strong>領域の図示と線形計画法</strong><br>
+不等式 $f(x,y)>0$（$\geq 0$）の表す領域：曲線 $f(x,y)=0$ で分けられた片側。<br>
+<strong>線形計画法</strong>：領域内で $ax+by$（線形式）の最大・最小は，<strong>実行可能領域の頂点</strong>で達成される（凸多角形の場合）。
+</div>
+
+<div class="example-box">
+<strong>例題 3.2</strong> <span class="lv lv-m">標準</span>　連立不等式 $x\geq0,\;y\geq0,\;x+2y\leq4,\;2x+y\leq4$ の領域内で $3x+2y$ の最大値を求めよ。
+<div class="answer-block">
+頂点を求める：$(0,0),(4,0),(0,2)$ と $x+2y=4,\;2x+y=4$ の交点 $\left(\dfrac{4}{3},\dfrac{4}{3}\right)$<br>
+各頂点での $3x+2y$ の値：$0,\;12,\;4,\;\dfrac{12+8}{3}=\dfrac{20}{3}\approx6.67$<br>
+最大値は $(4,0)$ での $\boldsymbol{12}$
+</div>
+</div>
+</div>
+</div><!-- /ch3 -->
+
+<!-- ============================================================
+     第４章　三角関数
+============================================================ -->
+
+<div class="chapter" id="ch4">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 04</div>
+  <h2>三　角　関　数</h2>
+  <p>弧度法による三角関数の再定義，グラフの周期・振幅，加法定理の証明から倍角・半角・合成まで体系的に学ぶ。</p>
+</div>
+
+<div class="section" id="s4-1">
+<h3>4.1 三角関数のグラフ</h3>
+
+<div class="formula-box definition">
+<strong>弧度法（ラジアン）</strong><br>
+半径 $r$，弧長 $l$ の扇形の中心角（ラジアン）：$\theta=\dfrac{l}{r}$<br>
+変換：$180°=\pi$ [rad]。$1°=\dfrac{\pi}{180}$ [rad]，$1$ [rad] $=\dfrac{180°}{\pi}\approx 57.3°$
+</div>
+
+<div class="formula-box">
+<strong>三角関数の基本性質</strong>
+$$\sin(-\theta)=-\sin\theta,\quad\cos(-\theta)=\cos\theta,\quad\tan(-\theta)=-\tan\theta$$
+$$\sin(\theta+2\pi)=\sin\theta,\quad\cos(\theta+2\pi)=\cos\theta,\quad\tan(\theta+\pi)=\tan\theta$$
+$$\sin^2\theta+\cos^2\theta=1,\quad\tan\theta=\frac{\sin\theta}{\cos\theta},\quad 1+\tan^2\theta=\frac{1}{\cos^2\theta}$$
+</div>
+
+<div class="table-wrap"><table>
+  <tr><th>$\theta$</th><th>$0$</th><th>$\dfrac{\pi}{6}$</th><th>$\dfrac{\pi}{4}$</th><th>$\dfrac{\pi}{3}$</th><th>$\dfrac{\pi}{2}$</th><th>$\pi$</th></tr>
+  <tr><td>$\sin\theta$</td><td>$0$</td><td>$\dfrac{1}{2}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$1$</td><td>$0$</td></tr>
+  <tr><td>$\cos\theta$</td><td>$1$</td><td>$\dfrac{\sqrt{3}}{2}$</td><td>$\dfrac{\sqrt{2}}{2}$</td><td>$\dfrac{1}{2}$</td><td>$0$</td><td>$-1$</td></tr>
+  <tr><td>$\tan\theta$</td><td>$0$</td><td>$\dfrac{1}{\sqrt{3}}$</td><td>$1$</td><td>$\sqrt{3}$</td><td>—</td><td>$0$</td></tr>
+</table></div>
+</div>
+
+<div class="section" id="s4-2">
+<h3>4.2 加法定理とその応用</h3>
+
+<div class="formula-box important">
+<strong>加法定理</strong>
+$$\sin(\alpha\pm\beta)=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta$$
+$$\cos(\alpha\pm\beta)=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta$$
+$$\tan(\alpha\pm\beta)=\frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}$$
+</div>
+
+<div class="proof-box">
+<strong>$\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta$ の証明：</strong><br>
+単位円上の点 $A(\cos\alpha,\sin\alpha)$，$B(\cos\beta,\sin\beta)$ を考える。<br>
+$|AB|^2=(\cos\alpha-\cos\beta)^2+(\sin\alpha-\sin\beta)^2=2-2(\cos\alpha\cos\beta+\sin\alpha\sin\beta)$<br>
+一方，$|AB|^2$ は中心角 $(\alpha-\beta)$ と等しい弦長の2乗だから余弦定理より：<br>
+$|AB|^2=2-2\cos(\alpha-\beta)$<br>
+両式を比較して $\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box">
+<strong>倍角・半角公式</strong>
+$$\sin 2\alpha=2\sin\alpha\cos\alpha,\quad\cos 2\alpha=\cos^2\alpha-\sin^2\alpha=2\cos^2\alpha-1=1-2\sin^2\alpha$$
+$$\sin^2\frac{\alpha}{2}=\frac{1-\cos\alpha}{2},\quad\cos^2\frac{\alpha}{2}=\frac{1+\cos\alpha}{2}$$
+</div>
+
+<div class="formula-box important">
+<strong>三角関数の合成</strong>
+$$a\sin\theta+b\cos\theta=\sqrt{a^2+b^2}\,\sin(\theta+\varphi)$$
+$$\text{ただし}\;\cos\varphi=\frac{a}{\sqrt{a^2+b^2}},\quad\sin\varphi=\frac{b}{\sqrt{a^2+b^2}}$$
+</div>
+
+<div class="example-box">
+<strong>例題 4.1</strong> <span class="lv lv-m">標準</span>　$\sin\theta+\sqrt{3}\cos\theta$ を $R\sin(\theta+\varphi)$ の形に表せ。
+<div class="answer-block">
+$R=\sqrt{1^2+(\sqrt{3})^2}=2$，$\cos\varphi=\dfrac{1}{2}$，$\sin\varphi=\dfrac{\sqrt{3}}{2}$ より $\varphi=\dfrac{\pi}{3}$<br>
+$\boldsymbol{2\sin\left(\theta+\dfrac{\pi}{3}\right)}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s4-3">
+<h3>4.3 三角不等式</h3>
+
+<div class="tip-box">
+<strong>三角不等式の解き方</strong><br>
+① 合成や変換で $\sin\theta\;\square\;k$ または $\cos\theta\;\square\;k$ の形にする。<br>
+② 単位円またはグラフを描いて，条件を満たす $\theta$ の範囲を読み取る。<br>
+③ 解の範囲は周期性に注意して $[0,2\pi)$ や問題の指定範囲で答える。
+</div>
+
+<div class="example-box">
+<strong>例題 4.2</strong> <span class="lv lv-m">標準</span>　$0\leq\theta<2\pi$ のとき，$2\sin^2\theta-3\sin\theta+1\leq 0$ を解け。
+<div class="answer-block">
+$(2\sin\theta-1)(\sin\theta-1)\leq 0$，$\dfrac{1}{2}\leq\sin\theta\leq 1$<br>
+$0\leq\theta<2\pi$ のとき $\sin\theta\geq\dfrac{1}{2}$ となる $\theta$：<br>
+$\boldsymbol{\dfrac{\pi}{6}\leq\theta\leq\dfrac{5\pi}{6}}$（$\sin\theta=1$ も含む）
+</div>
+</div>
+</div>
+</div><!-- /ch4 -->
+
+<!-- ============================================================
+     第５章　指数関数・対数関数
+============================================================ -->
+
+<div class="chapter" id="ch5">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 05</div>
+  <h2>指数関数・対数関数</h2>
+  <p>累乗根により指数を有理数・実数へ拡張し，指数関数のグラフを学ぶ。対数は指数の逆演算として定義され，常用対数は桁数・最高位の計算に応用される。</p>
+</div>
+
+<div class="section" id="s5-1">
+<h3>5.1 指数の拡張</h3>
+
+<div class="formula-box definition">
+<strong>累乗根と指数の拡張</strong><br>
+$n$ 乗して $a$ になる数を $a$ の $n$ 乗根といい，実数のものを $\sqrt[n]{a}$ で表す。<br>
+有理数指数：$a^{m/n}=(\sqrt[n]{a})^m=\sqrt[n]{a^m}$（$a>0$，$m\in\mathbb{Z}$，$n\in\mathbb{N}$）<br>
+実数指数：$a^r$（$a>0$）は有理数指数の極限により定義。
+</div>
+
+<div class="formula-box">
+<strong>指数法則</strong>（$a>0,\;b>0,\;p,q\in\mathbb{R}$）
+$$a^p\cdot a^q=a^{p+q},\quad\frac{a^p}{a^q}=a^{p-q},\quad(a^p)^q=a^{pq},\quad(ab)^p=a^p b^p$$
+</div>
+
+<div class="example-box">
+<strong>例題 5.1</strong> <span class="lv lv-b">基礎</span>　$4^{3/2}+27^{-2/3}+\left(\dfrac{1}{8}\right)^{-1/3}$ を計算せよ。
+<div class="answer-block">
+$4^{3/2}=(2^2)^{3/2}=2^3=8$<br>
+$27^{-2/3}=(3^3)^{-2/3}=3^{-2}=\dfrac{1}{9}$<br>
+$\left(\dfrac{1}{8}\right)^{-1/3}=(2^{-3})^{-1/3}=2^1=2$<br>
+$8+\dfrac{1}{9}+2=\boldsymbol{10+\dfrac{1}{9}=\dfrac{91}{9}}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s5-2">
+<h3>5.2 対数の性質</h3>
+
+<div class="formula-box definition">
+<strong>対数の定義</strong><br>
+$a>0,\;a\neq 1,\;M>0$ のとき，$a^p=M\Longleftrightarrow p=\log_a M$<br>
+（$p$ を「$a$ を底とする $M$ の対数」という）
+</div>
+
+<div class="formula-box">
+<strong>対数の性質</strong>（$a>0,\;a\neq 1$，$M,N>0$）
+$$\log_a 1=0,\quad\log_a a=1,\quad\log_a MN=\log_a M+\log_a N$$
+$$\log_a\frac{M}{N}=\log_a M-\log_a N,\quad\log_a M^r=r\log_a M$$
+$$\text{底の変換公式}:\quad\log_a M=\frac{\log_b M}{\log_b a}\quad(b>0,\;b\neq 1)$$
+</div>
+
+<div class="example-box">
+<strong>例題 5.2</strong> <span class="lv lv-m">標準</span>　$\log_2 3=a$，$\log_2 5=b$ とおくとき，$\log_6 15$ を $a,b$ で表せ。
+<div class="answer-block">
+$\log_6 15=\dfrac{\log_2 15}{\log_2 6}=\dfrac{\log_2(3\cdot 5)}{\log_2(2\cdot 3)}=\dfrac{\log_2 3+\log_2 5}{\log_2 2+\log_2 3}=\dfrac{a+b}{1+a}=\boldsymbol{\dfrac{a+b}{1+a}}$
+</div>
+</div>
+
+<div class="formula-box">
+<strong>常用対数の応用</strong>（$\log_{10} 2\approx 0.3010$，$\log_{10} 3\approx 0.4771$）<br>
+正の数 $N$ の桁数 $n$：$10^{n-1}\leq N<10^n\Longleftrightarrow n-1\leq\log_{10}N<n$<br>
+最高位の数字：$\log_{10}N$ の小数部分 $\alpha$ から $10^\alpha$ を読む。
+</div>
+
+<div class="example-box">
+<strong>例題 5.3</strong> <span class="lv lv-m">標準</span>　$2^{30}$ は何桁か，また最高位の数字は何か。（$\log_{10}2=0.3010$）
+<div class="answer-block">
+$\log_{10}2^{30}=30\times 0.3010=9.030$<br>
+$9\leq 9.030<10$ より $10^9\leq 2^{30}<10^{10}$，よって $\boldsymbol{10}$ 桁。<br>
+小数部分 $0.030$：$10^{0.030}\approx 1.07$ より最高位は $\boldsymbol{1}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s5-3">
+<h3>5.3 指数・対数方程式と不等式</h3>
+
+<div class="tip-box">
+<strong>指数・対数不等式の解き方</strong><br>
+指数不等式 $a^{f(x)}>a^{g(x)}$：$a>1$ なら $f(x)>g(x)$，$0<a<1$ なら $f(x)<g(x)$（不等号逆転）。<br>
+対数不等式：底 $a$ の大小で不等号の向きが変わることに注意。真数条件（真数 $>0$）も忘れずに。
+</div>
+
+<div class="example-box">
+<strong>例題 5.4</strong> <span class="lv lv-m">標準</span>　$\log_2(x+1)+\log_2(x-1)<3$ を解け。
+<div class="answer-block">
+真数条件：$x+1>0$ かつ $x-1>0$，すなわち $x>1$。<br>
+$\log_2(x+1)(x-1)<3$，$(x+1)(x-1)<2^3=8$<br>
+$x^2-1<8$，$x^2<9$，$-3<x<3$<br>
+$x>1$ との共通部分：$\boldsymbol{1<x<3}$
+</div>
+</div>
+</div>
+</div><!-- /ch5 -->
+
+<!-- ============================================================
+     第６章　微分法・積分法
+============================================================ -->
+
+<div class="chapter" id="ch6">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 06</div>
+  <h2>微分法・積分法</h2>
+  <p>多項式の微分（数学ⅡB の範囲）について，定義から導き，接線・極値・グラフの増減，定積分と面積計算を体系的に習得する。</p>
+</div>
+
+<div class="section" id="s6-1">
+<h3>6.1 微分の定義・基本公式</h3>
+
+<div class="formula-box definition">
+<strong>微分係数と導関数の定義</strong>
+$$f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}$$
+$$f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$$
+</div>
+
+<div class="formula-box">
+<strong>多項式の微分公式</strong>
+$$(x^n)'=nx^{n-1},\quad (cf)'=cf',\quad (f\pm g)'=f'\pm g'$$
+$$(fg)'=f'g+fg',\quad\left(\frac{f}{g}\right)'=\frac{f'g-fg'}{g^2}$$
+</div>
+
+<div class="proof-box">
+<strong>$(x^n)'=nx^{n-1}$ の証明（$n$ は正の整数）：</strong><br>
+$$\frac{(x+h)^n-x^n}{h}=\frac{\sum_{k=0}^n\binom{n}{k}x^{n-k}h^k-x^n}{h}=\sum_{k=1}^n\binom{n}{k}x^{n-k}h^{k-1}$$
+$h\to 0$ のとき $k\geq 2$ の項は消え，$k=1$ の項だけ残る：
+$$\lim_{h\to 0}\frac{(x+h)^n-x^n}{h}=\binom{n}{1}x^{n-1}=nx^{n-1}$$
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 6.1</strong> <span class="lv lv-b">基礎</span>　$f(x)=3x^4-2x^3+5x-1$ を微分せよ。
+<div class="answer-block">
+$f'(x)=12x^3-6x^2+5$
+</div>
+</div>
+</div>
+
+<div class="section" id="s6-2">
+<h3>6.2 接線・極大・極小</h3>
+
+<div class="formula-box">
+<strong>接線と法線の方程式</strong><br>
+曲線 $y=f(x)$ 上の点 $(a,f(a))$ における接線：$y-f(a)=f'(a)(x-a)$<br>
+法線（接線と垂直な線）：$f'(a)\neq 0$ のとき $y-f(a)=-\dfrac{1}{f'(a)}(x-a)$
+</div>
+
+<div class="formula-box theorem">
+<strong>極大・極小の判定（増減表）</strong><br>
+$f'(a)=0$ かつ $x=a$ の前後で $f'(x)$ の符号が：<br>
+$+\to-$：$f(a)$ は極大，$\quad -\to+$：$f(a)$ は極小<br>
+符号が変わらない場合：極値ではない（例：$f(x)=x^3$ の $x=0$）
+</div>
+
+<div class="example-box">
+<strong>例題 6.2</strong> <span class="lv lv-m">標準</span>　$f(x)=x^3-3x^2-9x+2$ の極値を求め，増減表を書け。
+<div class="answer-block">
+$f'(x)=3x^2-6x-9=3(x^2-2x-3)=3(x-3)(x+1)$<br>
+$f'(x)=0$ より $x=-1,\;3$<br>
+増減表：
+<div class="table-wrap"><table>
+  <tr><th>$x$</th><th>$\cdots$</th><th>$-1$</th><th>$\cdots$</th><th>$3$</th><th>$\cdots$</th></tr>
+  <tr><td>$f'(x)$</td><td>$+$</td><td>$0$</td><td>$-$</td><td>$0$</td><td>$+$</td></tr>
+  <tr><td>$f(x)$</td><td>↗</td><td>極大7</td><td>↘</td><td>極小−25</td><td>↗</td></tr>
+</table></div>
+極大値 $f(-1)=\boldsymbol{7}$，極小値 $f(3)=\boldsymbol{-25}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s6-3">
+<h3>6.3 定積分と面積</h3>
+
+<div class="formula-box">
+<strong>不定積分・定積分の基本公式</strong>
+$$\int x^n\,dx=\frac{x^{n+1}}{n+1}+C\quad(n\neq -1),\quad\int_a^b f(x)\,dx=\left[F(x)\right]_a^b=F(b)-F(a)$$
+</div>
+
+<div class="formula-box important">
+<strong>面積の公式</strong>
+$$S=\int_a^b|f(x)-g(x)|\,dx$$
+特に $f(x)\geq g(x)$ のとき $S=\displaystyle\int_a^b(f(x)-g(x))\,dx$<br><br>
+<strong>重要パターン（$\frac{1}{6}$ 公式）：</strong>
+$$\int_\alpha^\beta(x-\alpha)(x-\beta)\,dx=-\frac{(\beta-\alpha)^3}{6}$$
+</div>
+
+<div class="proof-box">
+<strong>$\frac{1}{6}$ 公式の導出：</strong>
+$$\int_\alpha^\beta(x-\alpha)(x-\beta)\,dx=\int_0^{\beta-\alpha}t(t-(\beta-\alpha))\,dt\quad(t=x-\alpha)$$
+$L=\beta-\alpha$ とおくと：
+$$=\int_0^L t(t-L)\,dt=\left[\frac{t^3}{3}-\frac{Lt^2}{2}\right]_0^L=\frac{L^3}{3}-\frac{L^3}{2}=-\frac{L^3}{6}=-\frac{(\beta-\alpha)^3}{6}$$
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 6.3</strong> <span class="lv lv-m">標準</span>　$y=x^2-x$ と $y=x$ で囲まれた図形の面積を求めよ。
+<div class="answer-block">
+交点：$x^2-x=x$，$x^2-2x=0$，$x(x-2)=0$，$x=0,\;2$<br>
+$0\leq x\leq 2$ で $x\geq x^2-x$（$x-(x^2-x)=2x-x^2=x(2-x)\geq 0$）<br>
+$S=\displaystyle\int_0^2(x-(x^2-x))\,dx=\int_0^2(2x-x^2)\,dx=\left[x^2-\frac{x^3}{3}\right]_0^2=4-\frac{8}{3}=\boldsymbol{\frac{4}{3}}$
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 6.1</strong>　放物線 $y=x^2-4x+3$ と $x$ 軸で囲まれた面積を求めよ。
+<div class="answer-block">
+$x^2-4x+3=(x-1)(x-3)=0$ より $x=1,\;3$<br>
+$1\leq x\leq 3$ で $y\leq 0$ だから $S=\displaystyle\int_1^3|x^2-4x+3|\,dx=\int_1^3(-(x-1)(x-3))\,dx$<br>
+$\dfrac{1}{6}$ 公式：$S=\dfrac{(3-1)^3}{6}=\dfrac{8}{6}=\boldsymbol{\dfrac{4}{3}}$
+</div>
+</div>
+</div>
+</div><!-- /ch6 -->
+
+<!-- ============================================================
+     第７章　数列
+============================================================ -->
+
+<div class="chapter" id="ch7">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 07</div>
+  <h2>数　　　列</h2>
+  <p>等差・等比数列の基本から，Σ記号による和の計算，漸化式の解法，数学的帰納法まで扱う。群数列・階差数列などの応用問題にも対応できる力を養う。</p>
+</div>
+
+<div class="section" id="s7-1">
+<h3>7.1 等差数列・等比数列</h3>
+
+<div class="formula-box">
+<strong>等差数列</strong>（公差 $d$，初項 $a_1$）
+$$a_n=a_1+(n-1)d,\quad S_n=\frac{n\{2a_1+(n-1)d\}}{2}=\frac{n(a_1+a_n)}{2}$$
+</div>
+
+<div class="formula-box">
+<strong>等比数列</strong>（公比 $r$，初項 $a_1$）
+$$a_n=a_1 r^{n-1},\quad S_n=\begin{cases}\dfrac{a_1(1-r^n)}{1-r}&(r\neq 1)\\na_1&(r=1)\end{cases}$$
+</div>
+
+<div class="example-box">
+<strong>例題 7.1</strong> <span class="lv lv-b">基礎</span>　初項 2，公差 3 の等差数列の第 20 項と最初の 20 項の和を求めよ。
+<div class="answer-block">
+$a_{20}=2+(20-1)\times3=2+57=\boldsymbol{59}$<br>
+$S_{20}=\dfrac{20(2+59)}{2}=10\times61=\boldsymbol{610}$
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 7.2</strong> <span class="lv lv-b">基礎</span>　初項 3，公比 2 の等比数列の第 8 項と最初の 8 項の和を求めよ。
+<div class="answer-block">
+$a_8=3\cdot 2^7=3\times128=\boldsymbol{384}$<br>
+$S_8=\dfrac{3(2^8-1)}{2-1}=3\times255=\boldsymbol{765}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s7-2">
+<h3>7.2 和の計算・Σ記号</h3>
+
+<div class="formula-box important">
+<strong>基本的な和の公式</strong>
+$$\sum_{k=1}^n 1=n,\quad\sum_{k=1}^n k=\frac{n(n+1)}{2},\quad\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6},\quad\sum_{k=1}^n k^3=\left(\frac{n(n+1)}{2}\right)^2$$
+$$\sum_{k=1}^n r^{k-1}=\frac{r^n-1}{r-1}\quad(r\neq 1)$$
+</div>
+
+<div class="proof-box">
+<strong>$\displaystyle\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}$ の証明（恒等式利用）：</strong><br>
+$(k+1)^3-k^3=3k^2+3k+1$ を $k=1,2,\ldots,n$ について加える（テレスコープ和）：
+$$(n+1)^3-1^3=3\sum k^2+3\sum k+n$$
+$$\sum k^2=\frac{(n+1)^3-1-3\cdot\frac{n(n+1)}{2}-n}{3}=\frac{n(n+1)(2n+1)}{6}$$
+<div class="qed">■</div>
+</div>
+
+<div class="example-box">
+<strong>例題 7.3</strong> <span class="lv lv-m">標準</span>　$\displaystyle\sum_{k=1}^n k(k+1)$ を求めよ。
+<div class="answer-block">
+$\displaystyle\sum_{k=1}^n k(k+1)=\sum_{k=1}^n(k^2+k)=\frac{n(n+1)(2n+1)}{6}+\frac{n(n+1)}{2}=\frac{n(n+1)}{6}\{(2n+1)+3\}=\boldsymbol{\frac{n(n+1)(n+2)}{3}}$
+</div>
+</div>
+
+<h4>階差数列</h4>
+
+<div class="formula-box">
+<strong>階差数列による一般項の求め方</strong><br>
+$b_n=a_{n+1}-a_n$ を $\{a_n\}$ の<strong>階差数列</strong>という。$n\geq 2$ のとき：
+$$a_n=a_1+\sum_{k=1}^{n-1}b_k$$
+</div>
+
+<div class="example-box">
+<strong>例題 7.4</strong> <span class="lv lv-m">標準</span>　階差数列が $b_n=2n-1$ である数列 $\{a_n\}$ の一般項を求めよ。（$a_1=1$）
+<div class="answer-block">
+$n\geq 2$ のとき：$a_n=1+\displaystyle\sum_{k=1}^{n-1}(2k-1)=(n-1)^2+1=n^2-2n+2$<br>
+$n=1$：$1^2-2+2=1=a_1$　成立。よって $\boldsymbol{a_n=n^2-2n+2}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s7-3">
+<h3>7.3 漸化式</h3>
+
+<div class="formula-box">
+<strong>代表的な漸化式の解法</strong><br>
+① <strong>等差型</strong>：$a_{n+1}=a_n+d\;\Rightarrow\;a_n=a_1+(n-1)d$<br>
+② <strong>等比型</strong>：$a_{n+1}=ra_n\;\Rightarrow\;a_n=a_1\cdot r^{n-1}$<br>
+③ <strong>$a_{n+1}=pa_n+q$ 型</strong>（$p\neq 1$）：特性方程式 $\alpha=p\alpha+q$ の解 $\alpha$ を用いて $a_{n+1}-\alpha=p(a_n-\alpha)$，等比数列に帰着。<br>
+④ <strong>$a_{n+1}=pa_n+f(n)$ 型</strong>：$b_n=\dfrac{a_n}{p^n}$ 等で変換。
+</div>
+
+<div class="example-box">
+<strong>例題 7.5</strong> <span class="lv lv-m">標準</span>　$a_1=2$，$a_{n+1}=3a_n-4$ を解け。
+<div class="answer-block">
+特性方程式 $\alpha=3\alpha-4$ より $\alpha=2$。<br>
+$a_{n+1}-2=3(a_n-2)$，$\{a_n-2\}$ は公比 3 の等比数列。<br>
+$a_1-2=0$ より $a_n-2=0\cdot3^{n-1}=0$，すなわち $\boldsymbol{a_n=2}$（定数列）
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 7.6</strong> <span class="lv lv-a">応用</span>　$a_1=1$，$a_{n+1}=3a_n+2^n$ を解け。
+<div class="answer-block">
+$b_n=\dfrac{a_n}{3^n}$ とおくと：$b_{n+1}=\dfrac{a_{n+1}}{3^{n+1}}=\dfrac{3a_n+2^n}{3^{n+1}}=b_n+\dfrac{1}{3}\cdot\left(\dfrac{2}{3}\right)^n$<br>
+$b_n=b_1+\dfrac{1}{3}\displaystyle\sum_{k=1}^{n-1}\left(\dfrac{2}{3}\right)^k=\dfrac{1}{3}+\dfrac{1}{3}\cdot\dfrac{\frac{2}{3}(1-(\frac{2}{3})^{n-1})}{1-\frac{2}{3}}=\dfrac{1}{3}+\dfrac{2}{3}\left(1-\left(\dfrac{2}{3}\right)^{n-1}\right)=1-\dfrac{2}{3}\cdot\left(\dfrac{2}{3}\right)^{n-1}$<br>
+$a_n=3^n b_n=3^n-\dfrac{2}{3}\cdot\dfrac{2^{n-1}}{1}\cdot 3=\boldsymbol{3^n-2^n}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s7-4">
+<h3>7.4 数学的帰納法</h3>
+
+<div class="formula-box theorem">
+<strong>数学的帰納法の原理</strong><br>
+自然数 $n$ に関する命題 $P(n)$ が，<br>
+① $P(1)$ が真<br>
+② $P(k)$ が真と仮定すると $P(k+1)$ が真<br>
+の両方が示されるとき，すべての自然数 $n$ に対して $P(n)$ は真。
+</div>
+
+<div class="example-box">
+<strong>例題 7.7</strong> <span class="lv lv-m">標準</span>　$\displaystyle\sum_{k=1}^n k=\dfrac{n(n+1)}{2}$ を数学的帰納法で証明せよ。
+<div class="answer-block">
+<strong>[基底]</strong> $n=1$：左辺 $=1$，右辺 $=\dfrac{1\cdot 2}{2}=1$。成立。<br>
+<strong>[帰納]</strong> $n=m$ で成立，すなわち $\displaystyle\sum_{k=1}^m k=\dfrac{m(m+1)}{2}$ を仮定する。<br>
+$\displaystyle\sum_{k=1}^{m+1}k=\sum_{k=1}^m k+(m+1)=\dfrac{m(m+1)}{2}+(m+1)=\dfrac{(m+1)(m+2)}{2}$<br>
+これは $n=m+1$ の式と一致。帰納法により全ての $n$ で成立。
+<div class="qed">■</div>
+</div>
+</div>
+
+<div class="example-box">
+<strong>例題 7.8</strong> <span class="lv lv-a">応用</span>　全ての自然数 $n$ で $3^n>2n+1$ が成立することを証明せよ。
+<div class="answer-block">
+<strong>[基底]</strong> $n=1$：$3>3$？　$3>3$ は偽……<br>
+$n=2$：$9>5$ 成立。$n=2$ を基底にとる。<br>
+<strong>[帰納]</strong> $n=m\;(m\geq 2)$ で $3^m>2m+1$ と仮定する。<br>
+$3^{m+1}=3\cdot 3^m>3(2m+1)=6m+3=2(m+1)+1+(4m)>2(m+1)+1$（$m\geq 1$ より $4m>0$）<br>
+よって $n=m+1$ でも成立。$n\geq 2$ の全ての自然数で成立。
+<div class="qed">■</div>
+</div>
+</div>
+</div>
+</div><!-- /ch7 -->
+
+<!-- ============================================================
+     第８章　確率分布と統計的な推測
+============================================================ -->
+
+<div class="chapter" id="ch8">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 08</div>
+  <h2>確率分布と統計的な推測</h2>
+  <p>確率変数の期待値・分散から始まり，二項分布・正規分布（標準化）を学び，標本平均の分布と信頼区間の推定まで扱う。</p>
+</div>
+
+<div class="section" id="s8-1">
+<h3>8.1 確率分布・期待値・分散</h3>
+
+<div class="formula-box definition">
+<strong>確率変数・確率分布</strong><br>
+取りうる値が $x_1,x_2,\ldots,x_n$ で各値をとる確率が $p_1,p_2,\ldots,p_n$（$\sum p_i=1$）の確率変数 $X$。
+$$E(X)=\sum_{i=1}^n x_i p_i\quad\text{（期待値・平均）}$$
+$$V(X)=E\bigl((X-\mu)^2\bigr)=E(X^2)-\{E(X)\}^2\quad\text{（分散）},\quad\sigma(X)=\sqrt{V(X)}\text{（標準偏差）}$$
+</div>
+
+<div class="formula-box">
+<strong>期待値・分散の線形変換</strong><br>
+$Y=aX+b$ のとき：
+$$E(Y)=aE(X)+b,\quad V(Y)=a^2 V(X),\quad\sigma(Y)=|a|\sigma(X)$$
+独立な確率変数 $X,Y$：$E(X+Y)=E(X)+E(Y)$，$V(X+Y)=V(X)+V(Y)$
+</div>
+
+<div class="example-box">
+<strong>例題 8.1</strong> <span class="lv lv-b">基礎</span>　1個のサイコロを投げるとき，出た目を $X$ とする。$E(X)$，$V(X)$ を求めよ。
+<div class="answer-block">
+$E(X)=\dfrac{1}{6}(1+2+3+4+5+6)=\dfrac{21}{6}=\boldsymbol{\dfrac{7}{2}}$<br>
+$E(X^2)=\dfrac{1}{6}(1+4+9+16+25+36)=\dfrac{91}{6}$<br>
+$V(X)=\dfrac{91}{6}-\left(\dfrac{7}{2}\right)^2=\dfrac{91}{6}-\dfrac{49}{4}=\dfrac{182-147}{12}=\boldsymbol{\dfrac{35}{12}}$
+</div>
+</div>
+</div>
+
+<div class="section" id="s8-2">
+<h3>8.2 二項分布・正規分布</h3>
+
+<div class="formula-box theorem">
+<strong>二項分布 $B(n,p)$</strong><br>
+$n$ 回の独立な試行で，各回の成功確率が $p$ のとき，成功回数 $X$：
+$$P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}\quad(k=0,1,\ldots,n)$$
+$$E(X)=np,\quad V(X)=np(1-p)=npq\quad(q=1-p)$$
+</div>
+
+<div class="proof-box">
+<strong>$E(X)=np$ の証明（二項分布）：</strong><br>
+$$E(X)=\sum_{k=0}^n k\binom{n}{k}p^k q^{n-k}=\sum_{k=1}^n k\cdot\frac{n!}{k!(n-k)!}p^k q^{n-k}$$
+$k\binom{n}{k}=n\binom{n-1}{k-1}$ を使い，$j=k-1$ と置換：
+$$=np\sum_{j=0}^{n-1}\binom{n-1}{j}p^j q^{n-1-j}=np(p+q)^{n-1}=np$$
+<div class="qed">■</div>
+</div>
+
+<div class="formula-box important">
+<strong>正規分布 $N(\mu,\sigma^2)$</strong><br>
+確率密度関数：$f(x)=\dfrac{1}{\sqrt{2\pi}\sigma}\exp\!\left(-\dfrac{(x-\mu)^2}{2\sigma^2}\right)$<br><br>
+<strong>標準化</strong>：$Z=\dfrac{X-\mu}{\sigma}$ とすると $Z\sim N(0,1)$（標準正規分布）<br><br>
+よく使う確率：$P(|Z|\leq 1)\approx 0.6827$，$P(|Z|\leq 1.96)\approx 0.9500$，$P(|Z|\leq 2.576)\approx 0.9900$
+</div>
+
+<div class="formula-box theorem">
+<strong>二項分布の正規近似</strong><br>
+$n$ が大きいとき，$B(n,p)$ は $N(np,npq)$ で近似できる。<br>
+（$np\geq 5$ かつ $nq\geq 5$ が目安）
+</div>
+
+<div class="example-box">
+<strong>例題 8.2</strong> <span class="lv lv-m">標準</span>　$X\sim B(100,0.6)$ のとき，$P(54\leq X\leq 66)$ を正規近似で求めよ。（$P(0\leq Z\leq 1.5)=0.4332$）
+<div class="answer-block">
+$\mu=100\times 0.6=60$，$\sigma^2=100\times0.6\times0.4=24$，$\sigma=\sqrt{24}=2\sqrt{6}\approx 4.90$<br>
+$Z=\dfrac{X-60}{2\sqrt{6}}$：$\;54\to Z\approx\dfrac{-6}{4.9}\approx-1.22$，$66\to Z\approx\dfrac{6}{4.9}\approx 1.22$<br>
+（$\dfrac{6}{2\sqrt{6}}=\dfrac{\sqrt{6}}{2}\approx 1.22$）<br>
+$P(54\leq X\leq 66)\approx 2\times P(0\leq Z\leq 1.22)\approx 2\times 0.389=\boldsymbol{0.778}$（近似値）
+</div>
+</div>
+</div>
+
+<div class="section" id="s8-3">
+<h3>8.3 標本調査・推定</h3>
+
+<div class="formula-box theorem">
+<strong>標本平均の分布</strong><br>
+母平均 $\mu$，母分散 $\sigma^2$ の母集団から大きさ $n$ の標本をとるとき，標本平均 $\bar{X}$ は：
+$$E(\bar{X})=\mu,\quad V(\bar{X})=\frac{\sigma^2}{n},\quad\sigma(\bar{X})=\frac{\sigma}{\sqrt{n}}$$
+$n$ が大きいとき，$\bar{X}$ は近似的に $N\!\left(\mu,\dfrac{\sigma^2}{n}\right)$ に従う（中心極限定理）。
+</div>
+
+<div class="formula-box important">
+<strong>母平均の信頼区間（信頼度 95%）</strong><br>
+$\sigma$ が既知のとき（または $n$ が大きく標本標準偏差 $s$ で代用）：
+$$\bar{X}-1.96\cdot\frac{\sigma}{\sqrt{n}}\leq\mu\leq\bar{X}+1.96\cdot\frac{\sigma}{\sqrt{n}}$$
+信頼度 99% の場合は $1.96$ を $2.576$ に変える。
+</div>
+
+<div class="example-box">
+<strong>例題 8.3</strong> <span class="lv lv-m">標準</span>　ある工場で製造されるボルトの直径の標準偏差は $\sigma=0.1$ mm。100 本を抽出した標本平均が $\bar{x}=10.02$ mm のとき，母平均の 95% 信頼区間を求めよ。
+<div class="answer-block">
+$\dfrac{\sigma}{\sqrt{n}}=\dfrac{0.1}{\sqrt{100}}=0.01$，$1.96\times0.01=0.0196$<br>
+信頼区間：$10.02-0.0196\leq\mu\leq10.02+0.0196$<br>
+$\boldsymbol{10.0004\leq\mu\leq10.0396}$（mm）
+</div>
+</div>
+
+<div class="important-box">
+<strong>信頼区間の解釈</strong><br>
+「95% 信頼区間」とは「同じ方法で 100 回標本を取ったとき，そのうち約 95 回は真の母平均を含む区間が得られる」という意味であり，「真の母平均がこの区間に入る確率が 95%」という意味ではないことに注意。
+</div>
+</div>
+</div><!-- /ch8 -->
+
+</div><!-- /main-content -->
+
+<a href="#top" class="back-to-top no-print" title="トップへ">▲</a>
+
+<!-- Symbol Guide Panel -->
+
+<button id="sym-guide-btn" class="no-print" title="数式・記号の読み方ガイド">α?</button>
+
+<div id="sym-guide-panel" class="no-print">
+  <div class="sg-hd">
+    📐 数式・記号の読み方ガイド
+    <button onclick="document.getElementById('sym-guide-panel').classList.remove('open')">✕</button>
+  </div>
+  <div class="sg-body">
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ ギリシャ文字（よく使うもの）</div>
+      <div class="sg-row"><span class="sg-sym">α,β,γ</span><span class="sg-read">アルファ,ベータ,ガンマ</span><span class="sg-mean">定数・角度</span></div>
+      <div class="sg-row"><span class="sg-sym">θ</span><span class="sg-read">シータ</span><span class="sg-mean">角度・偏角</span></div>
+      <div class="sg-row"><span class="sg-sym">μ</span><span class="sg-read">ミュー</span><span class="sg-mean">母平均</span></div>
+      <div class="sg-row"><span class="sg-sym">σ, Σ</span><span class="sg-read">シグマ</span><span class="sg-mean">標準偏差 / 和（Σ）</span></div>
+      <div class="sg-row"><span class="sg-sym">π</span><span class="sg-read">パイ</span><span class="sg-mean">円周率 ≈ 3.14159</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 論理・集合記号</div>
+      <div class="sg-row"><span class="sg-sym">⇒</span><span class="sg-read">ならば</span><span class="sg-mean">AならばB（含意）</span></div>
+      <div class="sg-row"><span class="sg-sym">⟺</span><span class="sg-read">同値</span><span class="sg-mean">必要十分条件</span></div>
+      <div class="sg-row"><span class="sg-sym">∀, ∃</span><span class="sg-read">すべての/ある〜が存在</span><span class="sg-mean">量化子</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 数列・統計記号</div>
+      <div class="sg-row"><span class="sg-sym">Σ</span><span class="sg-read">シグマ</span><span class="sg-mean">総和記号</span></div>
+      <div class="sg-row"><span class="sg-sym">n!</span><span class="sg-read">エヌ！（階乗）</span><span class="sg-mean">$1\times2\times\cdots\times n$</span></div>
+      <div class="sg-row"><span class="sg-sym">$_nC_k$</span><span class="sg-read">エヌ・シー・ケー</span><span class="sg-mean">二項係数（組合せの数）</span></div>
+      <div class="sg-row"><span class="sg-sym">$\bar{X}$</span><span class="sg-read">エックスバー</span><span class="sg-mean">標本平均</span></div>
+      <div class="sg-row"><span class="sg-sym">$N(\mu,\sigma^2)$</span><span class="sg-read">正規分布</span><span class="sg-mean">平均μ,分散σ²の正規分布</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ その他</div>
+      <div class="sg-row"><span class="sg-sym">■ / □</span><span class="sg-read">QED（証明終わり）</span><span class="sg-mean">Quod Erat Demonstrandum の略</span></div>
+      <div class="sg-row"><span class="sg-sym">$$…$$</span><span class="sg-read">数式（別行立て）</span><span class="sg-mean">ページ中央に大きく表示される数式</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== 目次トグル（上からプルダウン）==========
+(function() {
+  var btn = document.getElementById('nav-toggle-btn');
+  var nav = document.querySelector('nav');
+  var overlay = document.getElementById('nav-overlay');
+  if (!btn || !nav) return;
+
+  function openNav() {
+    nav.classList.add('nav-open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.classList.add('active');
+  }
+  function closeNav() {
+    nav.classList.remove('nav-open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.remove('active');
+  }
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (nav.classList.contains('nav-open')) closeNav();
+    else openNav();
+  });
+
+  if (overlay) overlay.addEventListener('click', closeNav);
+
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      setTimeout(closeNav, 200);
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNav();
+  });
+})();
+
+// ========== 記号ガイドパネル ==========
+(function() {
+  var btn = document.getElementById('sym-guide-btn');
+  var panel = document.getElementById('sym-guide-panel');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (!panel.contains(e.target) && e.target !== btn) {
+      panel.classList.remove('open');
+    }
+  });
+})();
+
+// ========== QED ■ に「証明終わり」ラベルを追加 ==========
+document.querySelectorAll('.qed').forEach(function(el) {
+  if (el.textContent.trim() === '■' || el.textContent.trim() === '□') {
+    el.innerHTML = el.innerHTML + '<span class="qed-label">（証明終わり）</span>';
+  }
+});
+</script>
+
+</body>
+</html>
