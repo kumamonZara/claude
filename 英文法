@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>高校英語 文法完全攻略テキスト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ====== VARIABLES ====== */
+:root{
+  --ink:#0f1e3c; --ink2:#1a3255; --paper:#faf8f4; --warm:#f5f0e8;
+  --rule:#d4cbb8; --accent:#9b1b4b; --blue:#1a4f8a; --green:#145f3a;
+  --gold:#c9870c; --purple:#5c2d8e; --orange:#b94a00;
+  --proof-bg:#edf6fb; --proof-bd:#1e7abf;
+  --form-bg:#fef9e7; --form-bd:#d4890a;
+  --ex-bg:#f0fdf4; --ex-bd:#1a8a4a;
+  --pr-bg:#fdf3ff; --pr-bd:#7e22ce;
+  --tip-bg:#f0f9ff; --tip-bd:#0284c7;
+  --warn-bg:#fff1f2; --warn-bd:#be123c;
+  --serif:'Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic Pro',sans-serif;
+}
+
+/* ====== RESET ====== */
+*{box-sizing:border-box;margin:0;padding:0;}html,body{overflow-x:hidden;max-width:100%;}
+html{font-size:15px;}
+body{font-family:‘Noto Serif JP’,Georgia,serif;background:#faf8f4;color:#0f1e3c;line-height:1.9;}
+p{margin-bottom:11px;}
+strong{font-weight:700;}
+
+/* ====== PAGE / PRINT ====== */
+@page{size:A4;margin:18mm 16mm 18mm 16mm;}
+@media print{
+html{font-size:11px;}
+body{background:#fff;}
+nav,.no-print,.back-to-top{display:none!important;}
+.main-content{margin-left:0!important;}
+.chapter{page-break-before:always;padding:0 0 24px;}
+.chapter:first-of-type{page-break-before:avoid;}
+.print-cover{display:flex!important;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.toc-section{page-break-after:always;}
+.formula-box,.proof-box,.example-box,.exercise-block,.exam-card,.tip-box,.important-box{page-break-inside:avoid;break-inside:avoid;}
+.section{page-break-inside:auto;}
+h3,h4{page-break-after:avoid;}
+.answer-block{page-break-inside:avoid;break-inside:avoid;}
+table{page-break-inside:avoid;break-inside:avoid;}
+.two-col,.three-col{page-break-inside:avoid;}
+a{color:inherit;text-decoration:none;}
+.chapter-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.important-box{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.formula-box::before,.proof-box::before,.example-box::before,
+.exercise-block::before,.tip-box::before,.important-box::before{
+-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.exam-hd{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+@media screen{.print-cover{display:none;}}
+
+/* ====== PRINT COVER ====== */
+.print-cover{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 55%,#1a4f8a 100%);
+color:#fff;min-height:100vh;flex-direction:column;align-items:center;
+justify-content:center;text-align:center;padding:80px 56px;
+}
+.print-cover h1{font-size:3.2rem;font-weight:300;letter-spacing:0.12em;margin-bottom:10px;}
+.print-cover h1 span{font-weight:700;color:#f0c040;}
+.print-cover .cv-sub{font-size:1rem;opacity:.65;letter-spacing:.3em;margin-bottom:44px;font-family:var(–sans);}
+.print-cover .cv-chs{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:44px;}
+.print-cover .cv-ch{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 16px;border-radius:20px;font-family:var(–sans);font-size:13px;}
+.print-cover .cv-note{font-size:11.5px;opacity:.45;font-family:var(–sans);border-top:1px solid rgba(255,255,255,.12);padding-top:20px;letter-spacing:.1em;}
+
+/* ====== NAV TOGGLE BUTTON ====== */
+#nav-toggle-btn{
+position:fixed;top:13px;left:14px;z-index:400;
+background:#0f1e3c;color:#f0c040;
+border:1.5px solid rgba(240,192,64,.4);
+padding:7px 15px 7px 11px;border-radius:7px;cursor:pointer;
+font-family:var(–sans);font-size:12.5px;font-weight:700;letter-spacing:.04em;
+display:flex;align-items:center;gap:8px;
+box-shadow:0 2px 14px rgba(0,0,0,.4);transition:background .2s;
+user-select:none;
+}
+#nav-toggle-btn:hover{background:#1a3255;}
+#nav-toggle-btn .tgl-icon{font-size:17px;line-height:1;transition:transform .38s cubic-bezier(.4,0,.2,1);display:inline-block;}
+#nav-toggle-btn.open .tgl-icon{transform:rotate(90deg);}
+
+/* ====== NAV ====== */
+nav{
+position:fixed;top:0;left:0;width:100%;
+max-height:0;overflow:hidden;
+transition:max-height .45s cubic-bezier(.4,0,.2,1);
+background:#0f1e3c;color:#ccc;
+font-family:var(–sans);font-size:11.5px;z-index:350;
+box-shadow:0 6px 36px rgba(0,0,0,.5);
+}
+nav.nav-open{max-height:82vh;overflow-y:auto;}
+.nav-inner{padding:56px 24px 24px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 28px;}
+.nav-col{flex:0 0 auto;min-width:158px;max-width:210px;margin-bottom:12px;}
+.nav-title{color:#fff;font-weight:700;font-size:13px;padding:0 0 9px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:6px;letter-spacing:.06em;display:block;}
+nav a{display:block;color:#8ab;text-decoration:none;padding:3px 0 3px 8px;transition:all .18s;border-left:2px solid transparent;}
+nav a:hover{color:#fff;border-left-color:#f0c040;padding-left:14px;}
+.nav-ch{color:#f0c040;font-weight:700;margin-top:10px;margin-bottom:3px;font-size:11px;letter-spacing:.06em;}
+.nav-col .nav-ch:first-child{margin-top:0;}
+.nav-sub{font-size:10.5px;color:#678;padding-left:14px!important;}
+.nav-sub:hover{color:#acd;}
+#nav-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.38);z-index:200;}
+#nav-overlay.active{display:block;}
+
+/* ====== LAYOUT ====== */
+.main-content{margin-left:0;width:100%;overflow-x:hidden;}
+
+/* ====== HEADER ====== */
+.header-banner{
+background:linear-gradient(135deg,#0f1e3c 0%,#1a3255 50%,#16325e 100%);
+color:#fff;padding:40px 40px 34px;position:relative;overflow:hidden;
+}
+.header-banner::before{content:’’;position:absolute;top:-50px;right:-50px;width:280px;height:280px;border:1px solid rgba(255,255,255,.04);border-radius:50%;}
+.header-banner h1{font-size:2.5em;font-weight:300;letter-spacing:.08em;margin-bottom:8px;}
+.header-banner h1 span{font-weight:700;color:#f0c040;}
+.header-banner p{color:rgba(255,255,255,.55);font-size:13px;font-family:var(–sans);}
+.hd-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+.hd-badge{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);padding:3px 11px;border-radius:16px;font-size:12px;font-family:var(–sans);}
+
+/* ====== TOC ====== */
+.toc-section{padding:36px 40px;border-bottom:2px solid #d4cbb8;}
+.toc-section h2{font-size:1.6em;margin-bottom:24px;border-bottom:2px solid #0f1e3c;padding-bottom:9px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.toc-card{border:1.5px solid #d4cbb8;border-radius:8px;padding:16px;text-decoration:none;color:inherit;display:block;transition:all .2s;}
+.toc-card:hover{border-color:#1a4f8a;transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.08);}
+.toc-num{font-size:10.5px;color:#9b1b4b;font-weight:700;letter-spacing:.1em;font-family:var(–sans);}
+.toc-title{font-size:1.15em;font-weight:700;margin:4px 0 8px;}
+.toc-topics{font-size:11.5px;color:#666;font-family:var(–sans);line-height:1.7;}
+
+/* ====== CHAPTER ====== */
+.chapter{padding:0 40px 40px;border-bottom:2px solid #d4cbb8;}
+.chapter-header{padding:42px 0 24px;border-bottom:3px solid #0f1e3c;margin-bottom:28px;}
+.ch-num{font-family:var(–sans);font-size:11px;font-weight:600;color:#9b1b4b;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+.chapter-header h2{font-size:2em;font-weight:600;letter-spacing:.03em;line-height:1.3;}
+.chapter-header p{margin-top:9px;color:#555;font-size:13.5px;font-family:var(–sans);max-width:640px;}
+
+/* ====== SECTIONS ====== */
+.section{margin-bottom:38px;}
+h3{font-size:1.2em;font-weight:700;color:#1a4f8a;border-left:4px solid #1a4f8a;padding-left:12px;margin:30px 0 14px;}
+h4{font-size:1.02em;font-weight:700;color:#0f1e3c;margin:18px 0 9px;padding-bottom:3px;border-bottom:1px dashed #d4cbb8;}
+.section-sep{border:none;border-top:1px dashed #d4cbb8;margin:22px 0;}
+
+/* ====== BOX BASE ====== */
+.formula-box,.proof-box,.example-box,.exercise-block,.tip-box,.exam-card,.important-box{
+border-radius:7px;padding:18px 22px;margin:16px 0;position:relative;
+}
+/* FORMULA → 文法規則 */
+.formula-box{background:#fef9e7;border:1.5px solid #d4890a;border-left:5px solid #d4890a;}
+.formula-box::before{content:‘文法規則’;position:absolute;top:-10px;left:14px;background:#d4890a;color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.08em;}
+.formula-box.theorem::before{content:‘重要文法’;background:#1a4f8a;}
+.formula-box.definition::before{content:‘定義’;background:#9b1b4b;}
+.formula-box.important::before{content:‘重要’;background:#b91c1c;}
+.formula-box.pattern::before{content:‘構文パターン’;background:#145f3a;}
+/* PROOF → 解説 */
+.proof-box{background:#edf6fb;border:1.5px solid #1e7abf;border-left:5px solid #1e7abf;}
+.proof-box::before{content:‘解説’;position:absolute;top:-10px;left:14px;background:#1e7abf;color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAMPLE → 例文 */
+.example-box{background:#f0fdf4;border:1.5px solid #1a8a4a;border-left:5px solid #1a8a4a;}
+.example-box::before{content:‘例文’;position:absolute;top:-10px;left:14px;background:#1a8a4a;color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXERCISE → 練習問題 */
+.exercise-block{background:#fdf3ff;border:1.5px solid #7e22ce;border-left:5px solid #7e22ce;}
+.exercise-block::before{content:‘練習問題’;position:absolute;top:-10px;left:14px;background:#7e22ce;color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* TIP */
+.tip-box{background:#f0f9ff;border:1.5px solid #0284c7;border-left:5px solid #0284c7;}
+.tip-box::before{content:‘POINT’;position:absolute;top:-10px;left:14px;background:#0284c7;color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.06em;}
+/* IMPORTANT → 注意 */
+.important-box{background:#fff1f2;border:1.5px solid #be123c;border-left:5px solid #be123c;}
+.important-box::before{content:‘注意’;position:absolute;top:-10px;left:14px;background:#be123c;color:#fff;font-family:var(–sans);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+/* EXAM CARD */
+.exam-card{border:2px solid #1a3255;border-radius:8px;overflow:hidden;margin:18px 0;background:#fff;}
+.exam-hd{background:linear-gradient(90deg,#0f1e3c,#1a3255);color:#fff;padding:10px 17px;display:flex;justify-content:space-between;align-items:center;font-family:var(–sans);font-size:13px;font-weight:600;}
+.exam-body{padding:18px 20px;}
+.etag{font-size:10.5px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.tag-tns{background:#f0c040;color:#1a1a2e;}
+.tag-mod{background:#a8e6cf;color:#145f3a;}
+.tag-vbl{background:#f4a261;color:#fff;}
+.tag-rel{background:#74b9ff;color:#0f1e3c;}
+.tag-cnd{background:#fd79a8;color:#fff;}
+.tag-pas{background:#a29bfe;color:#fff;}
+.tag-cmp{background:#55efc4;color:#0f1e3c;}
+.tag-spc{background:#fdcb6e;color:#0f1e3c;}
+
+/* ====== ANSWER BLOCK ====== */
+.answer-block{background:#fefefe;border:1px dashed #aaa;border-radius:6px;padding:13px 17px;margin-top:12px;}
+.answer-block::before{content:‘解答・訳’;font-family:var(–sans);font-size:10px;font-weight:700;color:#777;display:block;margin-bottom:5px;letter-spacing:.1em;}
+
+/* ====== TABLE ====== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;margin:14px 0;}
+table{border-collapse:collapse;width:100%;font-size:13px;border:1px solid #b0a090;font-family:var(–sans);}
+th{background:#0f1e3c;color:#fff;padding:8px 12px;text-align:center;font-weight:500;letter-spacing:.04em;}
+td{padding:7px 12px;border:1px solid #b0a090;text-align:center;vertical-align:middle;}
+tr:nth-child(even) td{background:#f5f0e8;}
+td.left{text-align:left;}
+
+/* ====== GRID ====== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:12px 0;}
+@media(max-width:700px){.two-col,.three-col{grid-template-columns:1fr;}}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:14px 0;}
+.sum-card{background:#fff;border:1.5px solid #d4cbb8;border-radius:8px;padding:14px 16px;}
+.sum-card h4{font-size:13px;margin-bottom:7px;border:none;padding:0;font-family:var(–sans);}
+.sum-card p{font-size:12.5px;color:#444;margin:0;line-height:1.7;}
+
+/* ====== MISC ====== */
+.hl{background:#fef3d0;padding:1px 3px;border-radius:2px;}
+.red{color:#b91c1c;font-weight:700;}
+.blue{color:#1a4f8a;font-weight:700;}
+.green{color:#145f3a;font-weight:700;}
+.note{background:#f8f9fa;border-left:4px solid #adb5bd;padding:10px 15px;margin:12px 0;font-size:13px;color:#555;font-family:var(–sans);border-radius:0 5px 5px 0;}
+.lv{font-size:10px;font-family:var(–sans);font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:9px;margin-left:7px;vertical-align:middle;}
+.lv-b{background:#d1fae5;color:#065f46;}
+.lv-m{background:#fef9c3;color:#713f12;}
+.lv-a{background:#fce7f3;color:#9d174d;}
+.lv-e{background:#ede9fe;color:#4c1d95;}
+ul.bullet,ol.num{padding-left:22px;margin:9px 0;}
+ul.bullet li,ol.num li{margin-bottom:5px;line-height:1.85;}
+ol.steps{padding-left:26px;margin:9px 0;}
+ol.steps li{margin-bottom:6px;line-height:1.85;font-family:var(–sans);font-size:13.5px;}
+.back-to-top{position:fixed;bottom:26px;right:26px;background:#0f1e3c;color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:transform .2s;z-index:99;}
+.back-to-top:hover{transform:translateY(-3px);}
+
+/* ====== GRAMMAR GUIDE PANEL ====== */
+#sym-guide-btn{
+position:fixed;bottom:80px;right:24px;z-index:150;
+background:#1a4f8a;color:#fff;border:none;
+width:44px;height:44px;border-radius:50%;cursor:pointer;
+font-size:15px;box-shadow:0 2px 12px rgba(0,0,0,.3);
+transition:transform .2s,background .2s;
+display:flex;align-items:center;justify-content:center;
+font-family:var(–sans);font-weight:700;
+}
+#sym-guide-btn:hover{background:#0f1e3c;transform:scale(1.1);}
+#sym-guide-panel{
+position:fixed;bottom:134px;right:24px;z-index:150;
+width:340px;max-height:450px;overflow-y:auto;
+background:#fff;border:1.5px solid #d4cbb8;border-radius:10px;
+box-shadow:0 8px 36px rgba(0,0,0,.18);
+font-family:var(–sans);font-size:12px;line-height:1.7;display:none;
+}
+#sym-guide-panel.open{display:block;}
+.sg-hd{background:#0f1e3c;color:#fff;padding:10px 16px;border-radius:8px 8px 0 0;font-weight:700;font-size:13px;letter-spacing:.04em;display:flex;align-items:center;justify-content:space-between;}
+.sg-hd button{background:none;border:none;color:#aaa;cursor:pointer;font-size:18px;line-height:1;padding:0;}
+.sg-hd button:hover{color:#fff;}
+.sg-body{padding:12px 14px;}
+.sg-sec{margin-bottom:14px;}
+.sg-sec-title{color:#1a4f8a;font-size:11px;font-weight:700;letter-spacing:.08em;border-bottom:1px solid #e0dbd0;padding-bottom:4px;margin-bottom:6px;}
+.sg-row{display:grid;grid-template-columns:80px 1fr;gap:4px;align-items:baseline;padding:2px 0;}
+.sg-sym{font-size:12px;color:#0f1e3c;font-weight:700;}
+.sg-mean{color:#444;font-size:11px;}
+
+/* ====== ENGLISH EXAMPLE SENTENCE ====== */
+.eng{font-style:italic;color:#0f1e3c;font-family:Georgia,‘Times New Roman’,serif;}
+.jp{color:#555;font-size:13px;font-family:var(–sans);}
+.sent-pair{margin:6px 0;}
+.sent-pair .eng{display:block;}
+.sent-pair .jp{display:block;margin-left:1em;}
+</style>
+
+</head>
+<body>
+
+<!-- PRINT COVER -->
+
+<div class="print-cover">
+  <h1>高校英語 <span>文法完全攻略テキスト</span></h1>
+  <div class="cv-sub">COMPLETE HIGH SCHOOL ENGLISH GRAMMAR GUIDE</div>
+  <div class="cv-chs">
+    <span class="cv-ch">第1章 時制</span>
+    <span class="cv-ch">第2章 助動詞</span>
+    <span class="cv-ch">第3章 不定詞・動名詞・分詞</span>
+    <span class="cv-ch">第4章 関係詞</span>
+    <span class="cv-ch">第5章 仮定法</span>
+    <span class="cv-ch">第6章 受動態</span>
+    <span class="cv-ch">第7章 比較表現</span>
+    <span class="cv-ch">第8章 特殊構文</span>
+  </div>
+  <div class="cv-note">文法規則 · 例文 · 練習問題 · 入試頻出 ― 基礎から難関大学レベルまで完全網羅</div>
+</div>
+
+<!-- NAVIGATION TOGGLE BUTTON -->
+
+<button id="nav-toggle-btn" class="no-print" aria-label="目次を開く/閉じる">
+  <span class="tgl-icon">▶</span> 目次
+</button>
+<div id="nav-overlay" class="no-print"></div>
+
+<!-- NAVIGATION (top pulldown panel) -->
+
+<nav class="no-print" id="top">
+<div class="nav-inner">
+
+  <div class="nav-col">
+    <span class="nav-title">高校英語 文法完全攻略</span>
+    <a href="#toc" style="color:#f0c040;font-weight:600;">▸ 目次ページへ</a>
+    <div class="nav-ch" style="margin-top:14px;">Ch.1 時制</div>
+    <a class="nav-sub" href="#s1-1">現在形・過去形・未来表現</a>
+    <a class="nav-sub" href="#s1-2">進行形</a>
+    <a class="nav-sub" href="#s1-3">完了形</a>
+    <a class="nav-sub" href="#s1-4">時制の一致</a>
+    <div class="nav-ch">Ch.2 助動詞</div>
+    <a class="nav-sub" href="#s2-1">can / could / be able to</a>
+    <a class="nav-sub" href="#s2-2">may / might / must / have to</a>
+    <a class="nav-sub" href="#s2-3">will / would / shall / should</a>
+    <a class="nav-sub" href="#s2-4">助動詞 + have + p.p.</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.3 不定詞・動名詞・分詞</div>
+    <a class="nav-sub" href="#s3-1">不定詞の3用法</a>
+    <a class="nav-sub" href="#s3-2">動名詞の用法</a>
+    <a class="nav-sub" href="#s3-3">分詞・分詞構文</a>
+    <a class="nav-sub" href="#s3-4">不定詞 vs 動名詞</a>
+    <div class="nav-ch">Ch.4 関係詞</div>
+    <a class="nav-sub" href="#s4-1">関係代名詞</a>
+    <a class="nav-sub" href="#s4-2">関係副詞</a>
+    <a class="nav-sub" href="#s4-3">制限・非制限用法</a>
+    <a class="nav-sub" href="#s4-4">複合関係詞</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.5 仮定法</div>
+    <a class="nav-sub" href="#s5-1">仮定法過去</a>
+    <a class="nav-sub" href="#s5-2">仮定法過去完了</a>
+    <a class="nav-sub" href="#s5-3">I wish / as if</a>
+    <a class="nav-sub" href="#s5-4">without / but for</a>
+    <div class="nav-ch">Ch.6 受動態</div>
+    <a class="nav-sub" href="#s6-1">基本の受動態</a>
+    <a class="nav-sub" href="#s6-2">SVOO・SVOCの受動態</a>
+    <a class="nav-sub" href="#s6-3">群動詞・注意すべき受動態</a>
+  </div>
+
+  <div class="nav-col">
+    <div class="nav-ch" style="margin-top:0;">Ch.7 比較表現</div>
+    <a class="nav-sub" href="#s7-1">原級比較・as...as</a>
+    <a class="nav-sub" href="#s7-2">比較級・最上級</a>
+    <a class="nav-sub" href="#s7-3">倍数・差の表現</a>
+    <a class="nav-sub" href="#s7-4">no more than など</a>
+    <div class="nav-ch">Ch.8 特殊構文</div>
+    <a class="nav-sub" href="#s8-1">強調構文</a>
+    <a class="nav-sub" href="#s8-2">倒置</a>
+    <a class="nav-sub" href="#s8-3">省略</a>
+    <a class="nav-sub" href="#s8-4">否定表現</a>
+    <div class="nav-ch">付録</div>
+    <a class="nav-sub" href="#ch0">不規則動詞・重要構文一覧</a>
+  </div>
+
+</div><!-- /.nav-inner -->
+</nav>
+
+<div class="main-content">
+
+<!-- HEADER -->
+
+<div class="header-banner no-print">
+  <h1>高校英語 <span>文法完全攻略テキスト</span></h1>
+  <p>文法規則 · 例文 · 練習問題 · 入試頻出構文 ― 基礎から難関大学レベルまで完全網羅</p>
+  <div class="hd-badges">
+    <span class="hd-badge">第1章 時制</span>
+    <span class="hd-badge">第2章 助動詞</span>
+    <span class="hd-badge">第3章 不定詞・動名詞・分詞</span>
+    <span class="hd-badge">第4章 関係詞</span>
+    <span class="hd-badge">第5章 仮定法</span>
+    <span class="hd-badge">第6章 受動態</span>
+    <span class="hd-badge">第7章 比較表現</span>
+    <span class="hd-badge">第8章 特殊構文</span>
+  </div>
+</div>
+
+<!-- TOC -->
+
+<div class="toc-section no-print" id="toc">
+  <h2>目次</h2>
+  <div class="toc-grid">
+    <a class="toc-card" href="#ch1"><div class="toc-num">CHAPTER 01</div><div class="toc-title">時制</div><div class="toc-topics">現在・過去・未来 · 進行形 · 完了形（現在・過去・未来） · 時制の一致 · 直説法 vs 仮定法の区別</div></a>
+    <a class="toc-card" href="#ch2"><div class="toc-num">CHAPTER 02</div><div class="toc-title">助動詞</div><div class="toc-topics">can/could · may/might · must/have to · will/would · should/ought to · 助動詞＋完了形（推量・後悔）</div></a>
+    <a class="toc-card" href="#ch3"><div class="toc-num">CHAPTER 03</div><div class="toc-title">不定詞・動名詞・分詞</div><div class="toc-topics">不定詞の3用法 · 意味上の主語 · 動名詞専用動詞 · 現在分詞・過去分詞 · 分詞構文の意味 · 独立分詞構文</div></a>
+    <a class="toc-card" href="#ch4"><div class="toc-num">CHAPTER 04</div><div class="toc-title">関係詞</div><div class="toc-topics">who / which / that / what · 関係副詞 when/where/why/how · 制限 vs 非制限 · 複合関係詞 whatever/whoever · 前置詞＋関係代名詞</div></a>
+    <a class="toc-card" href="#ch5"><div class="toc-num">CHAPTER 05</div><div class="toc-title">仮定法</div><div class="toc-topics">仮定法過去・過去完了 · I wish / If only / as if · without / but for · 混合仮定法 · 仮定法現在（提案・要求）</div></a>
+    <a class="toc-card" href="#ch6"><div class="toc-num">CHAPTER 06</div><div class="toc-title">受動態</div><div class="toc-topics">基本形 · 助動詞を含む受動態 · SVOO→受動態 · SVOC→受動態 · 群動詞の受動態 · by以外の前置詞</div></a>
+    <a class="toc-card" href="#ch7"><div class="toc-num">CHAPTER 07</div><div class="toc-title">比較表現</div><div class="toc-topics">as...as / not as...as · 比較級・最上級の作り方 · 倍数表現 · no more than / not more than · the＋比較級...the＋比較級</div></a>
+    <a class="toc-card" href="#ch8"><div class="toc-num">CHAPTER 08</div><div class="toc-title">特殊構文</div><div class="toc-topics">強調構文 It is...that ~ · 否定の倒置 · Never / Not only...but also · 部分否定 · 二重否定 · 省略構文</div></a>
+    <a class="toc-card" href="#ch0"><div class="toc-num">付録</div><div class="toc-title">不規則動詞・重要構文一覧</div><div class="toc-topics">主要不規則動詞一覧 · 入試頻出構文50選 · 前置詞まとめ · 接続詞まとめ</div></a>
+  </div>
+</div>
+
+<!-- ============================================================
+     第１章　時制
+============================================================ -->
+
+<div class="chapter" id="ch1">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 01</div>
+  <h2>時　制</h2>
+  <p>英語の時制は「いつの出来事か」を動詞の形で表す。現在・過去・未来の基本形に加え、進行形・完了形の組み合わせで12種類の時制が成立する。時制の一致も入試最頻出事項のひとつ。</p>
+</div>
+
+<div class="section" id="s1-1">
+<h3>1.1 現在形・過去形・未来表現</h3>
+
+<div class="formula-box">
+<strong>現在形の2大用法</strong><br>
+①　<strong>習慣・反復的行為：</strong>She <span class="hl">walks</span> to school every day.（毎日歩いて通学する）<br>
+②　<strong>不変の真理・事実：</strong>The sun <span class="hl">rises</span> in the east.（太陽は東から昇る）<br>
+③　<strong>確定した予定（往来発着動詞）：</strong>The train <span class="hl">leaves</span> at 9 a.m. tomorrow.
+</div>
+
+<div class="formula-box theorem">
+<strong>未来を表す3つの主要表現の違い</strong>
+<div class="table-wrap"><table>
+  <tr><th>形</th><th>ニュアンス</th><th>例</th></tr>
+  <tr><td class="left"><strong>will + 動詞原形</strong></td><td class="left">その場の意志・予測・単純未来</td><td class="left"><span class="eng">I'll help you.</span></td></tr>
+  <tr><td class="left"><strong>be going to + 動詞原形</strong></td><td class="left">事前の計画・現在の証拠にもとづく予測</td><td class="left"><span class="eng">Look at the clouds — it's going to rain.</span></td></tr>
+  <tr><td class="left"><strong>現在進行形</strong></td><td class="left">すでに手配済みの近い未来の予定</td><td class="left"><span class="eng">We're meeting at 7.</span></td></tr>
+</table></div>
+</div>
+
+<div class="example-box">
+<strong>例 1.1</strong>　次の( )に入る最も適切な表現を選べ。<br>
+"The sky is very dark." — "Yes, it ( &nbsp; ) rain soon."<br>
+　① will　　② is going to　　③ rains
+<div class="answer-block">
+② <em>is going to</em> ―― 「空が暗い」という現在の視覚的証拠にもとづく予測なので <em>be going to</em> が正解。<em>will</em> はその場の意志・単純予測に使い、証拠に言及するときは <em>be going to</em> が自然。
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.1</strong>　次の文を英語にせよ。<br>
+(1) 私は毎朝6時に起きる。　(2) 太郎はその会議に出席する予定だ（すでに決まっている）。　(3) 明日雨が降るだろう（天気予報）。
+<div class="answer-block">
+(1) <span class="eng">I get up at six every morning.</span><br>
+(2) <span class="eng">Taro is attending the meeting tomorrow.</span>（または <em>is going to attend</em>）<br>
+(3) <span class="eng">It is going to rain tomorrow.</span>（天気予報＝根拠のある予測）
+</div>
+</div>
+</div><!-- /s1-1 -->
+
+<div class="section" id="s1-2">
+<h3>1.2 進行形</h3>
+
+<div class="formula-box">
+<strong>進行形 = be動詞 + -ing</strong><br>
+「ある時点で動作が継続中」であることを表す。<strong>状態動詞</strong>（know, like, belong, have〔所有〕など）は原則として進行形にしない。
+</div>
+
+<div class="important-box">
+<strong>状態動詞の主な例（進行形にしない）</strong><br>
+know / understand / believe / think（考える）/ remember / forget / like / love / hate / want / need / have（持つ）/ own / belong / contain / resemble / seem / appear<br><br>
+<span class="red">✗</span> <span class="eng">I am knowing the answer.</span><br>
+<span class="green">✓</span> <span class="eng">I know the answer.</span>
+</div>
+
+<div class="tip-box">
+「進行形にできない」とされる動詞も、意味が変わると進行形になる場合がある。<br>
+<span class="eng">I <strong>have</strong> a car.</span>（所有 → 不可）　vs.　<span class="eng">I'm <strong>having</strong> lunch.</span>（食べている → 可）<br>
+<span class="eng">She <strong>thinks</strong> he is right.</span>（考える → 不可）　vs.　<span class="eng">She's <strong>thinking</strong> about the problem.</span>（考え中 → 可）
+</div>
+</div><!-- /s1-2 -->
+
+<div class="section" id="s1-3">
+<h3>1.3 完了形</h3>
+
+<div class="formula-box theorem">
+<strong>現在完了形 = have/has + 過去分詞</strong>
+<div class="table-wrap"><table>
+  <tr><th>用法</th><th>よく使うキーワード</th><th>例文</th></tr>
+  <tr><td><strong>完了</strong>（〜した）</td><td>just, already, yet</td><td class="left"><span class="eng">I have <em>just</em> finished my homework.</span></td></tr>
+  <tr><td><strong>経験</strong>（〜したことがある）</td><td>ever, never, once, before, times</td><td class="left"><span class="eng">Have you <em>ever</em> been to Paris?</span></td></tr>
+  <tr><td><strong>継続</strong>（ずっと〜している）</td><td>for, since</td><td class="left"><span class="eng">She has lived here <em>for</em> ten years.</span></td></tr>
+  <tr><td><strong>結果</strong>（〜してしまった）</td><td>（文脈で判断）</td><td class="left"><span class="eng">He has gone to London.</span>（いってしまった＝今ここにいない）</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>過去形 vs 現在完了形の違い</strong><br>
+過去形は「過去のある時点」に焦点を当て、現在とは切り離す。現在完了形は「現在との関連性」を持つ。<br><br>
+<span class="eng">I <strong>lost</strong> my wallet yesterday.</span>（昨日財布をなくした ─ 過去の事実の報告）<br>
+<span class="eng">I <strong>have lost</strong> my wallet.</span>（財布をなくした ─ だから今困っている、という現在への影響）<br><br>
+<strong>結論：</strong>具体的な過去の時点を示す語（yesterday, last year, in 2010, ago など）がある場合は<strong>必ず過去形</strong>を使う。
+</div>
+
+<div class="formula-box pattern">
+<strong>過去完了形 = had + 過去分詞</strong><br>
+「過去のある時点より前に起きた出来事」（大過去）、または「その時点まで継続していたこと」を表す。<br><br>
+<span class="eng">When I arrived at the station, the train <strong>had already left</strong>.</span><br>
+<span class="jp">（私が駅に着いたとき、電車はすでに出発していた。）</span><br><br>
+<strong>注意：</strong>過去の2つの出来事が時系列通りの場合は <em>before / after</em> があれば過去形のままでよい。<br>
+<span class="eng">She <strong>ate</strong> dinner before she <strong>went</strong> to bed.</span>（← had eaten も可だが冗長）
+</div>
+
+<div class="example-box">
+<strong>例 1.2</strong> <span class="lv lv-m">標準</span>　( )内の語を適切な形にせよ。<br>
+When I called him, he (already / leave) for work.
+<div class="answer-block">
+<span class="eng">When I called him, he <strong>had already left</strong> for work.</span><br>
+「私が電話したとき（過去）」よりも「彼が出発した」ことのほうが前なので過去完了形を使う。
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 1.2</strong>　正しい方を選べ。<br>
+(1) I ( saw / have seen ) that movie last week.<br>
+(2) She ( lived / has lived ) in Tokyo since she was a child.<br>
+(3) By the time he arrived, we ( finished / had finished ) the project.
+<div class="answer-block">
+(1) <strong>saw</strong>（last week という過去を示す語があるため過去形）<br>
+(2) <strong>has lived</strong>（since〜で現在まで継続）<br>
+(3) <strong>had finished</strong>（彼が到着した過去の時点よりさらに前の出来事＝過去完了）
+</div>
+</div>
+</div><!-- /s1-3 -->
+
+<div class="section" id="s1-4">
+<h3>1.4 時制の一致</h3>
+
+<div class="formula-box theorem">
+<strong>時制の一致の原則</strong><br>
+主節の動詞が<strong>過去形</strong>の場合、従属節の動詞も原則として過去（完了）形にする。
+<div class="table-wrap"><table>
+  <tr><th>主節（過去形）</th><th>従属節の変化</th><th>例</th></tr>
+  <tr><td>said / thought / knew …</td><td>現在形 → 過去形</td><td class="left"><span class="eng">She <strong>said</strong> that she <strong>was</strong> tired.</span></td></tr>
+  <tr><td></td><td>過去形 → 過去完了形</td><td class="left"><span class="eng">He said he <strong>had seen</strong> her before.</span></td></tr>
+  <tr><td></td><td>will → would</td><td class="left"><span class="eng">She said she <strong>would</strong> come.</span></td></tr>
+  <tr><td></td><td>can → could</td><td class="left"><span class="eng">I knew he <strong>could</strong> swim.</span></td></tr>
+</table></div>
+</div>
+
+<div class="important-box">
+<strong>時制の一致の例外（従属節が過去形にならない場合）</strong>
+<ol class="num">
+<li><strong>不変の真理・科学的事実：</strong><span class="eng">He said that the earth <strong>is</strong> round.</span></li>
+<li><strong>現在も変わらぬ事実・習慣：</strong><span class="eng">She told me she <strong>gets</strong> up at six.</span></li>
+<li><strong>歴史上の事実：</strong><span class="eng">We learned that Columbus <strong>reached</strong> America in 1492.</span></li>
+</ol>
+</div>
+</div><!-- /s1-4 -->
+</div><!-- /ch1 -->
+
+<!-- ============================================================
+     第２章　助動詞
+============================================================ -->
+
+<div class="chapter" id="ch2">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 02</div>
+  <h2>助動詞</h2>
+  <p>助動詞は動詞に「可能・許可・義務・推量」などの話し手の態度（モダリティ）を加える。現在形・過去形の区別と、「助動詞＋have＋過去分詞」による過去への推量が特に重要。</p>
+</div>
+
+<div class="section" id="s2-1">
+<h3>2.1 can / could / be able to</h3>
+
+<div class="formula-box">
+<strong>can の主な意味</strong>
+<div class="table-wrap"><table>
+  <tr><th>意味</th><th>例文</th><th>備考</th></tr>
+  <tr><td><strong>能力</strong>（〜できる）</td><td class="left"><span class="eng">She can speak French.</span></td><td class="left">習得した能力</td></tr>
+  <tr><td><strong>許可</strong>（〜してよい）</td><td class="left"><span class="eng">You can leave now.</span></td><td class="left">may より口語的</td></tr>
+  <tr><td><strong>可能性</strong>（〜することがある）</td><td class="left"><span class="eng">Accidents can happen.</span></td><td class="left">理論上起こり得る</td></tr>
+  <tr><td><strong>否定の推量</strong>（〜のはずがない）</td><td class="left"><span class="eng">That <strong>can't</strong> be true.</span></td><td class="left">強い否定的確信</td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+<strong>can vs be able to</strong><br>
+<em>can</em> は現在・過去（could）のみ。未来や完了形では <em>be able to</em> を使う。<br>
+<span class="eng">I <strong>will be able to</strong> help you tomorrow.</span>（○）　<span class="red">✗</span> <span class="eng">I will can…</span><br>
+また「（一度限りの）実際に〜できた」の過去の意味では <em>could</em> より <em>was/were able to</em> が好まれる。<br>
+<span class="eng">He <strong>was able to</strong> escape from the fire.</span>（火事から逃げることができた）
+</div>
+</div><!-- /s2-1 -->
+
+<div class="section" id="s2-2">
+<h3>2.2 may / might · must / have to</h3>
+
+<div class="formula-box theorem">
+<strong>推量の強さ（肯定文）</strong>
+<div class="table-wrap"><table>
+  <tr><th>表現</th><th>確信度</th><th>日本語訳</th></tr>
+  <tr><td><strong>must</strong></td><td>約90%</td><td>〜にちがいない</td></tr>
+  <tr><td><strong>should / ought to</strong></td><td>約70–80%</td><td>〜のはずだ</td></tr>
+  <tr><td><strong>may / might</strong></td><td>約50% / 30%</td><td>〜かもしれない</td></tr>
+</table></div>
+否定文では推量の強さが変わる：<strong>can't / couldn't</strong>（〜のはずがない）が最強の否定推量。
+</div>
+
+<div class="formula-box pattern">
+<strong>must vs have to の義務の違い</strong><br>
+<strong>must：</strong>話し手の主観的な義務・強い勧め<br>
+<strong>have to：</strong>外部の規則・状況から生まれる義務<br><br>
+<span class="eng">You <strong>must</strong> read this book — it's fantastic!</span>（強い勧め、話し手の主観）<br>
+<span class="eng">You <strong>have to</strong> wear a uniform at this school.</span>（校則という外部ルール）<br><br>
+否定形に注意：<span class="eng"><strong>must not</strong></span>（〜してはいけない）≠ <span class="eng"><strong>don't have to</strong></span>（〜する必要はない）
+</div>
+
+<div class="example-box">
+<strong>例 2.1</strong> <span class="lv lv-b">基礎</span>　正しい方を選べ。<br>
+You ( must not / don't have to ) come if you're busy. I'll manage on my own.
+<div class="answer-block">
+<strong>don't have to</strong>（忙しければ来なくていい、つまり「来る必要はない」）。<br>
+<em>must not</em> は「来てはいけない」となり文意が変わる。
+</div>
+</div>
+</div><!-- /s2-2 -->
+
+<div class="section" id="s2-3">
+<h3>2.3 will / would · shall / should</h3>
+
+<div class="formula-box">
+<strong>would の4大用法</strong>
+<ol class="num">
+<li><strong>will の過去形（時制の一致）：</strong><span class="eng">She said she <strong>would</strong> help.</span></li>
+<li><strong>過去の習慣（〜したものだった）：</strong><span class="eng">He <strong>would</strong> often walk by the river.</span></li>
+<li><strong>丁寧な依頼：</strong><span class="eng"><strong>Would</strong> you mind closing the window?</span></li>
+<li><strong>仮定法：</strong><span class="eng">I <strong>would</strong> do it if I had time.</span></li>
+</ol>
+</div>
+
+<div class="tip-box">
+<strong>should の用法まとめ</strong><br>
+①　<strong>義務・当然</strong>（〜すべきだ）：<span class="eng">You <strong>should</strong> apologize.</span><br>
+②　<strong>推量</strong>（〜のはずだ）：<span class="eng">She <strong>should</strong> be home by now.</span><br>
+③　<strong>仮定法現在の代替（提案・要求・命令節内）：</strong><span class="eng">It is important that he <strong>should</strong> know the truth.</span><br>
+④　<strong>感情の理由節で（〜するとは）：</strong><span class="eng">It is strange that he <strong>should</strong> say such a thing.</span>
+</div>
+</div><!-- /s2-3 -->
+
+<div class="section" id="s2-4">
+<h3>2.4 助動詞 + have + 過去分詞</h3>
+
+<div class="formula-box important">
+<strong>過去への推量・後悔を表す「助動詞 + have + p.p.」</strong>
+<div class="table-wrap"><table>
+  <tr><th>形</th><th>意味</th><th>例文</th></tr>
+  <tr><td><strong>must have p.p.</strong></td><td>〜したにちがいない</td><td class="left"><span class="eng">He must have forgotten.</span></td></tr>
+  <tr><td><strong>can't have p.p.</strong></td><td>〜したはずがない</td><td class="left"><span class="eng">She can't have done that.</span></td></tr>
+  <tr><td><strong>may/might have p.p.</strong></td><td>〜したかもしれない</td><td class="left"><span class="eng">He might have left already.</span></td></tr>
+  <tr><td><strong>should have p.p.</strong></td><td>〜すべきだったのに（後悔）</td><td class="left"><span class="eng">I should have studied harder.</span></td></tr>
+  <tr><td><strong>need not have p.p.</strong></td><td>〜する必要はなかったのに（実際はした）</td><td class="left"><span class="eng">You needn't have hurried.</span></td></tr>
+  <tr><td><strong>could have p.p.</strong></td><td>〜できたはずなのに（実際はしなかった）</td><td class="left"><span class="eng">You could have told me.</span></td></tr>
+</table></div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 2.1</strong>　日本語の意味になるよう空所を補え。<br>
+(1) 彼女は昨日の会議を欠席したにちがいない。<br>
+　She ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) the meeting yesterday.<br>
+(2) もっと早く出発すればよかった。<br>
+　I ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) earlier.
+<div class="answer-block">
+(1) <span class="eng">She <strong>must have missed</strong> the meeting yesterday.</span><br>
+(2) <span class="eng">I <strong>should have left</strong> earlier.</span>
+</div>
+</div>
+</div><!-- /s2-4 -->
+</div><!-- /ch2 -->
+
+<!-- ============================================================
+     第３章　不定詞・動名詞・分詞
+============================================================ -->
+
+<div class="chapter" id="ch3">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 03</div>
+  <h2>不定詞・動名詞・分詞</h2>
+  <p>動詞の準動詞（verbal）形。to不定詞・動名詞・分詞はいずれも動詞から派生しながら、名詞・形容詞・副詞の役割を果たす。どれを使うかの選択が入試の中心となる。</p>
+</div>
+
+<div class="section" id="s3-1">
+<h3>3.1 不定詞の3用法</h3>
+
+<div class="formula-box theorem">
+<strong>to 不定詞の3用法</strong>
+<div class="table-wrap"><table>
+  <tr><th>用法</th><th>文中の役割</th><th>例文</th></tr>
+  <tr><td><strong>名詞用法</strong></td><td>S・O・Cになる</td><td class="left"><span class="eng"><strong>To read</strong> books is important. / I want <strong>to travel</strong>.</span></td></tr>
+  <tr><td><strong>形容詞用法</strong></td><td>名詞を後置修飾</td><td class="left"><span class="eng">I have a lot of work <strong>to do</strong>.</span></td></tr>
+  <tr><td><strong>副詞用法</strong></td><td>動詞・形容詞・文全体を修飾</td><td class="left"><span class="eng">She studied hard <strong>to pass</strong> the exam.</span></td></tr>
+</table></div>
+</div>
+
+<div class="formula-box pattern">
+<strong>不定詞の意味上の主語：for / of + 目的格</strong><br>
+不定詞の動作主が主節の主語と異なるとき、<em>for ＋ 目的格</em> を不定詞の直前に置く。<br>
+<span class="eng">It is important <strong>for you</strong> to practice every day.</span>（あなたが毎日練習することが大切）<br><br>
+ただし、感情・人柄を表す形容詞（kind, wise, foolish, rude, clever など）の場合は <em>of</em> を使う：<br>
+<span class="eng">It is kind <strong>of you</strong> to help me.</span>（手伝ってくれてありがとう）<br>
+<span class="note">テスト：<em>You are kind to help me.</em> と言い換えられるなら <em>of</em>、言い換えられなければ <em>for</em>。</span>
+</div>
+
+<div class="formula-box">
+<strong>独立不定詞（慣用表現）</strong><br>
+文全体を修飾し、話し手の態度を示す。
+<div class="table-wrap"><table>
+  <tr><th>表現</th><th>意味</th></tr>
+  <tr><td><span class="eng">to be honest</span></td><td>正直に言うと</td></tr>
+  <tr><td><span class="eng">to tell the truth</span></td><td>本当のことを言うと</td></tr>
+  <tr><td><span class="eng">to say nothing of ～</span></td><td>〜は言うまでもなく</td></tr>
+  <tr><td><span class="eng">so to speak</span></td><td>いわば</td></tr>
+  <tr><td><span class="eng">needless to say</span></td><td>言うまでもなく</td></tr>
+  <tr><td><span class="eng">strange to say</span></td><td>奇妙なことに</td></tr>
+</table></div>
+</div>
+</div><!-- /s3-1 -->
+
+<div class="section" id="s3-2">
+<h3>3.2 動名詞の用法</h3>
+
+<div class="formula-box theorem">
+<strong>動名詞専用動詞 vs 不定詞専用動詞</strong>
+<div class="two-col">
+<div>
+<strong>動名詞のみとる動詞（MEGAFAPS）</strong>
+<ul class="bullet">
+<li><span class="eng">mind / enjoy / give up</span></li>
+<li><span class="eng">avoid / finish / postpone / put off</span></li>
+<li><span class="eng">suggest / consider / stop / practice</span></li>
+<li><span class="eng">deny / admit / keep / imagine</span></li>
+</ul>
+</div>
+<div>
+<strong>不定詞のみとる動詞</strong>
+<ul class="bullet">
+<li><span class="eng">want / wish / hope / expect</span></li>
+<li><span class="eng">decide / choose / plan / promise</span></li>
+<li><span class="eng">refuse / manage / fail / offer</span></li>
+<li><span class="eng">pretend / tend / agree</span></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="important-box">
+<strong>意味が変わる動詞（remember / forget / try / stop）</strong>
+<div class="table-wrap"><table>
+  <tr><th>動詞</th><th>+ 動名詞</th><th>+ 不定詞</th></tr>
+  <tr><td><span class="eng">remember</span></td><td>（過去に）〜したことを覚えている</td><td>（これから）〜することを覚えておく</td></tr>
+  <tr><td><span class="eng">forget</span></td><td>（過去に）〜したことを忘れる</td><td>（これから）〜することを忘れる</td></tr>
+  <tr><td><span class="eng">try</span></td><td>試しに〜してみる</td><td>〜しようと努力する</td></tr>
+  <tr><td><span class="eng">stop</span></td><td>〜するのをやめる</td><td>〜するために立ち止まる</td></tr>
+</table></div>
+<span class="eng">I <strong>remember meeting</strong> her.</span>（彼女に会ったことを覚えている）<br>
+<span class="eng">Remember <strong>to call</strong> him.</span>（彼に電話するのを忘れずに）
+</div>
+</div><!-- /s3-2 -->
+
+<div class="section" id="s3-3">
+<h3>3.3 分詞・分詞構文</h3>
+
+<div class="formula-box">
+<strong>現在分詞（-ing）vs 過去分詞（-ed / 不規則形）</strong><br>
+<strong>現在分詞：</strong>能動・進行の意味 →「〜している・〜させる」<br>
+<strong>過去分詞：</strong>受動・完了の意味 →「〜された・〜された状態」<br><br>
+<span class="eng">a <strong>sleeping</strong> baby</span>（眠っている赤ちゃん）　vs.　<span class="eng">a <strong>broken</strong> window</span>（割れた窓）<br>
+<span class="eng">The movie was <strong>exciting</strong>.</span>（映画は興奮させるものだった ─ 事物を主語）<br>
+<span class="eng">I was <strong>excited</strong>.</span>（私は興奮していた ─ 人を主語）
+</div>
+
+<div class="formula-box theorem">
+<strong>分詞構文の4つの意味</strong><br>
+分詞構文（分詞句が副詞節の代わりになる構文）は文脈によって次の意味を持つ。
+<div class="table-wrap"><table>
+  <tr><th>意味</th><th>言い換え</th><th>例文</th></tr>
+  <tr><td>時</td><td>when / while / after</td><td class="left"><span class="eng"><strong>Arriving</strong> home, she made tea.</span>（家に着いたとき）</td></tr>
+  <tr><td>理由</td><td>because / as / since</td><td class="left"><span class="eng"><strong>Being</strong> tired, he went to bed early.</span>（疲れていたので）</td></tr>
+  <tr><td>条件</td><td>if</td><td class="left"><span class="eng"><strong>Turning</strong> left, you'll find the station.</span>（左に曲がれば）</td></tr>
+  <tr><td>譲歩</td><td>although / though</td><td class="left"><span class="eng"><strong>Admitting</strong> that, I still disagree.</span>（それを認めるとしても）</td></tr>
+</table></div>
+</div>
+
+<div class="proof-box">
+<strong>分詞構文の作り方</strong>
+<ol class="steps">
+<li>副詞節の接続詞を省略する。</li>
+<li>副詞節の主語が主節と<strong>同じなら省略</strong>する（異なる場合は残す＝独立分詞構文）。</li>
+<li>副詞節の動詞を現在分詞（-ing）に変える。ただし受動態なら <em>being p.p.</em>（being は省略可）。</li>
+<li>主節より前の出来事なら <em>having p.p.</em>（完了分詞構文）を使う。</li>
+</ol>
+例：<span class="eng">Because she was exhausted, she fell asleep.</span><br>
+→ <span class="eng"><strong>Exhausted</strong>, she fell asleep.</span>（Being exhausted の Being を省略）
+</div>
+</div><!-- /s3-3 -->
+
+<div class="section" id="s3-4">
+<h3>3.4 不定詞 vs 動名詞：主語・意味上の相違</h3>
+
+<div class="tip-box">
+<strong>主語としての不定詞 vs 動名詞</strong><br>
+どちらも「〜すること」と訳せるが、<br>
+<strong>to不定詞：</strong>これから行う・特定の行為・未来志向のニュアンス<br>
+<strong>動名詞：</strong>実際に行っている・一般的・習慣的な行為<br><br>
+<span class="eng"><strong>Smoking</strong> is bad for your health.</span>（喫煙という習慣全般）<br>
+<span class="eng"><strong>To smoke</strong> in a public place is rude.</span>（公共の場で喫煙するという行為）
+</div>
+
+<div class="exercise-block">
+<strong>練習 3.1</strong>　( )内の動詞を適切な形（不定詞 or 動名詞）にせよ。<br>
+(1) She avoided ( look ) at him directly.<br>
+(2) Don't forget ( lock ) the door before you leave.<br>
+(3) I tried ( open ) the window, but it was stuck.<br>
+(4) He stopped ( smoke ) ten years ago.
+<div class="answer-block">
+(1) <strong>looking</strong>（avoid は動名詞専用）<br>
+(2) <strong>to lock</strong>（forget + 不定詞 ＝ これからのことを忘れる）<br>
+(3) <strong>to open</strong>（try + 不定詞 ＝ 〜しようと努力する）/ または <strong>opening</strong>（試しに〜してみる）―― 文脈では窓が詰まっていたことから <em>to open</em> が自然<br>
+(4) <strong>smoking</strong>（stop + 動名詞 ＝ 〜するのをやめる）
+</div>
+</div>
+</div><!-- /s3-4 -->
+</div><!-- /ch3 -->
+
+<!-- ============================================================
+     第４章　関係詞
+============================================================ -->
+
+<div class="chapter" id="ch4">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 04</div>
+  <h2>関係詞</h2>
+  <p>関係詞は先行詞を後ろの節で修飾する接着剤的な語。関係代名詞・関係副詞・複合関係詞の用法を整理し、「制限用法 vs 非制限用法」の区別もしっかりおさえる。</p>
+</div>
+
+<div class="section" id="s4-1">
+<h3>4.1 関係代名詞</h3>
+
+<div class="formula-box theorem">
+<strong>関係代名詞の格変化</strong>
+<div class="table-wrap"><table>
+  <tr><th>先行詞</th><th>主格</th><th>目的格</th><th>所有格</th></tr>
+  <tr><td>人</td><td>who</td><td>whom（口語では who）</td><td>whose</td></tr>
+  <tr><td>物・動物</td><td>which</td><td>which</td><td>whose / of which</td></tr>
+  <tr><td>人・物（両方）</td><td>that</td><td>that</td><td>—</td></tr>
+  <tr><td>先行詞を含む</td><td>what</td><td>what</td><td>—</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box pattern">
+<strong>that が好まれる場合</strong>
+<ul class="bullet">
+<li>先行詞が<strong>最上級・序数詞</strong>を含む：<span class="eng">the best movie <strong>that</strong> I've ever seen</span></li>
+<li>先行詞が<strong>all / every / any / no</strong>を含む：<span class="eng">all the things <strong>that</strong> matter</span></li>
+<li>先行詞が<strong>人＋物</strong>の組み合わせ：<span class="eng">the man and his dog <strong>that</strong>…</span></li>
+</ul>
+<strong>that が使えない場合</strong>
+<ul class="bullet">
+<li>非制限用法（コンマの後）：<span class="red">✗</span> <span class="eng">, that …</span></li>
+<li>前置詞の後：<span class="red">✗</span> <span class="eng">in that</span>（関係代名詞として）</li>
+</ul>
+</div>
+
+<div class="formula-box definition">
+<strong>関係代名詞 what</strong><br>
+<em>what = the thing(s) which</em>。先行詞を自身の中に含む。<br>
+<span class="eng">This is <strong>what</strong> I wanted.</span>（これが私の欲しかったものだ）<br>
+<span class="eng"><strong>What</strong> surprised me was his calmness.</span>（私を驚かせたのは彼の冷静さだった）<br><br>
+<strong>入試頻出慣用表現：</strong><br>
+<span class="eng">what is called</span>（いわゆる）/ <span class="eng">what is more</span>（さらに）/ <span class="eng">what is worse</span>（さらに悪いことに）
+</div>
+</div><!-- /s4-1 -->
+
+<div class="section" id="s4-2">
+<h3>4.2 関係副詞</h3>
+
+<div class="formula-box">
+<strong>関係副詞 = 前置詞 + which の言い換え</strong>
+<div class="table-wrap"><table>
+  <tr><th>関係副詞</th><th>先行詞</th><th>言い換え</th><th>例文</th></tr>
+  <tr><td><strong>when</strong></td><td>時（time, day…）</td><td>at/on/in which</td><td class="left"><span class="eng">the day when he left</span></td></tr>
+  <tr><td><strong>where</strong></td><td>場所（place, city…）</td><td>at/in/on which</td><td class="left"><span class="eng">the town where she was born</span></td></tr>
+  <tr><td><strong>why</strong></td><td>理由（reason）</td><td>for which</td><td class="left"><span class="eng">the reason why he quit</span></td></tr>
+  <tr><td><strong>how</strong></td><td>（先行詞なし）</td><td>the way in which</td><td class="left"><span class="eng">how she did it</span>（先行詞 the way と howは共存不可）</td></tr>
+</table></div>
+</div>
+</div><!-- /s4-2 -->
+
+<div class="section" id="s4-3">
+<h3>4.3 制限用法 vs 非制限用法</h3>
+
+<div class="formula-box theorem">
+<strong>制限用法（限定用法）と非制限用法（継続用法）の違い</strong>
+<div class="table-wrap"><table>
+  <tr><th></th><th>制限用法</th><th>非制限用法</th></tr>
+  <tr><td>コンマ</td><td>なし</td><td>あり（，which / ，who）</td></tr>
+  <tr><td>that</td><td>使える</td><td>使えない</td></tr>
+  <tr><td>意味</td><td>先行詞の範囲を限定する</td><td>先行詞に情報を付け加える</td></tr>
+</table></div>
+<span class="eng">I have two brothers <strong>who are doctors</strong>.</span>（医者である兄弟が2人いる ― 他に兄弟もいる含み）<br>
+<span class="eng">I have two brothers<strong>, who are both doctors</strong>.</span>（2人の兄弟がいて、2人とも医者だ）
+</div>
+</div><!-- /s4-3 -->
+
+<div class="section" id="s4-4">
+<h3>4.4 複合関係詞</h3>
+
+<div class="formula-box pattern">
+<strong>複合関係詞（-ever）の2用法</strong>
+<div class="table-wrap"><table>
+  <tr><th>複合関係詞</th><th>名詞節（〜するものは何でも）</th><th>副詞節（どんなに〜でも）</th></tr>
+  <tr><td><strong>whatever</strong></td><td><span class="eng">Take <em>whatever</em> you like.</span></td><td><span class="eng"><em>Whatever</em> happens, stay calm.</span></td></tr>
+  <tr><td><strong>whoever</strong></td><td><span class="eng"><em>Whoever</em> comes is welcome.</span></td><td><span class="eng"><em>Whoever</em> you are, enter.</span></td></tr>
+  <tr><td><strong>whenever</strong></td><td>—</td><td><span class="eng"><em>Whenever</em> I call, she's out.</span></td></tr>
+  <tr><td><strong>wherever</strong></td><td>—</td><td><span class="eng"><em>Wherever</em> you go, I'll follow.</span></td></tr>
+  <tr><td><strong>however</strong></td><td>—</td><td><span class="eng"><em>However</em> hard it is, try.</span></td></tr>
+</table></div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 4.1</strong>　( )内に適切な関係詞を入れよ。<br>
+(1) This is the village ( &nbsp;&nbsp;&nbsp; ) my grandfather was born.<br>
+(2) ( &nbsp;&nbsp;&nbsp; ) she told me was completely false.<br>
+(3) The professor ( &nbsp;&nbsp;&nbsp; ) research I admire is visiting next week.
+<div class="answer-block">
+(1) <strong>where</strong>（先行詞 village は場所）<br>
+(2) <strong>What</strong>（先行詞なし、「〜こと・もの」の意）<br>
+(3) <strong>whose</strong>（先行詞 The professor、所有格）
+</div>
+</div>
+</div><!-- /s4-4 -->
+</div><!-- /ch4 -->
+
+<!-- ============================================================
+     第５章　仮定法
+============================================================ -->
+
+<div class="chapter" id="ch5">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 05</div>
+  <h2>仮定法</h2>
+  <p>仮定法は「現実とは異なる状況」を仮定する話法。動詞の時制を1段階ずらすことで「現実でないこと」を明示する。形の一貫したルールを理解すれば体系的に習得できる。</p>
+</div>
+
+<div class="section" id="s5-1">
+<h3>5.1 仮定法過去</h3>
+
+<div class="formula-box important">
+<strong>仮定法過去（現在の事実に反する仮定）</strong>
+<div class="note">If + S + 動詞の<strong>過去形</strong>（be動詞は were）, S + would / could / might + 動詞の原形</div>
+現在の事実に反することを仮定する。if 節内の be 動詞は人称に関わらず <strong>were</strong> を使う（口語では was も許容）。<br><br>
+<span class="eng">If I <strong>were</strong> a bird, I <strong>would fly</strong> to you.</span><br>
+<span class="jp">（もし私が鳥なら、あなたのところへ飛んでいくのに。→ 実際は鳥でない）</span>
+</div>
+</div><!-- /s5-1 -->
+
+<div class="section" id="s5-2">
+<h3>5.2 仮定法過去完了</h3>
+
+<div class="formula-box important">
+<strong>仮定法過去完了（過去の事実に反する仮定）</strong>
+<div class="note">If + S + <strong>had p.p.</strong>, S + would / could / might + <strong>have p.p.</strong></div>
+過去の事実に反することを仮定する。「あのときもし〜だったら、〜だったのに」という後悔・反実仮想。<br><br>
+<span class="eng">If I <strong>had studied</strong> harder, I <strong>would have passed</strong> the exam.</span><br>
+<span class="jp">（もっと勉強していたら、試験に合格していたのに。→ 実際は勉強しなかったし、落ちた）</span>
+</div>
+
+<div class="proof-box">
+<strong>仮定法の時制一覧まとめ</strong>
+<div class="table-wrap"><table>
+  <tr><th></th><th>if 節</th><th>主節</th><th>表す時間</th></tr>
+  <tr><td><strong>仮定法過去</strong></td><td>過去形（were）</td><td>would/could/might + 原形</td><td>現在・未来</td></tr>
+  <tr><td><strong>仮定法過去完了</strong></td><td>had p.p.</td><td>would/could/might + have p.p.</td><td>過去</td></tr>
+  <tr><td><strong>混合仮定法</strong></td><td>had p.p.</td><td>would + 原形</td><td>if節=過去, 主節=現在</td></tr>
+</table></div>
+<span class="eng">If he <strong>had taken</strong> that job, he <strong>would be</strong> rich now.</span>（混合：過去に仕事を受けていたら、今頃金持ちだろうに）
+</div>
+</div><!-- /s5-2 -->
+
+<div class="section" id="s5-3">
+<h3>5.3 I wish / as if</h3>
+
+<div class="formula-box pattern">
+<strong>I wish の仮定法</strong>
+<div class="table-wrap"><table>
+  <tr><th>I wish + …</th><th>意味</th><th>例</th></tr>
+  <tr><td>仮定法過去</td><td>現在〜だったらいいのに（現在の願望）</td><td class="left"><span class="eng">I wish I <strong>were</strong> taller.</span></td></tr>
+  <tr><td>仮定法過去完了</td><td>〜だったらよかったのに（過去への後悔）</td><td class="left"><span class="eng">I wish I <strong>had been</strong> there.</span></td></tr>
+  <tr><td>would + 原形</td><td>〜してくれたらいいのに（相手への願望）</td><td class="left"><span class="eng">I wish you <strong>would</strong> stop that.</span></td></tr>
+</table></div>
+</div>
+
+<div class="formula-box pattern">
+<strong>as if / as though</strong><br>
+「まるで〜のように」。続く節が仮定法になる。<br>
+<span class="eng">She talks as if she <strong>knew</strong> everything.</span>（まるで何でも知っているかのように話す）<br>
+<span class="eng">He looks as if he <strong>had seen</strong> a ghost.</span>（まるで幽霊でも見たかのような顔をしている）
+</div>
+</div><!-- /s5-3 -->
+
+<div class="section" id="s5-4">
+<h3>5.4 without / but for · 仮定法現在</h3>
+
+<div class="formula-box theorem">
+<strong>if 節の代わりになる表現</strong>
+<div class="table-wrap"><table>
+  <tr><th>表現</th><th>意味</th><th>例</th></tr>
+  <tr><td><span class="eng">without / but for</span></td><td>〜がなければ / なかったら</td><td class="left"><span class="eng">Without your help, I would fail.</span></td></tr>
+  <tr><td><span class="eng">if it were not for</span></td><td>〜がなければ（現在）</td><td class="left"><span class="eng">If it were not for water, we would die.</span></td></tr>
+  <tr><td><span class="eng">if it had not been for</span></td><td>〜がなかったら（過去）</td><td class="left"><span class="eng">If it had not been for you, I would have failed.</span></td></tr>
+  <tr><td><span class="eng">otherwise</span></td><td>さもなければ</td><td class="left"><span class="eng">Study hard; otherwise, you'll fail.</span></td></tr>
+</table></div>
+</div>
+
+<div class="formula-box definition">
+<strong>仮定法現在（提案・要求・命令の that 節）</strong><br>
+提案・要求・命令・必要性などを表す動詞・形容詞の後の that 節では、動詞の<strong>原形</strong>（仮定法現在）を使う。<br>
+<span class="eng">I suggest that he <strong>leave</strong> immediately.</span>（彼はすぐ出発すべきだと提案する）<br>
+<span class="eng">It is necessary that she <strong>be</strong> informed.</span>（彼女に知らせる必要がある）<br><br>
+<strong>対象となる動詞：</strong>suggest / recommend / insist / demand / request / propose / order / require<br>
+<strong>対象となる形容詞：</strong>necessary / important / essential / vital / imperative
+</div>
+
+<div class="exercise-block">
+<strong>練習 5.1</strong>　各文を日本語に訳し、仮定法の種類を答えよ。<br>
+(1) If I had more time, I would learn the piano.<br>
+(2) If she had left earlier, she would have caught the train.<br>
+(3) I wish I had apologized to him then.
+<div class="answer-block">
+(1)「もっと時間があれば、ピアノを習うのに」―― <strong>仮定法過去</strong>（現在の事実に反する仮定）<br>
+(2)「もっと早く出発していたら、電車に乗れていたのに」―― <strong>仮定法過去完了</strong>（過去の事実に反する仮定）<br>
+(3)「あのとき彼に謝っておけばよかった」―― <strong>I wish ＋ 仮定法過去完了</strong>（過去への後悔）
+</div>
+</div>
+</div><!-- /s5-4 -->
+</div><!-- /ch5 -->
+
+<!-- ============================================================
+     第６章　受動態
+============================================================ -->
+
+<div class="chapter" id="ch6">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 06</div>
+  <h2>受動態</h2>
+  <p>受動態は「〜される」という意味で、目的語を主語に持ち上げるときに使う。基本形から助動詞を含む形、SVOO・SVOCの受動態、群動詞の受動態まで体系的に整理する。</p>
+</div>
+
+<div class="section" id="s6-1">
+<h3>6.1 基本の受動態</h3>
+
+<div class="formula-box theorem">
+<strong>受動態の基本形：be動詞 + 過去分詞（+ by 〜）</strong>
+<div class="table-wrap"><table>
+  <tr><th>時制</th><th>能動態</th><th>受動態</th></tr>
+  <tr><td>現在</td><td class="left"><span class="eng">They clean the room.</span></td><td class="left"><span class="eng">The room <strong>is cleaned</strong>.</span></td></tr>
+  <tr><td>過去</td><td class="left"><span class="eng">They cleaned the room.</span></td><td class="left"><span class="eng">The room <strong>was cleaned</strong>.</span></td></tr>
+  <tr><td>現在完了</td><td class="left"><span class="eng">They have cleaned the room.</span></td><td class="left"><span class="eng">The room <strong>has been cleaned</strong>.</span></td></tr>
+  <tr><td>進行形</td><td class="left"><span class="eng">They are cleaning the room.</span></td><td class="left"><span class="eng">The room <strong>is being cleaned</strong>.</span></td></tr>
+  <tr><td>助動詞あり</td><td class="left"><span class="eng">They will clean the room.</span></td><td class="left"><span class="eng">The room <strong>will be cleaned</strong>.</span></td></tr>
+</table></div>
+</div>
+
+<div class="tip-box">
+<strong>by 以外の前置詞を使う受動態慣用表現</strong><br>
+<span class="eng">be known <strong>to</strong></span>（〜に知られている）/ <span class="eng">be known <strong>for</strong></span>（〜で知られている）<br>
+<span class="eng">be surprised <strong>at</strong></span>（〜に驚く）/ <span class="eng">be satisfied <strong>with</strong></span>（〜に満足している）<br>
+<span class="eng">be interested <strong>in</strong></span>（〜に興味がある）/ <span class="eng">be made <strong>of</strong></span>（〜でできている、材料が見える）<br>
+<span class="eng">be made <strong>from</strong></span>（〜でできている、材料が変化）/ <span class="eng">be covered <strong>with</strong></span>（〜で覆われている）
+</div>
+</div><!-- /s6-1 -->
+
+<div class="section" id="s6-2">
+<h3>6.2 SVOO・SVOCの受動態</h3>
+
+<div class="formula-box pattern">
+<strong>SVOO → 受動態（2通り）</strong><br>
+<span class="eng">They gave <strong>her</strong> a present.</span>（間接目的語 her ／直接目的語 a present）<br>
+→ <span class="eng"><strong>She</strong> was given a present.</span>（間接目的語が主語）<br>
+→ <span class="eng"><strong>A present</strong> was given to her.</span>（直接目的語が主語、前置詞が必要）
+</div>
+
+<div class="formula-box pattern">
+<strong>SVOC → 受動態</strong><br>
+補語（C）の形が動詞の種類によって異なる。
+<div class="table-wrap"><table>
+  <tr><th>能動態</th><th>受動態</th></tr>
+  <tr><td class="left"><span class="eng">They <strong>made</strong> him clean the room.</span>（make + 原形）</td><td class="left"><span class="eng">He was made <strong>to clean</strong> the room.</span>（受動態では to が復活）</td></tr>
+  <tr><td class="left"><span class="eng">I <strong>saw</strong> her crossing the street.</span>（知覚動詞 + -ing）</td><td class="left"><span class="eng">She was seen <strong>crossing</strong> the street.</span>（-ingはそのまま）</td></tr>
+  <tr><td class="left"><span class="eng">They <strong>called</strong> him a genius.</span>（call + 名詞）</td><td class="left"><span class="eng">He was called a genius.</span></td></tr>
+</table></div>
+</div>
+</div><!-- /s6-2 -->
+
+<div class="section" id="s6-3">
+<h3>6.3 群動詞・注意すべき受動態</h3>
+
+<div class="formula-box">
+<strong>群動詞（phrasal verb）の受動態</strong><br>
+群動詞は「動詞＋前置詞/副詞」の組み合わせで1つの動詞として機能する。受動態にするときも<strong>群動詞全体をひとまとめに扱う</strong>。<br><br>
+<span class="eng">They <strong>laughed at</strong> him.</span> → <span class="eng">He was <strong>laughed at</strong>.</span><br>
+<span class="eng">She <strong>took care of</strong> the baby.</span> → <span class="eng">The baby was <strong>taken care of</strong>.</span><br>
+<span class="eng">People <strong>look up to</strong> him.</span> → <span class="eng">He is <strong>looked up to</strong>.</span>
+</div>
+
+<div class="exercise-block">
+<strong>練習 6.1</strong>　次の能動態を受動態に書き換えよ。<br>
+(1) The teacher told us an interesting story.<br>
+(2) They made the children wait outside.<br>
+(3) People speak highly of her work.
+<div class="answer-block">
+(1) <span class="eng">We were told an interesting story by the teacher.</span><br>
+　　（or <span class="eng">An interesting story was told to us by the teacher.</span>）<br>
+(2) <span class="eng">The children were made to wait outside.</span>（make → 受動態で to が復活）<br>
+(3) <span class="eng">Her work is spoken highly of.</span>（群動詞 speak highly of をひとまとまりに）
+</div>
+</div>
+</div><!-- /s6-3 -->
+</div><!-- /ch6 -->
+
+<!-- ============================================================
+     第７章　比較表現
+============================================================ -->
+
+<div class="chapter" id="ch7">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 07</div>
+  <h2>比較表現</h2>
+  <p>英語の比較構文は原級・比較級・最上級の3段階が基本。さらに「倍数表現」「no more than系」「the＋比較級…the＋比較級」など入試頻出の慣用的表現も体系的に整理する。</p>
+</div>
+
+<div class="section" id="s7-1">
+<h3>7.1 原級比較・as...as 構文</h3>
+
+<div class="formula-box theorem">
+<strong>as + 原級 + as の主要パターン</strong>
+<div class="table-wrap"><table>
+  <tr><th>形</th><th>意味</th><th>例</th></tr>
+  <tr><td><span class="eng">as + adj./adv. + as</span></td><td>〜と同じくらい…だ</td><td class="left"><span class="eng">She is as tall as him.</span></td></tr>
+  <tr><td><span class="eng">not as[so] + adj. + as</span></td><td>〜ほど…でない</td><td class="left"><span class="eng">He is not as clever as she is.</span></td></tr>
+  <tr><td><span class="eng">as + adj. + as possible</span></td><td>できる限り…</td><td class="left"><span class="eng">Come as soon as possible.</span></td></tr>
+  <tr><td><span class="eng">as + adj. + as + S + can</span></td><td>〃（as…as S can）</td><td class="left"><span class="eng">Run as fast as you can.</span></td></tr>
+  <tr><td><span class="eng">twice[three times] as + adj. + as</span></td><td>〜の2倍[3倍]…だ</td><td class="left"><span class="eng">This bag is twice as heavy as that one.</span></td></tr>
+</table></div>
+</div>
+</div><!-- /s7-1 -->
+
+<div class="section" id="s7-2">
+<h3>7.2 比較級・最上級</h3>
+
+<div class="formula-box">
+<strong>比較級・最上級の作り方</strong>
+<div class="table-wrap"><table>
+  <tr><th>種類</th><th>比較級</th><th>最上級</th></tr>
+  <tr><td>1音節・規則変化</td><td>-er</td><td>-est</td></tr>
+  <tr><td>-e で終わる語</td><td>-r</td><td>-st</td></tr>
+  <tr><td>「短母音＋子音」終わり</td><td>子音字重ねて -er</td><td>子音字重ねて -est</td></tr>
+  <tr><td>「子音字＋y」終わり</td><td>y→i＋er</td><td>y→i＋est</td></tr>
+  <tr><td>2音節以上</td><td>more +原級</td><td>most +原級</td></tr>
+</table></div>
+</div>
+
+<div class="formula-box pattern">
+<strong>比較級の重要構文</strong>
+<ul class="bullet">
+<li><strong>比較級 + than any other + 単数名詞：</strong><span class="eng">Tokyo is larger than any other city in Japan.</span></li>
+<li><strong>No (other) + 単数名詞 + is as + 原級 + as：</strong><span class="eng">No other city in Japan is as large as Tokyo.</span></li>
+<li><strong>the + 比較級 …, the + 比較級 〜：</strong><span class="eng">The harder you try, the better you get.</span>（努力すればするほど、上達する）</li>
+<li><strong>比較級 + and + 比較級：</strong><span class="eng">It's getting colder and colder.</span>（どんどん寒くなっている）</li>
+</ul>
+</div>
+</div><!-- /s7-2 -->
+
+<div class="section" id="s7-3">
+<h3>7.3 倍数・差の表現</h3>
+
+<div class="formula-box">
+<strong>倍数・差の表現</strong>
+<div class="table-wrap"><table>
+  <tr><th>表現</th><th>意味</th><th>例</th></tr>
+  <tr><td><span class="eng">twice as … as</span></td><td>2倍…</td><td class="left"><span class="eng">This room is twice as large as mine.</span></td></tr>
+  <tr><td><span class="eng">half as … as</span></td><td>半分しか…ない</td><td class="left"><span class="eng">He earns half as much as I do.</span></td></tr>
+  <tr><td><span class="eng">much / far + 比較級</span></td><td>ずっと〜</td><td class="left"><span class="eng">She is far more capable than him.</span></td></tr>
+  <tr><td><span class="eng">a little / slightly + 比較級</span></td><td>少し〜</td><td class="left"><span class="eng">The new model is slightly heavier.</span></td></tr>
+</table></div>
+</div>
+</div><!-- /s7-3 -->
+
+<div class="section" id="s7-4">
+<h3>7.4 no more than など重要比較表現</h3>
+
+<div class="formula-box important">
+<strong>紛らわしい比較表現4組</strong>
+<div class="table-wrap"><table>
+  <tr><th>表現</th><th>意味</th><th>同義</th></tr>
+  <tr><td><span class="eng"><strong>no more than</strong> 5</span></td><td>わずか5しかない</td><td>only 5</td></tr>
+  <tr><td><span class="eng"><strong>not more than</strong> 5</span></td><td>5以下</td><td>at most 5</td></tr>
+  <tr><td><span class="eng"><strong>no less than</strong> 5</span></td><td>5もある（多さを強調）</td><td>as many/much as 5</td></tr>
+  <tr><td><span class="eng"><strong>not less than</strong> 5</span></td><td>少なくとも5</td><td>at least 5</td></tr>
+</table></div>
+<strong>no more A than B（クジラ構文）：</strong>AではないのはBではないのと同様だ（どちらも否定）<br>
+<span class="eng">A whale is no more a fish than a horse is.</span>（クジラが魚でないのは馬が魚でないのと同じだ）
+</div>
+
+<div class="exercise-block">
+<strong>練習 7.1</strong>　和訳せよ。<br>
+(1) The more you read, the more you know.<br>
+(2) She earned no less than a million dollars last year.<br>
+(3) He is no more a poet than I am.
+<div class="answer-block">
+(1)「読めば読むほど、知識が増える。」（the＋比較級…the＋比較級）<br>
+(2)「彼女は昨年100万ドルも稼いだ。」（no less than ＝ 多さを強調）<br>
+(3)「彼が詩人でないのは、私が詩人でないのと同じだ。」（no more A than B ＝ どちらも〜でない）
+</div>
+</div>
+</div><!-- /s7-4 -->
+</div><!-- /ch7 -->
+
+<!-- ============================================================
+     第８章　特殊構文
+============================================================ -->
+
+<div class="chapter" id="ch8">
+<div class="chapter-header">
+  <div class="ch-num">CHAPTER 08</div>
+  <h2>特殊構文</h2>
+  <p>強調・倒置・省略・否定表現など、入試で問われる頻度の高い特殊な構文を整理する。形と意味の対応を正確に覚えることが重要。</p>
+</div>
+
+<div class="section" id="s8-1">
+<h3>8.1 強調構文</h3>
+
+<div class="formula-box theorem">
+<strong>It is [was] ... that 〜 の強調構文</strong><br>
+強調したい要素（主語・目的語・副詞（句/節））を <em>It is ... that</em> の <em>...</em> の部分に持ち込む。強調される要素が人の場合、<em>that</em> の代わりに <em>who</em> が使えることがある。<br><br>
+<span class="eng">Tom broke the window yesterday in the park.</span>（基本文）<br>
+→ <span class="eng">It was <strong>Tom</strong> that[who] broke the window.</span>（Tomを強調）<br>
+→ <span class="eng">It was <strong>the window</strong> that Tom broke.</span>（窓を強調）<br>
+→ <span class="eng">It was <strong>yesterday</strong> that Tom broke the window.</span>（昨日を強調）
+</div>
+
+<div class="important-box">
+<strong>強調構文 vs 形式主語構文の見分け方</strong><br>
+<em>It is ... that</em> の <em>that</em> 以下を取り除いても文が成立する → <strong>強調構文</strong><br>
+<em>that</em> 以下を取り除くと文が成立しない → <strong>形式主語構文</strong><br><br>
+<span class="eng">It is <strong>strange</strong> that he is absent.</span>（形式主語：that節がないと成立しない）<br>
+<span class="eng">It was <strong>here</strong> that she found her wallet.</span>（強調：「She found her wallet.」として成立）
+</div>
+</div><!-- /s8-1 -->
+
+<div class="section" id="s8-2">
+<h3>8.2 倒置</h3>
+
+<div class="formula-box theorem">
+<strong>否定語・否定的意味の副詞（句/節）の倒置</strong><br>
+否定の副詞表現が文頭に来ると、主語と（助）動詞が倒置する。
+<div class="table-wrap"><table>
+  <tr><th>副詞表現</th><th>例文</th></tr>
+  <tr><td><span class="eng">Never</span></td><td class="left"><span class="eng"><strong>Never</strong> have I seen such a beautiful sunset.</span></td></tr>
+  <tr><td><span class="eng">Not until …</span></td><td class="left"><span class="eng"><strong>Not until midnight</strong> did he come home.</span></td></tr>
+  <tr><td><span class="eng">Hardly / Scarcely … when[before]</span></td><td class="left"><span class="eng"><strong>Hardly had</strong> she entered when the phone rang.</span></td></tr>
+  <tr><td><span class="eng">Not only … but also</span></td><td class="left"><span class="eng"><strong>Not only</strong> did he lie, but he also denied it.</span></td></tr>
+  <tr><td><span class="eng">Only then / Only when …</span></td><td class="left"><span class="eng"><strong>Only then</strong> did I realize my mistake.</span></td></tr>
+</table></div>
+</div>
+
+<div class="formula-box pattern">
+<strong>場所・方向の副詞句の倒置（主語が代名詞でない場合）</strong><br>
+<span class="eng">Here <strong>comes the bus</strong>.</span>（バスが来た）<br>
+<span class="eng">There <strong>goes our chance</strong>.</span>（チャンスが逃げた）<br>
+<span class="note">主語が代名詞の場合は倒置しない：<span class="eng">Here <strong>it comes</strong>.</span>（○）　<span class="red">✗</span> <span class="eng">Here comes it.</span></span>
+</div>
+</div><!-- /s8-2 -->
+
+<div class="section" id="s8-3">
+<h3>8.3 省略</h3>
+
+<div class="formula-box">
+<strong>接続詞節内の「主語＋be動詞」省略</strong><br>
+接続詞（when / while / if / though / unless / as など）の後ろで、主語が主節と同じ場合、「主語 + be動詞」を省略できる。<br><br>
+<span class="eng">While (he was) walking, he listened to music.</span><br>
+<span class="eng">If (it is) possible, please come early.</span><br>
+<span class="eng">Though (she was) tired, she continued working.</span>
+</div>
+
+<div class="formula-box pattern">
+<strong>代動詞 do / does / did による省略</strong><br>
+前述の述語動詞（句）を繰り返す代わりに do（does/did）を使う。<br>
+<span class="eng">She speaks English better than he <strong>does</strong>.</span>（does ＝ speaks English）<br>
+<span class="eng">I finished my homework. So <strong>did</strong> Tom.</span>（Tom も終わらせた）<br>
+<span class="eng">I didn't expect that. Neither <strong>did</strong> she.</span>（彼女も予期しなかった）
+</div>
+</div><!-- /s8-3 -->
+
+<div class="section" id="s8-4">
+<h3>8.4 否定表現</h3>
+
+<div class="formula-box theorem">
+<strong>部分否定 vs 全体否定</strong>
+<div class="table-wrap"><table>
+  <tr><th>区分</th><th>表現</th><th>例文・意味</th></tr>
+  <tr><td rowspan="3"><strong>部分否定</strong><br>（すべてが〜ではない）</td><td><span class="eng">not always</span></td><td class="left"><span class="eng">Rich people are not always happy.</span>（金持ちが必ずしも幸せとは限らない）</td></tr>
+  <tr><td><span class="eng">not necessarily</span></td><td class="left"><span class="eng">This is not necessarily true.</span>（必ずしも正しいとは限らない）</td></tr>
+  <tr><td><span class="eng">not both / not all / not every</span></td><td class="left"><span class="eng">Not all students passed.</span>（すべての学生が合格したわけではない）</td></tr>
+  <tr><td rowspan="2"><strong>全体否定</strong><br>（まったく〜ない）</td><td><span class="eng">none / no one / nobody</span></td><td class="left"><span class="eng">None of them knew the answer.</span></td></tr>
+  <tr><td><span class="eng">neither / nor</span></td><td class="left"><span class="eng">Neither of them was correct.</span></td></tr>
+</table></div>
+</div>
+
+<div class="formula-box pattern">
+<strong>二重否定・準否定語</strong><br>
+<strong>二重否定（強い肯定）：</strong><span class="eng">There is no rule without exceptions.</span>（例外のない規則はない ＝ 必ず例外はある）<br><br>
+<strong>準否定語（ほとんど否定）：</strong><br>
+<span class="eng">hardly / scarcely（ほとんど〜ない）：</span><span class="eng">I could hardly hear him.</span><br>
+<span class="eng">rarely / seldom（めったに〜ない）：</span><span class="eng">She seldom goes out.</span><br>
+<span class="eng">little / few（ほとんど〜ない）：</span><span class="eng">He had little interest in sports.</span>
+</div>
+
+<div class="exam-card">
+<div class="exam-hd"><span>入試頻出問題</span><span class="etag tag-spc">特殊構文</span></div>
+<div class="exam-body">
+次の文の意味を日本語で述べ、倒置・強調・否定のいずれかを特定せよ。<br>
+(1) <span class="eng">It was not until she left that I realized how much I loved her.</span><br>
+(2) <span class="eng">Not a word did he say throughout the meeting.</span><br>
+(3) <span class="eng">I don't always agree with him.</span>
+<div class="answer-block">
+(1) 「彼女が去って初めて、私は彼女をどれほど愛していたかに気づいた。」―― <strong>強調構文</strong>（not until〜を強調）<br>
+(2) 「彼は会議中ひと言も言わなかった。」―― <strong>否定語（Not a word）による倒置</strong><br>
+(3) 「私は必ずしも彼に同意するわけではない。」―― <strong>部分否定</strong>（not always）
+</div>
+</div>
+</div>
+
+<div class="exercise-block">
+<strong>練習 8.1</strong>　強調構文を使って書き換えよ。<br>
+(1) She lost her key in the garden last Sunday.（"in the garden"を強調）<br>
+(2) Ken told me the truth.（"Ken"を強調）
+<div class="answer-block">
+(1) <span class="eng">It was in the garden that she lost her key last Sunday.</span><br>
+(2) <span class="eng">It was Ken who[that] told me the truth.</span>
+</div>
+</div>
+</div><!-- /s8-4 -->
+</div><!-- /ch8 -->
+
+<!-- ============================================================
+     付録　不規則動詞・重要構文一覧
+============================================================ -->
+
+<div class="chapter" id="ch0">
+<div class="chapter-header">
+  <div class="ch-num">APPENDIX</div>
+  <h2>付録：不規則動詞・重要構文一覧</h2>
+  <p>高校英語で必須の主要不規則動詞と、入試頻出構文を一覧でまとめる。</p>
+</div>
+
+<div class="section">
+<h3>A.1 主要不規則動詞一覧</h3>
+
+<div class="table-wrap"><table>
+  <tr><th>原形</th><th>過去形</th><th>過去分詞</th><th>意味</th><th>原形</th><th>過去形</th><th>過去分詞</th><th>意味</th></tr>
+  <tr><td>be</td><td>was/were</td><td>been</td><td>〜だ・いる</td><td>go</td><td>went</td><td>gone</td><td>行く</td></tr>
+  <tr><td>become</td><td>became</td><td>become</td><td>〜になる</td><td>grow</td><td>grew</td><td>grown</td><td>成長する</td></tr>
+  <tr><td>begin</td><td>began</td><td>begun</td><td>始まる</td><td>have</td><td>had</td><td>had</td><td>持つ</td></tr>
+  <tr><td>break</td><td>broke</td><td>broken</td><td>壊す</td><td>hear</td><td>heard</td><td>heard</td><td>聞く</td></tr>
+  <tr><td>bring</td><td>brought</td><td>brought</td><td>持ってくる</td><td>hold</td><td>held</td><td>held</td><td>持つ・開催する</td></tr>
+  <tr><td>build</td><td>built</td><td>built</td><td>建てる</td><td>keep</td><td>kept</td><td>kept</td><td>保つ</td></tr>
+  <tr><td>buy</td><td>bought</td><td>bought</td><td>買う</td><td>know</td><td>knew</td><td>known</td><td>知る</td></tr>
+  <tr><td>catch</td><td>caught</td><td>caught</td><td>捕まえる</td><td>lead</td><td>led</td><td>led</td><td>率いる</td></tr>
+  <tr><td>choose</td><td>chose</td><td>chosen</td><td>選ぶ</td><td>leave</td><td>left</td><td>left</td><td>去る・残す</td></tr>
+  <tr><td>come</td><td>came</td><td>come</td><td>来る</td><td>lend</td><td>lent</td><td>lent</td><td>貸す</td></tr>
+  <tr><td>cut</td><td>cut</td><td>cut</td><td>切る</td><td>lie</td><td>lay</td><td>lain</td><td>横になる</td></tr>
+  <tr><td>do</td><td>did</td><td>done</td><td>する</td><td>lose</td><td>lost</td><td>lost</td><td>失う</td></tr>
+  <tr><td>draw</td><td>drew</td><td>drawn</td><td>描く・引く</td><td>make</td><td>made</td><td>made</td><td>作る</td></tr>
+  <tr><td>drink</td><td>drank</td><td>drunk</td><td>飲む</td><td>mean</td><td>meant</td><td>meant</td><td>意味する</td></tr>
+  <tr><td>drive</td><td>drove</td><td>driven</td><td>運転する</td><td>meet</td><td>met</td><td>met</td><td>会う</td></tr>
+  <tr><td>eat</td><td>ate</td><td>eaten</td><td>食べる</td><td>put</td><td>put</td><td>put</td><td>置く</td></tr>
+  <tr><td>fall</td><td>fell</td><td>fallen</td><td>落ちる</td><td>read</td><td>read</td><td>read</td><td>読む</td></tr>
+  <tr><td>feel</td><td>felt</td><td>felt</td><td>感じる</td><td>ride</td><td>rode</td><td>ridden</td><td>乗る</td></tr>
+  <tr><td>fight</td><td>fought</td><td>fought</td><td>戦う</td><td>rise</td><td>rose</td><td>risen</td><td>上がる</td></tr>
+  <tr><td>find</td><td>found</td><td>found</td><td>見つける</td><td>run</td><td>ran</td><td>run</td><td>走る</td></tr>
+  <tr><td>fly</td><td>flew</td><td>flown</td><td>飛ぶ</td><td>say</td><td>said</td><td>said</td><td>言う</td></tr>
+  <tr><td>forget</td><td>forgot</td><td>forgotten</td><td>忘れる</td><td>see</td><td>saw</td><td>seen</td><td>見る</td></tr>
+  <tr><td>forgive</td><td>forgave</td><td>forgiven</td><td>許す</td><td>sell</td><td>sold</td><td>sold</td><td>売る</td></tr>
+  <tr><td>freeze</td><td>froze</td><td>frozen</td><td>凍る</td><td>send</td><td>sent</td><td>sent</td><td>送る</td></tr>
+  <tr><td>get</td><td>got</td><td>got/gotten</td><td>得る</td><td>set</td><td>set</td><td>set</td><td>置く・沈む</td></tr>
+  <tr><td>give</td><td>gave</td><td>given</td><td>与える</td><td>show</td><td>showed</td><td>shown</td><td>見せる</td></tr>
+  <tr><td>lay</td><td>laid</td><td>laid</td><td>〜を横たえる</td><td>sing</td><td>sang</td><td>sung</td><td>歌う</td></tr>
+  <tr><td>sit</td><td>sat</td><td>sat</td><td>座る</td><td>speak</td><td>spoke</td><td>spoken</td><td>話す</td></tr>
+  <tr><td>sleep</td><td>slept</td><td>slept</td><td>眠る</td><td>spend</td><td>spent</td><td>spent</td><td>過ごす・使う</td></tr>
+  <tr><td>stand</td><td>stood</td><td>stood</td><td>立つ</td><td>steal</td><td>stole</td><td>stolen</td><td>盗む</td></tr>
+  <tr><td>swim</td><td>swam</td><td>swum</td><td>泳ぐ</td><td>take</td><td>took</td><td>taken</td><td>取る</td></tr>
+  <tr><td>teach</td><td>taught</td><td>taught</td><td>教える</td><td>tell</td><td>told</td><td>told</td><td>話す・告げる</td></tr>
+  <tr><td>think</td><td>thought</td><td>thought</td><td>考える</td><td>throw</td><td>threw</td><td>thrown</td><td>投げる</td></tr>
+  <tr><td>understand</td><td>understood</td><td>understood</td><td>理解する</td><td>wear</td><td>wore</td><td>worn</td><td>着る</td></tr>
+  <tr><td>win</td><td>won</td><td>won</td><td>勝つ</td><td>write</td><td>wrote</td><td>written</td><td>書く</td></tr>
+</table></div>
+</div><!-- /s -->
+
+<div class="section">
+<h3>A.2 入試頻出構文50選（抜粋）</h3>
+
+<div class="sum-grid">
+  <div class="sum-card">
+    <h4>原因・理由</h4>
+    <p><span class="eng">thanks to ～</span>（〜のおかげで）<br>
+    <span class="eng">due to ～</span>（〜が原因で）<br>
+    <span class="eng">now that ～</span>（〜である今は）<br>
+    <span class="eng">seeing that ～</span>（〜であることから考えると）</p>
+  </div>
+  <div class="sum-card">
+    <h4>譲歩・対比</h4>
+    <p><span class="eng">even though ～</span>（〜であるのに）<br>
+    <span class="eng">in spite of ～</span>（〜にもかかわらず）<br>
+    <span class="eng">while ～</span>（〜である一方）<br>
+    <span class="eng">whereas ～</span>（〜であるのに対して）</p>
+  </div>
+  <div class="sum-card">
+    <h4>時</h4>
+    <p><span class="eng">by the time ～</span>（〜するころまでには）<br>
+    <span class="eng">no sooner … than</span>（〜するとすぐに）<br>
+    <span class="eng">once ～</span>（ひとたび〜すると）<br>
+    <span class="eng">as soon as ～</span>（〜するとすぐに）</p>
+  </div>
+  <div class="sum-card">
+    <h4>条件</h4>
+    <p><span class="eng">as long as ～</span>（〜する限り）<br>
+    <span class="eng">provided (that) ～</span>（〜という条件で）<br>
+    <span class="eng">unless ～</span>（〜でない限り）<br>
+    <span class="eng">in case ～</span>（〜に備えて）</p>
+  </div>
+  <div class="sum-card">
+    <h4>程度・様態</h4>
+    <p><span class="eng">so … that ～</span>（とても…なので〜）<br>
+    <span class="eng">such … that ～</span>（そのような…なので〜）<br>
+    <span class="eng">too … to ～</span>（〜するには…すぎる）<br>
+    <span class="eng">… enough to ～</span>（〜するのに十分…）</p>
+  </div>
+  <div class="sum-card">
+    <h4>目的</h4>
+    <p><span class="eng">so that S can/may ～</span>（〜できるように）<br>
+    <span class="eng">in order to ～</span>（〜するために）<br>
+    <span class="eng">for fear (that) ～</span>（〜を恐れて）<br>
+    <span class="eng">lest S (should) ～</span>（〜しないように）</p>
+  </div>
+  <div class="sum-card">
+    <h4>V + 人 + to do</h4>
+    <p><span class="eng">tell / ask / want / allow<br>
+    advise / expect / encourage<br>
+    enable / persuade / force<br>
+    warn / remind + O + to do</span></p>
+  </div>
+  <div class="sum-card">
+    <h4>知覚・使役動詞</h4>
+    <p><span class="eng">see / hear / feel + O + do / -ing</span><br>
+    <span class="eng">have / make + O + do</span><br>
+    <span class="eng">let + O + do</span><br>
+    <span class="eng">get + O + to do</span></p>
+  </div>
+</div>
+</div><!-- /s -->
+</div><!-- /ch0 -->
+
+</div><!-- /main-content -->
+
+<a href="#top" class="back-to-top no-print" title="トップへ">▲</a>
+
+<!-- Grammar Guide Panel -->
+
+<button id="sym-guide-btn" class="no-print" title="英文法クイックガイド">文法</button>
+
+<div id="sym-guide-panel" class="no-print">
+  <div class="sg-hd">
+    📖 英文法クイックガイド
+    <button onclick="document.getElementById('sym-guide-panel').classList.remove('open')">✕</button>
+  </div>
+  <div class="sg-body">
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 完了形のキーワード</div>
+      <div class="sg-row"><span class="sg-sym">just / already</span><span class="sg-mean">完了（〜したところ）</span></div>
+      <div class="sg-row"><span class="sg-sym">yet</span><span class="sg-mean">完了疑問・否定</span></div>
+      <div class="sg-row"><span class="sg-sym">ever / never</span><span class="sg-mean">経験（したことがある/ない）</span></div>
+      <div class="sg-row"><span class="sg-sym">for / since</span><span class="sg-mean">継続（〜間 / 〜以来）</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 推量の強さ（現在）</div>
+      <div class="sg-row"><span class="sg-sym">must</span><span class="sg-mean">〜にちがいない（約90%）</span></div>
+      <div class="sg-row"><span class="sg-sym">should</span><span class="sg-mean">〜のはずだ（約75%）</span></div>
+      <div class="sg-row"><span class="sg-sym">may</span><span class="sg-mean">〜かもしれない（約50%）</span></div>
+      <div class="sg-row"><span class="sg-sym">might</span><span class="sg-mean">〜かもしれない（約30%）</span></div>
+      <div class="sg-row"><span class="sg-sym">can't</span><span class="sg-mean">〜のはずがない（強い否定）</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 仮定法の形</div>
+      <div class="sg-row"><span class="sg-sym">If + 過去形</span><span class="sg-mean">仮定法過去（現在の反実）</span></div>
+      <div class="sg-row"><span class="sg-sym">If + had p.p.</span><span class="sg-mean">仮定法過去完了（過去の反実）</span></div>
+      <div class="sg-row"><span class="sg-sym">I wish + 過去形</span><span class="sg-mean">現在への願望</span></div>
+      <div class="sg-row"><span class="sg-sym">I wish + had p.p.</span><span class="sg-mean">過去への後悔</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 関係詞の選択</div>
+      <div class="sg-row"><span class="sg-sym">who / whom</span><span class="sg-mean">人・主格 / 目的格</span></div>
+      <div class="sg-row"><span class="sg-sym">which</span><span class="sg-mean">物・動物</span></div>
+      <div class="sg-row"><span class="sg-sym">whose</span><span class="sg-mean">所有格（人・物）</span></div>
+      <div class="sg-row"><span class="sg-sym">what</span><span class="sg-mean">先行詞含む「〜こと・もの」</span></div>
+      <div class="sg-row"><span class="sg-sym">where / when</span><span class="sg-mean">場所 / 時の関係副詞</span></div>
+    </div>
+    <div class="sg-sec">
+      <div class="sg-sec-title">■ 比較の基本</div>
+      <div class="sg-row"><span class="sg-sym">as ... as</span><span class="sg-mean">同等比較</span></div>
+      <div class="sg-row"><span class="sg-sym">no more than</span><span class="sg-mean">わずか〜しかない（only）</span></div>
+      <div class="sg-row"><span class="sg-sym">no less than</span><span class="sg-mean">〜もある（as many as）</span></div>
+      <div class="sg-row"><span class="sg-sym">the 比較級...the 比較級</span><span class="sg-mean">〜すればするほど</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== 目次トグル（上からプルダウン）==========
+(function() {
+  var btn = document.getElementById('nav-toggle-btn');
+  var nav = document.querySelector('nav');
+  var overlay = document.getElementById('nav-overlay');
+  if (!btn || !nav) return;
+  function openNav() {
+    nav.classList.add('nav-open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.classList.add('active');
+  }
+  function closeNav() {
+    nav.classList.remove('nav-open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.remove('active');
+  }
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (nav.classList.contains('nav-open')) closeNav();
+    else openNav();
+  });
+  if (overlay) overlay.addEventListener('click', closeNav);
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { setTimeout(closeNav, 200); });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeNav();
+  });
+})();
+
+// ========== 文法ガイドパネル ==========
+(function() {
+  var btn = document.getElementById('sym-guide-btn');
+  var panel = document.getElementById('sym-guide-panel');
+  if (!btn || !panel) return;
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    if (!panel.contains(e.target) && e.target !== btn) {
+      panel.classList.remove('open');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
