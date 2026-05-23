@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治・経済 完全攻略ノート</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c10;
+  --bg2: #0f1218;
+  --bg3: #161b24;
+  --bg4: #1d2433;
+  --red: #e8443a;
+  --red2: #ff6b5e;
+  --gold: #f0a832;
+  --blue: #4a9eff;
+  --green: #3ecf8e;
+  --text: #e8ecf0;
+  --text2: #9ba8bb;
+  --text3: #5e6c80;
+  --border: #252d3d;
+  --border2: #2e3a50;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(10,12,16,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:900;letter-spacing:.08em;color:var(--text)}
+.logo span{color:var(--red)}
+.score-badge{background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:6px}
+
+/* NAV TABS */
+.nav-tabs{background:var(--bg2);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.nav-tabs::-webkit-scrollbar{display:none}
+.tabs-inner{max-width:1200px;margin:0 auto;display:flex;padding:0 24px;gap:2px}
+.tab-btn{flex-shrink:0;padding:13px 18px;background:none;border:none;color:var(--text2);font-family:'Noto Sans JP',sans-serif;font-size:.83rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--red2);border-bottom-color:var(--red2)}
+
+/* LAYOUT */
+.main{max-width:1200px;margin:0 auto;padding:32px 24px}
+.section-panel{display:none}
+.section-panel.active{display:block}
+
+/* HERO SECTION */
+.hero{background:linear-gradient(135deg,var(--bg3) 0%,var(--bg4) 100%);border:1px solid var(--border2);border-radius:16px;padding:36px 40px;margin-bottom:32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(232,68,58,.12) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-block;background:rgba(232,68,58,.15);color:var(--red2);border:1px solid rgba(232,68,58,.3);border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:700;letter-spacing:.1em;margin-bottom:12px}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;line-height:1.3;margin-bottom:10px}
+.hero p{color:var(--text2);font-size:.9rem;max-width:600px}
+.hero-stats{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:3px}
+.stat-num{font-size:1.5rem;font-weight:700;color:var(--gold)}
+.stat-label{font-size:.72rem;color:var(--text3);letter-spacing:.05em}
+
+/* CONTENT BLOCKS */
+.content-grid{display:grid;gap:20px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
+.card-head:hover{background:var(--bg3)}
+.card-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.card-title{font-weight:700;font-size:.95rem;flex:1}
+.card-badge{font-size:.68rem;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:.05em}
+.badge-basic{background:rgba(74,158,255,.15);color:var(--blue)}
+.badge-mid{background:rgba(240,168,50,.15);color:var(--gold)}
+.badge-hard{background:rgba(232,68,58,.15);color:var(--red2)}
+.badge-all{background:rgba(62,207,142,.15);color:var(--green)}
+.chevron{color:var(--text3);transition:transform .25s;font-size:.8rem}
+.card-head.open .chevron{transform:rotate(180deg)}
+.card-body{padding:20px;display:none}
+.card-body.open{display:block}
+
+/* KNOWLEDGE BLOCKS */
+.kb{margin-bottom:18px}
+.kb:last-child{margin-bottom:0}
+.kb-label{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.kb-label .dot{width:7px;height:7px;border-radius:50%}
+.dot-basic{background:var(--blue)}
+.dot-mid{background:var(--gold)}
+.dot-hard{background:var(--red2)}
+
+.def-box{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:14px 16px;margin-bottom:10px}
+.def-term{font-weight:700;color:var(--gold);font-size:.92rem;margin-bottom:4px}
+.def-body{color:var(--text2);font-size:.87rem;line-height:1.7}
+.def-body em{color:var(--red2);font-style:normal;font-weight:700}
+
+.memo-box{background:rgba(240,168,50,.06);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:.87rem;color:var(--text2)}
+.memo-box strong{color:var(--gold)}
+
+.point-box{background:rgba(232,68,58,.07);border:1px solid rgba(232,68,58,.2);border-radius:8px;padding:14px 16px;margin:10px 0;font-size:.87rem}
+.point-box .point-title{color:var(--red2);font-weight:700;font-size:.82rem;letter-spacing:.06em;margin-bottom:6px}
+
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{background:var(--bg4);color:var(--text2);font-weight:600;padding:9px 14px;text-align:left;border:1px solid var(--border2)}
+td{padding:9px 14px;border:1px solid var(--border);color:var(--text2)}
+tr:hover td{background:var(--bg3)}
+td strong{color:var(--text)}
+
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.flow-item{background:var(--bg4);border:1px solid var(--border2);border-radius:6px;padding:6px 12px;font-size:.82rem;color:var(--text)}
+.flow-arrow{color:var(--text3);font-size:.9rem}
+
+/* QUIZ SECTION */
+.quiz-container{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:gap:12px}
+.quiz-title{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:700}
+.quiz-progress{font-size:.8rem;color:var(--text3)}
+.progress-bar{height:4px;background:var(--bg4);border-radius:2px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:2px;transition:width .4s ease}
+
+.q-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;display:none}
+.q-block.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.q-num{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--text3);margin-bottom:8px}
+.q-text{font-size:.95rem;font-weight:500;margin-bottom:16px;line-height:1.7}
+.q-text em{color:var(--gold);font-style:normal;font-weight:700}
+.options{display:grid;gap:8px}
+.opt-btn{background:var(--bg4);border:1px solid var(--border2);border-radius:8px;padding:11px 16px;text-align:left;color:var(--text2);font-family:'Noto Sans JP',sans-serif;font-size:.88rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px}
+.opt-btn:hover:not(:disabled){background:var(--bg2);border-color:var(--blue);color:var(--text)}
+.opt-btn.correct{background:rgba(62,207,142,.1);border-color:var(--green);color:var(--green)}
+.opt-btn.wrong{background:rgba(232,68,58,.1);border-color:var(--red2);color:var(--red2)}
+.opt-label{width:22px;height:22px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;color:var(--text3)}
+.opt-btn.correct .opt-label{background:var(--green);color:#000}
+.opt-btn.wrong .opt-label{background:var(--red2);color:#fff}
+
+.explanation{display:none;margin-top:14px;background:rgba(74,158,255,.07);border:1px solid rgba(74,158,255,.2);border-radius:8px;padding:14px 16px;font-size:.87rem;color:var(--text2)}
+.explanation.show{display:block;animation:fadeIn .3s ease}
+.explanation strong{color:var(--blue)}
+
+.q-nav{display:flex;gap:10px;margin-top:16px}
+.nav-btn{padding:10px 20px;border-radius:8px;border:1px solid var(--border2);background:var(--bg4);color:var(--text2);font-family:'Noto Sans JP',sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s}
+.nav-btn:hover{background:var(--bg3);color:var(--text)}
+.nav-btn.primary{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+.nav-btn.primary:hover{background:var(--red2)}
+.nav-btn:disabled{opacity:.35;cursor:default}
+
+.result-panel{display:none;text-align:center;padding:32px;animation:fadeIn .5s ease}
+.result-panel.show{display:block}
+.result-score{font-size:3.5rem;font-weight:900;font-family:'Noto Serif JP',serif;margin:12px 0}
+.result-label{font-size:.9rem;color:var(--text2);margin-bottom:20px}
+.grade-badge{display:inline-block;padding:6px 20px;border-radius:20px;font-weight:700;font-size:1rem;margin-bottom:16px}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border2)}
+.tl-item{position:relative;margin-bottom:16px;padding-left:16px}
+.tl-item::before{content:'';position:absolute;left:-20px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--red);border:2px solid var(--bg2)}
+.tl-year{font-size:.72rem;font-weight:700;color:var(--red2);letter-spacing:.08em;margin-bottom:2px}
+.tl-text{font-size:.87rem;color:var(--text2)}
+.tl-text strong{color:var(--text)}
+
+/* FORMULA */
+.formula{background:var(--bg4);border:1px solid var(--border2);border-radius:8px;padding:14px;margin:10px 0;font-family:'DM Mono',monospace;font-size:.88rem;color:var(--green);text-align:center}
+
+/* HIGHLIGHT LIST */
+ul.hl-list{list-style:none;display:grid;gap:6px;margin:10px 0}
+ul.hl-list li{padding:8px 12px;background:var(--bg4);border-radius:6px;font-size:.87rem;color:var(--text2);display:flex;align-items:flex-start;gap:8px}
+ul.hl-list li::before{content:'▸';color:var(--red2);font-size:.8rem;flex-shrink:0;margin-top:2px}
+
+/* SECTION TITLE */
+.sec-title{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.sec-title-line{flex:1;height:1px;background:var(--border)}
+.sec-sub{color:var(--text2);font-size:.87rem;margin-bottom:24px}
+
+/* RESPONSIVE */
+@media(max-width:640px){.hero{padding:24px 20px}.main{padding:20px 14px}}
+
+/* SCROLL */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">政治<span>・</span>経済 完全攻略</div>
+    <div class="score-badge" id="scoreBadge">🏆 演習スコア: <span id="totalScore">-</span></div>
+  </div>
+</header>
+
+<nav class="nav-tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="showTab('overview')">📌 全体像</button>
+    <button class="tab-btn" onclick="showTab('kenpou')">🏛️ 憲法・人権</button>
+    <button class="tab-btn" onclick="showTab('seiji')">⚖️ 統治機構</button>
+    <button class="tab-btn" onclick="showTab('senkyo')">🗳️ 選挙・政党</button>
+    <button class="tab-btn" onclick="showTab('keizai')">📈 市場経済</button>
+    <button class="tab-btn" onclick="showTab('zaisei')">💴 財政・金融</button>
+    <button class="tab-btn" onclick="showTab('rodo')">👷 労働・社会保障</button>
+    <button class="tab-btn" onclick="showTab('kokusai')">🌏 国際政治・経済</button>
+    <button class="tab-btn" onclick="showTab('quiz')">✏️ 入試演習</button>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ===== OVERVIEW ===== -->
+<div id="tab-overview" class="section-panel active">
+  <div class="hero">
+    <div class="hero-tag">COMPLETE STUDY GUIDE</div>
+    <h1>政治・経済<br>入試完全攻略ノート</h1>
+    <p>前提知識から入試最頻出の難問まで、1ファイルで完全網羅。日本国憲法・統治機構・経済理論・国際関係のすべてを体系的に学習。</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">8</span><span class="stat-label">学習単元</span></div>
+      <div class="stat"><span class="stat-num">60+</span><span class="stat-label">入試演習問題</span></div>
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">重要用語</span></div>
+      <div class="stat"><span class="stat-num">3段階</span><span class="stat-label">難易度対応</span></div>
+    </div>
+  </div>
+
+  <div class="sec-title">学習ロードマップ <span class="sec-title-line"></span></div>
+  <p class="sec-sub">各タブを順番に進めることで、基礎から入試レベルまで系統的に習得できます。</p>
+
+  <div class="content-grid">
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">📘</div>
+        <div class="card-title">難易度の見方・使い方</div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div style="display:grid;gap:10px">
+          <div class="def-box">
+            <div class="def-term" style="color:var(--blue)">🔵 基礎知識（前提・定義）</div>
+            <div class="def-body">教科書の基本事項。確実に覚えれば共通テストで7割取れる土台。</div>
+          </div>
+          <div class="def-box">
+            <div class="def-term" style="color:var(--gold)">🟡 暗記知識（数字・条文・制度）</div>
+            <div class="def-body">具体的な数字・年号・条文番号など。正誤問題で問われる頻出事項。</div>
+          </div>
+          <div class="def-box">
+            <div class="def-term" style="color:var(--red2)">🔴 入試レベル（論述・応用）</div>
+            <div class="def-body">関連付けて理解する深い知識。難関私大・国公立二次でも対応可能。</div>
+          </div>
+        </div>
+        <div class="memo-box" style="margin-top:14px">
+          <strong>📌 学習の順序：</strong>全体像 → 憲法・人権 → 統治機構 → 選挙 → 市場経済 → 財政・金融 → 労働・社会保障 → 国際 → 入試演習 の順が効果的です。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">📊</div>
+        <div class="card-title">政治・経済の全体構造</div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="table-wrap">
+          <table>
+            <tr><th>分野</th><th>主要テーマ</th><th>共通テスト比重</th></tr>
+            <tr><td><strong>政治</strong></td><td>憲法・人権・統治・選挙・地方自治・国際政治</td><td>約50%</td></tr>
+            <tr><td><strong>経済</strong></td><td>市場・GDP・財政・金融・労働・社会保障・国際経済</td><td>約50%</td></tr>
+          </table>
+        </div>
+        <div class="point-box" style="margin-top:14px">
+          <div class="point-title">🔴 入試最頻出テーマ TOP5</div>
+          <ul class="hl-list">
+            <li>日本国憲法の条文・基本原理（三大原則、人権の分類）</li>
+            <li>国会・内閣・裁判所の権限と三権分立の仕組み</li>
+            <li>GDP・国民所得の概念と計算（三面等価）</li>
+            <li>財政政策・金融政策の違いと効果（ポリシーミックス）</li>
+            <li>国際連合の機構・PKO・安全保障理事会の仕組み</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 憲法・人権 ===== -->
+<div id="tab-kenpou" class="section-panel">
+  <div class="sec-title">憲法・基本的人権 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">日本国憲法の三大原則から基本的人権の体系・判例まで徹底整理。</p>
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">🔵</div>
+        <div class="card-title">日本国憲法の成立と三大原則</div>
+        <span class="card-badge badge-basic">基礎</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="kb">
+          <div class="kb-label"><span class="dot dot-basic"></span>基礎知識</div>
+          <div class="def-box"><div class="def-term">日本国憲法</div><div class="def-body">1946年11月3日<em>公布</em>、1947年5月3日<em>施行</em>。GHQ草案を基に制定。大日本帝国憲法（明治憲法）から転換。</div></div>
+          <div class="def-box"><div class="def-term">三大原則</div><div class="def-body">①<em>国民主権</em>（主権は国民にある）②<em>基本的人権の尊重</em>（侵すことのできない永久の権利）③<em>平和主義</em>（戦争の放棄・戦力不保持）</div></div>
+        </div>
+        <div class="kb">
+          <div class="kb-label"><span class="dot dot-mid"></span>暗記知識（重要条文）</div>
+          <div class="table-wrap"><table>
+            <tr><th>条文</th><th>内容</th></tr>
+            <tr><td><strong>第1条</strong></td><td>天皇の地位＝日本国の象徴・日本国民統合の象徴、主権は国民に存する</td></tr>
+            <tr><td><strong>第9条</strong></td><td>戦争の放棄、戦力不保持、交戦権否認（第2項で陸海空軍の不保持）</td></tr>
+            <tr><td><strong>第11条</strong></td><td>基本的人権は「侵すことのできない永久の権利」として現在及び将来の国民に与えられる</td></tr>
+            <tr><td><strong>第13条</strong></td><td>個人の尊重・幸福追求権（新しい人権の根拠条文）</td></tr>
+            <tr><td><strong>第25条</strong></td><td>生存権「健康で文化的な最低限度の生活を営む権利」</td></tr>
+            <tr><td><strong>第96条</strong></td><td>憲法改正手続き：各議院の<em>総議員の3分の2以上</em>の賛成 → 国民投票で<em>過半数</em>の賛成</td></tr>
+            <tr><td><strong>第98条</strong></td><td>憲法の最高法規性</td></tr>
+          </table></div>
+        </div>
+        <div class="kb">
+          <div class="kb-label"><span class="dot dot-hard"></span>入試レベル</div>
+          <div class="point-box">
+            <div class="point-title">🔴 改正手続きのポイント（正誤問題頻出）</div>
+            <ul class="hl-list">
+              <li>「各議院の<em>出席議員</em>の2/3」は<strong>誤り</strong>。正しくは「<em>総議員</em>の2/3以上」</li>
+              <li>国民投票は18歳以上（2016年〜）。投票総数の過半数</li>
+              <li>天皇による公布・国会による発議は必要。内閣は関与しない</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">⚖️</div>
+        <div class="card-title">基本的人権の分類と体系</div>
+        <span class="card-badge badge-mid">重要</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="table-wrap"><table>
+          <tr><th>分類</th><th>内容</th><th>主な条文</th></tr>
+          <tr><td><strong>包括的基本権</strong></td><td>個人の尊重・幸福追求権・法の下の平等</td><td>13・14条</td></tr>
+          <tr><td><strong>自由権</strong></td><td>身体の自由・精神の自由・経済活動の自由</td><td>18〜29条</td></tr>
+          <tr><td><strong>社会権</strong></td><td>生存権・教育を受ける権利・労働権・労働基本権</td><td>25〜28条</td></tr>
+          <tr><td><strong>参政権</strong></td><td>選挙権・被選挙権・国民投票権</td><td>15・44・79条</td></tr>
+          <tr><td><strong>請求権</strong></td><td>請願権・裁判を受ける権利・国家賠償請求権</td><td>16〜17・32・40条</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>📌 自由権の3分類：</strong>①精神的自由（思想・良心の自由19条、信教の自由20条、表現の自由21条）②身体の自由（31条〜）③経済的自由（居住移転の自由22条、職業選択の自由22条、財産権29条）</div>
+        <div class="point-box">
+          <div class="point-title">🔴 「新しい人権」（条文なし・13条が根拠）</div>
+          <ul class="hl-list">
+            <li><strong>プライバシーの権利</strong>：「宴のあと」事件（1964年）で確立</li>
+            <li><strong>知る権利</strong>：情報公開法（1999年成立・2001年施行）</li>
+            <li><strong>環境権</strong>：大阪空港公害訴訟などで主張</li>
+            <li><strong>自己決定権</strong>：インフォームドコンセント（医療）</li>
+          </ul>
+        </div>
+        <div class="point-box">
+          <div class="point-title">🔴 人権の限界（重要判例）</div>
+          <ul class="hl-list">
+            <li><strong>薬事法事件</strong>（1975）：距離制限規定→違憲。経済的自由は目的二分論で判断</li>
+            <li><strong>猿払事件</strong>（1974）：公務員の政治活動→合憲（最高裁）</li>
+            <li><strong>三菱樹脂事件</strong>（1973）：私人間には直接適用されない（間接適用説）</li>
+            <li><strong>朝日訴訟</strong>（1967）：生存権は「プログラム規定説」で具体的権利性否定</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(62,207,142,.15);color:var(--green)">🕊️</div>
+        <div class="card-title">平和主義と安全保障</div>
+        <span class="card-badge badge-hard">入試頻出</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-year">1950年</div><div class="tl-text"><strong>警察予備隊</strong>創設（朝鮮戦争勃発）</div></div>
+          <div class="tl-item"><div class="tl-year">1951年</div><div class="tl-text"><strong>日米安全保障条約</strong>（旧安保）調印</div></div>
+          <div class="tl-item"><div class="tl-year">1954年</div><div class="tl-text"><strong>自衛隊</strong>発足（防衛庁設置）</div></div>
+          <div class="tl-item"><div class="tl-year">1960年</div><div class="tl-text"><strong>新日米安全保障条約</strong>（安保改定・安保闘争）</div></div>
+          <div class="tl-item"><div class="tl-year">1992年</div><div class="tl-text"><strong>PKO協力法</strong>成立・カンボジアに自衛隊派遣</div></div>
+          <div class="tl-item"><div class="tl-year">2015年</div><div class="tl-text"><strong>安全保障関連法</strong>成立・集団的自衛権の限定的行使容認</div></div>
+        </div>
+        <div class="point-box" style="margin-top:14px">
+          <div class="point-title">🔴 集団的自衛権の論点</div>
+          <ul class="hl-list">
+            <li>2014年 閣議決定で「限定的な集団的自衛権」の行使を容認</li>
+            <li>従来の政府解釈：個別的自衛権のみ認め、集団的自衛権は憲法上行使不可</li>
+            <li>批判：9条の解釈変更を閣議決定だけで行うことへの違憲論争</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 統治機構 ===== -->
+<div id="tab-seiji" class="section-panel">
+  <div class="sec-title">統治機構・三権分立 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">国会・内閣・裁判所の権限と相互関係を完全マスター。</p>
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">🏛️</div>
+        <div class="card-title">国会</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">国会の地位</div><div class="def-body">「国権の最高機関」「唯一の立法機関」（憲法41条）。二院制（衆議院・参議院）。</div></div>
+        <div class="table-wrap"><table>
+          <tr><th></th><th>衆議院</th><th>参議院</th></tr>
+          <tr><td><strong>議員数</strong></td><td>465名</td><td>248名</td></tr>
+          <tr><td><strong>任期</strong></td><td><em>4年</em>（解散あり）</td><td><em>6年</em>（3年ごとに半数改選）</td></tr>
+          <tr><td><strong>被選挙権</strong></td><td><em>25歳</em>以上</td><td><em>30歳</em>以上</td></tr>
+          <tr><td><strong>選挙制度</strong></td><td>小選挙区289＋比例代表176</td><td>選挙区148＋比例代表100</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>衆議院の優越（憲法上）：</strong>①法律案：衆院可決→参院否決→衆院2/3以上で再可決 ②予算先議権・議決の優越 ③内閣不信任決議権 ④条約の承認・首相指名の優越（両院協議会→衆院議決が国会の議決）</div>
+        <div class="point-box">
+          <div class="point-title">🔴 国会の種類（正誤問題必須）</div>
+          <ul class="hl-list">
+            <li><strong>常会（通常国会）</strong>：毎年1月召集、会期150日、<em>予算審議</em>が中心</li>
+            <li><strong>臨時会（臨時国会）</strong>：内閣が召集、またはいずれかの議院の総議員の<em>4分の1以上</em>の要求で召集</li>
+            <li><strong>特別会（特別国会）</strong>：衆院解散→総選挙後<em>30日以内</em>に召集、<em>内閣総理大臣の指名</em>が中心</li>
+            <li><strong>参議院の緊急集会</strong>：衆院解散中に緊急事態が生じた場合</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">🏢</div>
+        <div class="card-title">内閣</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">内閣と議院内閣制</div><div class="def-body">内閣は<em>行政権</em>の主体（憲法65条）。内閣は国会の信任に基づいて成立し国会に対して連帯して責任を負う（<em>議院内閣制</em>）。</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>権限・事項</th><th>内容</th></tr>
+          <tr><td><strong>内閣総理大臣</strong></td><td>国会議員の中から国会が指名。文民（civilian）であること必須。閣僚の過半数は国会議員</td></tr>
+          <tr><td><strong>閣議</strong></td><td>全員一致制。内閣の意思決定機関</td></tr>
+          <tr><td><strong>衆院解散</strong></td><td>天皇が行うが、実質的決定権は内閣（69条解散・7条解散）</td></tr>
+          <tr><td><strong>政令制定</strong></td><td>法律の範囲内で政令を制定（73条6号）</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 内閣不信任と解散の流れ</div>
+          <div class="flow">
+            <div class="flow-item">衆院：内閣不信任決議</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">10日以内に</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">①衆院解散 または<br>②内閣総辞職</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(232,68,58,.15);color:var(--red2)">⚖️</div>
+        <div class="card-title">裁判所・違憲審査制</div>
+        <span class="card-badge badge-hard">入試頻出</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">違憲審査制（違憲立法審査権）</div><div class="def-body">全ての裁判所が具体的な事件に際して法律・命令の合憲性を審査できる（<em>付随的違憲審査制</em>）。最高裁判所は「<em>憲法の番人</em>」。</div></div>
+        <div class="memo-box"><strong>最高裁の構成：</strong>長官1名＋裁判官14名＝計15名。長官は内閣が指名し天皇が任命。裁判官は内閣が任命。<em>国民審査</em>（任命後初の衆院総選挙）あり。</div>
+        <div class="point-box">
+          <div class="point-title">🔴 主な違憲判決（必須暗記）</div>
+          <ul class="hl-list">
+            <li><strong>尊属殺重罰規定違憲</strong>（1973）：刑法200条→14条（平等権）違反</li>
+            <li><strong>薬事法距離制限違憲</strong>（1975）：職業選択の自由（22条）違反</li>
+            <li><strong>衆院定数不均衡違憲</strong>（1976・1985）：1票の格差→14条違反（違憲状態）</li>
+            <li><strong>森林法共有林分割規制違憲</strong>（1987）：財産権（29条）違反</li>
+            <li><strong>非嫡出子相続差別違憲</strong>（2013）：14条違反→民法改正</li>
+            <li><strong>女性再婚禁止期間違憲</strong>（2015）：100日超の部分→14条・24条違反</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(62,207,142,.15);color:var(--green)">🏘️</div>
+        <div class="card-title">地方自治</div>
+        <span class="card-badge badge-mid">重要</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="def-box"><div class="def-term">地方自治の本旨（憲法92条）</div><div class="def-body"><em>団体自治</em>（地方団体が国から独立して自治）と<em>住民自治</em>（住民が自ら意思決定）の2原則。「民主主義の学校」（J.ブライス）。</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>直接民主制的制度</th><th>必要署名数</th><th>請求先</th></tr>
+          <tr><td>条例の制定・改廃（イニシアティブ）</td><td>有権者の<em>1/50以上</em></td><td>首長</td></tr>
+          <tr><td>監査請求</td><td>有権者の<em>1/50以上</em></td><td>監査委員</td></tr>
+          <tr><td>議会解散請求（リコール）</td><td>有権者の<em>1/3以上</em></td><td>選挙管理委員会</td></tr>
+          <tr><td>首長・議員解職請求（リコール）</td><td>有権者の<em>1/3以上</em></td><td>選挙管理委員会</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>三位一体改革（2004〜06）：</strong>①国庫補助負担金の削減 ②税財源の移譲 ③地方交付税の見直し → 地方分権推進</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 選挙・政党 ===== -->
+<div id="tab-senkyo" class="section-panel">
+  <div class="sec-title">選挙制度・政党・世論 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">選挙制度の種類と特徴、日本の選挙制度の仕組みを体系的に整理。</p>
+  <div class="content-grid">
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">🗳️</div>
+        <div class="card-title">選挙制度の種類と比較</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="table-wrap"><table>
+          <tr><th>制度</th><th>特徴</th><th>長所</th><th>短所</th></tr>
+          <tr><td><strong>小選挙区制</strong></td><td>1区1人選出</td><td>政局安定・二大政党制</td><td>死票多・少数意見排除</td></tr>
+          <tr><td><strong>大選挙区制</strong></td><td>1区複数選出</td><td>死票少・多党制</td><td>政局不安定・汚職リスク</td></tr>
+          <tr><td><strong>比例代表制</strong></td><td>政党の得票比で議席配分</td><td>民意反映・死票少</td><td>小党乱立・政局不安定</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 ドント式計算（比例代表）</div>
+          <div class="def-body" style="margin-bottom:10px">各政党の得票数を1,2,3…で割り、商の大きい順に議席を配分する方式。</div>
+          <div style="background:var(--bg4);border-radius:8px;padding:14px;font-family:'DM Mono',monospace;font-size:.82rem;color:var(--text2)">
+            例) A党100票、B党60票、C党40票、議席数4の場合<br>
+            A÷1=100 ① | B÷1=60 ② | C÷1=40 ③<br>
+            A÷2=50 ④ | B÷2=30 | C÷2=20<br>
+            → A党2議席、B党1議席、C党1議席
+          </div>
+        </div>
+        <div class="memo-box"><strong>衆院選挙制度（現行）：</strong>小選挙区比例代表<em>並立制</em>。小選挙区289議席＋比例代表176議席（11ブロック）。重複立候補制度あり（比例代表の惜敗率で復活当選）。</div>
+        <div class="memo-box"><strong>参院選挙制度（現行）：</strong>選挙区148議席（3年毎に半数74議席）＋比例代表100議席（3年毎に半数50議席）。比例代表は<em>非拘束名簿式</em>（候補者名でも投票可）。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">📋</div>
+        <div class="card-title">選挙権・選挙の原則・公職選挙法</div>
+        <span class="card-badge badge-mid">重要</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">選挙の四原則</div><div class="def-body"><em>普通選挙</em>（財産・性別等によらず）・<em>平等選挙</em>（1人1票）・<em>直接選挙</em>・<em>秘密選挙</em></div></div>
+        <ul class="hl-list">
+          <li>選挙権：<em>18歳</em>以上（2015年改正・2016年施行）</li>
+          <li>衆院被選挙権：<em>25歳</em>以上、参院被選挙権：<em>30歳</em>以上</li>
+          <li>選挙運動期間：衆院<em>12日間</em>、参院<em>17日間</em>、都道府県知事<em>17日間</em></li>
+          <li>投票率の低下→若者の政治的無関心（アパシー）が問題</li>
+        </ul>
+        <div class="point-box">
+          <div class="point-title">🔴 一票の格差問題</div>
+          <ul class="hl-list">
+            <li>選挙区によって議員1人あたりの有権者数が異なる（=投票価値の不平等）</li>
+            <li>最高裁は繰り返し「違憲状態」「違憲」と判断</li>
+            <li>「アダムズ方式」導入（2020年〜衆院比例代表）で是正</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 市場経済 ===== -->
+<div id="tab-keizai" class="section-panel">
+  <div class="sec-title">市場経済・国民所得 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">需要・供給の理論から国民経済計算まで、経済の核心を完全整理。</p>
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">📊</div>
+        <div class="card-title">需要・供給と市場価格</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">価格の自動調節機能（「神の見えざる手」アダム・スミス）</div><div class="def-body">市場では需要と供給が一致する<em>均衡価格</em>に自動的に調整される。完全競争市場ではこのメカニズムが資源の最適配分を実現する。</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>状況</th><th>価格変動</th><th>理由</th></tr>
+          <tr><td>需要増加（供給一定）</td><td>↑上昇</td><td>超過需要→売り手が値上げ</td></tr>
+          <tr><td>供給増加（需要一定）</td><td>↓下落</td><td>超過供給→売り手が値下げ</td></tr>
+          <tr><td>需要減少（供給一定）</td><td>↓下落</td><td>超過供給→競争で値下げ</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 市場の失敗（重要概念）</div>
+          <ul class="hl-list">
+            <li><strong>外部不経済</strong>：生産・消費が第三者に与えるマイナス影響（公害等）→政府介入の根拠</li>
+            <li><strong>公共財</strong>：非競合性・非排除性（道路・国防等）→市場で供給困難</li>
+            <li><strong>独占・寡占</strong>：競争が機能しない→独占禁止法で規制</li>
+            <li><strong>情報の非対称性</strong>：売り手と買い手の情報格差→逆選択・モラルハザード</li>
+          </ul>
+        </div>
+        <div class="def-box"><div class="def-term">独占禁止法と公正取引委員会</div><div class="def-body">1947年制定。<em>公正取引委員会</em>（準司法的機関）が執行。カルテル・トラスト・コンツェルンを規制。</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">💹</div>
+        <div class="card-title">国民所得・GDP（三面等価）</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="table-wrap"><table>
+          <tr><th>指標</th><th>説明</th></tr>
+          <tr><td><strong>GDP（国内総生産）</strong></td><td>一定期間に国内で生産された財・サービスの付加価値の合計。<em>居住地</em>基準</td></tr>
+          <tr><td><strong>GNP（国民総生産）</strong></td><td>一定期間に国民が生産した付加価値の合計。<em>国籍</em>基準（現在はGNI使用）</td></tr>
+          <tr><td><strong>NI（国民所得）</strong></td><td>GNP－固定資本減耗－間接税＋補助金</td></tr>
+        </table></div>
+        <div class="formula">GDP（生産面）= GDP（支出面）= GDP（分配面）← 三面等価の原則</div>
+        <div class="formula">GDP（支出面）= 民間消費 ＋ 民間投資 ＋ 政府支出 ＋ 純輸出（輸出－輸入）</div>
+        <div class="point-box">
+          <div class="point-title">🔴 名目GDP と 実質GDP</div>
+          <ul class="hl-list">
+            <li><strong>名目GDP</strong>：その年の価格で計算。物価変動を含む</li>
+            <li><strong>実質GDP</strong>：基準年の価格で計算。物価変動を除いた真の経済成長を示す</li>
+            <li><strong>GDPデフレーター</strong> = 名目GDP ÷ 実質GDP × 100</li>
+            <li>経済成長率の国際比較では実質GDPを使う</li>
+          </ul>
+        </div>
+        <div class="table-wrap" style="margin-top:12px"><table>
+          <tr><th>景気</th><th>好況</th><th>後退</th><th>不況</th><th>回復</th></tr>
+          <tr><td><strong>特徴</strong></td><td>生産↑・物価↑・雇用↑</td><td>生産↓・在庫↑</td><td>倒産↑・失業↑</td><td>需要↑・生産回復</td></tr>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(232,68,58,.15);color:var(--red2)">💰</div>
+        <div class="card-title">物価・インフレ・デフレ</div>
+        <span class="card-badge badge-mid">重要</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="table-wrap"><table>
+          <tr><th>種類</th><th>原因</th><th>影響</th></tr>
+          <tr><td><strong>インフレーション</strong></td><td>需要過多・通貨供給過剰</td><td>貨幣価値↓・債務者有利・債権者不利</td></tr>
+          <tr><td><strong>デフレーション</strong></td><td>需要不足・消費減退</td><td>価格↓→企業収益↓→賃金↓→消費↓（デフレスパイラル）</td></tr>
+          <tr><td><strong>スタグフレーション</strong></td><td>供給ショック（石油危機など）</td><td>不況＋物価上昇の同時発生</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>物価指数：</strong>①<em>消費者物価指数（CPI）</em>：総務省、家計が購入する財・サービスの価格 ②<em>企業物価指数（CGPI）</em>：日銀、企業間取引の価格。インフレ目標は日銀が2%を設定（2013〜）。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 財政・金融 ===== -->
+<div id="tab-zaisei" class="section-panel">
+  <div class="sec-title">財政政策・金融政策 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">景気安定化のための政策手段とその効果・限界を理解する。</p>
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">🏦</div>
+        <div class="card-title">財政政策</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">財政の三機能</div><div class="def-body">①<em>資源配分機能</em>（公共財・公共サービスの提供）②<em>所得再分配機能</em>（累進課税・社会保障）③<em>景気安定化機能</em>（財政政策）</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>景気</th><th>財政政策（ケインズ政策）</th></tr>
+          <tr><td><strong>不況時</strong></td><td>公共事業↑・減税（<em>拡張的財政政策</em>）→有効需要↑→景気回復</td></tr>
+          <tr><td><strong>好況時</strong></td><td>公共事業↓・増税（<em>緊縮的財政政策</em>）→有効需要↓→インフレ抑制</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 自動安定化装置（ビルトイン・スタビライザー）</div>
+          <ul class="hl-list">
+            <li><strong>累進課税制度</strong>：好況時→税収↑→消費↓の抑制効果</li>
+            <li><strong>社会保障制度</strong>：不況時→失業給付↑→消費下支え効果</li>
+            <li>政府が意図的に行うのが「フィスカルポリシー」、自動的に機能するのが「ビルトイン・スタビライザー」</li>
+          </ul>
+        </div>
+        <div class="memo-box"><strong>日本の財政：</strong>一般会計歳出の最大項目は<em>社会保障費</em>（約33%）。国債費（約23%）、地方交付税（約15%）。プライマリーバランス（PB）：社会保障・公共事業等の政策的経費を国債に頼らずに税収等で賄えているかの指標。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">💴</div>
+        <div class="card-title">金融政策（日本銀行）</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">日本銀行の役割</div><div class="def-body">①<em>発券銀行</em>（日本銀行券の発行）②<em>銀行の銀行</em>（市中銀行への貸し出し）③<em>政府の銀行</em>（国庫の管理）</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>政策手段</th><th>不況時（金融緩和）</th><th>好況時（金融引締め）</th></tr>
+          <tr><td><strong>政策金利</strong></td><td>引き下げ→貸出↑→投資↑</td><td>引き上げ→貸出↓→投資↓</td></tr>
+          <tr><td><strong>公開市場操作</strong></td><td>国債等を買いオペ→通貨量↑</td><td>国債等を売りオペ→通貨量↓</td></tr>
+          <tr><td><strong>預金準備率操作</strong></td><td>引き下げ→貸出余力↑</td><td>引き上げ→貸出余力↓</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 量的・質的金融緩和（アベノミクス・2013〜）</div>
+          <ul class="hl-list">
+            <li>「異次元の金融緩和」：マネタリーベースを2年で2倍に</li>
+            <li>2016年：<em>マイナス金利政策</em>導入（当座預金の一部にマイナス金利）</li>
+            <li>2016年：<em>長短金利操作（YCC）</em>：10年国債金利を0%程度に誘導</li>
+            <li>2024年：日銀がマイナス金利政策を解除・金利正常化へ</li>
+          </ul>
+        </div>
+        <div class="def-box"><div class="def-term">ポリシーミックス</div><div class="def-body">財政政策と金融政策を組み合わせて景気安定化を図る政策。両政策の相乗効果を狙う。</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(62,207,142,.15);color:var(--green)">📋</div>
+        <div class="card-title">租税・税制</div>
+        <span class="card-badge badge-mid">重要</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="table-wrap"><table>
+          <tr><th>分類</th><th>内容</th><th>例</th></tr>
+          <tr><td><strong>直接税</strong></td><td>担税者＝納税者</td><td>所得税・法人税・相続税</td></tr>
+          <tr><td><strong>間接税</strong></td><td>担税者≠納税者（転嫁）</td><td>消費税・酒税・たばこ税</td></tr>
+          <tr><td><strong>国税</strong></td><td>国に納める</td><td>所得税・法人税・消費税・相続税</td></tr>
+          <tr><td><strong>地方税</strong></td><td>地方公共団体に納める</td><td>住民税・固定資産税・地方消費税</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>累進課税</strong>：所得が多いほど税率が高くなる（所得税・相続税）→所得再分配機能。<strong>逆進性</strong>：消費税は低所得者の税負担割合が高くなる（所得に対して逆進的）。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 労働・社会保障 ===== -->
+<div id="tab-rodo" class="section-panel">
+  <div class="sec-title">労働問題・社会保障 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">労働権と社会保障制度の全体像を整理し、現代の課題を押さえる。</p>
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">👷</div>
+        <div class="card-title">労働基本権と労働三法</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">労働三権（憲法28条）</div><div class="def-body">①<em>団結権</em>（労働組合を結成する権利）②<em>団体交渉権</em>（労使交渉をする権利）③<em>団体行動権・争議権</em>（ストライキ等の権利）</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>法律</th><th>内容</th></tr>
+          <tr><td><strong>労働基準法</strong></td><td>労働条件の最低基準。1日8時間・週40時間。有給休暇。最低賃金法と連携。</td></tr>
+          <tr><td><strong>労働組合法</strong></td><td>労働組合の設立・団体交渉・不当労働行為の禁止を規定</td></tr>
+          <tr><td><strong>労働関係調整法</strong></td><td>労働争議の予防・解決。あっせん・調停・仲裁の手続き</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 現代の労働問題</div>
+          <ul class="hl-list">
+            <li><strong>非正規雇用の増加</strong>：労働者の約4割。同一労働同一賃金原則（2020年施行）</li>
+            <li><strong>働き方改革</strong>（2018年法制化）：残業時間の上限規制・有給取得義務化</li>
+            <li><strong>ワークライフバランス</strong>：育児・介護休業法、男性育休取得促進</li>
+            <li><strong>労働審判制度</strong>（2006年〜）：個別労働紛争を迅速・簡便に解決</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">🏥</div>
+        <div class="card-title">社会保障制度</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="table-wrap"><table>
+          <tr><th>柱</th><th>内容</th><th>例</th></tr>
+          <tr><td><strong>社会保険</strong></td><td>拠出（保険料）を前提とした給付</td><td>医療保険・年金保険・雇用保険・労災保険・介護保険</td></tr>
+          <tr><td><strong>公的扶助</strong></td><td>低所得者への最低生活保障</td><td>生活保護（憲法25条に基づく）</td></tr>
+          <tr><td><strong>社会福祉</strong></td><td>高齢者・障害者・児童等への支援</td><td>老人福祉法・障害者総合支援法</td></tr>
+          <tr><td><strong>公衆衛生</strong></td><td>国民の健康・衛生環境の整備</td><td>感染症対策・環境衛生</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>介護保険制度（2000年〜）：</strong>40歳以上が加入。要介護認定に基づきサービス提供。高齢化の進展で保険料・給付費が増大。<strong>少子高齢化</strong>→現役世代の負担増大が課題。</div>
+        <div class="point-box">
+          <div class="point-title">🔴 年金制度の構造</div>
+          <ul class="hl-list">
+            <li><strong>国民年金（基礎年金）</strong>：20〜60歳全員加入。定額保険料。<em>賦課方式</em></li>
+            <li><strong>厚生年金</strong>：会社員・公務員。報酬比例部分。労使折半</li>
+            <li><strong>賦課方式 vs 積立方式</strong>：日本は賦課方式（現役世代が高齢者を支える）→少子高齢化で財政悪化リスク</li>
+            <li><strong>マクロ経済スライド</strong>（2004年〜）：経済・人口動向に応じて年金給付を自動調整</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 国際 ===== -->
+<div id="tab-kokusai" class="section-panel">
+  <div class="sec-title">国際政治・国際経済 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">国連機構・安全保障から国際貿易・為替まで国際分野を完全網羅。</p>
+  <div class="content-grid">
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(74,158,255,.15);color:var(--blue)">🌐</div>
+        <div class="card-title">国際連合（UN）の機構</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">国連（1945年設立）</div><div class="def-body">本部：ニューヨーク。加盟国：193ヶ国（2011年南スーダン加盟後）。日本は1956年加盟（第80代加盟）。</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>機関</th><th>構成</th><th>議決方式</th></tr>
+          <tr><td><strong>総会</strong></td><td>全加盟国（1国1票）</td><td>重要問題：2/3以上、一般：過半数</td></tr>
+          <tr><td><strong>安全保障理事会</strong></td><td>常任5＋非常任10</td><td>手続き事項：9票、実質事項：常任5国の<em>拒否権</em>なし＋9票</td></tr>
+          <tr><td><strong>国際司法裁判所</strong></td><td>判事15名、本部ハーグ</td><td>当事国双方の同意が必要</td></tr>
+          <tr><td><strong>事務局</strong></td><td>事務総長（現グテーレス）</td><td>－</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 安保理の拒否権（P5）</div>
+          <ul class="hl-list">
+            <li>常任理事国（P5）：米・英・仏・露・中の5ヶ国</li>
+            <li>拒否権：実質事項で1国でも反対すれば否決→「大国一致の原則」</li>
+            <li>冷戦期：米ソの拒否権行使で機能不全→「平和のための結集」決議（1950）で総会に権限移譲</li>
+            <li>PKO（平和維持活動）：1948年開始。安保理決議に基づき展開。日本は1992年PKO協力法で参加</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(240,168,50,.15);color:var(--gold)">🔄</div>
+        <div class="card-title">国際貿易・WTO・FTA</div>
+        <span class="card-badge badge-all">全範囲</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="def-box"><div class="def-term">比較優位の原理（リカード）</div><div class="def-body">各国が<em>相対的に有利</em>な財の生産に特化し輸出し合うことで、各国の利益が増大する。絶対優位がなくても貿易で利益を得られる。</div></div>
+        <div class="table-wrap"><table>
+          <tr><th>機関・協定</th><th>内容</th></tr>
+          <tr><td><strong>GATT</strong></td><td>1948年設立。関税引き下げ・貿易自由化を推進。ウルグアイ・ラウンド（1986〜94）</td></tr>
+          <tr><td><strong>WTO</strong></td><td>1995年GATTを発展改組。サービス貿易・知財も対象。紛争解決機能強化</td></tr>
+          <tr><td><strong>FTA/EPA</strong></td><td>特定国間の関税撤廃。日本はTPP11・日EU・RCEP等を締結</td></tr>
+        </table></div>
+        <div class="memo-box"><strong>保護貿易 vs 自由貿易：</strong>①<em>自由貿易</em>：関税・非関税障壁撤廃→効率的資源配分・消費者余剰増大 ②<em>保護貿易</em>：幼稚産業保護・雇用確保・安全保障の観点から政府が介入。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head open" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(232,68,58,.15);color:var(--red2)">💱</div>
+        <div class="card-title">為替レート・国際収支</div>
+        <span class="card-badge badge-hard">入試頻出</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body open">
+        <div class="table-wrap"><table>
+          <tr><th>為替変動</th><th>輸出</th><th>輸入</th><th>海外旅行</th></tr>
+          <tr><td><strong>円高（例:1ドル100円→80円）</strong></td><td>不利（価格↑）</td><td>有利（価格↓）</td><td>有利（購買力↑）</td></tr>
+          <tr><td><strong>円安（例:1ドル100円→130円）</strong></td><td>有利（価格↓）</td><td>不利（価格↑）</td><td>不利（購買力↓）</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 国際収支の構造（入試超頻出）</div>
+          <ul class="hl-list">
+            <li><strong>経常収支</strong>＝貿易・サービス収支＋第一次所得収支＋第二次所得収支</li>
+            <li><strong>第一次所得収支</strong>：海外投資の利子・配当（日本は黒字が大きい）</li>
+            <li><strong>金融収支</strong>：対外直接投資・証券投資等</li>
+            <li>「経常収支＋資本移転収支－金融収支＝誤差脱漏」</li>
+          </ul>
+        </div>
+        <div class="memo-box"><strong>ブレトン・ウッズ体制（1944〜1971）：</strong>金1オンス＝35ドルに固定（金本位制）。IMF・世界銀行設立。1971年ニクソンショックで崩壊→変動為替相場制へ。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head" onclick="toggleCard(this)">
+        <div class="card-icon" style="background:rgba(62,207,142,.15);color:var(--green)">🌍</div>
+        <div class="card-title">地域統合・南北問題・環境</div>
+        <span class="card-badge badge-mid">重要</span>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="table-wrap"><table>
+          <tr><th>機関・協定</th><th>内容</th></tr>
+          <tr><td><strong>EU</strong></td><td>1993年マーストリヒト条約で発足。単一通貨ユーロ（1999年〜）。共通農業政策。2020年英国離脱（Brexit）</td></tr>
+          <tr><td><strong>ASEAN</strong></td><td>1967年設立（10ヶ国）。ASEANＦＴＡ・RCEP</td></tr>
+          <tr><td><strong>APEC</strong></td><td>1989年設立。アジア太平洋地域21ヶ国・地域</td></tr>
+        </table></div>
+        <div class="point-box">
+          <div class="point-title">🔴 環境問題の国際的枠組み</div>
+          <ul class="hl-list">
+            <li><strong>国連環境開発会議</strong>（地球サミット・1992年リオ）：気候変動枠組条約・生物多様性条約署名</li>
+            <li><strong>京都議定書</strong>（1997年）：先進国に温室効果ガス削減を義務付け（米は離脱）</li>
+            <li><strong>パリ協定</strong>（2015年）：全ての国が削減目標（NDC）を自主設定。2030年目標・2050年カーボンニュートラル</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ ===== -->
+<div id="tab-quiz" class="section-panel">
+  <div class="sec-title">入試演習問題 <span class="sec-title-line"></span></div>
+  <p class="sec-sub">共通テスト・センター試験・私大入試の頻出問題を厳選。解説付き。</p>
+
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <div class="quiz-title">🏆 入試チャレンジ</div>
+      <div class="quiz-progress" id="quizProgress">問1 / 全20問</div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:5%"></div></div>
+
+    <!-- QUESTIONS -->
+    <div id="questions"></div>
+
+    <div id="resultPanel" class="result-panel">
+      <div style="font-size:1.1rem;color:var(--text2);margin-bottom:8px">最終結果</div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel"></div>
+      <div class="grade-badge" id="gradeBadge"></div>
+      <br>
+      <button class="nav-btn primary" onclick="resetQuiz()" style="margin-top:8px">🔄 もう一度挑戦する</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// TAB SWITCHING
+function showTab(id) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// CARD TOGGLE
+function toggleCard(head) {
+  head.classList.toggle('open');
+  head.nextElementSibling.classList.toggle('open');
+}
+
+// QUIZ DATA (20問)
+const questions = [
+  {
+    q: "日本国憲法が施行された年月日はいつか。",
+    opts: ["1946年11月3日", "1947年5月3日", "1945年8月15日", "1948年9月3日"],
+    ans: 1,
+    exp: "日本国憲法は1946年11月3日に<strong>公布</strong>、1947年5月3日に<strong>施行</strong>されました。公布日（11/3）は文化の日、施行日（5/3）は憲法記念日として国民の祝日です。"
+  },
+  {
+    q: "日本国憲法の改正には、各議院の<em>何分の何</em>以上の賛成が必要か。",
+    opts: ["各議院の出席議員の3分の2以上", "各議院の総議員の3分の2以上", "各議院の総議員の過半数", "各議院の出席議員の過半数"],
+    ans: 1,
+    exp: "憲法第96条では「各議院の<strong>総議員</strong>の3分の2以上の賛成」が必要です。<strong>出席議員ではなく総議員</strong>である点が正誤問題で頻出です。その後、国民投票で過半数の賛成が必要です。"
+  },
+  {
+    q: "次のうち、「社会権」に分類されるものはどれか。",
+    opts: ["思想・良心の自由（19条）", "職業選択の自由（22条）", "生存権（25条）", "請願権（16条）"],
+    ans: 2,
+    exp: "生存権（憲法25条）は<strong>社会権</strong>（国家に積極的な行為を求める権利）の代表例です。思想・良心の自由は精神的自由（自由権）、職業選択の自由は経済的自由（自由権）、請願権は請求権です。"
+  },
+  {
+    q: "衆議院議員の被選挙権は何歳以上か。",
+    opts: ["18歳以上", "20歳以上", "25歳以上", "30歳以上"],
+    ans: 2,
+    exp: "衆議院議員の被選挙権は<strong>25歳以上</strong>、参議院議員は<strong>30歳以上</strong>です。選挙権は2016年から18歳以上に引き下げられましたが、被選挙権の年齢は変更されていません。"
+  },
+  {
+    q: "国会の「常会（通常国会）」の会期は何日か。",
+    opts: ["90日", "120日", "150日", "180日"],
+    ans: 2,
+    exp: "常会（通常国会）は毎年1月に召集され、会期は<strong>150日</strong>です。主に予算の審議・議決が中心となります。会期は1回だけ延長できます。"
+  },
+  {
+    q: "三権分立において、内閣が持つ裁判所への抑制手段として正しいものはどれか。",
+    opts: ["弾劾裁判所の設置", "最高裁判所長官の任命", "違憲立法審査", "条約の承認"],
+    ans: 1,
+    exp: "内閣は<strong>最高裁判所長官の指名</strong>（天皇が任命）および裁判官の任命権を持ちます。弾劾裁判所は国会が設置します。違憲立法審査は裁判所が国会・内閣に対して行う抑制です。"
+  },
+  {
+    q: "GDP（国内総生産）の計算式（支出面）として正しいものはどれか。",
+    opts: [
+      "民間消費＋民間投資＋政府支出＋純輸出",
+      "民間消費＋民間投資＋政府支出＋総輸出",
+      "賃金＋利子＋地代＋利潤",
+      "民間消費＋政府支出＋純輸出"
+    ],
+    ans: 0,
+    exp: "支出面のGDP＝<strong>民間消費（C）＋民間投資（I）＋政府支出（G）＋純輸出（X-M）</strong>です。純輸出＝輸出－輸入である点に注意。賃金＋利子＋地代＋利潤は分配面のGDPです。"
+  },
+  {
+    q: "比例代表制の議席配分に用いられる「ドント式」の説明として正しいのはどれか。",
+    opts: [
+      "得票数を1,2,3…と割り、商の大きい順に議席配分",
+      "得票数を総数で割り、得票率に応じて配分",
+      "各政党の最高得票数順に議席配分",
+      "得票数を2,4,6…と割り、商の大きい順に議席配分"
+    ],
+    ans: 0,
+    exp: "<strong>ドント式</strong>は各政党の得票数を<strong>1, 2, 3…と自然数で割り</strong>、商の大きい順に議席を配分する方式です。日本の衆院比例代表と参院比例代表で使用されています。"
+  },
+  {
+    q: "不況時に中央銀行（日本銀行）が行う金融緩和政策として正しいのはどれか。",
+    opts: [
+      "市中銀行から国債を売却する（売りオペ）",
+      "市中銀行に国債を買い取る（買いオペ）",
+      "政策金利を引き上げる",
+      "預金準備率を引き上げる"
+    ],
+    ans: 1,
+    exp: "不況時の金融緩和では、日銀が市中銀行から国債等を<strong>買い取る（買いオペレーション）</strong>ことで市場への通貨供給量を増やします。これにより金利が低下し、企業の投資が促進されます。"
+  },
+  {
+    q: "地方自治における「直接請求権」で、条例の制定・改廃を請求するために必要な署名数はどれか。",
+    opts: ["有権者の50分の1以上", "有権者の3分の1以上", "有権者の4分の1以上", "有権者の10分の1以上"],
+    ans: 0,
+    exp: "条例の制定・改廃請求（イニシアティブ）・監査請求は有権者の<strong>50分の1（1/50）以上</strong>の署名が必要です。一方、首長・議員の解職請求（リコール）や議会解散請求は有権者の<strong>3分の1以上</strong>が必要です。"
+  },
+  {
+    q: "日本の安全保障理事会常任理事国（P5）に含まれない国はどれか。",
+    opts: ["アメリカ合衆国", "フランス", "ドイツ", "ロシア連邦"],
+    ans: 2,
+    exp: "国連安全保障理事会の常任理事国（P5）は<strong>アメリカ・イギリス・フランス・ロシア・中国</strong>の5ヶ国です。<strong>ドイツ・日本は含まれません</strong>。各国は拒否権を持ちます。"
+  },
+  {
+    q: "「比較優位の原理」を唱えた経済学者はだれか。",
+    opts: ["アダム・スミス", "デヴィッド・リカード", "ジョン・M・ケインズ", "ミルトン・フリードマン"],
+    ans: 1,
+    exp: "<strong>デヴィッド・リカード</strong>が「比較優位の原理」を提唱しました。各国が相対的に有利な財の生産に特化することで、絶対優位がなくても貿易から利益を得られることを示しました。アダム・スミスは「絶対優位」を唱えました。"
+  },
+  {
+    q: "次のうち、衆議院にのみ認められている権限はどれか。",
+    opts: ["条約の承認", "予算の議決", "内閣不信任決議", "憲法改正の発議"],
+    ans: 2,
+    exp: "<strong>内閣不信任決議</strong>は衆議院にのみ認められた権限です（憲法69条）。予算の先議権・議決の優越は衆議院にありますが「議決」自体は両院に認められます。条約承認・憲法改正発議・予算議決は両院が関与します。"
+  },
+  {
+    q: "消費税の問題点として「逆進性」があるが、「逆進性」とはどういう意味か。",
+    opts: [
+      "高所得者ほど税率が高くなること",
+      "低所得者ほど所得に対する税負担の割合が高くなること",
+      "消費が多い人ほど税負担が軽くなること",
+      "輸入品にのみ課税されること"
+    ],
+    ans: 1,
+    exp: "消費税の<strong>逆進性</strong>とは、消費税は一律の税率でも、<strong>低所得者ほど所得に占める消費税負担の割合が高くなる</strong>ことを指します。これは累進課税（所得税）の逆の現象で、所得再分配機能が弱い点が問題とされます。"
+  },
+  {
+    q: "労働三権（団結権・団体交渉権・争議権）を保障している憲法の条文はどれか。",
+    opts: ["第25条", "第26条", "第27条", "第28条"],
+    ans: 3,
+    exp: "労働三権（勤労者の団結する権利・団体交渉権・団体行動権）は憲法<strong>第28条</strong>で保障されています。25条は生存権、26条は教育を受ける権利、27条は勤労の権利・義務です。"
+  },
+  {
+    q: "円安になった場合、日本経済に生じる影響として最も適切なものはどれか。",
+    opts: [
+      "輸入品の価格が下がり、消費者にとって有利になる",
+      "海外旅行が安くなる",
+      "輸出企業の円換算の収益が増加しやすい",
+      "外国債務の円換算の返済額が減少する"
+    ],
+    ans: 2,
+    exp: "<strong>円安</strong>（円の価値が下がる）と、日本の輸出品が外国から見て割安になるため、<strong>輸出企業の競争力が高まり円換算の収益が増加</strong>します。一方、輸入コストの上昇（輸入物価↑）、海外旅行の費用増大、外国債務の実質的増加などのデメリットもあります。"
+  },
+  {
+    q: "「プログラム規定説」と最も関係が深い判例はどれか。",
+    opts: ["薬事法事件（1975年）", "朝日訴訟（1967年）", "猿払事件（1974年）", "三菱樹脂事件（1973年）"],
+    ans: 1,
+    exp: "<strong>朝日訴訟</strong>（1967年最高裁）では、憲法25条の生存権は「すべての国民が健康で文化的な最低限度の生活を営めるよう国政を運営すべき義務を国に課したもの（プログラム規定）」にすぎず、個人に具体的権利を付与したものではないと判示しました。"
+  },
+  {
+    q: "2015年に採択された気候変動に関する国際協定はどれか。",
+    opts: ["京都議定書", "モントリオール議定書", "パリ協定", "ラムサール条約"],
+    ans: 2,
+    exp: "<strong>パリ協定</strong>は2015年12月にCOP21で採択されました。先進国だけに削減義務を課した京都議定書と異なり、<strong>全ての国が自国の排出削減目標（NDC）を設定・提出</strong>することが求められます。2050年カーボンニュートラルを目標としています。"
+  },
+  {
+    q: "日本の衆議院の選挙制度として正しいものはどれか。",
+    opts: [
+      "中選挙区比例代表併用制",
+      "小選挙区比例代表並立制",
+      "完全比例代表制",
+      "大選挙区単記非移譲式"
+    ],
+    ans: 1,
+    exp: "衆議院は<strong>小選挙区比例代表並立制</strong>（1994年改正）です。小選挙区289議席と比例代表176議席（11ブロック）が並立しています。<strong>重複立候補制度</strong>があり、比例代表で惜敗率によって復活当選できます。参議院の比例代表は非拘束名簿式です。"
+  },
+  {
+    q: "「市場の失敗」が生じる原因として適切でないものはどれか。",
+    opts: ["外部不経済の発生", "公共財の供給", "完全競争市場の成立", "情報の非対称性"],
+    ans: 2,
+    exp: "<strong>完全競争市場の成立</strong>は「市場の失敗」の原因ではなく、むしろ<strong>市場が最も効率的に機能する状態</strong>です。市場の失敗が生じるのは①外部不経済・外部経済の存在 ②公共財の供給困難 ③独占・寡占の形成 ④情報の非対称性 の場合です。"
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(false);
+let correct = new Array(questions.length).fill(false);
+
+function buildQuiz() {
+  const container = document.getElementById('questions');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'q-block' + (i === 0 ? ' active' : '');
+    div.id = 'q' + i;
+    const labels = ['A', 'B', 'C', 'D'];
+    div.innerHTML = `
+      <div class="q-num">問 ${i+1} / ${questions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options" id="opts${i}">
+        ${q.opts.map((o, j) => `
+          <button class="opt-btn" onclick="answer(${i},${j})">
+            <span class="opt-label">${labels[j]}</span>
+            ${o}
+          </button>
+        `).join('')}
+      </div>
+      <div class="explanation" id="exp${i}"><strong>解説：</strong> ${q.exp}</div>
+      <div class="q-nav">
+        <button class="nav-btn" onclick="prevQ()" ${i===0?'disabled':''}>← 前へ</button>
+        <button class="nav-btn primary" id="nextBtn${i}" onclick="${i===questions.length-1?'showResult()':'nextQ()'}" style="display:none">${i===questions.length-1?'結果を見る':'次へ →'}</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+  updateProgress();
+}
+
+function answer(qIdx, optIdx) {
+  if (answered[qIdx]) return;
+  answered[qIdx] = true;
+  const btns = document.querySelectorAll(`#opts${qIdx} .opt-btn`);
+  const isCorrect = optIdx === questions[qIdx].ans;
+  if (isCorrect) { score++; correct[qIdx] = true; }
+  btns.forEach((btn, j) => {
+    btn.disabled = true;
+    if (j === questions[qIdx].ans) btn.classList.add('correct');
+    else if (j === optIdx && !isCorrect) btn.classList.add('wrong');
+  });
+  document.getElementById('exp' + qIdx).classList.add('show');
+  document.getElementById('nextBtn' + qIdx).style.display = 'inline-flex';
+  updateProgressBadge();
+}
+
+function nextQ() {
+  if (currentQ < questions.length - 1) {
+    document.getElementById('q' + currentQ).classList.remove('active');
+    currentQ++;
+    document.getElementById('q' + currentQ).classList.add('active');
+    updateProgress();
+    window.scrollTo({top: document.querySelector('.quiz-container').offsetTop - 80, behavior: 'smooth'});
+  }
+}
+
+function prevQ() {
+  if (currentQ > 0) {
+    document.getElementById('q' + currentQ).classList.remove('active');
+    currentQ--;
+    document.getElementById('q' + currentQ).classList.add('active');
+    updateProgress();
+  }
+}
+
+function updateProgress() {
+  const pct = ((currentQ + 1) / questions.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('quizProgress').textContent = `問${currentQ+1} / 全${questions.length}問`;
+}
+
+function updateProgressBadge() {
+  const done = answered.filter(Boolean).length;
+  document.getElementById('totalScore').textContent = `${score}/${done}`;
+}
+
+function showResult() {
+  document.querySelectorAll('.q-block').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('resultPanel');
+  panel.classList.add('show');
+  const pct = Math.round(score / questions.length * 100);
+  document.getElementById('resultScore').textContent = `${score} / ${questions.length}`;
+  let grade, color, label;
+  if (pct >= 90) { grade = 'S'; color = '#f0a832'; label = '🏆 合格確実！最高レベル達成！' }
+  else if (pct >= 75) { grade = 'A'; color = '#3ecf8e'; label = '✨ 合格圏内！あと少し！' }
+  else if (pct >= 60) { grade = 'B'; color = '#4a9eff'; label = '📚 もう少し！苦手分野を復習しよう' }
+  else if (pct >= 40) { grade = 'C'; color = '#e8443a'; label = '💪 基礎からしっかり復習しよう！' }
+  else { grade = 'D'; color = '#9ba8bb'; label = '📖 各タブの内容を再確認してから挑戦！' }
+  document.getElementById('resultLabel').textContent = label;
+  document.getElementById('gradeBadge').textContent = `ランク ${grade}（正答率 ${pct}%）`;
+  document.getElementById('gradeBadge').style.background = color + '22';
+  document.getElementById('gradeBadge').style.color = color;
+  document.getElementById('gradeBadge').style.border = `1px solid ${color}44`;
+  document.getElementById('totalScore').textContent = `${score}/${questions.length}`;
+  document.getElementById('progressFill').style.width = '100%';
+}
+
+function resetQuiz() {
+  currentQ = 0; score = 0;
+  answered = new Array(questions.length).fill(false);
+  correct = new Array(questions.length).fill(false);
+  document.getElementById('resultPanel').classList.remove('show');
+  document.getElementById('totalScore').textContent = '-';
+  buildQuiz();
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
